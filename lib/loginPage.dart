@@ -1,3 +1,4 @@
+import 'package:auth_service/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application/registerPage.dart';
@@ -14,6 +15,9 @@ class LoginPageState extends State<LoginPage> {
 
   final TextEditingController emailController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
+
+  final AuthService _authService =
+      FirebaseAuthService(authService: FirebaseAuth.instance);
 
   String _errorMessage = 'Error';
 
@@ -100,7 +104,15 @@ class LoginPageState extends State<LoginPage> {
         onPressed: () {
           if (_formkey.currentState != null) {
             if (_formkey.currentState!.validate()) {
-              //TODO: ADD firebase setup
+              try {
+                _authService.signInWithEmailAndPassword(
+                    email: emailController.text,
+                    password: passwordController.text);
+              } catch (e) {
+                ScaffoldMessenger.of(context)
+                    .showSnackBar(SnackBar(content: Text(e.toString())));
+              }
+              print('logged in');
             }
           }
         },

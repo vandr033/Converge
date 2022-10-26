@@ -19,8 +19,8 @@ class _RegisterPageState extends State<RegisterPage> {
   final lastNameTextEditController = new TextEditingController();
   final passwordTextEditController = new TextEditingController();
   final confirmPasswordTextEditController = new TextEditingController();
-  //final AuthService _authService =
-//  FirebaseAuthService(authService: FirebaseAuth.instance);
+  final AuthService _authService =
+      FirebaseAuthService(authService: FirebaseAuth.instance);
 
   final FocusNode _emailFocus = FocusNode();
   final FocusNode _firstNameFocus = FocusNode();
@@ -200,15 +200,19 @@ class _RegisterPageState extends State<RegisterPage> {
                             borderRadius: BorderRadius.circular(24)),
                       ),
                       onPressed: () async {
-                        // try {
-                        //   await _authService.createUserWithEmailAndPassword(
-                        //       email: emailTextController.text,
-                        //       password: passwordTextEditController.text);
-                        //   print('Logged In');
-                        // } catch (e) {
-                        //   ScaffoldMessenger.of(context).showSnackBar(
-                        //       SnackBar(content: Text(e.toString())));
-                        // }
+                        try {
+                          await _authService.createUserWithEmailAndPassword(
+                              email: emailTextController.text,
+                              password: passwordTextEditController.text);
+                          print('Created An Account');
+                          _authService.signInWithEmailAndPassword(
+                              email: emailTextController.text,
+                              password: passwordTextEditController.text);
+                          print('logged in');
+                        } catch (e) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text(e.toString())));
+                        }
                       },
                       child: Text('Sign Up'.toUpperCase(),
                           style: TextStyle(color: Colors.white)),
