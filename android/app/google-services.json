@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "950830206322",
+    "project_id": "sparkdev-ce97b",
+    "storage_bucket": "sparkdev-ce97b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:950830206322:android:f09765b67fb4a0ff96a1eb",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "950830206322-2n9423kuk1r21j45gtperm7ur8cbbr9e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjP--_gqv9nTgXAna_0WG6sehUKrc_aS0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "950830206322-2n9423kuk1r21j45gtperm7ur8cbbr9e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "950830206322-qqgrhpi2vlik88ig190dn4qkj7vjlbl8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kevinjnguyen.registration"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:950830206322:android:9cbcd1e23052cc7f96a1eb",
+        "android_client_info": {
+          "package_name": "com.example.registration"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "950830206322-2n9423kuk1r21j45gtperm7ur8cbbr9e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjP--_gqv9nTgXAna_0WG6sehUKrc_aS0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "950830206322-2n9423kuk1r21j45gtperm7ur8cbbr9e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "950830206322-qqgrhpi2vlik88ig190dn4qkj7vjlbl8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kevinjnguyen.registration"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
