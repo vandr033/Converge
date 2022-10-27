@@ -4,6 +4,7 @@ import 'package:auth_service/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:auth_service/src/service/firebase_auth_service.dart' as fba;
 
 class RegisterPage extends StatefulWidget {
   static String tag = 'register-page';
@@ -19,9 +20,8 @@ class _RegisterPageState extends State<RegisterPage> {
   final lastNameTextEditController = new TextEditingController();
   final passwordTextEditController = new TextEditingController();
   final confirmPasswordTextEditController = new TextEditingController();
-  final AuthService _authService =
-      FirebaseAuthService(authService: FirebaseAuth.instance);
-
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  User? user = FirebaseAuth.instance.currentUser;
   final FocusNode _emailFocus = FocusNode();
   final FocusNode _firstNameFocus = FocusNode();
   final FocusNode _lastNameFocus = FocusNode();
@@ -143,7 +143,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     padding: EdgeInsets.symmetric(vertical: 8.0),
                     child: TextFormField(
                       validator: (value) {
-                        if (value == null || value.length < 8) {
+                        if (value == null ||
+                            value.length < 8 ||
+                            value.contains('1')) {
                           return 'Password must be longer than 8 characters.';
                         }
                         return null;
@@ -201,18 +203,42 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       onPressed: () async {
                         try {
-                          await _authService.createUserWithEmailAndPassword(
-                              email: emailTextController.text,
-                              password: passwordTextEditController.text);
-                          print('Created An Account');
-                          _authService.signInWithEmailAndPassword(
-                              email: emailTextController.text,
-                              password: passwordTextEditController.text);
-                          print('logged in');
+                          UserCredential result =
+                              await auth.createUserWithEmailAndPassword(
+                                  email: emailTextController.text,
+                                  password: passwordTextEditController.text);
+
+                          await result.user?.updateDisplayName(
+                              '${firstNameTextEditController.text} ${lastNameTextEditController.text}');
+                          print(result.user?.uid.toString());
+                        } on FirebaseAuthException catch (e) {
+                          if (e.code == 'weak-password') {
+                            print('weak password');
+                          } else if (e.code == 'email-already-in-use') {
+                            print('email already in use');
+                          }
                         } catch (e) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text(e.toString())));
+                          print(e);
                         }
+                        if (auth.currentUser != null) {
+                          auth.currentUser?.updateDisplayName(
+                              firstNameTextEditController.text +
+                                  lastNameTextEditController.text);
+                        }
+                        print('Display Name: ${auth.currentUser?.displayName}');
+
+                        //   _authService.createUserWithEmailAndPassword(
+                        //       email: emailTextController.text,
+                        //       password: passwordTextEditController.text);
+                        //   print('Created An Account');
+                        //   _authService.signInWithEmailAndPassword(
+                        //       email: emailTextController.text,
+                        //       password: passwordTextEditController.text);
+                        //   print('logged in');
+                        // } catch (e) {
+                        //   ScaffoldMessenger.of(context).showSnackBar(
+                        //       SnackBar(content: Text(e.toString())));
+                        // }
                       },
                       child: Text('Sign Up'.toUpperCase(),
                           style: TextStyle(color: Colors.white)),
@@ -232,5 +258,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 ]),
           ),
         ));
+  }
+
+  currentUser() {
+    final User? user = auth.currentUser;
+    final uid = user!.uid.toString();
+    return uid;
   }
 }
