@@ -41,35 +41,35 @@ class InterestScreen1State extends State<InterestScreen1> {
               children: [],
             ),
             const SizedBox(
-              height: 30,
+              height: 10,
             ),
             Row(
               //row 3 - buttons
               children: [],
             ),
             const SizedBox(
-              height: 30,
+              height: 10,
             ),
             Row(
               //row 4 - buttons
               children: [],
             ),
             const SizedBox(
-              height: 30,
+              height: 10,
             ),
             Row(
               //row 5 - buttons
               children: [],
             ),
             const SizedBox(
-              height: 30,
+              height: 10,
             ),
             Row(
               //row 6 - buttons
               children: [],
             ),
             const SizedBox(
-              height: 30,
+              height: 10,
             ),
             Row(
               //row 7 - buttons
@@ -83,14 +83,11 @@ class InterestScreen1State extends State<InterestScreen1> {
               children: [],
             ),
             const SizedBox(
-              height: 30,
+              height: 10,
             ),
             Row(
               //row 9 - "next" button
               children: [],
-            ),
-            const SizedBox(
-              height: 30,
             ),
           ], //last row- end of children within column.
         ),
