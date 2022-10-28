@@ -1,4 +1,5 @@
 import 'package:auth_service/auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application/registerPage.dart';
@@ -18,6 +19,8 @@ class LoginPageState extends State<LoginPage> {
 
   final AuthService _authService =
       FirebaseAuthService(authService: FirebaseAuth.instance);
+
+  final db = FirebaseFirestore.instance;
 
   String _errorMessage = 'Error';
 
@@ -101,20 +104,19 @@ class LoginPageState extends State<LoginPage> {
             backgroundColor: Colors.lightBlueAccent,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(24))),
-        onPressed: () {
+        onPressed: () async {
           if (_formkey.currentState != null) {
             if (_formkey.currentState!.validate()) {
-              try {
-                _authService.signInWithEmailAndPassword(
-                    email: emailController.text,
-                    password: passwordController.text);
-              } catch (e) {
-                ScaffoldMessenger.of(context)
-                    .showSnackBar(SnackBar(content: Text(e.toString())));
-              }
-              print('logged in');
+              final userCredentials = await FirebaseAuth.instance
+                  .signInWithEmailAndPassword(
+                      email: emailController.text,
+                      password: passwordController.text);
+              final user = userCredentials.user;
+              print('UID:${user?.uid}');
+              print('Display Name: ${user?.displayName}');
             }
           }
+          final db = FirebaseFirestore.instance;
         },
         child: Text(
           'login',

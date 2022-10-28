@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:auth_service/src/service/firebase_auth_service.dart' as fba;
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RegisterPage extends StatefulWidget {
   static String tag = 'register-page';
@@ -27,6 +28,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final FocusNode _lastNameFocus = FocusNode();
   final FocusNode _passwordFocus = FocusNode();
   final FocusNode _confirmPasswordFocus = FocusNode();
+  final db = FirebaseFirestore.instance;
 
   //TODO: FIREBASE auth
 
@@ -225,7 +227,18 @@ class _RegisterPageState extends State<RegisterPage> {
                               firstNameTextEditController.text +
                                   lastNameTextEditController.text);
                         }
-                        print('Display Name: ${auth.currentUser?.displayName}');
+                        final user = <String, dynamic>{
+                          "first": firstNameTextEditController.text.toString(),
+                          "last": lastNameTextEditController.text.toString(),
+                          "UID": auth.currentUser?.uid,
+                          "Sports": false,
+                          "Music": false,
+                        };
+
+                        //adds user to collection "Users"
+                        db.collection("users").add(user).then((DocumentReference
+                                doc) =>
+                            print('DocumentSnapshot added with ID: ${doc.id}'));
 
                         //   _authService.createUserWithEmailAndPassword(
                         //       email: emailTextController.text,
