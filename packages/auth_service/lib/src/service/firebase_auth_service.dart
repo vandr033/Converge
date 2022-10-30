@@ -25,7 +25,6 @@ class FirebaseAuthService implements AuthService {
       'lastName': splittedName.last,
       'email': user.email ?? '',
       'emailVerified': user.emailVerified,
-      'imageUrl': user.photoURL ?? '',
       'isAnonymous': user.isAnonymous,
       'age': 0,
       'phoneNumber': '',
