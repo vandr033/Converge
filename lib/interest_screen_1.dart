@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/interest_screen_2.dart';
 
 class InterestScreen1 extends StatefulWidget {
   static String tag = 'interest-screen-1';
@@ -109,7 +110,9 @@ class InterestScreen1State extends State<InterestScreen1> {
                   width: 250.0,
                   height: 40.0,
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(InterestScreen2.tag);
+                      },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xff4589FF),
                           foregroundColor: Colors.white,
