@@ -102,7 +102,26 @@ class InterestScreen1State extends State<InterestScreen1> {
             ),
             Row(
               //row 9 - "next" button
-              children: const [],
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                //The actual formatting of the 'Next' button and everything we do for it
+                SizedBox(
+                  width: 250.0,
+                  height: 40.0,
+                  child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xff4589FF),
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0))),
+                      child: const Text(
+                        'Next',
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      )),
+                )
+              ],
             ),
           ], //last row- end of children within column.
         ),
