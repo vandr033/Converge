@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:auth_service/src/service/firebase_auth_service.dart' as fba;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_application/interest_screen_1.dart';
 
 class RegisterPage extends StatefulWidget {
   static String tag = 'register-page';
@@ -17,7 +18,6 @@ class _RegisterPageState extends State<RegisterPage> {
   final _formkey = GlobalKey<FormState>();
   final emailTextController = new TextEditingController();
   final emailTextEditController = new TextEditingController();
-  final firstNameTextEditController = new TextEditingController();
   final lastNameTextEditController = new TextEditingController();
   final passwordTextEditController = new TextEditingController();
   final confirmPasswordTextEditController = new TextEditingController();
@@ -91,7 +91,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         contentPadding:
                             EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(32.0)),
+                            borderRadius: BorderRadius.circular(9.0)),
                       ),
                     ),
                   ),
@@ -100,33 +100,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: TextFormField(
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter your first name.';
-                        }
-                        return null;
-                      },
-                      controller: firstNameTextEditController,
-                      keyboardType: TextInputType.text,
-                      autofocus: false,
-                      textInputAction: TextInputAction.next,
-                      focusNode: _firstNameFocus,
-                      onFieldSubmitted: (term) {
-                        FocusScope.of(context).requestFocus(_lastNameFocus);
-                      },
-                      decoration: InputDecoration(
-                        hintText: 'First Name',
-                        contentPadding:
-                            EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(32.0)),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 8.0),
-                    child: TextFormField(
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your last name.';
+                          return 'Please enter your username';
                         }
                         return null;
                       },
@@ -139,11 +113,11 @@ class _RegisterPageState extends State<RegisterPage> {
                         FocusScope.of(context).requestFocus(_passwordFocus);
                       },
                       decoration: InputDecoration(
-                        hintText: 'Last Name',
+                        hintText: 'Username',
                         contentPadding:
                             EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(32.0)),
+                            borderRadius: BorderRadius.circular(9.0)),
                       ),
                     ),
                   ),
@@ -172,7 +146,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         contentPadding:
                             EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(32.0)),
+                            borderRadius: BorderRadius.circular(9.0)),
                       ),
                     ),
                   ),
@@ -196,7 +170,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         contentPadding:
                             EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(32.0)),
+                            borderRadius: BorderRadius.circular(9.0)),
                       ),
                     ),
                   ),
@@ -215,13 +189,13 @@ class _RegisterPageState extends State<RegisterPage> {
                               await auth.createUserWithEmailAndPassword(
                                   email: emailTextController.text,
                                   password: passwordTextEditController.text);
-
-                          await result.user?.updateDisplayName(
-                              '${firstNameTextEditController.text} ${lastNameTextEditController.text}');
                           print(result.user?.uid.toString());
                         } on FirebaseAuthException catch (e) {
                           if (e.code == 'weak-password') {
-                            print('weak password');
+                            var snackBar =
+                                SnackBar(content: Text('Weak Password'));
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
                           } else if (e.code == 'email-already-in-use') {
                             print('email already in use');
                           }
@@ -229,25 +203,23 @@ class _RegisterPageState extends State<RegisterPage> {
                           print(e);
                         }
                         if (auth.currentUser != null) {
-                          auth.currentUser?.updateDisplayName(
-                              firstNameTextEditController.text +
-                                  lastNameTextEditController.text);
+                          final user = <String, dynamic>{
+                            "username":
+                                lastNameTextEditController.text.toString(),
+                            "UID": auth.currentUser?.uid,
+                            "Sports": false,
+                            "Music": false,
+                          };
+
+                          //adds user to collection "Users"
+                          db.collection("users").add(user).then(
+                              (DocumentReference doc) => print(
+                                  'DocumentSnapshot added with ID: ${doc.id}'));
+                          Navigator.of(context).pushNamed(InterestScreen1.tag);
+
                           // send email verification link if user was created
                           sendEmailVerification();
                         }
-                        final user = <String, dynamic>{
-                          "first": firstNameTextEditController.text.toString(),
-                          "last": lastNameTextEditController.text.toString(),
-                          "UID": auth.currentUser?.uid,
-                          "Sports": false,
-                          "Music": false,
-                        };
-
-                        //adds user to collection "Users"
-                        db.collection("users").add(user).then((DocumentReference
-                                doc) =>
-                            print('DocumentSnapshot added with ID: ${doc.id}'));
-
                         //   _authService.createUserWithEmailAndPassword(
                         //       email: emailTextController.text,
                         //       password: passwordTextEditController.text);
@@ -260,6 +232,9 @@ class _RegisterPageState extends State<RegisterPage> {
                         //   ScaffoldMessenger.of(context).showSnackBar(
                         //       SnackBar(content: Text(e.toString())));
                         // }
+
+                        auth.sendPasswordResetEmail(
+                            email: emailTextController.text);
                       },
                       child: Text('Sign Up'.toUpperCase(),
                           style: TextStyle(color: Colors.white)),
