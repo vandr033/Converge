@@ -102,7 +102,7 @@ class InterestScreen2State extends State<InterestScreen2> {
                                   style: TextStyle(
                                       fontFamily: 'IBM-Plex',
                                       fontSize: 12,
-                                      color: Color.fromRGBO(149, 149, 149, 1)),
+                                      color: Color(0xff828382)),
                                 ),
                               ],
                             ),
