@@ -34,49 +34,313 @@ class InterestScreen1State extends State<InterestScreen1> {
             ),
             const SizedBox(
               //want space between ours rows within our column.
-              height: 30,
+              height: 75,
             ),
             Row(
               //row 2 - buttons
-              children: const [],
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    side: BorderSide(color: Color(0xff4589FF), width: 2),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(9.0),
+                  ),
+                  minimumSize: Size(75, 40)
+                  ),
+                  onPressed: () {},
+                  child: const Text(
+                    "Music",
+                    style: TextStyle(
+                      color: Color(0xff4589FF),
+                      fontSize: 20, 
+                      height: 1.0,
+                      ),
+                    ), 
+                ),
+            
+                const SizedBox(
+                  //want space between each button
+                  width: 10,
+                ),
+
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    side: BorderSide(color: Color(0xff4589FF), width: 2),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(9.0),
+                  ),
+                  minimumSize: Size(200, 40)
+                  ),
+                  onPressed: () {},
+                  child: const Text(
+                    "Academics",
+                    style: TextStyle(
+                      color: Color(0xff4589FF),
+                      fontSize: 20, 
+                      height: 1.0,
+                      ),
+                    ), 
+                ),
+              ],
             ),
             const SizedBox(
               height: 10,
             ),
             Row(
               //row 3 - buttons
-              children: const [],
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    side: BorderSide(color: Color(0xff4589FF), width: 2),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(9.0),
+                  ),
+                  minimumSize: Size(150, 40)
+                  ),
+                  onPressed: () {},
+                  child: const Text(
+                    "Gaming",
+                    style: TextStyle(
+                      color: Color(0xff4589FF),
+                      fontSize: 20, 
+                      height: 1.0,
+                      ),
+                    ), 
+                ),
+            
+                const SizedBox(
+                  //want space between each button
+                  width: 10,
+                ),
+
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    side: BorderSide(color: Color(0xff4589FF), width: 2),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(9.0),
+                  ),
+                  minimumSize: Size(125, 40)
+                  ),
+                  onPressed: () {},
+                  child: const Text(
+                    "Careers",
+                    style: TextStyle(
+                      color: Color(0xff4589FF),
+                      fontSize: 20, 
+                      height: 1.0,
+                      ),
+                    ), 
+                ),
+              ],
             ),
             const SizedBox(
               height: 10,
             ),
             Row(
               //row 4 - buttons
-              children: const [],
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    side: BorderSide(color: Color(0xff4589FF), width: 2),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(9.0),
+                  ),
+                  minimumSize: Size(200, 40)
+                  ),
+                  onPressed: () {},
+                  child: const Text(
+                    "Outdoors",
+                    style: TextStyle(
+                      color: Color(0xff4589FF),
+                      fontSize: 20, 
+                      height: 1.0,
+                      ),
+                    ), 
+                ),
+            
+                const SizedBox(
+                  //want space between each button
+                  width: 10,
+                ),
+
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    side: BorderSide(color: Color(0xff4589FF), width: 2),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(9.0),
+                  ),
+                  minimumSize: Size(75, 40)
+                  ),
+                  onPressed: () {},
+                  child: const Text(
+                    "Art",
+                    style: TextStyle(
+                      color: Color(0xff4589FF),
+                      fontSize: 20, 
+                      height: 1.0,
+                      ),
+                    ), 
+                ),
+              ],
             ),
             const SizedBox(
               height: 10,
             ),
             Row(
               //row 5 - buttons
-              children: const [],
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    side: BorderSide(color: Color(0xff4589FF), width: 2),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(9.0),
+                  ),
+                  minimumSize: Size(150, 40)
+                  ),
+                  onPressed: () {},
+                  child: const Text(
+                    "Cooking",
+                    style: TextStyle(
+                      color: Color(0xff4589FF),
+                      fontSize: 20, 
+                      height: 1.0,
+                      ),
+                    ), 
+                ),
+            
+                const SizedBox(
+                  //want space between each button
+                  width: 10,
+                ),
+
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    side: BorderSide(color: Color(0xff4589FF), width: 2),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(9.0),
+                  ),
+                  minimumSize: Size(125, 40)
+                  ),
+                  onPressed: () {},
+                  child: const Text(
+                    "Business",
+                    style: TextStyle(
+                      color: Color(0xff4589FF),
+                      fontSize: 20, 
+                      height: 1.0,
+                      ),
+                    ), 
+                ),
+              ],
             ),
             const SizedBox(
               height: 10,
             ),
             Row(
               //row 6 - buttons
-              children: const [],
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    side: BorderSide(color: Color(0xff4589FF), width: 2),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(9.0),
+                  ),
+                  minimumSize: Size(120, 40)
+                  ),
+                  onPressed: () {},
+                  child: const Text(
+                    "Movies",
+                    style: TextStyle(
+                      color: Color(0xff4589FF),
+                      fontSize: 20, 
+                      height: 1.0,
+                      ),
+                    ), 
+                ),
+            
+                const SizedBox(
+                  //want space between each button
+                  width: 10,
+                ),
+
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    side: BorderSide(color: Color(0xff4589FF), width: 2),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(9.0),
+                  ),
+                  minimumSize: Size(155, 40)
+                  ),
+                  onPressed: () {},
+                  child: const Text(
+                    "Traveling",
+                    style: TextStyle(
+                      color: Color(0xff4589FF),
+                      fontSize: 20, 
+                      height: 1.0,
+                      ),
+                    ), 
+                ),
+              ],
             ),
             const SizedBox(
               height: 10,
             ),
             Row(
               //row 7 - buttons
-              children: const [],
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    side: BorderSide(color: Color(0xff4589FF), width: 2),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(9.0),
+                  ),
+                  minimumSize: Size(155, 40)
+                  ),
+                  onPressed: () {},
+                  child: const Text(
+                    "Parties",
+                    style: TextStyle(
+                      color: Color(0xff4589FF),
+                      fontSize: 20, 
+                      height: 1.0,
+                      ),
+                    ), 
+                ),
+            
+                const SizedBox(
+                  //want space between each button
+                  width: 10,
+                ),
+
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    side: BorderSide(color: Color(0xff4589FF), width: 2),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(9.0),
+                  ),
+                  minimumSize: Size(120, 40)
+                  ),
+                  onPressed: () {},
+                  child: const Text(
+                    "Sports",
+                    style: TextStyle(
+                      color: Color(0xff4589FF),
+                      fontSize: 20, 
+                      height: 1.0,
+                      ),
+                    ), 
+                ),
+              ],
             ),
             const SizedBox(
-              height: 10,
+              height: 100,
             ),
             Row(
               //row 8 - navigation circles

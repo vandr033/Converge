@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
               fontFamily: 'Nunito',
             ),
             home:
-                InterestScreen2(), //LoginPage(), - replace this when done testing interest screens!
+                InterestScreen1(), //LoginPage(), - replace this when done testing interest screens!
             routes: routes,
           )),
     );
