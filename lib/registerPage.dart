@@ -40,6 +40,12 @@ class _RegisterPageState extends State<RegisterPage> {
     });
   }
 
+  void sendEmailVerification() {
+    if (!auth.currentUser!.emailVerified) {
+      auth.currentUser!.sendEmailVerification();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -226,6 +232,8 @@ class _RegisterPageState extends State<RegisterPage> {
                           auth.currentUser?.updateDisplayName(
                               firstNameTextEditController.text +
                                   lastNameTextEditController.text);
+                          // send email verification link if user was created
+                          sendEmailVerification();
                         }
                         final user = <String, dynamic>{
                           "first": firstNameTextEditController.text.toString(),
