@@ -40,6 +40,12 @@ class _RegisterPageState extends State<RegisterPage> {
     });
   }
 
+  void sendEmailVerification() {
+    if (!auth.currentUser!.emailVerified) {
+      auth.currentUser!.sendEmailVerification();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -210,6 +216,9 @@ class _RegisterPageState extends State<RegisterPage> {
                               (DocumentReference doc) => print(
                                   'DocumentSnapshot added with ID: ${doc.id}'));
                           Navigator.of(context).pushNamed(InterestScreen1.tag);
+
+                          // send email verification link if user was created
+                          sendEmailVerification();
                         }
                         //   _authService.createUserWithEmailAndPassword(
                         //       email: emailTextController.text,
