@@ -21,7 +21,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final lastNameTextEditController = new TextEditingController();
   final passwordTextEditController = new TextEditingController();
   final confirmPasswordTextEditController = new TextEditingController();
-  final FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseAuth auth = FirebaseAuth.instance;
   User? user = FirebaseAuth.instance.currentUser;
   final FocusNode _emailFocus = FocusNode();
   final FocusNode _firstNameFocus = FocusNode();
@@ -125,9 +125,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     padding: EdgeInsets.symmetric(vertical: 8.0),
                     child: TextFormField(
                       validator: (value) {
-                        if (value == null ||
-                            value.length < 8 ||
-                            value.contains('1')) {
+                        if (value == null || value.length < 8) {
                           return 'Password must be longer than 8 characters.';
                         }
                         return null;
@@ -184,58 +182,49 @@ class _RegisterPageState extends State<RegisterPage> {
                             borderRadius: BorderRadius.circular(24)),
                       ),
                       onPressed: () async {
-                        try {
-                          UserCredential result =
-                              await auth.createUserWithEmailAndPassword(
-                                  email: emailTextController.text,
-                                  password: passwordTextEditController.text);
-                          print(result.user?.uid.toString());
-                        } on FirebaseAuthException catch (e) {
-                          if (e.code == 'weak-password') {
-                            var snackBar =
-                                SnackBar(content: Text('Weak Password'));
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(snackBar);
-                          } else if (e.code == 'email-already-in-use') {
-                            print('email already in use');
-                            print(auth.currentUser!.email);
+                        if (_formkey.currentState != null) {
+                          if (_formkey.currentState!.validate()) {
+                            try {
+                              UserCredential result =
+                                  await auth.createUserWithEmailAndPassword(
+                                      email: emailTextController.text,
+                                      password:
+                                          passwordTextEditController.text);
+                              print(result.user?.uid.toString());
+                            } on FirebaseAuthException catch (e) {
+                              if (e.code == 'weak-password') {
+                                var snackBar =
+                                    SnackBar(content: Text('Weak Password'));
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
+                              } else if (e.code == 'email-already-in-use') {
+                                print('email already in use');
+                                print(auth.currentUser!.email);
+                              }
+                            } catch (e) {
+                              print(e);
+                            }
+                            if (auth.currentUser != null) {
+                              final user = <String, dynamic>{
+                                "username":
+                                    lastNameTextEditController.text.toString(),
+                                "UID": auth.currentUser?.uid,
+                                "Sports": false,
+                                "Music": false,
+                              };
+
+                              //adds user to collection "Users"
+                              db.collection("users").add(user).then(
+                                  (DocumentReference doc) => print(
+                                      'DocumentSnapshot added with ID: ${doc.id}'));
+                              Navigator.of(context)
+                                  .pushNamed(InterestScreen1.tag);
+
+                              // send email verification link if user was created
+
+                            }
                           }
-                        } catch (e) {
-                          print(e);
                         }
-                        if (auth.currentUser != null) {
-                          final user = <String, dynamic>{
-                            "username":
-                                lastNameTextEditController.text.toString(),
-                            "UID": auth.currentUser?.uid,
-                            "Sports": false,
-                            "Music": false,
-                          };
-
-                          //adds user to collection "Users"
-                          db.collection("users").add(user).then(
-                              (DocumentReference doc) => print(
-                                  'DocumentSnapshot added with ID: ${doc.id}'));
-                          Navigator.of(context).pushNamed(InterestScreen1.tag);
-
-                          // send email verification link if user was created
-                          
-                        }
-                        //   _authService.createUserWithEmailAndPassword(
-                        //       email: emailTextController.text,
-                        //       password: passwordTextEditController.text);
-                        //   print('Created An Account');
-                        //   _authService.signInWithEmailAndPassword(
-                        //       email: emailTextController.text,
-                        //       password: passwordTextEditController.text);
-                        //   print('logged in');
-                        // } catch (e) {
-                        //   ScaffoldMessenger.of(context).showSnackBar(
-                        //       SnackBar(content: Text(e.toString())));
-                        // }
-
-                        auth.sendPasswordResetEmail(
-                            email: emailTextController.text);
                       },
                       child: Text('Sign Up'.toUpperCase(),
                           style: TextStyle(color: Colors.white)),

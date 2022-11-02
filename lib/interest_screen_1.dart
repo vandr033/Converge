@@ -498,7 +498,7 @@ class InterestScreen1State extends State<InterestScreen1> {
               ],
             ),
             const SizedBox(
-              height: 100,
+              height: 60,
             ),
             Row(
               //row 8 - navigation circles
