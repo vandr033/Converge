@@ -198,6 +198,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 .showSnackBar(snackBar);
                           } else if (e.code == 'email-already-in-use') {
                             print('email already in use');
+                            print(auth.currentUser!.email);
                           }
                         } catch (e) {
                           print(e);
@@ -218,7 +219,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           Navigator.of(context).pushNamed(InterestScreen1.tag);
 
                           // send email verification link if user was created
-                          sendEmailVerification();
+                          
                         }
                         //   _authService.createUserWithEmailAndPassword(
                         //       email: emailTextController.text,
