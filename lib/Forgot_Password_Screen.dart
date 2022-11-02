@@ -2,16 +2,17 @@ import 'package:auth_service/auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application/loginPage.dart';
 import 'package:flutter_application/registerPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class ForgotPasswword extends StatefulWidget {
   static String tag = 'forgot-password';
   @override
-  LoginPageState createState() => new LoginPageState();
+  ForgotPAsswordState createState() => new ForgotPAsswordState();
 }
 
-class ForgotPAsswordState extends State<LoginPage> {
+class ForgotPAsswordState extends State<ForgotPasswword> {
   final _formkey = GlobalKey<FormState>();
 
   final TextEditingController emailController = new TextEditingController();
