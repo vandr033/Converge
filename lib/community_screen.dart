@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
-class EventScreen extends StatefulWidget {
-  static String tag = 'event-screen';
+class CommunityScreen extends StatefulWidget {
+  static String tag = 'community-screen';
   @override
-  EventScreenState createState() => EventScreenState();
+  CommunityScreenState createState() => CommunityScreenState();
 }
 
-class EventScreenState extends State<EventScreen> {
+class CommunityScreenState extends State<CommunityScreen> {
   final panelController = PanelController();
 
   @override
