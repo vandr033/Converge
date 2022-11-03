@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application/Forgot_Password_Screen.dart';
 import 'package:flutter_application/firebase_options.dart';
 import 'package:flutter_application/HomePage.dart';
 import 'package:flutter_application/interest_screen_1.dart';
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
     RegisterPage.tag: (context) => RegisterPage(),
     InterestScreen1.tag: (context) => InterestScreen1(),
     InterestScreen2.tag: (context) => InterestScreen2(),
-    HomePage.tag: (context) => HomePage()
+    HomePage.tag: (context) => HomePage(),
+    ForgotPasswword.tag: (context) => ForgotPasswword(),
   };
 
   @override

@@ -2,7 +2,6 @@ import 'package:auth_service/auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_application/loginPage.dart';
 import 'package:flutter_application/registerPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -24,6 +23,7 @@ class ForgotPAsswordState extends State<ForgotPasswword> {
   final db = FirebaseFirestore.instance;
 
   String _errorMessage = 'Error';
+  String buttonText = 'Send Password Reset Email';
 
   void onChange() {
     setState(() {
@@ -59,9 +59,9 @@ class ForgotPAsswordState extends State<ForgotPasswword> {
         if (value == null || value.isEmpty) {
           return 'Please Enter an email';
         } else if (!value.contains('@')) {
-          return 'Please Enter An email in correct format';
+          return 'Please Enter an email in correct format';
         } else if (!value.contains('fiu.edu')) {
-          return 'Please use your FIU email adress';
+          return 'Please use your FIU email address';
         }
         return null;
       },
@@ -76,7 +76,8 @@ class ForgotPAsswordState extends State<ForgotPasswword> {
       textInputAction: TextInputAction.next,
       onEditingComplete: () => node.nextFocus(),
     );
-    final ForgotPasswordButton = Padding(
+
+    final forgotPasswordButton = Padding(
       padding: EdgeInsets.symmetric(vertical: 10),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
@@ -84,36 +85,27 @@ class ForgotPAsswordState extends State<ForgotPasswword> {
             backgroundColor: Colors.lightBlueAccent,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(24))),
-        onPressed: () {
-          s
-
+        onPressed: () async {
+          if (buttonText == 'Send Password Reset Email') {
+            if (_formkey.currentState != null) {
+              if (_formkey.currentState!.validate()) {
+                FirebaseAuth.instance
+                    .sendPasswordResetEmail(email: emailController.text);
+                ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Email succesfully sent')));
+                setState(() {
+                  buttonText = 'Back to login';
+                });
+              }
+            }
+          } else {
+            Navigator.of(context).pop();
+          }
         },
         child: Text(
-          'Send Password Reset Email',
+          buttonText,
           style: TextStyle(color: Colors.white),
         ),
-      ),
-    );
-    final forgotLabel = TextButton(
-      child: Text(
-        'Forgot Password?',
-        style: TextStyle(color: Colors.black54),
-      ),
-      onPressed: () {},
-    );
-
-    final registerButton = Padding(
-      padding: EdgeInsets.zero,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.lightGreen,
-            padding: EdgeInsets.all(12),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(24))),
-        onPressed: () {
-          Navigator.of(context).pushNamed(RegisterPage.tag);
-        },
-        child: Text('Register', style: TextStyle(color: Colors.white)),
       ),
     );
 
@@ -130,11 +122,8 @@ class ForgotPAsswordState extends State<ForgotPasswword> {
                 SizedBox(height: 12.0),
                 email,
                 SizedBox(height: 8.0),
-                passwordTextform,
+                forgotPasswordButton,
                 SizedBox(height: 24.0),
-                loginButton,
-                registerButton,
-                forgotLabel
               ],
             ),
           ),

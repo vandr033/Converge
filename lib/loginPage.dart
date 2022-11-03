@@ -2,6 +2,7 @@ import 'package:auth_service/auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application/Forgot_Password_Screen.dart';
 import 'package:flutter_application/registerPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -96,6 +97,7 @@ class LoginPageState extends State<LoginPage> {
           contentPadding: EdgeInsets.fromLTRB(20, 10, 20, 10),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(32))),
     );
+
     final loginButton = Padding(
       padding: EdgeInsets.symmetric(vertical: 10),
       child: ElevatedButton(
@@ -124,12 +126,15 @@ class LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+
     final forgotLabel = TextButton(
       child: Text(
         'Forgot Password?',
         style: TextStyle(color: Colors.black54),
       ),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.of(context).pushNamed(ForgotPasswword.tag);
+      },
     );
 
     final registerButton = Padding(
