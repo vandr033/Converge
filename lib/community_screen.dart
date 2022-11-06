@@ -21,12 +21,13 @@ class CommunityScreenState extends State<CommunityScreen> {
       body: SlidingUpPanel(
         controller: panelController,
         maxHeight: panelHeightOpen, //max height of panel
+        backdropEnabled: true,
         minHeight:
             panelHeightClosed, //min height of panel - can adjust if need be
         body: Center(
           //this is our background. (body within body:SlidingUpPanel is our background, aka what's behind the panel.)
           child: Text(
-              "Event Screen"), //this is just here for demonstrative purposes - this is the widget behind the sliding panel - therefore this is wrapped within the sliding up panel - it is our background.
+              "Community Screen"), //this is just here for demonstrative purposes - this is the widget behind the sliding panel - therefore this is wrapped within the sliding up panel - it is our background.
         ),
         panelBuilder: (controller) => PanelWidget(
           panelController: panelController,
@@ -39,7 +40,7 @@ class CommunityScreenState extends State<CommunityScreen> {
   }
 }
 
-class PanelWidget extends StatelessWidget {
+class PanelWidget extends StatefulWidget {
   final ScrollController controller;
   final PanelController panelController;
 
@@ -50,10 +51,15 @@ class PanelWidget extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<PanelWidget> createState() => _PanelWidgetState();
+}
+
+class _PanelWidgetState extends State<PanelWidget> {
+  @override
   Widget build(BuildContext context) => ListView(
         //ListView is a scrollable list of widgets arranged linearly.
         padding: EdgeInsets.zero,
-        controller: controller,
+        controller: widget.controller,
         children: <Widget>[
           SizedBox(height: 12),
           buildDragHandle(),
@@ -77,6 +83,15 @@ class PanelWidget extends StatelessWidget {
               ],
             ),
             SizedBox(height: 10),
+            TextField(
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.blueAccent,
+                border: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(50)),
+              ),
+            ),
             Row(
               //example
               children: [
@@ -107,8 +122,8 @@ class PanelWidget extends StatelessWidget {
         onTap: togglePanel,
       );
 
-  void togglePanel() => panelController
+  void togglePanel() => widget.panelController
           .isPanelOpen //this is working, but you have to click exactly on the skinny gray line for it to work... i wonder how this would translate to using the app on a real phone, hopefully would not be a problem.
-      ? panelController.close()
-      : panelController.open();
+      ? widget.panelController.close()
+      : widget.panelController.open();
 }

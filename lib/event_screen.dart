@@ -1,4 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class EventScreen extends StatefulWidget {
@@ -19,6 +23,7 @@ class EventScreenState extends State<EventScreen> {
 
     return Scaffold(
       body: SlidingUpPanel(
+        backdropEnabled: true,
         controller: panelController,
         maxHeight: panelHeightOpen, //max height of panel
         minHeight:
@@ -39,21 +44,42 @@ class EventScreenState extends State<EventScreen> {
   }
 }
 
-class PanelWidget extends StatelessWidget {
+class PanelWidget extends StatefulWidget {
   final ScrollController controller;
   final PanelController panelController;
 
-  const PanelWidget({
+  PanelWidget({
     Key? key,
     required this.controller,
     required this.panelController,
   }) : super(key: key);
 
   @override
+  State<PanelWidget> createState() => _PanelWidgetState();
+}
+
+class _PanelWidgetState extends State<PanelWidget> {
+  File? image;
+
+  Future pickImage() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+
+      if (image == null) return;
+
+      final imageTemp = File(image.path);
+
+      setState(() => this.image = imageTemp);
+    } on PlatformException catch (e) {
+      print('Failed to get image: $e');
+    }
+  }
+
+  @override
   Widget build(BuildContext context) => ListView(
         //ListView is a scrollable list of widgets arranged linearly.
         padding: EdgeInsets.zero,
-        controller: controller,
+        controller: widget.controller,
         children: <Widget>[
           SizedBox(height: 12),
           buildDragHandle(),
@@ -70,14 +96,17 @@ class PanelWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Row(
-              //example
-              children: [
-                Text("Hello World"),
-              ],
-            ),
+            Row(children: [
+              MaterialButton(
+                color: Colors.black,
+                onPressed: () {
+                  pickImage();
+                },
+              )
+            ]),
             SizedBox(height: 10),
             Row(
+              //here i want to put the horizontal slides of images.
               //example
               children: [
                 Text("Hello World"),
@@ -107,8 +136,8 @@ class PanelWidget extends StatelessWidget {
         onTap: togglePanel,
       );
 
-  void togglePanel() => panelController
+  void togglePanel() => widget.panelController
           .isPanelOpen //this is working, but you have to click exactly on the skinny gray line for it to work... i wonder how this would translate to using the app on a real phone, hopefully would not be a problem.
-      ? panelController.close()
-      : panelController.open();
+      ? widget.panelController.close()
+      : widget.panelController.open();
 }

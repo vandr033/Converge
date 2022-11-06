@@ -6,6 +6,7 @@ import 'package:flutter_application/firebase_options.dart';
 import 'package:flutter_application/HomePage.dart';
 import 'package:flutter_application/interest_screen_1.dart';
 import 'package:flutter_application/interest_screen_2.dart';
+import 'package:flutter_application/pick_hosts_tester.dart';
 import 'loginPage.dart';
 import 'registerPage.dart';
 import 'package:auth_service/auth.dart';
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
     InterestScreen2.tag: (context) => InterestScreen2(),
     HomePage.tag: (context) => HomePage(),
     EventScreen.tag: (context) => EventScreen(),
-    CommunityScreen.tag: (context) => CommunityScreen()
+    CommunityScreen.tag: (context) => CommunityScreen(),
+    LocalTypeAheadPage.tag: (context) => LocalTypeAheadPage()
   };
 
   @override
