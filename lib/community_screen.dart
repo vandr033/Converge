@@ -140,7 +140,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                 SizedBox(
                   width: 114,
                   height: 46,
-                  child: TextField(                    
+                  child: TextField(
                     style: TextStyle(
                       color: Colors.white,
                     ),
@@ -240,14 +240,14 @@ class _PanelWidgetState extends State<PanelWidget> {
             ),
 
             SizedBox(height: 0),
-            
+
             Row(
               //example
               children: [
                 SizedBox(
                   width: 360,
                   height: 46,
-                  icon: Icon(Icons.add, size: 14),
+                  //icon: Icon(Icons.add, size: 14),
                   child: TextField(
                     style: TextStyle(
                       color: Colors.white,
@@ -416,9 +416,6 @@ class _PanelWidgetState extends State<PanelWidget> {
                 )
               ],
             ),
-
-
-
           ],
         ),
       );
