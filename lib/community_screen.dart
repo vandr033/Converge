@@ -61,17 +61,35 @@ class PanelWidget extends StatefulWidget {
 }
 
 class _PanelWidgetState extends State<PanelWidget> {
-  File? image;
+  
+  File? image1; 
+  File? image2;
 
-  Future pickImage() async {
+  Future pickImage1() async {
     try {
-      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      final imageGrab =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
 
-      if (image == null) return;
+      if (imageGrab == null) return;
 
-      final imageTemp = File(image.path);
+      final imageTemp = File(imageGrab.path);
 
-      setState(() => this.image = imageTemp);
+      setState(() => image1 = imageTemp);
+    } on PlatformException catch (e) {
+      print('Failed to get image: $e');
+    }
+  }
+
+  Future pickImage2() async {
+    try {
+      final imageGrab =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
+
+      if (imageGrab == null) return;
+
+      final imageTemp = File(imageGrab.path);
+
+      setState(() => image2 = imageTemp);
     } on PlatformException catch (e) {
       print('Failed to get image: $e');
     }
@@ -101,6 +119,7 @@ class _PanelWidgetState extends State<PanelWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Row(
+              
               //example
               children: [
                 SizedBox(
@@ -169,6 +188,7 @@ class _PanelWidgetState extends State<PanelWidget> {
               ],
             ),
             SizedBox(height: 10),
+            
             Stack(
               //Row(
               //example
@@ -178,25 +198,25 @@ class _PanelWidgetState extends State<PanelWidget> {
                   padding: EdgeInsets.symmetric(horizontal: 0),
                   elevation: 8.0,
                   child: Container(
-                      alignment: Alignment(0, -.25),
+                      alignment: Alignment(.90, -.75),
                       height: 110,
                       width: 360,
-                      decoration: image != null
+                      decoration: image1 != null
                           ? BoxDecoration(
                               color: Color(0xffD7D9D7),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20)),
                               image: DecorationImage(
-                                  image: FileImage(image!), fit: BoxFit.fill))
+                                  image: FileImage(image1!), fit: BoxFit.fill))
                           : BoxDecoration(
                               color: Color(0xffD7D9D7),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20))),
-                      child: image != null
+                      child: image1 != null
                           ? Icon(null)
                           : Icon(Icons.upload_rounded, color: Colors.white)),
                   onPressed: () {
-                    pickImage();
+                    pickImage1();
                   },
                 ),
 
@@ -220,18 +240,18 @@ class _PanelWidgetState extends State<PanelWidget> {
                       padding: EdgeInsets.symmetric(horizontal: 0),
                       height: 75,
                       width: 75,
-                      decoration: image != null
+                      decoration: image2 != null
                           ? BoxDecoration(
                               color: Color(0xffD7D9D7),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(100)),
                               image: DecorationImage(
-                                  image: FileImage(image!), fit: BoxFit.fill))
+                                  image: FileImage(image2!), fit: BoxFit.fill))
                           : BoxDecoration(
                               shape: BoxShape.circle,
                               color: Color(0xffD7D9D7),
                             ),
-                      child: image != null
+                      child: image2 != null
                           ? Icon(null)
                           : Icon(Icons.upload_rounded, color: Colors.white)),
                 ),
@@ -248,7 +268,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                   width: 360,
                   height: 46,
                   decoration: BoxDecoration(
-                    //color: Color(0XFFD7D9D7),
+                    //color: Colors.green,
                     color: Color(0xffD7D9D7),
                     borderRadius: BorderRadius.circular(12.0),
                   ),
@@ -275,7 +295,6 @@ class _PanelWidgetState extends State<PanelWidget> {
                 Container(
                   width: 360,
                   height: 46,
-                  //icon: Icon(Icons.add, size: 14),
                   child: TextField(
                     style: TextStyle(
                       color: Colors.white,
@@ -311,7 +330,7 @@ class _PanelWidgetState extends State<PanelWidget> {
             SizedBox(height: 10),
 
             Row(
-              //example
+              //HOST!
               children: [
                 SizedBox(
                   width: 360,
