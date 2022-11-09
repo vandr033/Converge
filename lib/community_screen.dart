@@ -76,13 +76,8 @@ class _PanelWidgetState extends State<PanelWidget> {
       print('Failed to get image: $e');
     }
   }
-  
-  
-  
-  
-  
+
   @override
-  
   Widget build(BuildContext context) => ListView(
         //ListView is a scrollable list of widgets arranged linearly.
         padding: EdgeInsets.zero,
@@ -99,39 +94,19 @@ class _PanelWidgetState extends State<PanelWidget> {
   Widget buildCommunityInfo() => Container(
         //here i have created a container with a child column - you can fill the column will all of the rows and its children, or anything else, that you need.
         //this is all the stuff in our panel.
+
         padding: EdgeInsets.symmetric(horizontal: 24),
+
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Row(
               //example
-              children: [MaterialButton(
-                elevation: 8.0,
-                child: Container(
-                    height: 184,
-                    width: 108,
-                    decoration: image != null
-                        ? BoxDecoration(
-                            color: Color(0xffD7D9D7),
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            image: DecorationImage(
-                                image: FileImage(image!), fit: BoxFit.fill))
-                        : BoxDecoration(
-                            color: Color(0xffD7D9D7),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20))),
-                    child: image != null
-                        ? Icon(null)
-                        : Icon(Icons.upload_rounded, color: Colors.white)),
-                onPressed: () {
-                  pickImage();
-                },
-              ),
-                
+              children: [
                 SizedBox(
-                  width: 226,
-                  height: 46,
-                  child: DropdownButtonFormField<String>(
+                    width: 226,
+                    height: 46,
+                    child: DropdownButtonFormField<String>(
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Color(0XFFD7D9D7),
@@ -151,22 +126,21 @@ class _PanelWidgetState extends State<PanelWidget> {
                                 screen,
                                 style: TextStyle(
                                     fontSize: 8,
-                                    color: Colors.white,
+                                    color: Colors.green,
                                     fontWeight: FontWeight.bold),
                                 textAlign: TextAlign.left,
                               )))
                           .toList(),
                       onChanged: (screen) =>
                           setState(() => chosenScreen = screen),
-                    )
+                    )),
+                SizedBox(
+                  width: 20,
                 ),
-
-                SizedBox(width: 20,),
-
                 SizedBox(
                   width: 114,
                   height: 46,
-                  child: TextField(
+                  child: TextField(                    
                     style: TextStyle(
                       color: Colors.white,
                     ),
@@ -187,31 +161,123 @@ class _PanelWidgetState extends State<PanelWidget> {
                         labelText: 'Name',
                         labelStyle: TextStyle(
                           color: Colors.white,
-                          fontSize: 22,
+                          fontSize: 16,
                           fontWeight: FontWeight.bold,
                         )),
                   ),
                 ),
-
-                
               ],
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
+            Stack(
+              //Row(
+              //example
+              children: [
+                //Image Picker
+                MaterialButton(
+                  padding: EdgeInsets.symmetric(horizontal: 0),
+                  elevation: 8.0,
+                  child: Container(
+                      alignment: Alignment(0, -.25),
+                      height: 110,
+                      width: 360,
+                      decoration: image != null
+                          ? BoxDecoration(
+                              color: Color(0xffD7D9D7),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                              image: DecorationImage(
+                                  image: FileImage(image!), fit: BoxFit.fill))
+                          : BoxDecoration(
+                              color: Color(0xffD7D9D7),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                      child: image != null
+                          ? Icon(null)
+                          : Icon(Icons.upload_rounded, color: Colors.white)),
+                  onPressed: () {
+                    pickImage();
+                  },
+                ),
 
+                //white buffer between the circle image and rectangle immage
+                Container(
+                  padding: EdgeInsets.fromLTRB(0, 60, 0, 0),
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    height: 85,
+                    width: 85,
+                    decoration: BoxDecoration(
+                        color: Colors.white, shape: BoxShape.circle),
+                  ),
+                ),
+
+                //Circle stacked ontop
+                Container(
+                  padding: EdgeInsets.fromLTRB(0, 65, 0, 0),
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 0),
+                      height: 75,
+                      width: 75,
+                      decoration: image != null
+                          ? BoxDecoration(
+                              color: Color(0xffD7D9D7),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(100)),
+                              image: DecorationImage(
+                                  image: FileImage(image!), fit: BoxFit.fill))
+                          : BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Color(0xffD7D9D7),
+                            ),
+                      child: image != null
+                          ? Icon(null)
+                          : Icon(Icons.upload_rounded, color: Colors.white)),
+                ),
+              ],
+              //),
+            ),
+
+            SizedBox(height: 0),
+            
             Row(
               //example
               children: [
                 SizedBox(
                   width: 360,
-                  height: 110,
-                  child: const DecoratedBox(
-                    decoration: BoxDecoration(color: Color(0XFFD7D9D7),
-                     //border: BorderRadius.all(5),
+                  height: 46,
+                  icon: Icon(Icons.add, size: 14),
+                  child: TextField(
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                    obscureText: false,
+                    textAlign: TextAlign.center,
+                    decoration: InputDecoration(
+                        hintText: 'Community Guidelines:',
+                        filled: true,
+                        fillColor: Color(0XFFD7D9D7),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                          borderSide: BorderSide(
+                            width: 0,
+                            style: BorderStyle.none,
+                          ),
+                        ),
+                        alignLabelWithHint: false,
+                        labelText: 'Community Guidelines:',
+                        labelStyle: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        )),
                   ),
-                ),
                 ),
               ],
             ),
+
+            SizedBox(height: 10),
 
             Row(
               //example
@@ -226,7 +292,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                     obscureText: false,
                     textAlign: TextAlign.center,
                     decoration: InputDecoration(
-                        hintText: 'Name',
+                        hintText: 'Hosts:',
                         filled: true,
                         fillColor: Color(0XFFD7D9D7),
                         border: OutlineInputBorder(
@@ -237,16 +303,122 @@ class _PanelWidgetState extends State<PanelWidget> {
                           ),
                         ),
                         alignLabelWithHint: false,
-                        labelText: 'Name',
+                        labelText: 'Hosts:',
                         labelStyle: TextStyle(
                           color: Colors.white,
-                          fontSize: 22,
+                          fontSize: 16,
                           fontWeight: FontWeight.bold,
                         )),
                   ),
                 ),
               ],
             ),
+
+            SizedBox(height: 10),
+
+            Row(
+              //example
+              children: [
+                SizedBox(
+                  width: 360,
+                  height: 46,
+                  child: TextField(
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                    obscureText: false,
+                    textAlign: TextAlign.center,
+                    decoration: InputDecoration(
+                        hintText: 'Description:',
+                        filled: true,
+                        fillColor: Color(0XFFD7D9D7),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                          borderSide: BorderSide(
+                            width: 0,
+                            style: BorderStyle.none,
+                          ),
+                        ),
+                        alignLabelWithHint: false,
+                        labelText: 'Description:',
+                        labelStyle: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        )),
+                  ),
+                ),
+              ],
+            ),
+
+            SizedBox(height: 10),
+
+            Row(
+              //example
+              children: [
+                SizedBox(
+                  width: 360,
+                  height: 46,
+                  child: TextField(
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                    obscureText: false,
+                    textAlign: TextAlign.center,
+                    decoration: InputDecoration(
+                        hintText: 'Category:',
+                        filled: true,
+                        fillColor: Color(0XFFD7D9D7),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                          borderSide: BorderSide(
+                            width: 0,
+                            style: BorderStyle.none,
+                          ),
+                        ),
+                        alignLabelWithHint: false,
+                        labelText: 'Category:',
+                        labelStyle: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        )),
+                  ),
+                ),
+              ],
+            ),
+
+            SizedBox(height: 20),
+
+            //enter post button here
+            Row(
+              //row 9 - "next" button
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                //The actual formatting of the 'Next' button and everything we do for it
+                SizedBox(
+                  width: 250.0,
+                  height: 40.0,
+                  child: ElevatedButton(
+                      onPressed: () {
+                        //Navigator.of(context).pushNamed(InterestScreen2.tag);
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xff4589FF),
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0))),
+                      child: const Text(
+                        'Post',
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      )),
+                )
+              ],
+            ),
+
+
+
           ],
         ),
       );
