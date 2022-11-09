@@ -91,38 +91,106 @@ class _PanelWidgetState extends State<PanelWidget> {
   Widget buildEventInfo() => Container(
         padding: EdgeInsets.symmetric(horizontal: 24),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          //crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Row(children: [
-              MaterialButton(
-                elevation: 8.0,
-                child: Container(
-                    height: 184,
-                    width: 108,
-                    decoration: image != null
-                        ? BoxDecoration(
-                            color: Color(0xffD7D9D7),
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            image: DecorationImage(
-                                image: FileImage(image!), fit: BoxFit.fill))
-                        : BoxDecoration(
-                            color: Color(0xffD7D9D7),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20))),
-                    child: image != null
-                        ? Icon(null)
-                        : Icon(Icons.upload_rounded, color: Colors.white)),
-                onPressed: () {
-                  pickImage();
-                },
-              ),
-              SizedBox(height: 20),
-            ]),
-            SizedBox(height: 10),
-            Row(
-              //here i want to put the horizontal slides of images.
-              //example
-              children: [],
+            SizedBox(
+              height: 184,
+              width: double.infinity,
+              child: ListView(scrollDirection: Axis.horizontal, children: [
+                MaterialButton(
+                  elevation: 8.0,
+                  child: Container(
+                      height: 184,
+                      width: 108,
+                      decoration: image != null
+                          ? BoxDecoration(
+                              color: Color(0xffD7D9D7),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                              image: DecorationImage(
+                                  image: FileImage(image!), fit: BoxFit.fill))
+                          : BoxDecoration(
+                              color: Color(0xffD7D9D7),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                      child: image != null
+                          ? Icon(null)
+                          : Icon(Icons.upload_rounded, color: Colors.white)),
+                  onPressed: () {
+                    pickImage();
+                  },
+                ),
+                MaterialButton(
+                  elevation: 8.0,
+                  child: Container(
+                      height: 184,
+                      width: 108,
+                      decoration: image != null
+                          ? BoxDecoration(
+                              color: Color(0xffD7D9D7),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                              image: DecorationImage(
+                                  image: FileImage(image!), fit: BoxFit.fill))
+                          : BoxDecoration(
+                              color: Color(0xffD7D9D7),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                      child: image != null
+                          ? Icon(null)
+                          : Icon(Icons.upload_rounded, color: Colors.white)),
+                  onPressed: () {
+                    pickImage();
+                  },
+                ),
+                MaterialButton(
+                  elevation: 8.0,
+                  child: Container(
+                      height: 184,
+                      width: 108,
+                      decoration: image != null
+                          ? BoxDecoration(
+                              color: Color(0xffD7D9D7),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                              image: DecorationImage(
+                                  image: FileImage(image!), fit: BoxFit.fill))
+                          : BoxDecoration(
+                              color: Color(0xffD7D9D7),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                      child: image != null
+                          ? Icon(null)
+                          : Icon(Icons.upload_rounded, color: Colors.white)),
+                  onPressed: () {
+                    pickImage();
+                  },
+                ),
+                MaterialButton(
+                  elevation: 8.0,
+                  child: Container(
+                      height: 184,
+                      width: 108,
+                      decoration: image != null
+                          ? BoxDecoration(
+                              color: Color(0xffD7D9D7),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                              image: DecorationImage(
+                                  image: FileImage(image!), fit: BoxFit.fill))
+                          : BoxDecoration(
+                              color: Color(0xffD7D9D7),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                      child: image != null
+                          ? Icon(null)
+                          : Icon(Icons.upload_rounded, color: Colors.white)),
+                  onPressed: () {
+                    pickImage();
+                  },
+                ),
+                SizedBox(height: 20),
+              ]),
             ),
           ],
         ),
