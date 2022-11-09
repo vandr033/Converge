@@ -99,35 +99,16 @@ class _PanelWidgetState extends State<PanelWidget> {
   Widget buildCommunityInfo() => Container(
         //here i have created a container with a child column - you can fill the column will all of the rows and its children, or anything else, that you need.
         //this is all the stuff in our panel.
+
         padding: EdgeInsets.symmetric(horizontal: 24),
+        
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Row(
               //example
-              children: [MaterialButton(
-                elevation: 8.0,
-                child: Container(
-                    height: 184,
-                    width: 108,
-                    decoration: image != null
-                        ? BoxDecoration(
-                            color: Color(0xffD7D9D7),
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            image: DecorationImage(
-                                image: FileImage(image!), fit: BoxFit.fill))
-                        : BoxDecoration(
-                            color: Color(0xffD7D9D7),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20))),
-                    child: image != null
-                        ? Icon(null)
-                        : Icon(Icons.upload_rounded, color: Colors.white)),
-                onPressed: () {
-                  pickImage();
-                },
-              ),
-                
+              children: [
+                                               
                 SizedBox(
                   width: 226,
                   height: 46,
@@ -151,7 +132,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                                 screen,
                                 style: TextStyle(
                                     fontSize: 8,
-                                    color: Colors.white,
+                                    color: Colors.green,
                                     fontWeight: FontWeight.bold),
                                 textAlign: TextAlign.left,
                               )))
@@ -198,20 +179,41 @@ class _PanelWidgetState extends State<PanelWidget> {
             ),
             SizedBox(height: 20),
 
-            Row(
+
+            Stack(
+            //Row(
               //example
               children: [
-                SizedBox(
-                  width: 360,
-                  height: 110,
-                  child: const DecoratedBox(
-                    decoration: BoxDecoration(color: Color(0XFFD7D9D7),
-                     //border: BorderRadius.all(5),
-                  ),
-                ),
-                ),
+                
+                //Image Picker
+                MaterialButton(
+                padding: EdgeInsets.symmetric(horizontal: 0),
+                elevation: 8.0,
+                child: Container(
+                    height: 110,
+                    width: 360,
+                    decoration: image != null
+                        ? BoxDecoration(
+                            color: Color(0xffD7D9D7),
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            image: DecorationImage(
+                                image: FileImage(image!), fit: BoxFit.fill))
+                        : BoxDecoration(
+                            color: Color(0xffD7D9D7),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
+                    child: image != null
+                        ? Icon(null)
+                        : Icon(Icons.upload_rounded, color: Colors.white)),
+                onPressed: () {
+                  pickImage();
+                },
+              ),                
               ],
+            //),
             ),
+
+            SizedBox(height: 20),
 
             Row(
               //example
