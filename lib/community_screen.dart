@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
+const List<String> screens = ['Create Event', 'Create Community'];
+String? chosenScreen = 'Create Event';
+
 class CommunityScreen extends StatefulWidget {
   static String tag = 'community-screen';
   @override
@@ -64,12 +67,12 @@ class _PanelWidgetState extends State<PanelWidget> {
           SizedBox(height: 12),
           buildDragHandle(),
           SizedBox(height: 30),
-          buildEventInfo(), //widget below.
+          buildCommunityInfo(), //widget below.
           SizedBox(height: 30),
         ],
       );
 
-  Widget buildEventInfo() => Container(
+  Widget buildCommunityInfo() => Container(
         //here i have created a container with a child column - you can fill the column will all of the rows and its children, or anything else, that you need.
         //this is all the stuff in our panel.
         padding: EdgeInsets.symmetric(horizontal: 24),
@@ -78,9 +81,32 @@ class _PanelWidgetState extends State<PanelWidget> {
           children: <Widget>[
             Row(
               //example
-              children: [],
+              children: [
+                Text("Hello World"),
+              ],
             ),
             SizedBox(height: 10),
+            TextField(
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.blueAccent,
+                border: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(50)),
+              ),
+            ),
+            Row(
+              //example
+              children: [
+                Text("Hello World"),
+              ],
+            ),
+            Container(
+              //example
+              height: 30,
+              width: 30,
+              color: Color(0xff4589FF),
+            )
           ],
         ),
       );
