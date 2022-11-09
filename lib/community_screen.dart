@@ -1,4 +1,7 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 const List<String> screens = ['Create Event', 'Create Community'];
@@ -58,7 +61,28 @@ class PanelWidget extends StatefulWidget {
 }
 
 class _PanelWidgetState extends State<PanelWidget> {
+  File? image;
+
+  Future pickImage() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+
+      if (image == null) return;
+
+      final imageTemp = File(image.path);
+
+      setState(() => this.image = imageTemp);
+    } on PlatformException catch (e) {
+      print('Failed to get image: $e');
+    }
+  }
+  
+  
+  
+  
+  
   @override
+  
   Widget build(BuildContext context) => ListView(
         //ListView is a scrollable list of widgets arranged linearly.
         padding: EdgeInsets.zero,
@@ -81,7 +105,28 @@ class _PanelWidgetState extends State<PanelWidget> {
           children: <Widget>[
             Row(
               //example
-              children: [
+              children: [MaterialButton(
+                elevation: 8.0,
+                child: Container(
+                    height: 184,
+                    width: 108,
+                    decoration: image != null
+                        ? BoxDecoration(
+                            color: Color(0xffD7D9D7),
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            image: DecorationImage(
+                                image: FileImage(image!), fit: BoxFit.fill))
+                        : BoxDecoration(
+                            color: Color(0xffD7D9D7),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
+                    child: image != null
+                        ? Icon(null)
+                        : Icon(Icons.upload_rounded, color: Colors.white)),
+                onPressed: () {
+                  pickImage();
+                },
+              ),
                 
                 SizedBox(
                   width: 226,
