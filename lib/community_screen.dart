@@ -140,7 +140,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                 SizedBox(
                   width: 114,
                   height: 46,
-                  child: TextField(                    
+                  child: TextField(
                     style: TextStyle(
                       color: Colors.white,
                     ),
@@ -240,14 +240,41 @@ class _PanelWidgetState extends State<PanelWidget> {
             ),
 
             SizedBox(height: 0),
-            
-            Row(
-              //example
+
+            Stack(
               children: [
-                SizedBox(
+                
+                Container(
                   width: 360,
                   height: 46,
-                  icon: Icon(Icons.add, size: 14),
+                  decoration: BoxDecoration(
+                    //color: Color(0XFFD7D9D7),
+                    color: Color(0xffD7D9D7),
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                ),
+
+                Container(
+                  padding: EdgeInsets.fromLTRB(5, 10, 0, 0),
+                  child: Icon(
+                    Icons.shield_outlined,
+                    size: 25,
+                    color: Colors.white,
+                  ),
+                ),
+                
+                Container(
+                  padding: EdgeInsets.fromLTRB(10, 15, 0, 0),
+                  child: Icon(
+                    Icons.check,
+                    size: 15,
+                    color: Colors.white,
+                  ),
+                ),
+                
+                Container(
+                  width: 360,
+                  height: 46,
                   child: TextField(
                     style: TextStyle(
                       color: Colors.white,
@@ -255,8 +282,9 @@ class _PanelWidgetState extends State<PanelWidget> {
                     obscureText: false,
                     textAlign: TextAlign.center,
                     decoration: InputDecoration(
+                      icon: Icon(Icons.shield_outlined, size: 1,),
                         hintText: 'Community Guidelines:',
-                        filled: true,
+                        filled: false,
                         fillColor: Color(0XFFD7D9D7),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12.0),
@@ -266,14 +294,16 @@ class _PanelWidgetState extends State<PanelWidget> {
                           ),
                         ),
                         alignLabelWithHint: false,
-                        labelText: 'Community Guidelines:',
+                        labelText: '  Community Guidelines:',
                         labelStyle: TextStyle(
                           color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         )),
-                  ),
                 ),
+                ),
+                  
+
               ],
             ),
 
@@ -303,7 +333,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                           ),
                         ),
                         alignLabelWithHint: false,
-                        labelText: 'Hosts:',
+                        labelText: '  Hosts:',
                         labelStyle: TextStyle(
                           color: Colors.white,
                           fontSize: 16,
@@ -340,7 +370,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                           ),
                         ),
                         alignLabelWithHint: false,
-                        labelText: 'Description:',
+                        labelText: '  Description:',
                         labelStyle: TextStyle(
                           color: Colors.white,
                           fontSize: 16,
@@ -377,7 +407,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                           ),
                         ),
                         alignLabelWithHint: false,
-                        labelText: 'Category:',
+                        labelText: '  Category:',
                         labelStyle: TextStyle(
                           color: Colors.white,
                           fontSize: 16,
@@ -390,7 +420,7 @@ class _PanelWidgetState extends State<PanelWidget> {
 
             SizedBox(height: 20),
 
-            //enter post button here
+            //enter post button here //used next button as template CHANGE THIS!!!!!!!!!!!!!!!!
             Row(
               //row 9 - "next" button
               mainAxisAlignment: MainAxisAlignment.center,
@@ -416,9 +446,6 @@ class _PanelWidgetState extends State<PanelWidget> {
                 )
               ],
             ),
-
-
-
           ],
         ),
       );
