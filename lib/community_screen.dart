@@ -82,31 +82,126 @@ class _PanelWidgetState extends State<PanelWidget> {
             Row(
               //example
               children: [
-                Text("Hello World"),
+                
+                SizedBox(
+                  width: 226,
+                  height: 46,
+                  child: DropdownButtonFormField<String>(
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Color(0XFFD7D9D7),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                          borderSide: BorderSide(
+                            width: 0,
+                            style: BorderStyle.none,
+                          ),
+                        ),
+                      ),
+                      value: chosenScreen,
+                      items: screens
+                          .map((screen) => DropdownMenuItem<String>(
+                              value: screen,
+                              child: Text(
+                                screen,
+                                style: TextStyle(
+                                    fontSize: 8,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.left,
+                              )))
+                          .toList(),
+                      onChanged: (screen) =>
+                          setState(() => chosenScreen = screen),
+                    )
+                ),
+
+                SizedBox(width: 20,),
+
+                SizedBox(
+                  width: 114,
+                  height: 46,
+                  child: TextField(
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                    obscureText: false,
+                    textAlign: TextAlign.center,
+                    decoration: InputDecoration(
+                        hintText: '',
+                        filled: true,
+                        fillColor: Color(0XFFD7D9D7),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                          borderSide: BorderSide(
+                            width: 0,
+                            style: BorderStyle.none,
+                          ),
+                        ),
+                        alignLabelWithHint: false,
+                        labelText: 'Name',
+                        labelStyle: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        )),
+                  ),
+                ),
+
+                
               ],
             ),
-            SizedBox(height: 10),
-            TextField(
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.blueAccent,
-                border: OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.circular(50)),
-              ),
-            ),
+            SizedBox(height: 20),
+
             Row(
               //example
               children: [
-                Text("Hello World"),
+                SizedBox(
+                  width: 360,
+                  height: 110,
+                  child: const DecoratedBox(
+                    decoration: BoxDecoration(color: Color(0XFFD7D9D7),
+                     //border: BorderRadius.all(5),
+                  ),
+                ),
+                ),
               ],
             ),
-            Container(
+
+            Row(
               //example
-              height: 30,
-              width: 30,
-              color: Color(0xff4589FF),
-            )
+              children: [
+                SizedBox(
+                  width: 360,
+                  height: 46,
+                  child: TextField(
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                    obscureText: false,
+                    textAlign: TextAlign.center,
+                    decoration: InputDecoration(
+                        hintText: 'Name',
+                        filled: true,
+                        fillColor: Color(0XFFD7D9D7),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                          borderSide: BorderSide(
+                            width: 0,
+                            style: BorderStyle.none,
+                          ),
+                        ),
+                        alignLabelWithHint: false,
+                        labelText: 'Name',
+                        labelStyle: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        )),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       );
