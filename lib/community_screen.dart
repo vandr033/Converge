@@ -275,6 +275,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                 Container(
                   width: 360,
                   height: 46,
+                  //icon: Icon(Icons.add, size: 14),
                   child: TextField(
                     style: TextStyle(
                       color: Colors.white,

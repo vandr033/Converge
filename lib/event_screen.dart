@@ -58,17 +58,70 @@ class PanelWidget extends StatefulWidget {
 }
 
 class _PanelWidgetState extends State<PanelWidget> {
-  File? image;
+  /*
+  This stuff is currently under construction
+  */
 
-  Future pickImage() async {
+  File? image1; 
+  File? image2;
+  File? image3;
+  File? image4;
+
+  Future pickImage1() async {
     try {
-      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      final imageGrab =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
 
-      if (image == null) return;
+      if (imageGrab == null) return;
 
-      final imageTemp = File(image.path);
+      final imageTemp = File(imageGrab.path);
 
-      setState(() => this.image = imageTemp);
+      setState(() => image1 = imageTemp);
+    } on PlatformException catch (e) {
+      print('Failed to get image: $e');
+    }
+  }
+
+  Future pickImage2() async {
+    try {
+      final imageGrab =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
+
+      if (imageGrab == null) return;
+
+      final imageTemp = File(imageGrab.path);
+
+      setState(() => image2 = imageTemp);
+    } on PlatformException catch (e) {
+      print('Failed to get image: $e');
+    }
+  }
+
+   Future pickImage3() async {
+    try {
+      final imageGrab =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
+
+      if (imageGrab == null) return;
+
+      final imageTemp = File(imageGrab.path);
+
+      setState(() => image3 = imageTemp);
+    } on PlatformException catch (e) {
+      print('Failed to get image: $e');
+    }
+  }
+
+   Future pickImage4() async {
+    try {
+      final imageGrab =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
+
+      if (imageGrab == null) return;
+
+      final imageTemp = File(imageGrab.path);
+
+      setState(() => image4 = imageTemp);
     } on PlatformException catch (e) {
       print('Failed to get image: $e');
     }
@@ -102,22 +155,23 @@ class _PanelWidgetState extends State<PanelWidget> {
                   child: Container(
                       height: 184,
                       width: 108,
-                      decoration: image != null
+                      decoration: image1 != null
                           ? BoxDecoration(
                               color: Color(0xffD7D9D7),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20)),
                               image: DecorationImage(
-                                  image: FileImage(image!), fit: BoxFit.fill))
+                                  image: FileImage(image1!), fit: BoxFit.fill))
                           : BoxDecoration(
                               color: Color(0xffD7D9D7),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20))),
-                      child: image != null
+                      child: image1 != null
                           ? Icon(null)
                           : Icon(Icons.upload_rounded, color: Colors.white)),
                   onPressed: () {
-                    pickImage();
+                    //File? image;
+                    pickImage1();
                   },
                 ),
                 MaterialButton(
@@ -125,22 +179,46 @@ class _PanelWidgetState extends State<PanelWidget> {
                   child: Container(
                       height: 184,
                       width: 108,
-                      decoration: image != null
+                      decoration: image2 != null
                           ? BoxDecoration(
                               color: Color(0xffD7D9D7),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20)),
                               image: DecorationImage(
-                                  image: FileImage(image!), fit: BoxFit.fill))
+                                  image: FileImage(image2!), fit: BoxFit.fill))
                           : BoxDecoration(
                               color: Color(0xffD7D9D7),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20))),
-                      child: image != null
+                      child: image2 != null
                           ? Icon(null)
                           : Icon(Icons.upload_rounded, color: Colors.white)),
                   onPressed: () {
-                    pickImage();
+                    pickImage2();
+                  },
+                ),
+                
+                MaterialButton(
+                  elevation: 8.0,
+                  child: Container(
+                      height: 184,
+                      width: 108,
+                      decoration: image3 != null
+                          ? BoxDecoration(
+                              color: Color(0xffD7D9D7),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                              image: DecorationImage(
+                                  image: FileImage(image3!), fit: BoxFit.fill))
+                          : BoxDecoration(
+                              color: Color(0xffD7D9D7),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                      child: image3 != null
+                          ? Icon(null)
+                          : Icon(Icons.upload_rounded, color: Colors.white)),
+                  onPressed: () {
+                    pickImage3();
                   },
                 ),
                 MaterialButton(
@@ -148,45 +226,22 @@ class _PanelWidgetState extends State<PanelWidget> {
                   child: Container(
                       height: 184,
                       width: 108,
-                      decoration: image != null
+                      decoration: image4 != null
                           ? BoxDecoration(
                               color: Color(0xffD7D9D7),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20)),
                               image: DecorationImage(
-                                  image: FileImage(image!), fit: BoxFit.fill))
+                                  image: FileImage(image4!), fit: BoxFit.fill))
                           : BoxDecoration(
                               color: Color(0xffD7D9D7),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20))),
-                      child: image != null
+                      child: image4 != null
                           ? Icon(null)
                           : Icon(Icons.upload_rounded, color: Colors.white)),
                   onPressed: () {
-                    pickImage();
-                  },
-                ),
-                MaterialButton(
-                  elevation: 8.0,
-                  child: Container(
-                      height: 184,
-                      width: 108,
-                      decoration: image != null
-                          ? BoxDecoration(
-                              color: Color(0xffD7D9D7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              image: DecorationImage(
-                                  image: FileImage(image!), fit: BoxFit.fill))
-                          : BoxDecoration(
-                              color: Color(0xffD7D9D7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                      child: image != null
-                          ? Icon(null)
-                          : Icon(Icons.upload_rounded, color: Colors.white)),
-                  onPressed: () {
-                    pickImage();
+                    pickImage4();
                   },
                 ),
                 SizedBox(height: 20),
