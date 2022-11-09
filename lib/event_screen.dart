@@ -58,17 +58,23 @@ class PanelWidget extends StatefulWidget {
 }
 
 class _PanelWidgetState extends State<PanelWidget> {
-  File? image;
+  /*
+  This stuff is currently under construction
+  */
 
-  Future pickImage() async {
+  File? image1; //this is what's getting displayed.
+  File? image2;
+
+  Future pickImage(File? image) async {
     try {
-      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      final imageGrab =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
 
-      if (image == null) return;
+      if (imageGrab == null) return;
 
-      final imageTemp = File(image.path);
+      final imageTemp = File(imageGrab.path);
 
-      setState(() => this.image = imageTemp);
+      setState(() => image = imageTemp);
     } on PlatformException catch (e) {
       print('Failed to get image: $e');
     }
@@ -102,6 +108,54 @@ class _PanelWidgetState extends State<PanelWidget> {
                   child: Container(
                       height: 184,
                       width: 108,
+                      decoration: image1 != null
+                          ? BoxDecoration(
+                              color: Color(0xffD7D9D7),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                              image: DecorationImage(
+                                  image: FileImage(image1!), fit: BoxFit.fill))
+                          : BoxDecoration(
+                              color: Color(0xffD7D9D7),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                      child: image1 != null
+                          ? Icon(null)
+                          : Icon(Icons.upload_rounded, color: Colors.white)),
+                  onPressed: () {
+                    //File? image;
+                    pickImage(image1);
+                  },
+                ),
+                MaterialButton(
+                  elevation: 8.0,
+                  child: Container(
+                      height: 184,
+                      width: 108,
+                      decoration: image2 != null
+                          ? BoxDecoration(
+                              color: Color(0xffD7D9D7),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                              image: DecorationImage(
+                                  image: FileImage(image2!), fit: BoxFit.fill))
+                          : BoxDecoration(
+                              color: Color(0xffD7D9D7),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                      child: image2 != null
+                          ? Icon(null)
+                          : Icon(Icons.upload_rounded, color: Colors.white)),
+                  onPressed: () {
+                    //pickImage();
+                  },
+                ),
+                /*
+                MaterialButton(
+                  elevation: 8.0,
+                  child: Container(
+                      height: 184,
+                      width: 108,
                       decoration: image != null
                           ? BoxDecoration(
                               color: Color(0xffD7D9D7),
@@ -117,7 +171,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                           ? Icon(null)
                           : Icon(Icons.upload_rounded, color: Colors.white)),
                   onPressed: () {
-                    pickImage();
+                    //pickImage();
                   },
                 ),
                 MaterialButton(
@@ -140,55 +194,9 @@ class _PanelWidgetState extends State<PanelWidget> {
                           ? Icon(null)
                           : Icon(Icons.upload_rounded, color: Colors.white)),
                   onPressed: () {
-                    pickImage();
+                    //pickImage();
                   },
-                ),
-                MaterialButton(
-                  elevation: 8.0,
-                  child: Container(
-                      height: 184,
-                      width: 108,
-                      decoration: image != null
-                          ? BoxDecoration(
-                              color: Color(0xffD7D9D7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              image: DecorationImage(
-                                  image: FileImage(image!), fit: BoxFit.fill))
-                          : BoxDecoration(
-                              color: Color(0xffD7D9D7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                      child: image != null
-                          ? Icon(null)
-                          : Icon(Icons.upload_rounded, color: Colors.white)),
-                  onPressed: () {
-                    pickImage();
-                  },
-                ),
-                MaterialButton(
-                  elevation: 8.0,
-                  child: Container(
-                      height: 184,
-                      width: 108,
-                      decoration: image != null
-                          ? BoxDecoration(
-                              color: Color(0xffD7D9D7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              image: DecorationImage(
-                                  image: FileImage(image!), fit: BoxFit.fill))
-                          : BoxDecoration(
-                              color: Color(0xffD7D9D7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                      child: image != null
-                          ? Icon(null)
-                          : Icon(Icons.upload_rounded, color: Colors.white)),
-                  onPressed: () {
-                    pickImage();
-                  },
-                ),
+                ),*/
                 SizedBox(height: 20),
               ]),
             ),
