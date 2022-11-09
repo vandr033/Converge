@@ -78,32 +78,9 @@ class _PanelWidgetState extends State<PanelWidget> {
           children: <Widget>[
             Row(
               //example
-              children: [
-                Text("Hello World"),
-              ],
+              children: [],
             ),
             SizedBox(height: 10),
-            TextField(
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.blueAccent,
-                border: OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.circular(50)),
-              ),
-            ),
-            Row(
-              //example
-              children: [
-                Text("Hello World"),
-              ],
-            ),
-            Container(
-              //example
-              height: 30,
-              width: 30,
-              color: Color(0xff4589FF),
-            )
           ],
         ),
       );

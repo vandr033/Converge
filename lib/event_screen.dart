@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
@@ -90,34 +89,41 @@ class _PanelWidgetState extends State<PanelWidget> {
       );
 
   Widget buildEventInfo() => Container(
-        //here i have created a container with a child column - you can fill the column will all of the rows and its children, or anything else, that you need.
-        //this is all the stuff in our panel.
         padding: EdgeInsets.symmetric(horizontal: 24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Row(children: [
               MaterialButton(
-                color: Colors.black,
+                elevation: 8.0,
+                child: Container(
+                    height: 184,
+                    width: 108,
+                    decoration: image != null
+                        ? BoxDecoration(
+                            color: Color(0xffD7D9D7),
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            image: DecorationImage(
+                                image: FileImage(image!), fit: BoxFit.fill))
+                        : BoxDecoration(
+                            color: Color(0xffD7D9D7),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
+                    child: image != null
+                        ? Icon(null)
+                        : Icon(Icons.upload_rounded, color: Colors.white)),
                 onPressed: () {
                   pickImage();
                 },
-              )
+              ),
+              SizedBox(height: 20),
             ]),
             SizedBox(height: 10),
             Row(
               //here i want to put the horizontal slides of images.
               //example
-              children: [
-                Text("Hello World"),
-              ],
+              children: [],
             ),
-            Container(
-              //example
-              height: 30,
-              width: 30,
-              color: Color(0xff4589FF),
-            )
           ],
         ),
       );
