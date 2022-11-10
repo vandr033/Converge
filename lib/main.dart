@@ -1,9 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application/community_screen.dart';
+import 'package:flutter_application/event_screen.dart';
 import 'package:flutter_application/firebase_options.dart';
 import 'package:flutter_application/HomePage.dart';
 import 'package:flutter_application/interest_screen_1.dart';
 import 'package:flutter_application/interest_screen_2.dart';
+import 'package:flutter_application/pick_hosts_tester.dart';
 import 'loginPage.dart';
 import 'registerPage.dart';
 import 'package:auth_service/auth.dart';
@@ -22,7 +25,10 @@ class MyApp extends StatelessWidget {
     RegisterPage.tag: (context) => RegisterPage(),
     InterestScreen1.tag: (context) => InterestScreen1(),
     InterestScreen2.tag: (context) => InterestScreen2(),
-    HomePage.tag: (context) => HomePage()
+    HomePage.tag: (context) => HomePage(),
+    EventScreen.tag: (context) => EventScreen(),
+    CommunityScreen.tag: (context) => CommunityScreen(),
+    LocalTypeAheadPage.tag: (context) => LocalTypeAheadPage()
   };
 
   @override
@@ -44,7 +50,7 @@ class MyApp extends StatelessWidget {
               fontFamily: 'Nunito',
             ),
             home:
-                LoginPage(), //LoginPage(), - replace this when done testing interest screens!
+                CommunityScreen(), //LoginPage(), - replace this when done testing interest screens!
             routes: routes,
           )),
     );

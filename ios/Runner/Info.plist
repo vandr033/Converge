@@ -7,6 +7,10 @@
 	<key>CFBundleDisplayName</key>
 	<string>Flutter Application</string>
 	<key>CFBundleExecutable</key>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photo Library Access Warning</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera Library Access Warning</string>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
