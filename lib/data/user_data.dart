@@ -13,14 +13,18 @@ class User {
 class UserData {
   static final faker = Faker();
   static final List<User> users = List.generate(
+    //generates a list of fake users
     50,
     (index) => User(
-      name: faker.person.name(),
-      imageUrl: 'https://source.unsplash.com/random?user+face&sig=$index',
+      name: faker.person.name(), //fake name
+      imageUrl:
+          'https://source.unsplash.com/random?user+face&sig=$index', //fake image
     ),
   );
 
-  static List<User> getSuggestions(String query) =>
+  static List<User> getSuggestions(
+          String
+              query) => //our query is what we type, sent to the getSuggestions method - returns a list of users.
       List.of(users).where((user) {
         final userLower = user.name.toLowerCase();
         final queryLower = query.toLowerCase();

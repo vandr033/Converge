@@ -1,8 +1,11 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+
+import 'data/user_data.dart';
 
 class EventScreen extends StatefulWidget {
   static String tag = 'event-screen';
@@ -62,7 +65,7 @@ class _PanelWidgetState extends State<PanelWidget> {
   This stuff is currently under construction
   */
 
-  File? image1; 
+  File? image1;
   File? image2;
   File? image3;
   File? image4;
@@ -97,7 +100,7 @@ class _PanelWidgetState extends State<PanelWidget> {
     }
   }
 
-   Future pickImage3() async {
+  Future pickImage3() async {
     try {
       final imageGrab =
           await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -112,7 +115,7 @@ class _PanelWidgetState extends State<PanelWidget> {
     }
   }
 
-   Future pickImage4() async {
+  Future pickImage4() async {
     try {
       final imageGrab =
           await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -149,103 +152,186 @@ class _PanelWidgetState extends State<PanelWidget> {
             SizedBox(
               height: 184,
               width: double.infinity,
-              child: ListView(scrollDirection: Axis.horizontal, children: [
-                MaterialButton(
-                  elevation: 8.0,
-                  child: Container(
-                      height: 184,
-                      width: 108,
-                      decoration: image1 != null
-                          ? BoxDecoration(
-                              color: Color(0xffD7D9D7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              image: DecorationImage(
-                                  image: FileImage(image1!), fit: BoxFit.fill))
-                          : BoxDecoration(
-                              color: Color(0xffD7D9D7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                      child: image1 != null
-                          ? Icon(null)
-                          : Icon(Icons.upload_rounded, color: Colors.white)),
-                  onPressed: () {
-                    //File? image;
-                    pickImage1();
-                  },
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  MaterialButton(
+                    elevation: 8.0,
+                    child: Container(
+                        height: 184,
+                        width: 108,
+                        decoration: image1 != null
+                            ? BoxDecoration(
+                                color: Color(0xffD7D9D7),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                                image: DecorationImage(
+                                    image: FileImage(image1!),
+                                    fit: BoxFit.fill))
+                            : BoxDecoration(
+                                color: Color(0xffD7D9D7),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20))),
+                        child: image1 != null
+                            ? Icon(null)
+                            : Icon(Icons.upload_rounded, color: Colors.white)),
+                    onPressed: () {
+                      //File? image;
+                      pickImage1();
+                    },
+                  ),
+                  MaterialButton(
+                    elevation: 8.0,
+                    child: Container(
+                        height: 184,
+                        width: 108,
+                        decoration: image2 != null
+                            ? BoxDecoration(
+                                color: Color(0xffD7D9D7),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                                image: DecorationImage(
+                                    image: FileImage(image2!),
+                                    fit: BoxFit.fill))
+                            : BoxDecoration(
+                                color: Color(0xffD7D9D7),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20))),
+                        child: image2 != null
+                            ? Icon(null)
+                            : Icon(Icons.upload_rounded, color: Colors.white)),
+                    onPressed: () {
+                      pickImage2();
+                    },
+                  ),
+                  MaterialButton(
+                    elevation: 8.0,
+                    child: Container(
+                        height: 184,
+                        width: 108,
+                        decoration: image3 != null
+                            ? BoxDecoration(
+                                color: Color(0xffD7D9D7),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                                image: DecorationImage(
+                                    image: FileImage(image3!),
+                                    fit: BoxFit.fill))
+                            : BoxDecoration(
+                                color: Color(0xffD7D9D7),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20))),
+                        child: image3 != null
+                            ? Icon(null)
+                            : Icon(Icons.upload_rounded, color: Colors.white)),
+                    onPressed: () {
+                      pickImage3();
+                    },
+                  ),
+                  MaterialButton(
+                    elevation: 8.0,
+                    child: Container(
+                        height: 184,
+                        width: 108,
+                        decoration: image4 != null
+                            ? BoxDecoration(
+                                color: Color(0xffD7D9D7),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                                image: DecorationImage(
+                                    image: FileImage(image4!),
+                                    fit: BoxFit.fill))
+                            : BoxDecoration(
+                                color: Color(0xffD7D9D7),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20))),
+                        child: image4 != null
+                            ? Icon(null)
+                            : Icon(Icons.upload_rounded, color: Colors.white)),
+                    onPressed: () {
+                      pickImage4();
+                    },
+                  ),
+                  SizedBox(height: 20),
+                ],
+              ),
+            ),
+            SizedBox(height: 20),
+            Container(
+              color: Color(0xffD7D9D7),
+              padding: EdgeInsets.all(10),
+              /*decoration: BoxDecoration(borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),*/
+              child: TypeAheadField<User?>(
+                //Here we use <User> because that is what we are autocompleting for.
+                hideOnEmpty: true,
+                //TypeAheadField - A TextField that displays a list of suggestions as the user types.
+                //hideSuggestionsOnKeyboardHide: false,
+                textFieldConfiguration: TextFieldConfiguration(
+                  decoration: InputDecoration(
+                    suffixIcon: Icon(Icons.search, color: Color(0xff828382)),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(width: 0, style: BorderStyle.none),
+                    ),
+                    hintText: 'Hosts: ',
+                    hintStyle: TextStyle(
+                        fontSize: 16.0,
+                        color: Color(0xff828382),
+                        fontWeight: FontWeight.w700),
+                    filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: EdgeInsets.all(10),
+                  ),
                 ),
-                MaterialButton(
-                  elevation: 8.0,
-                  child: Container(
-                      height: 184,
-                      width: 108,
-                      decoration: image2 != null
-                          ? BoxDecoration(
-                              color: Color(0xffD7D9D7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              image: DecorationImage(
-                                  image: FileImage(image2!), fit: BoxFit.fill))
-                          : BoxDecoration(
-                              color: Color(0xffD7D9D7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                      child: image2 != null
-                          ? Icon(null)
-                          : Icon(Icons.upload_rounded, color: Colors.white)),
-                  onPressed: () {
-                    pickImage2();
-                  },
+                suggestionsBoxDecoration: const SuggestionsBoxDecoration(
+                  color: Color(0xffD7D9D7),
                 ),
-                
-                MaterialButton(
-                  elevation: 8.0,
-                  child: Container(
-                      height: 184,
-                      width: 108,
-                      decoration: image3 != null
-                          ? BoxDecoration(
-                              color: Color(0xffD7D9D7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              image: DecorationImage(
-                                  image: FileImage(image3!), fit: BoxFit.fill))
-                          : BoxDecoration(
-                              color: Color(0xffD7D9D7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                      child: image3 != null
-                          ? Icon(null)
-                          : Icon(Icons.upload_rounded, color: Colors.white)),
-                  onPressed: () {
-                    pickImage3();
-                  },
+                suggestionsCallback:
+                    UserData.getSuggestions, //we get suggestions from UserData
+                itemBuilder: (context, User? suggestion) {
+                  final user = suggestion!;
+
+                  return ListTile(
+                    leading: Container(
+                      width: 60,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: NetworkImage(user.imageUrl),
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
+                    title: Text(user.name),
+                  );
+                },
+                noItemsFoundBuilder: (context) => Container(
+                  height: 50,
+                  child: Center(
+                    child: Text(
+                      'No Users Found.',
+                      style: TextStyle(fontSize: 15),
+                    ),
+                  ),
                 ),
-                MaterialButton(
-                  elevation: 8.0,
-                  child: Container(
-                      height: 184,
-                      width: 108,
-                      decoration: image4 != null
-                          ? BoxDecoration(
-                              color: Color(0xffD7D9D7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              image: DecorationImage(
-                                  image: FileImage(image4!), fit: BoxFit.fill))
-                          : BoxDecoration(
-                              color: Color(0xffD7D9D7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                      child: image4 != null
-                          ? Icon(null)
-                          : Icon(Icons.upload_rounded, color: Colors.white)),
-                  onPressed: () {
-                    pickImage4();
-                  },
-                ),
-                SizedBox(height: 20),
-              ]),
+                onSuggestionSelected: (User? suggestion) {
+                  final user =
+                      suggestion!; //the suggestion that we selected is stored in user variable.
+
+                  /*
+                  Container(height:20, width:20,
+                  Text(suggestion.name;)*/
+                  
+                  //this is the part where we say what we want to do in the selection... aka we need to put it in a container.
+                  /*
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => UserDetailPage(user: user)
+                )
+                );*/
+                },
+              ),
             ),
           ],
         ),

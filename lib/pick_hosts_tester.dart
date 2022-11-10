@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/data/user_data.dart';
 import 'package:flutter_application/data/user_detail_page.dart';
@@ -7,11 +8,13 @@ class LocalTypeAheadPage extends StatelessWidget {
   @override
   static String tag = 'type-ahead';
   Widget build(BuildContext context) => Scaffold(
-        body: SafeArea(
-          child: Container(
+        body: Column(children: [
+          //Container(height: 20, width:20, color: Colors.amber,),
+          Container(
             color: Color(0xffD7D9D7),
             padding: EdgeInsets.all(10),
             child: TypeAheadField<User?>(
+              //Here we use <User> because that is what we are autocompleting for.
               hideOnEmpty: true,
               //TypeAheadField - A TextField that displays a list of suggestions as the user types.
               //hideSuggestionsOnKeyboardHide: false,
@@ -36,7 +39,8 @@ class LocalTypeAheadPage extends StatelessWidget {
               suggestionsBoxDecoration: const SuggestionsBoxDecoration(
                 color: Color(0xffD7D9D7),
               ),
-              suggestionsCallback: UserData.getSuggestions,
+              suggestionsCallback:
+                  UserData.getSuggestions, //we get suggestions from UserData
               itemBuilder: (context, User? suggestion) {
                 final user = suggestion!;
 
@@ -65,14 +69,25 @@ class LocalTypeAheadPage extends StatelessWidget {
                 ),
               ),
               onSuggestionSelected: (User? suggestion) {
-                final user = suggestion!;
+                final user =
+                    suggestion!; //the suggestion that we selected is stored in user variable.
 
+                //Container(height: 50, width: 200, color: Colors.amber, child: user);
+                //this is the part where we say what we want to do in the selection... aka we need to put it in a container.
+                /*
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => UserDetailPage(user: user),
-                ));
+                  builder: (context) => UserDetailPage(user: user)
+                )
+                );*/
               },
             ),
           ),
-        ),
+          /*
+          Container(
+            height: 50,
+            width: 200,
+            color: Colors.amber,
+          ),*/
+        ]),
       );
 }
