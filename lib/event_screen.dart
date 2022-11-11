@@ -1,17 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'dart:io';
-import 'package:intl/intl.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
-
-List<String> screens = ['Create Event', 'Create Community'];
-String chosenScreen = 'Create Event';
-DateTime date = DateTime.now();
-DateTime time = DateTime.now();
 
 class EventScreen extends StatefulWidget {
   static String tag = 'event-screen';
@@ -67,17 +62,71 @@ class PanelWidget extends StatefulWidget {
 }
 
 class _PanelWidgetState extends State<PanelWidget> {
-  File? image;
+  /*
+  This stuff is currently under construction
+  */
 
-  Future pickImage() async {
+  File? image1;
+  File? image2;
+  File? image3;
+  File? image4;
+  bool vis = false;
+
+  Future pickImage1() async {
     try {
-      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      final imageGrab =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
 
-      if (image == null) return;
+      if (imageGrab == null) return;
 
-      final imageTemp = File(image.path);
+      final imageTemp = File(imageGrab.path);
 
-      setState(() => this.image = imageTemp);
+      setState(() => image1 = imageTemp);
+    } on PlatformException catch (e) {
+      print('Failed to get image: $e');
+    }
+  }
+
+  Future pickImage2() async {
+    try {
+      final imageGrab =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
+
+      if (imageGrab == null) return;
+
+      final imageTemp = File(imageGrab.path);
+
+      setState(() => image2 = imageTemp);
+    } on PlatformException catch (e) {
+      print('Failed to get image: $e');
+    }
+  }
+
+  Future pickImage3() async {
+    try {
+      final imageGrab =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
+
+      if (imageGrab == null) return;
+
+      final imageTemp = File(imageGrab.path);
+
+      setState(() => image3 = imageTemp);
+    } on PlatformException catch (e) {
+      print('Failed to get image: $e');
+    }
+  }
+
+  Future pickImage4() async {
+    try {
+      final imageGrab =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
+
+      if (imageGrab == null) return;
+
+      final imageTemp = File(imageGrab.path);
+
+      setState(() => image4 = imageTemp);
     } on PlatformException catch (e) {
       print('Failed to get image: $e');
     }
@@ -158,212 +207,32 @@ class _PanelWidgetState extends State<PanelWidget> {
       );
 
   Widget buildEventInfo() => Container(
-        //here i have created a container with a child column - you can fill the column will all of the rows and its children, or anything else, that you need.
-        //this is all the stuff in our panel.
         padding: EdgeInsets.symmetric(horizontal: 24),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          //crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Row(
-              children: [
-                SizedBox(
-                    width: 200,
-                    height: 100,
-                    child: DropdownButtonFormField<String>(
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Color(0XFFD7D9D7),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12.0),
-                          borderSide: BorderSide(
-                            width: 0,
-                            style: BorderStyle.none,
-                          ),
-                        ),
-                      ),
-                      value: chosenScreen,
-                      items: screens
-                          .map((screen) => DropdownMenuItem<String>(
-                              value: screen,
-                              child: Text(
-                                screen,
-                                style: TextStyle(
-                                    fontSize: 22,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
-                                textAlign: TextAlign.left,
-                              )))
-                          .toList(),
-                      onChanged: (screen) =>
-                          setState(() => chosenScreen = screen!),
-                    )),
-                SizedBox(
-                  width: 40,
-                ),
-                SizedBox(
-                  width: 100,
-                  height: 100,
-                  child: TextField(
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                    obscureText: false,
-                    textAlign: TextAlign.center,
-                    decoration: InputDecoration(
-                        hintText: '',
-                        filled: true,
-                        fillColor: Color(0XFFD7D9D7),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12.0),
-                          borderSide: BorderSide(
-                            width: 0,
-                            style: BorderStyle.none,
-                          ),
-                        ),
-                        alignLabelWithHint: true,
-                        labelText: 'Name',
-                        labelStyle: TextStyle(
-                          color: Colors.white,
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                        )),
-                  ),
-                )
-              ],
-            ),
+            Row(children: [
+              MaterialButton(
+                color: Colors.black,
+                onPressed: () {
+                  pickImage();
+                },
+              )
+            ]),
             SizedBox(height: 10),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              //here i want to put the horizontal slides of images.
+              //example
               children: [
-                SizedBox(
-                  width: 330,
-                  height: 46.0,
-                  child: Card(
-                    color: Color(0XFFD7D9D7),
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          width: 20,
-                        ),
-                        SizedBox(
-                            width: 95,
-                            height: 20,
-                            child: Text(
-                              "Event starts: ",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              textAlign: TextAlign.left,
-                            )),
-                        SizedBox(
-                          width: 100,
-                          height: 20,
-                          child: ElevatedButton(
-                            onPressed: () => _showDatePicker(this.context),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              foregroundColor: Colors.grey,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5.0)),
-                            ),
-                            child: Text(date != null
-                                ? DateFormat.yMd().format(date)
-                                : 'No Date!'),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        SizedBox(
-                          width: 93,
-                          height: 20,
-                          child: ElevatedButton(
-                            onPressed: () => _showTimePicker(this.context),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              foregroundColor: Colors.grey,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5.0)),
-                            ),
-                            child: Text(time != null
-                                ? DateFormat.jm().format(time)
-                                : 'No Time!'),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
+                Text("Hello World"),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 330,
-                  height: 46.0,
-                  child: Card(
-                    color: Color(0XFFD7D9D7),
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          width: 20,
-                        ),
-                        SizedBox(
-                            width: 95,
-                            height: 20,
-                            child: Text(
-                              "Event ends: ",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              textAlign: TextAlign.left,
-                            )),
-                        SizedBox(
-                          width: 100,
-                          height: 20,
-                          child: ElevatedButton(
-                            onPressed: () => _showDatePicker(this.context),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              foregroundColor: Colors.grey,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5.0)),
-                            ),
-                            child: Text(date != null
-                                ? DateFormat.yMd().format(date)
-                                : 'No Date!'),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        SizedBox(
-                          width: 93,
-                          height: 20,
-                          child: ElevatedButton(
-                            onPressed: () => _showTimePicker(this.context),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              foregroundColor: Colors.grey,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5.0)),
-                            ),
-                            child: Text(time != null
-                                ? DateFormat.jm().format(time)
-                                : 'No Time!'),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            Container(
+              //example
+              height: 30,
+              width: 30,
+              color: Color(0xff4589FF),
+            )
           ],
         ),
       );
