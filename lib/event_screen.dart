@@ -1,9 +1,17 @@
-import 'dart:io';
+// ignore_for_file: prefer_const_constructors
 
+import 'dart:io';
+import 'package:intl/intl.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+
+List<String> screens = ['Create Event', 'Create Community'];
+String chosenScreen = 'Create Event';
+DateTime date = DateTime.now();
+DateTime time = DateTime.now();
 
 class EventScreen extends StatefulWidget {
   static String tag = 'event-screen';
@@ -75,6 +83,66 @@ class _PanelWidgetState extends State<PanelWidget> {
     }
   }
 
+  void _showDatePicker(ctx) {
+    // showCupertinoModalPopup is a built-in function of the cupertino library
+    showCupertinoModalPopup(
+        context: ctx,
+        builder: (_) => Container(
+              height: 500,
+              color: const Color.fromARGB(255, 255, 255, 255),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 400,
+                    child: CupertinoDatePicker(
+                        initialDateTime: DateTime.now(),
+                        mode: CupertinoDatePickerMode.date,
+                        onDateTimeChanged: (val) {
+                          setState(() {
+                            date = val;
+                          });
+                        }),
+                  ),
+                  // Close the modal
+                  CupertinoButton(
+                      child: const Text('OK'),
+                      onPressed: () => {} //Navigator.of(ctx).pop(),
+                      )
+                ],
+              ),
+            ));
+  }
+
+  void _showTimePicker(ctx) {
+    // showCupertinoModalPopup is a built-in function of the cupertino library
+    showCupertinoModalPopup(
+        context: ctx,
+        builder: (_) => Container(
+              height: 500,
+              color: const Color.fromARGB(255, 255, 255, 255),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 400,
+                    child: CupertinoDatePicker(
+                        initialDateTime: DateTime.now(),
+                        mode: CupertinoDatePickerMode.time,
+                        onDateTimeChanged: (val) {
+                          setState(() {
+                            time = val;
+                          });
+                        }),
+                  ),
+                  // Close the modal
+                  CupertinoButton(
+                      child: const Text('OK'),
+                      onPressed: () => {} //Navigator.of(ctx).pop(),
+                      )
+                ],
+              ),
+            ));
+  }
+
   @override
   Widget build(BuildContext context) => ListView(
         //ListView is a scrollable list of widgets arranged linearly.
@@ -96,28 +164,206 @@ class _PanelWidgetState extends State<PanelWidget> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Row(children: [
-              MaterialButton(
-                color: Colors.black,
-                onPressed: () {
-                  pickImage();
-                },
-              )
-            ]),
-            SizedBox(height: 10),
             Row(
-              //here i want to put the horizontal slides of images.
-              //example
               children: [
-                Text("Hello World"),
+                SizedBox(
+                    width: 200,
+                    height: 100,
+                    child: DropdownButtonFormField<String>(
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Color(0XFFD7D9D7),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                          borderSide: BorderSide(
+                            width: 0,
+                            style: BorderStyle.none,
+                          ),
+                        ),
+                      ),
+                      value: chosenScreen,
+                      items: screens
+                          .map((screen) => DropdownMenuItem<String>(
+                              value: screen,
+                              child: Text(
+                                screen,
+                                style: TextStyle(
+                                    fontSize: 22,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.left,
+                              )))
+                          .toList(),
+                      onChanged: (screen) =>
+                          setState(() => chosenScreen = screen!),
+                    )),
+                SizedBox(
+                  width: 40,
+                ),
+                SizedBox(
+                  width: 100,
+                  height: 100,
+                  child: TextField(
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                    obscureText: false,
+                    textAlign: TextAlign.center,
+                    decoration: InputDecoration(
+                        hintText: '',
+                        filled: true,
+                        fillColor: Color(0XFFD7D9D7),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                          borderSide: BorderSide(
+                            width: 0,
+                            style: BorderStyle.none,
+                          ),
+                        ),
+                        alignLabelWithHint: true,
+                        labelText: 'Name',
+                        labelStyle: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        )),
+                  ),
+                )
               ],
             ),
-            Container(
-              //example
-              height: 30,
-              width: 30,
-              color: Color(0xff4589FF),
-            )
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 330,
+                  height: 46.0,
+                  child: Card(
+                    color: Color(0XFFD7D9D7),
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 20,
+                        ),
+                        SizedBox(
+                            width: 95,
+                            height: 20,
+                            child: Text(
+                              "Event starts: ",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.left,
+                            )),
+                        SizedBox(
+                          width: 100,
+                          height: 20,
+                          child: ElevatedButton(
+                            onPressed: () => _showDatePicker(this.context),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              foregroundColor: Colors.grey,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5.0)),
+                            ),
+                            child: Text(date != null
+                                ? DateFormat.yMd().format(date)
+                                : 'No Date!'),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        SizedBox(
+                          width: 93,
+                          height: 20,
+                          child: ElevatedButton(
+                            onPressed: () => _showTimePicker(this.context),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              foregroundColor: Colors.grey,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5.0)),
+                            ),
+                            child: Text(time != null
+                                ? DateFormat.jm().format(time)
+                                : 'No Time!'),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 330,
+                  height: 46.0,
+                  child: Card(
+                    color: Color(0XFFD7D9D7),
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 20,
+                        ),
+                        SizedBox(
+                            width: 95,
+                            height: 20,
+                            child: Text(
+                              "Event ends: ",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.left,
+                            )),
+                        SizedBox(
+                          width: 100,
+                          height: 20,
+                          child: ElevatedButton(
+                            onPressed: () => _showDatePicker(this.context),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              foregroundColor: Colors.grey,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5.0)),
+                            ),
+                            child: Text(date != null
+                                ? DateFormat.yMd().format(date)
+                                : 'No Date!'),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        SizedBox(
+                          width: 93,
+                          height: 20,
+                          child: ElevatedButton(
+                            onPressed: () => _showTimePicker(this.context),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              foregroundColor: Colors.grey,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5.0)),
+                            ),
+                            child: Text(time != null
+                                ? DateFormat.jm().format(time)
+                                : 'No Time!'),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       );
