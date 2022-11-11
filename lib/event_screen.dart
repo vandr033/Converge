@@ -2,11 +2,18 @@
 
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+
+List<String> screens = ['Create Event', 'Create Community'];
+String chosenScreen = 'Create Event';
+DateTime date = DateTime.now();
+DateTime time = DateTime.now();
 
 class EventScreen extends StatefulWidget {
   static String tag = 'event-screen';
@@ -211,28 +218,210 @@ class _PanelWidgetState extends State<PanelWidget> {
         child: Column(
           //crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Row(
+              children: [
+                SizedBox(
+                    width: 200,
+                    height: 100,
+                    child: DropdownButtonFormField<String>(
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Color(0XFFD7D9D7),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                          borderSide: BorderSide(
+                            width: 0,
+                            style: BorderStyle.none,
+                          ),
+                        ),
+                      ),
+                      value: chosenScreen,
+                      items: screens
+                          .map((screen) => DropdownMenuItem<String>(
+                              value: screen,
+                              child: Text(
+                                screen,
+                                style: TextStyle(
+                                    fontSize: 22,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.left,
+                              )))
+                          .toList(),
+                      onChanged: (screen) =>
+                          setState(() => chosenScreen = screen!),
+                    )),
+                SizedBox(
+                  width: 40,
+                ),
+                SizedBox(
+                  width: 100,
+                  height: 100,
+                  child: TextField(
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                    obscureText: false,
+                    textAlign: TextAlign.center,
+                    decoration: InputDecoration(
+                        hintText: '',
+                        filled: true,
+                        fillColor: Color(0XFFD7D9D7),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                          borderSide: BorderSide(
+                            width: 0,
+                            style: BorderStyle.none,
+                          ),
+                        ),
+                        alignLabelWithHint: true,
+                        labelText: 'Name',
+                        labelStyle: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        )),
+                  ),
+                )
+              ],
+            ),
+            SizedBox(height: 10),
             Row(children: [
               MaterialButton(
                 color: Colors.black,
                 onPressed: () {
-                  pickImage();
+                  pickImage1();
                 },
               )
             ]),
             SizedBox(height: 10),
             Row(
-              //here i want to put the horizontal slides of images.
-              //example
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Hello World"),
+                SizedBox(
+                  width: 330,
+                  height: 46.0,
+                  child: Card(
+                    color: Color(0XFFD7D9D7),
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 20,
+                        ),
+                        SizedBox(
+                            width: 95,
+                            height: 20,
+                            child: Text(
+                              "Event starts: ",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.left,
+                            )),
+                        SizedBox(
+                          width: 100,
+                          height: 20,
+                          child: ElevatedButton(
+                            onPressed: () => _showDatePicker(this.context),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              foregroundColor: Colors.grey,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5.0)),
+                            ),
+                            child: Text(date != null
+                                ? DateFormat.yMd().format(date)
+                                : 'No Date!'),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        SizedBox(
+                          width: 93,
+                          height: 20,
+                          child: ElevatedButton(
+                            onPressed: () => _showTimePicker(this.context),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              foregroundColor: Colors.grey,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5.0)),
+                            ),
+                            child: Text(time != null
+                                ? DateFormat.jm().format(time)
+                                : 'No Time!'),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
-            Container(
-              //example
-              height: 30,
-              width: 30,
-              color: Color(0xff4589FF),
-            )
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              SizedBox(
+                width: 330,
+                height: 46.0,
+                child: Card(
+                  color: Color(0XFFD7D9D7),
+                  child: Row(children: [
+                    SizedBox(
+                      width: 20,
+                    ),
+                    SizedBox(
+                        width: 95,
+                        height: 20,
+                        child: Text(
+                          "Event ends: ",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.left,
+                        )),
+                    SizedBox(
+                      width: 100,
+                      height: 20,
+                      child: ElevatedButton(
+                        onPressed: () => _showDatePicker(this.context),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          foregroundColor: Colors.grey,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0)),
+                        ),
+                        child: Text(date != null
+                            ? DateFormat.yMd().format(date)
+                            : 'No Date!'),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    SizedBox(
+                      width: 93,
+                      height: 20,
+                      child: ElevatedButton(
+                        onPressed: () => _showTimePicker(this.context),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          foregroundColor: Colors.grey,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0)),
+                        ),
+                        child: Text(time != null
+                            ? DateFormat.jm().format(time)
+                            : 'No Time!'),
+                      ),
+                    ),
+                  ]),
+                ),
+              ),
+            ]),
           ],
         ),
       );
