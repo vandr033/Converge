@@ -61,8 +61,38 @@ class PanelWidget extends StatefulWidget {
 }
 
 class _PanelWidgetState extends State<PanelWidget> {
-  
-  File? image1; 
+  /*
+  Drop down 
+  */
+  String? _selected;
+
+  List<Map> _myJson = [
+    {
+      'id': '1',
+      'image': 'assets/category_logos/sports_logo.png',
+      'name': 'Sports'
+    },
+    {
+      'id': '2',
+      'image': 'assets/category_logos/travel_logo.png',
+      'name': 'Travel'
+    },
+    {
+      'id': '3',
+      'image': 'assets/category_logos/music_logo.png',
+      'name': 'Music'
+    },
+    {
+      'id': '4',
+      'image': 'assets/category_logos/school_logo.png',
+      'name': 'School'
+    },
+  ];
+
+  /*
+  Image Picker
+  */
+  File? image1;
   File? image2;
 
   Future pickImage1() async {
@@ -119,7 +149,6 @@ class _PanelWidgetState extends State<PanelWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Row(
-              
               //example
               children: [
                 SizedBox(
@@ -188,7 +217,7 @@ class _PanelWidgetState extends State<PanelWidget> {
               ],
             ),
             SizedBox(height: 10),
-            
+
             Stack(
               //Row(
               //example
@@ -263,7 +292,6 @@ class _PanelWidgetState extends State<PanelWidget> {
 
             Stack(
               children: [
-                
                 Container(
                   width: 360,
                   height: 46,
@@ -273,7 +301,6 @@ class _PanelWidgetState extends State<PanelWidget> {
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                 ),
-
                 Container(
                   padding: EdgeInsets.fromLTRB(5, 10, 0, 0),
                   child: Icon(
@@ -282,7 +309,6 @@ class _PanelWidgetState extends State<PanelWidget> {
                     color: Colors.white,
                   ),
                 ),
-                
                 Container(
                   padding: EdgeInsets.fromLTRB(10, 15, 0, 0),
                   child: Icon(
@@ -291,7 +317,6 @@ class _PanelWidgetState extends State<PanelWidget> {
                     color: Colors.white,
                   ),
                 ),
-                
                 Container(
                   width: 360,
                   height: 46,
@@ -302,7 +327,10 @@ class _PanelWidgetState extends State<PanelWidget> {
                     obscureText: false,
                     textAlign: TextAlign.center,
                     decoration: InputDecoration(
-                      icon: Icon(Icons.shield_outlined, size: 1,),
+                        icon: Icon(
+                          Icons.shield_outlined,
+                          size: 1,
+                        ),
                         hintText: 'Community Guidelines:',
                         filled: false,
                         fillColor: Color(0XFFD7D9D7),
@@ -320,10 +348,8 @@ class _PanelWidgetState extends State<PanelWidget> {
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         )),
+                  ),
                 ),
-                ),
-                  
-
               ],
             ),
 
@@ -403,6 +429,55 @@ class _PanelWidgetState extends State<PanelWidget> {
 
             SizedBox(height: 10),
 
+            Padding(
+              padding: const EdgeInsets.only(left: 10, right: 10),
+              child: Container(
+                padding: EdgeInsets.only(left: 10, right: 10),
+                decoration: BoxDecoration(
+                  border: Border.all(width: 1, color: Colors.grey),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: DropdownButtonHideUnderline(
+                        child: ButtonTheme(
+                          alignedDropdown: true,
+                          child: DropdownButton(
+                            hint: Text('Select Category'),
+                            value: _selected,
+                            onChanged: (newValue) {
+                              setState(() {
+                                _selected = newValue;
+                              });
+                            },
+                            items: _myJson.map(
+                              (categoryItem) {
+                                return DropdownMenuItem(
+                                  value: categoryItem['id'].toString(),
+                                  child: Row(
+                                    children: [
+                                      Image.asset(categoryItem['image'],
+                                          width: 30),
+                                      Container(
+                                          margin: EdgeInsets.only(left: 10),
+                                          child: Text(categoryItem['name']))
+                                    ],
+                                  ),
+                                );
+                              },
+                            ).toList(),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            /*
             Row(
               //example
               children: [
@@ -437,6 +512,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                 ),
               ],
             ),
+            */
 
             SizedBox(height: 20),
 

@@ -62,7 +62,35 @@ class PanelWidget extends StatefulWidget {
 
 class _PanelWidgetState extends State<PanelWidget> {
   /*
-  This stuff is currently under construction
+  Drop down 
+  */
+  String? _selected;
+
+  List<Map> _myJson = [
+    {
+      'id': '1',
+      'image': 'assets/community_logos/hamburger_logo.png',
+      'name': 'Foodies'
+    },
+    {
+      'id': '2',
+      'image': 'assets/community_logos/globe_trotters_logo.png',
+      'name': 'Globetrotters'
+    },
+    {
+      'id': '3',
+      'image': 'assets/community_logos/musicians_logo.png',
+      'name': 'Musicians'
+    },
+    {
+      'id': '4',
+      'image': 'assets/community_logos/einsteins_logo.png',
+      'name': 'Einsteins'
+    },
+  ];
+
+  /*
+  Image picker 
   */
 
   File? image1;
@@ -151,6 +179,7 @@ class _PanelWidgetState extends State<PanelWidget> {
           //crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             SizedBox(
+              //this contains our image picker
               height: 184,
               width: double.infinity,
               child: ListView(
@@ -177,7 +206,6 @@ class _PanelWidgetState extends State<PanelWidget> {
                             ? Icon(null)
                             : Icon(Icons.upload_rounded, color: Colors.white)),
                     onPressed: () {
-                      //File? image;
                       pickImage1();
                     },
                   ),
@@ -259,6 +287,7 @@ class _PanelWidgetState extends State<PanelWidget> {
             ),
             SizedBox(height: 20),
             Row(
+              //this contains our host drop down.
               children: [
                 Expanded(
                   child: Container(
@@ -326,9 +355,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                         final user =
                             suggestion!; //the suggestion that we selected is stored in user variable.
 
-                        // Container(height:20, width:20,
-
-                        // Text(name))
+                        //Container(height: 20, width: 20, Text(name));
 
                         //this is the part where we say what we want to do in the selection... aka we need to put it in a container.
 
@@ -350,6 +377,54 @@ class _PanelWidgetState extends State<PanelWidget> {
                   ),
                 ),
               ],
+            ),
+            SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.only(left: 10, right: 10),
+              child: Container(
+                padding: EdgeInsets.only(left: 10, right: 10),
+                decoration: BoxDecoration(
+                  border: Border.all(width: 1, color: Colors.grey),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: DropdownButtonHideUnderline(
+                        child: ButtonTheme(
+                          alignedDropdown: true,
+                          child: DropdownButton(
+                            hint: Text('Select Category'),
+                            value: _selected,
+                            onChanged: (newValue) {
+                              setState(() {
+                                _selected = newValue;
+                              });
+                            },
+                            items: _myJson.map(
+                              (categoryItem) {
+                                return DropdownMenuItem(
+                                  value: categoryItem['id'].toString(),
+                                  child: Row(
+                                    children: [
+                                      Image.asset(categoryItem['image'],
+                                          width: 30),
+                                      Container(
+                                          margin: EdgeInsets.only(left: 10),
+                                          child: Text(categoryItem['name']))
+                                    ],
+                                  ),
+                                );
+                              },
+                            ).toList(),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),

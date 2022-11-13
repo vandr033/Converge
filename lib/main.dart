@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
     HomePage.tag: (context) => HomePage(),
     EventScreen.tag: (context) => EventScreen(),
     CommunityScreen.tag: (context) => CommunityScreen(),
-    LocalTypeAheadPage.tag: (context) => LocalTypeAheadPage()
+    //LocalTypeAheadPage.tag: (context) => LocalTypeAheadPage()
   };
 
   @override
