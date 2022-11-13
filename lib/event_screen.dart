@@ -1,11 +1,19 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
-import 'data/user_data.dart';
+List<String> screens = ['Create Event', 'Create Community'];
+String chosenScreen = 'Create Event';
+DateTime date = DateTime.now();
+DateTime time = DateTime.now();
 
 class EventScreen extends StatefulWidget {
   static String tag = 'event-screen';
@@ -159,6 +167,66 @@ class _PanelWidgetState extends State<PanelWidget> {
     }
   }
 
+  void _showDatePicker(ctx) {
+    // showCupertinoModalPopup is a built-in function of the cupertino library
+    showCupertinoModalPopup(
+        context: ctx,
+        builder: (_) => Container(
+              height: 500,
+              color: const Color.fromARGB(255, 255, 255, 255),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 400,
+                    child: CupertinoDatePicker(
+                        initialDateTime: DateTime.now(),
+                        mode: CupertinoDatePickerMode.date,
+                        onDateTimeChanged: (val) {
+                          setState(() {
+                            date = val;
+                          });
+                        }),
+                  ),
+                  // Close the modal
+                  CupertinoButton(
+                      child: const Text('OK'),
+                      onPressed: () => {} //Navigator.of(ctx).pop(),
+                      )
+                ],
+              ),
+            ));
+  }
+
+  void _showTimePicker(ctx) {
+    // showCupertinoModalPopup is a built-in function of the cupertino library
+    showCupertinoModalPopup(
+        context: ctx,
+        builder: (_) => Container(
+              height: 500,
+              color: const Color.fromARGB(255, 255, 255, 255),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 400,
+                    child: CupertinoDatePicker(
+                        initialDateTime: DateTime.now(),
+                        mode: CupertinoDatePickerMode.time,
+                        onDateTimeChanged: (val) {
+                          setState(() {
+                            time = val;
+                          });
+                        }),
+                  ),
+                  // Close the modal
+                  CupertinoButton(
+                      child: const Text('OK'),
+                      onPressed: () => {} //Navigator.of(ctx).pop(),
+                      )
+                ],
+              ),
+            ));
+  }
+
   @override
   Widget build(BuildContext context) => ListView(
         //ListView is a scrollable list of widgets arranged linearly.
@@ -178,201 +246,145 @@ class _PanelWidgetState extends State<PanelWidget> {
         child: Column(
           //crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            SizedBox(
-              //this contains our image picker
-              height: 184,
-              width: double.infinity,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  MaterialButton(
-                    elevation: 8.0,
-                    child: Container(
-                        height: 184,
-                        width: 108,
-                        decoration: image1 != null
-                            ? BoxDecoration(
-                                color: Color(0xffD7D9D7),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                                image: DecorationImage(
-                                    image: FileImage(image1!),
-                                    fit: BoxFit.fill))
-                            : BoxDecoration(
-                                color: Color(0xffD7D9D7),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
-                        child: image1 != null
-                            ? Icon(null)
-                            : Icon(Icons.upload_rounded, color: Colors.white)),
-                    onPressed: () {
-                      pickImage1();
-                    },
+            Row(
+              children: [
+                SizedBox(
+                    width: 200,
+                    height: 100,
+                    child: DropdownButtonFormField<String>(
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Color(0XFFD7D9D7),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                          borderSide: BorderSide(
+                            width: 0,
+                            style: BorderStyle.none,
+                          ),
+                        ),
+                      ),
+                      value: chosenScreen,
+                      items: screens
+                          .map((screen) => DropdownMenuItem<String>(
+                              value: screen,
+                              child: Text(
+                                screen,
+                                style: TextStyle(
+                                    fontSize: 22,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.left,
+                              )))
+                          .toList(),
+                      onChanged: (screen) =>
+                          setState(() => chosenScreen = screen!),
+                    )),
+                SizedBox(
+                  width: 40,
+                ),
+                SizedBox(
+                  width: 100,
+                  height: 100,
+                  child: TextField(
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                    obscureText: false,
+                    textAlign: TextAlign.center,
+                    decoration: InputDecoration(
+                        hintText: '',
+                        filled: true,
+                        fillColor: Color(0XFFD7D9D7),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                          borderSide: BorderSide(
+                            width: 0,
+                            style: BorderStyle.none,
+                          ),
+                        ),
+                        alignLabelWithHint: true,
+                        labelText: 'Name',
+                        labelStyle: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        )),
                   ),
-                  MaterialButton(
-                    elevation: 8.0,
-                    child: Container(
-                        height: 184,
-                        width: 108,
-                        decoration: image2 != null
-                            ? BoxDecoration(
-                                color: Color(0xffD7D9D7),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                                image: DecorationImage(
-                                    image: FileImage(image2!),
-                                    fit: BoxFit.fill))
-                            : BoxDecoration(
-                                color: Color(0xffD7D9D7),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
-                        child: image2 != null
-                            ? Icon(null)
-                            : Icon(Icons.upload_rounded, color: Colors.white)),
-                    onPressed: () {
-                      pickImage2();
-                    },
-                  ),
-                  MaterialButton(
-                    elevation: 8.0,
-                    child: Container(
-                        height: 184,
-                        width: 108,
-                        decoration: image3 != null
-                            ? BoxDecoration(
-                                color: Color(0xffD7D9D7),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                                image: DecorationImage(
-                                    image: FileImage(image3!),
-                                    fit: BoxFit.fill))
-                            : BoxDecoration(
-                                color: Color(0xffD7D9D7),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
-                        child: image3 != null
-                            ? Icon(null)
-                            : Icon(Icons.upload_rounded, color: Colors.white)),
-                    onPressed: () {
-                      pickImage3();
-                    },
-                  ),
-                  MaterialButton(
-                    elevation: 8.0,
-                    child: Container(
-                        height: 184,
-                        width: 108,
-                        decoration: image4 != null
-                            ? BoxDecoration(
-                                color: Color(0xffD7D9D7),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                                image: DecorationImage(
-                                    image: FileImage(image4!),
-                                    fit: BoxFit.fill))
-                            : BoxDecoration(
-                                color: Color(0xffD7D9D7),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
-                        child: image4 != null
-                            ? Icon(null)
-                            : Icon(Icons.upload_rounded, color: Colors.white)),
-                    onPressed: () {
-                      pickImage4();
-                    },
-                  ),
-                  SizedBox(height: 20),
-                ],
-              ),
+                )
+              ],
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
+            Row(children: [
+              MaterialButton(
+                color: Colors.black,
+                onPressed: () {
+                  pickImage1();
+                },
+              )
+            ]),
+            SizedBox(height: 10),
             Row(
               //this contains our host drop down.
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Expanded(
-                  child: Container(
-                    color: Color(0xffD7D9D7),
-                    padding: EdgeInsets.all(10),
-                    /*decoration: BoxDecoration(borderRadius:
-                                          BorderRadius.all(Radius.circular(20)),*/
-                    child: TypeAheadField<User?>(
-                      //Here we use <User> because that is what we are autocompleting for.
-                      hideOnEmpty: true,
-                      //TypeAheadField - A TextField that displays a list of suggestions as the user types.
-                      //hideSuggestionsOnKeyboardHide: false,
-                      textFieldConfiguration: TextFieldConfiguration(
-                        decoration: InputDecoration(
-                          suffixIcon:
-                              Icon(Icons.search, color: Color(0xff828382)),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide:
-                                BorderSide(width: 0, style: BorderStyle.none),
-                          ),
-                          hintText: 'Hosts: ',
-                          hintStyle: TextStyle(
-                              fontSize: 16.0,
-                              color: Color(0xff828382),
-                              fontWeight: FontWeight.w700),
-                          filled: true,
-                          fillColor: Colors.white,
-                          contentPadding: EdgeInsets.all(10),
+                SizedBox(
+                  width: 330,
+                  height: 46.0,
+                  child: Card(
+                    color: Color(0XFFD7D9D7),
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 20,
                         ),
-                      ),
-                      suggestionsBoxDecoration: const SuggestionsBoxDecoration(
-                        color: Color(0xffD7D9D7),
-                      ),
-                      suggestionsCallback: UserData
-                          .getSuggestions, //we get suggestions from UserData
-                      itemBuilder: (context, User? suggestion) {
-                        final user = suggestion!;
-
-                        return ListTile(
-                          leading: Container(
-                            width: 60,
-                            height: 60,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                image: NetworkImage(user.imageUrl),
-                                fit: BoxFit.fill,
+                        SizedBox(
+                            width: 95,
+                            height: 20,
+                            child: Text(
+                              "Event starts: ",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
                               ),
+                              textAlign: TextAlign.left,
+                            )),
+                        SizedBox(
+                          width: 100,
+                          height: 20,
+                          child: ElevatedButton(
+                            onPressed: () => _showDatePicker(this.context),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              foregroundColor: Colors.grey,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5.0)),
                             ),
-                          ),
-                          title: Text(user.name),
-                        );
-                      },
-                      noItemsFoundBuilder: (context) => Container(
-                        height: 50,
-                        child: Center(
-                          child: Text(
-                            'No Users Found.',
-                            style: TextStyle(fontSize: 15),
+                            child: Text(date != null
+                                ? DateFormat.yMd().format(date)
+                                : 'No Date!'),
                           ),
                         ),
-                      ),
-                      onSuggestionSelected: (User? suggestion) {
-                        final user =
-                            suggestion!; //the suggestion that we selected is stored in user variable.
-
-                        //Container(height: 20, width: 20, Text(name));
-
-                        //this is the part where we say what we want to do in the selection... aka we need to put it in a container.
-
-                        // Navigator.of(context).push(MaterialPageRoute(
-                        //   builder: (context) => UserDetailPage(user: user)
-                      }
-                      /*
-                        Container(height:20, width:20,
-                        Text(suggestion.name;)*/
-
-                      //this is the part where we say what we want to do in the selection... aka we need to put it in a container.
-                      /*
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => UserDetailPage(user: user)
-                      )
-                      );*/
-                      ,
+                        SizedBox(
+                          width: 10,
+                        ),
+                        SizedBox(
+                          width: 93,
+                          height: 20,
+                          child: ElevatedButton(
+                            onPressed: () => _showTimePicker(this.context),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              foregroundColor: Colors.grey,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5.0)),
+                            ),
+                            child: Text(time != null
+                                ? DateFormat.jm().format(time)
+                                : 'No Time!'),
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ),
@@ -426,6 +438,67 @@ class _PanelWidgetState extends State<PanelWidget> {
                 ),
               ),
             ),
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              SizedBox(
+                width: 330,
+                height: 46.0,
+                child: Card(
+                  color: Color(0XFFD7D9D7),
+                  child: Row(children: [
+                    SizedBox(
+                      width: 20,
+                    ),
+                    SizedBox(
+                        width: 95,
+                        height: 20,
+                        child: Text(
+                          "Event ends: ",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.left,
+                        )),
+                    SizedBox(
+                      width: 100,
+                      height: 20,
+                      child: ElevatedButton(
+                        onPressed: () => _showDatePicker(this.context),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          foregroundColor: Colors.grey,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0)),
+                        ),
+                        child: Text(date != null
+                            ? DateFormat.yMd().format(date)
+                            : 'No Date!'),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    SizedBox(
+                      width: 93,
+                      height: 20,
+                      child: ElevatedButton(
+                        onPressed: () => _showTimePicker(this.context),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          foregroundColor: Colors.grey,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0)),
+                        ),
+                        child: Text(time != null
+                            ? DateFormat.jm().format(time)
+                            : 'No Time!'),
+                      ),
+                    ),
+                  ]),
+                ),
+              ),
+            ]),
           ],
         ),
       );
