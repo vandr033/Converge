@@ -452,44 +452,7 @@ class _PanelWidgetState extends State<PanelWidget> {
               ],
             ),
 
-            /*
-            Row(
-              //HOST!
-              children: [
-                SizedBox(
-                  width: 360,
-                  height: 46,
-                  child: TextField(
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                    obscureText: false,
-                    textAlign: TextAlign.center,
-                    decoration: InputDecoration(
-                        hintText: 'Hosts:',
-                        filled: true,
-                        fillColor: Color(0XFFD7D9D7),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12.0),
-                          borderSide: BorderSide(
-                            width: 0,
-                            style: BorderStyle.none,
-                          ),
-                        ),
-                        alignLabelWithHint: false,
-                        labelText: '  Hosts:',
-                        labelStyle: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        )),
-                  ),
-                ),
-              ],
-            ),*/
-
             SizedBox(height: 10),
-
             Row(
               //example
               children: [

@@ -623,25 +623,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                       onSuggestionSelected: (User? suggestion) {
                         final user =
                             suggestion!; //the suggestion that we selected is stored in user variable.
-
-                        //Container(height: 20, width: 20, Text(name));
-
-                        //this is the part where we say what we want to do in the selection... aka we need to put it in a container.
-
-                        // Navigator.of(context).push(MaterialPageRoute(
-                        //   builder: (context) => UserDetailPage(user: user)
-                      }
-                      /*
-                        Container(height:20, width:20,
-                        Text(suggestion.name;)*/
-
-                      //this is the part where we say what we want to do in the selection... aka we need to put it in a container.
-                      /*
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => UserDetailPage(user: user)
-                      )
-                      );*/
-                      ,
+                      },
                     ),
                   ),
                 ),
