@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
     HomePage.tag: (context) => HomePage(),
     EventScreen.tag: (context) => EventScreen(),
     CommunityScreen.tag: (context) => CommunityScreen(),
-    LocalTypeAheadPage.tag: (context) => LocalTypeAheadPage()
+    //LocalTypeAheadPage.tag: (context) => LocalTypeAheadPage()
   };
 
   @override
@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
               fontFamily: 'Nunito',
             ),
             home:
-                CommunityScreen(), //LoginPage(), - replace this when done testing interest screens!
+                EventScreen(), //LoginPage(), - replace this when done testing interest screens!
             routes: routes,
           )),
     );
