@@ -678,6 +678,32 @@ class _PanelWidgetState extends State<PanelWidget> {
                 ),
               ),
             ),
+            SizedBox(height:10),
+            Row(
+              //row 9 - "next" button
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                //The actual formatting of the 'Next' button and everything we do for it
+                SizedBox(
+                  width: 250.0,
+                  height: 40.0,
+                  child: ElevatedButton(
+                      onPressed: () {
+                        //Navigator.of(context).pushNamed(InterestScreen2.tag);
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xff4589FF),
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0))),
+                      child: const Text(
+                        'Post',
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      )),
+                )
+              ],
+            ),
           ],
         ),
       );

@@ -44,6 +44,8 @@ dependencies:
 
   flutter_typeahead: ^3.0.0-nullsafety.0
 
+  places_service: ^0.1.2
+
   avatars: ^2.0.0
 
   # generate fake user data
