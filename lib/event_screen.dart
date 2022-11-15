@@ -13,10 +13,12 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import 'data/user_data.dart';
 
-const List<String> screens = ['Create Event'];
-String chosenScreen = 'Create Event';
-DateTime date = DateTime.now();
-DateTime time = DateTime.now();
+List<String> screens = ['Create event', 'Create community'];
+String chosenScreen = 'Create event';
+DateTime startDate = DateTime.now();
+DateTime startTime = DateTime.now();
+DateTime endDate = DateTime.now();
+DateTime endTime = DateTime.now();
 
 class EventScreen extends StatefulWidget {
   static String tag = 'event-screen';
@@ -172,7 +174,7 @@ class _PanelWidgetState extends State<PanelWidget> {
     }
   }
 
-  void _showDatePicker(ctx) {
+  void startDatePicker(ctx) {
     // showCupertinoModalPopup is a built-in function of the cupertino library
     showCupertinoModalPopup(
         context: ctx,
@@ -188,21 +190,23 @@ class _PanelWidgetState extends State<PanelWidget> {
                         mode: CupertinoDatePickerMode.date,
                         onDateTimeChanged: (val) {
                           setState(() {
-                            date = val;
+                            startDate = val;
                           });
                         }),
                   ),
                   // Close the modal
                   CupertinoButton(
-                      child: const Text('OK'),
-                      onPressed: () => {} //Navigator.of(ctx).pop(),
-                      )
+                    child: const Text('OK'),
+                    onPressed: () => {
+                      Navigator.of(ctx, rootNavigator: true).pop(ctx),
+                    },
+                  )
                 ],
               ),
             ));
   }
 
-  void _showTimePicker(ctx) {
+  void startTimePicker(ctx) {
     // showCupertinoModalPopup is a built-in function of the cupertino library
     showCupertinoModalPopup(
         context: ctx,
@@ -218,15 +222,81 @@ class _PanelWidgetState extends State<PanelWidget> {
                         mode: CupertinoDatePickerMode.time,
                         onDateTimeChanged: (val) {
                           setState(() {
-                            time = val;
+                            startTime = val;
                           });
                         }),
                   ),
                   // Close the modal
                   CupertinoButton(
-                      child: const Text('OK'),
-                      onPressed: () => {} //Navigator.of(ctx).pop(),
-                      )
+                    child: const Text('OK'),
+                    onPressed: () => {
+                      Navigator.of(ctx, rootNavigator: true).pop(ctx),
+                    },
+                  )
+                ],
+              ),
+            ));
+  }
+
+  void endDatePicker(ctx) {
+    // showCupertinoModalPopup is a built-in function of the cupertino library
+    showCupertinoModalPopup(
+        context: ctx,
+        builder: (_) => Container(
+              height: 500,
+              color: const Color.fromARGB(255, 255, 255, 255),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 400,
+                    child: CupertinoDatePicker(
+                        initialDateTime: DateTime.now(),
+                        mode: CupertinoDatePickerMode.date,
+                        onDateTimeChanged: (val) {
+                          setState(() {
+                            endDate = val;
+                          });
+                        }),
+                  ),
+                  // Close the modal
+                  CupertinoButton(
+                    child: const Text('OK'),
+                    onPressed: () => {
+                      Navigator.of(ctx, rootNavigator: true).pop(ctx),
+                    },
+                  )
+                ],
+              ),
+            ));
+  }
+
+  void endTimePicker(ctx) {
+    // showCupertinoModalPopup is a built-in function of the cupertino library
+    showCupertinoModalPopup(
+        context: ctx,
+        builder: (_) => Container(
+              height: 500,
+              color: const Color.fromARGB(255, 255, 255, 255),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 400,
+                    child: CupertinoDatePicker(
+                        initialDateTime: DateTime.now(),
+                        mode: CupertinoDatePickerMode.time,
+                        onDateTimeChanged: (val) {
+                          setState(() {
+                            endTime = val;
+                          });
+                        }),
+                  ),
+                  // Close the modal
+                  CupertinoButton(
+                    child: const Text('OK'),
+                    onPressed: () => {
+                      Navigator.of(ctx, rootNavigator: true).pop(ctx),
+                    },
+                  )
                 ],
               ),
             ));
@@ -461,29 +531,30 @@ class _PanelWidgetState extends State<PanelWidget> {
 
             //SizedBox(height: 10),
             Row(
-              //this is our "event starts" box
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
                   
                   width: 360,
-                  height: 46.0,
+                  height: 50.0,
                   child: Card(
                     
                     color: Color(0XFFD7D9D7),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(7.0)),
                     child: Row(
                       children: [
                         SizedBox(
-                          width: 20,
+                          width: 30,
                         ),
                         SizedBox(
-                            width: 95,
-                            height: 20,
+                            width: 115,
+                            height: 15,
                             child: Text(
                               "Event starts: ",
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 16,
+                                fontSize: 14,
                                 fontWeight: FontWeight.bold,
                               ),
                               textAlign: TextAlign.left,
@@ -493,38 +564,54 @@ class _PanelWidgetState extends State<PanelWidget> {
                           width: 20,
                         ),
                         SizedBox(
-                          width: 100,
-                          height: 20,
+                          width: 95,
+                          height: 30,
                           child: ElevatedButton(
-                            onPressed: () => _showDatePicker(this.context),
+                            onPressed: () => startDatePicker(this.context),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white,
                               foregroundColor: Colors.grey,
+                              padding: EdgeInsets.zero,
                               shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5.0)),
+                                  borderRadius: BorderRadius.circular(4.0)),
                             ),
-                            child: Text(date != null
-                                ? DateFormat.yMd().format(date)
-                                : 'No Date!'),
+                            child: Text(
+                              startDate != null
+                                  ? DateFormat.yMMMd().format(startDate)
+                                  : 'No Date!',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              softWrap: false,
+                            ),
                           ),
                         ),
                         SizedBox(
-                          width: 10,
+                          width: 5,
                         ),
                         SizedBox(
-                          width: 93,
-                          height: 20,
+                          width: 70,
+                          height: 30,
                           child: ElevatedButton(
-                            onPressed: () => _showTimePicker(this.context),
+                            onPressed: () => startTimePicker(this.context),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white,
                               foregroundColor: Colors.grey,
+                              padding: EdgeInsets.zero,
                               shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5.0)),
+                                  borderRadius: BorderRadius.circular(4.0)),
                             ),
-                            child: Text(time != null
-                                ? DateFormat.jm().format(time)
-                                : 'No Time!'),
+                            child: Text(
+                              startDate != null
+                                  ? DateFormat.jm().format(startTime)
+                                  : 'No Time!',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              softWrap: false,
+                            ),
                           ),
                         )
                       ],
@@ -533,80 +620,91 @@ class _PanelWidgetState extends State<PanelWidget> {
                 ),
               ],
             ),
-            
-            SizedBox(height: 10),
-
-
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              SizedBox(
-                //this is our "event ends" box
-                width: 360,
-                height: 46.0,
-                child: Card(
-                  color: Color(0XFFD7D9D7),
-                  child: Row(children: [
-                    SizedBox(
-                      width: 20,
-                    ),
-                    SizedBox(
-                        width: 95,
-                        height: 20,
-                        child: Text(
-                          "Event ends: ",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.left,
-                        )),
-                        //spacing between eve end and white boxes
+            //SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 330,
+                  height: 50.0,
+                  child: Card(
+                    color: Color(0XFFD7D9D7),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(7.0)),
+                    child: Row(
+                      children: [
                         SizedBox(
-                          width: 20,
+                          width: 30,
                         ),
-                    SizedBox(
-                      width: 100,
-                      height: 20,
-                      child: ElevatedButton(
-                        
-                        onPressed: () => _showDatePicker(this.context),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          foregroundColor: Colors.grey,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5.0)),
+                        SizedBox(
+                            width: 115,
+                            height: 15,
+                            child: Text(
+                              "Event ends: ",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.left,
+                            )),
+                        SizedBox(
+                          width: 95,
+                          height: 30,
+                          child: ElevatedButton(
+                            onPressed: () => endDatePicker(this.context),
+                            style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.zero,
+                              backgroundColor: Colors.white,
+                              foregroundColor: Colors.grey,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(4.0)),
+                            ),
+                            child: Text(
+                              endDate != null
+                                  ? DateFormat.yMMMd().format(endDate)
+                                  : 'No Date!',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              softWrap: false,
+                            ),
+                          ),
                         ),
-                        child: Text(
-                          
-                            date != null
-                            ? DateFormat.yMd().format(date)
-                            : 'No Date!'),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    SizedBox(
-                      width: 93,
-                      height: 20,
-                      child: ElevatedButton(
-                        onPressed: () => _showTimePicker(this.context),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          foregroundColor: Colors.grey,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5.0)),
+                        SizedBox(
+                          width: 5,
                         ),
-                        child: Text(time != null
-                            ? DateFormat.jm().format(time)
-                            : 'No Time!'),
-                      ),
+                        SizedBox(
+                          width: 70,
+                          height: 30,
+                          child: ElevatedButton(
+                            onPressed: () => endTimePicker(this.context),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              foregroundColor: Colors.grey,
+                              padding: EdgeInsets.zero,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(4.0)),
+                            ),
+                            child: Text(
+                              endTime != null
+                                  ? DateFormat.jm().format(endTime)
+                                  : 'No Time!',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              softWrap: false,
+                            ),
+                          ),
+                        )
+                      ],
                     ),
-                  ]),
+                  ),
                 ),
-              ),
-            ]),
-
+              ],
+            ),
             SizedBox(height: 10),
 
             //this is where host goes
@@ -754,7 +852,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                 ),
               ),
             ),
-            SizedBox(height:10),
+            SizedBox(height: 10),
             Row(
               //row 9 - "next" button
               mainAxisAlignment: MainAxisAlignment.center,
