@@ -3,6 +3,7 @@
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_application/community_screen.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,7 +13,7 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import 'data/user_data.dart';
 
-List<String> screens = ['Create Event', 'Create Community'];
+const List<String> screens = ['Create Event'];
 String chosenScreen = 'Create Event';
 DateTime date = DateTime.now();
 DateTime time = DateTime.now();
@@ -108,6 +109,8 @@ class _PanelWidgetState extends State<PanelWidget> {
   File? image3;
   File? image4;
   bool vis = false;
+  
+  var dropdownValue;
 
   Future pickImage1() async {
     try {
@@ -249,51 +252,82 @@ class _PanelWidgetState extends State<PanelWidget> {
           children: <Widget>[
             Row(
               children: [
-                SizedBox(
-                    width: 200,
-                    //height: 100,
-                    child: DropdownButtonFormField<String>(
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Color(0XFFD7D9D7),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12.0),
-                          borderSide: BorderSide(
-                            width: 0,
-                            style: BorderStyle.none,
-                          ),
+                Container(
+                  padding: EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    color: Color(0XFFD7D9D7),
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  width: 226,
+                  height: 46,
+
+                  child: DropdownButton<String>(
+                    isExpanded: true,
+                    borderRadius: BorderRadius.circular(12.0),
+                    dropdownColor: Color(0XFFD7D9D7),
+                    style: const TextStyle(
+                    color: Colors.white, //<-- SEE HERE
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold),
+                    value: chosenScreen,
+                    icon: Icon(
+                      Icons.keyboard_arrow_down,
+                      color: Colors.white, // <-- SEE HERE
+                    ),
+                    
+                    onChanged: (String? newValue) {
+                      if (newValue != dropdownValue) {
+                        switch (newValue) {
+                          case 'Create Event':
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => EventScreen()));
+                            break;
+                          case 'Create Community':
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => CommunityScreen()));
+                            break;  
+                        }
+                      }
+                      setState(() {
+                        dropdownValue = newValue!;
+                      });
+                    },
+                    
+                    items: <String>['Create Event', 'Create Community']
+                        .map<DropdownMenuItem<String>>(
+                          (String chosenScreen) {
+                      return DropdownMenuItem<String>(
+                        value: chosenScreen,
+                        child: Text(
+                          chosenScreen,
                         ),
-                      ),
-                      value: chosenScreen,
-                      items: screens
-                          .map((screen) => DropdownMenuItem<String>(
-                              value: screen,
-                              child: Text(
-                                screen,
-                                style: TextStyle(
-                                    fontSize: 22,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
-                                textAlign: TextAlign.left,
-                              )))
-                          .toList(),
-                      onChanged: (screen) =>
-                          setState(() => chosenScreen = screen!),
-                    )),
-                SizedBox(
-                  width: 40,
+                      );
+                    }).toList(),
+                  ),
                 ),
+                
                 SizedBox(
-                  width: 90,
-                  //height: 40,
+                  width: 20,
+                ),
+
+                SizedBox(
+                  width: 114,
+                  height: 46,
                   child: TextField(
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
                     ),
                     obscureText: false,
-                    textAlign: TextAlign.center,
                     decoration: InputDecoration(
-                        hintText: '',
+                      contentPadding: EdgeInsets.all(0),
+                      hintText: "Name",
+                        hintStyle: TextStyle(
+                          
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ) ,
                         filled: true,
                         fillColor: Color(0XFFD7D9D7),
                         border: OutlineInputBorder(
@@ -303,26 +337,26 @@ class _PanelWidgetState extends State<PanelWidget> {
                             style: BorderStyle.none,
                           ),
                         ),
-                        alignLabelWithHint: true,
-                        labelText: 'Name',
-                        labelStyle: TextStyle(
-                          color: Colors.white,
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                        )),
+                        alignLabelWithHint: false,
+                        ),
                   ),
-                )
+                ),
               ],
             ),
+
             SizedBox(height: 10),
+
             SizedBox(
+              
               //this contains our image picker
               height: 184,
               width: double.infinity,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
+                  
                   MaterialButton(
+                    padding: EdgeInsets.symmetric(horizontal: 0),
                     elevation: 8.0,
                     child: Container(
                         height: 184,
@@ -371,6 +405,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                     },
                   ),
                   MaterialButton(
+                    padding: EdgeInsets.symmetric(horizontal: 0),
                     elevation: 8.0,
                     child: Container(
                         height: 184,
@@ -422,16 +457,19 @@ class _PanelWidgetState extends State<PanelWidget> {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
+
             //SizedBox(height: 10),
             Row(
               //this is our "event starts" box
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  width: 330,
+                  
+                  width: 360,
                   height: 46.0,
                   child: Card(
+                    
                     color: Color(0XFFD7D9D7),
                     child: Row(
                       children: [
@@ -450,6 +488,10 @@ class _PanelWidgetState extends State<PanelWidget> {
                               ),
                               textAlign: TextAlign.left,
                             )),
+                            //spacing between eve start and white boxes
+                            SizedBox(
+                          width: 20,
+                        ),
                         SizedBox(
                           width: 100,
                           height: 20,
@@ -491,11 +533,14 @@ class _PanelWidgetState extends State<PanelWidget> {
                 ),
               ],
             ),
-            //SizedBox(height: 20),
+            
+            SizedBox(height: 10),
+
+
             Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               SizedBox(
                 //this is our "event ends" box
-                width: 330,
+                width: 360,
                 height: 46.0,
                 child: Card(
                   color: Color(0XFFD7D9D7),
@@ -515,10 +560,15 @@ class _PanelWidgetState extends State<PanelWidget> {
                           ),
                           textAlign: TextAlign.left,
                         )),
+                        //spacing between eve end and white boxes
+                        SizedBox(
+                          width: 20,
+                        ),
                     SizedBox(
                       width: 100,
                       height: 20,
                       child: ElevatedButton(
+                        
                         onPressed: () => _showDatePicker(this.context),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
@@ -526,7 +576,9 @@ class _PanelWidgetState extends State<PanelWidget> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5.0)),
                         ),
-                        child: Text(date != null
+                        child: Text(
+                          
+                            date != null
                             ? DateFormat.yMd().format(date)
                             : 'No Date!'),
                       ),
@@ -554,16 +606,20 @@ class _PanelWidgetState extends State<PanelWidget> {
                 ),
               ),
             ]),
+
             SizedBox(height: 10),
+
+            //this is where host goes
             Row(
               //this contains our host drop down.
               children: [
                 Expanded(
                   child: Container(
-                    color: Color(0xffD7D9D7),
+                    //color: Color(0xffD7D9D7),
                     padding: EdgeInsets.all(10),
-                    /*decoration: BoxDecoration(borderRadius:
-                                          BorderRadius.all(Radius.circular(20)),*/
+                    decoration: BoxDecoration(
+                      color: Color(0xffD7D9D7),
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
                     child: TypeAheadField<User?>(
                       //Here we use <User> because that is what we are autocompleting for.
                       hideOnEmpty: true,
@@ -623,13 +679,33 @@ class _PanelWidgetState extends State<PanelWidget> {
                       onSuggestionSelected: (User? suggestion) {
                         final user =
                             suggestion!; //the suggestion that we selected is stored in user variable.
-                      },
+
+                        //Container(height: 20, width: 20, Text(name));
+
+                        //this is the part where we say what we want to do in the selection... aka we need to put it in a container.
+
+                        // Navigator.of(context).push(MaterialPageRoute(
+                        //   builder: (context) => UserDetailPage(user: user)
+                      }
+                      /*
+                        Container(height:20, width:20,
+                        Text(suggestion.name;)*/
+
+                      //this is the part where we say what we want to do in the selection... aka we need to put it in a container.
+                      /*
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => UserDetailPage(user: user)
+                      )
+                      );*/
+                      ,
                     ),
                   ),
                 ),
               ],
             ),
+
             SizedBox(height: 10),
+
             Padding(
               //this is our community drop down.
               padding: const EdgeInsets.only(left: 10, right: 10),

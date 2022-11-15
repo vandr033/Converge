@@ -1,14 +1,16 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application/HomePage.dart';
+import 'package:flutter_application/event_screen.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import 'data/user_data.dart';
 
-const List<String> screens = ['Create Event', 'Create Community'];
-String? chosenScreen = 'Create Event';
+const List<String> screens = ['Create Community', 'Create Event'];
+String? chosenScreen = 'Create Community';
 
 class CommunityScreen extends StatefulWidget {
   static String tag = 'community-screen';
@@ -98,6 +100,8 @@ class _PanelWidgetState extends State<PanelWidget> {
   File? image1;
   File? image2;
 
+  var dropdownValue;
+
   Future pickImage1() async {
     try {
       final imageGrab =
@@ -154,51 +158,85 @@ class _PanelWidgetState extends State<PanelWidget> {
             Row(
               //example
               children: [
-                SizedBox(
-                    width: 226,
-                    height: 46,
-                    child: DropdownButtonFormField<String>(
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Color(0XFFD7D9D7),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12.0),
-                          borderSide: BorderSide(
-                            width: 0,
-                            style: BorderStyle.none,
-                          ),
+                Container(
+                  padding: EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    color: Color(0XFFD7D9D7),
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  width: 226,
+                  height: 46,
+
+                  child: DropdownButton<String>(
+                    isExpanded: true,
+                    isDense: false,
+                    borderRadius: BorderRadius.circular(12.0),
+                    dropdownColor: Color(0XFFD7D9D7),
+                    style: const TextStyle(
+                    color: Colors.white, //<-- SEE HERE
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold),
+                    value: chosenScreen,
+                    icon: Icon(
+                      Icons.keyboard_arrow_down,
+                      color: Colors.white, // <-- SEE HERE
+                    ),
+                    
+                    onChanged: (String? newValue) {
+                      if (newValue != dropdownValue) {
+                        switch (newValue) {
+                          case 'Create Community':
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => CommunityScreen()));
+                            break;
+                          case 'Create Event':
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => EventScreen()));
+                            break;
+                        }
+                      }
+                      setState(() {
+                        dropdownValue = newValue!;
+                      });
+                    },
+                    
+                    items: <String>['Create Community', 'Create Event']
+                        .map<DropdownMenuItem<String>>(
+                          (String chosenScreen) {
+                      return DropdownMenuItem<String>(
+                        value: chosenScreen,
+                        child: Text(
+                          chosenScreen,
                         ),
-                      ),
-                      value: chosenScreen,
-                      items: screens
-                          .map((screen) => DropdownMenuItem<String>(
-                              value: screen,
-                              child: Text(
-                                screen,
-                                style: TextStyle(
-                                    fontSize: 8,
-                                    color: Colors.green,
-                                    fontWeight: FontWeight.bold),
-                                textAlign: TextAlign.left,
-                              )))
-                          .toList(),
-                      onChanged: (screen) =>
-                          setState(() => chosenScreen = screen),
-                    )),
+                      );
+                    }).toList(),
+                  ),
+                ),
+
+
                 SizedBox(
                   width: 20,
                 ),
+
+
                 SizedBox(
                   width: 114,
                   height: 46,
                   child: TextField(
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
                     ),
                     obscureText: false,
-                    textAlign: TextAlign.center,
                     decoration: InputDecoration(
-                        hintText: '',
+                      contentPadding: EdgeInsets.all(0),
+                      hintText: "Name",
+                        hintStyle: TextStyle(
+                          
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ) ,
                         filled: true,
                         fillColor: Color(0XFFD7D9D7),
                         border: OutlineInputBorder(
@@ -209,12 +247,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                           ),
                         ),
                         alignLabelWithHint: false,
-                        labelText: 'Name',
-                        labelStyle: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        )),
+                        ),
                   ),
                 ),
               ],
@@ -364,10 +397,11 @@ class _PanelWidgetState extends State<PanelWidget> {
               children: [
                 Expanded(
                   child: Container(
-                    color: Color(0xffD7D9D7),
+                    //color: Color(0xffD7D9D7),
                     padding: EdgeInsets.all(10),
-                    /*decoration: BoxDecoration(borderRadius:
-                                          BorderRadius.all(Radius.circular(20)),*/
+                    decoration: BoxDecoration(
+                      color: Color(0xffD7D9D7),
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
                     child: TypeAheadField<User?>(
                       //Here we use <User> because that is what we are autocompleting for.
                       hideOnEmpty: true,
@@ -453,6 +487,7 @@ class _PanelWidgetState extends State<PanelWidget> {
             ),
 
             SizedBox(height: 10),
+            
             Row(
               //example
               children: [
