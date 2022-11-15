@@ -1,0 +1,3 @@
+/*
+Here we write a service so that we can get json from google places api and convert to dart object as defined in our model.
+*/
