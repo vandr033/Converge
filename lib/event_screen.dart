@@ -322,7 +322,9 @@ class _PanelWidgetState extends State<PanelWidget> {
           children: <Widget>[
             Row(
               children: [
-                Container(
+                Expanded(
+                  flex: 3,// default
+                  child: Container(// required field                  
                   padding: EdgeInsets.all(15),
                   decoration: BoxDecoration(
                     color: Color(0XFFD7D9D7),
@@ -374,13 +376,21 @@ class _PanelWidgetState extends State<PanelWidget> {
                       );
                     }).toList(),
                   ),
+                )
                 ),
                 
-                SizedBox(
-                  width: 20,
-                ),
 
-                SizedBox(
+                Expanded(
+         flex: 0,// default
+         child: Container(
+                  width: 20,
+                ),// required field
+                ),
+                
+
+                Expanded(
+         flex: 1,// default
+         child: Container(
                   width: 114,
                   height: 46,
                   child: TextField(
@@ -411,8 +421,11 @@ class _PanelWidgetState extends State<PanelWidget> {
                         ),
                   ),
                 ),
+                ),
+
               ],
             ),
+          
 
             SizedBox(height: 10),
 
