@@ -13,8 +13,8 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import 'data/user_data.dart';
 
-List<String> screens = ['Create event', 'Create community'];
-String chosenScreen = 'Create event';
+List<String> screens = ['Create Event', 'Create Community'];
+String chosenScreen = 'Create Event';
 DateTime startDate = DateTime.now();
 DateTime startTime = DateTime.now();
 DateTime endDate = DateTime.now();
@@ -625,7 +625,7 @@ class _PanelWidgetState extends State<PanelWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  width: 330,
+                  width: 360,
                   height: 50.0,
                   child: Card(
                     color: Color(0XFFD7D9D7),
@@ -648,6 +648,9 @@ class _PanelWidgetState extends State<PanelWidget> {
                               ),
                               textAlign: TextAlign.left,
                             )),
+                            SizedBox(
+                          width: 20,
+                        ),
                         SizedBox(
                           width: 95,
                           height: 30,
@@ -709,15 +712,18 @@ class _PanelWidgetState extends State<PanelWidget> {
 
             //this is where host goes
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               //this contains our host drop down.
               children: [
-                Expanded(
-                  child: Container(
+                //Expanded(
+                  Container(
+                    width: 352,
+                    height: 55,
                     //color: Color(0xffD7D9D7),
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.all(5),
                     decoration: BoxDecoration(
                       color: Color(0xffD7D9D7),
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                      borderRadius: BorderRadius.all(Radius.circular(12))),
                     child: TypeAheadField<User?>(
                       //Here we use <User> because that is what we are autocompleting for.
                       hideOnEmpty: true,
@@ -728,7 +734,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                           suffixIcon:
                               Icon(Icons.search, color: Color(0xff828382)),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(12),
                             borderSide:
                                 BorderSide(width: 0, style: BorderStyle.none),
                           ),
@@ -798,7 +804,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                       ,
                     ),
                   ),
-                ),
+                //),
               ],
             ),
 
