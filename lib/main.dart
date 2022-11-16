@@ -21,12 +21,12 @@ void main() async {
 class MyApp extends StatelessWidget {
   final routes = <String, WidgetBuilder>{
     LoginPage.tag: (context) => LoginPage(),
-    // HomePage.tag: (context) => HomePage(),
+    HomePage.tag: (context) => HomePage(),
     RegisterPage.tag: (context) => RegisterPage(),
     InterestScreen1.tag: (context) => InterestScreen1(),
     InterestScreen2.tag: (context) => InterestScreen2(),
     HomePage.tag: (context) => HomePage(),
-    //EventScreen.tag: (context) => EventScreen(),
+    EventScreen.tag: (context) => EventScreen(),
     CommunityScreen.tag: (context) => CommunityScreen(),
     //LocalTypeAheadPage.tag: (context) => LocalTypeAheadPage()
   };

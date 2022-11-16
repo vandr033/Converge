@@ -333,48 +333,50 @@ class _PanelWidgetState extends State<PanelWidget> {
                   width: 226,
                   height: 46,
 
-                  child: DropdownButton<String>(
-                    isExpanded: true,
-                    borderRadius: BorderRadius.circular(12.0),
-                    dropdownColor: Color(0XFFD7D9D7),
-                    style: const TextStyle(
-                    color: Colors.white, //<-- SEE HERE
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold),
-                    value: chosenScreen,
-                    icon: Icon(
-                      Icons.keyboard_arrow_down,
-                      color: Colors.white, // <-- SEE HERE
-                    ),
-                    
-                    onChanged: (String? newValue) {
-                      if (newValue != dropdownValue) {
-                        switch (newValue) {
-                          case 'Create Event':
-                            //Navigator.of(context).push(MaterialPageRoute(
-                                //builder: (context) => EventScreen()));
-                            break;
-                          case 'Create Community':
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => CommunityScreen()));
-                            break;  
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton<String>(
+                      isExpanded: true,
+                      borderRadius: BorderRadius.circular(12.0),
+                      dropdownColor: Color(0XFFD7D9D7),
+                      style: const TextStyle(
+                      color: Colors.white, //<-- SEE HERE
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
+                      value: chosenScreen,
+                      icon: Icon(
+                        Icons.keyboard_arrow_down,
+                        color: Colors.white, // <-- SEE HERE
+                      ),
+                      
+                      onChanged: (String? newValue) {
+                        if (newValue != dropdownValue) {
+                          switch (newValue) {
+                            case 'Create Event':
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => EventScreen()));
+                              break;
+                            case 'Create Community':
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => CommunityScreen()));
+                              break;  
+                          }
                         }
-                      }
-                      setState(() {
-                        dropdownValue = newValue!;
-                      });
-                    },
-                    
-                    items: <String>['Create Event', 'Create Community']
-                        .map<DropdownMenuItem<String>>(
-                          (String chosenScreen) {
-                      return DropdownMenuItem<String>(
-                        value: chosenScreen,
-                        child: Text(
-                          chosenScreen,
-                        ),
-                      );
-                    }).toList(),
+                        setState(() {
+                          dropdownValue = newValue!;
+                        });
+                      },
+                      
+                      items: <String>['Create Event', 'Create Community']
+                          .map<DropdownMenuItem<String>>(
+                            (String chosenScreen) {
+                        return DropdownMenuItem<String>(
+                          value: chosenScreen,
+                          child: Text(
+                            chosenScreen,
+                          ),
+                        );
+                      }).toList(),
+                    ),
                   ),
                 )
                 ),
@@ -448,14 +450,14 @@ class _PanelWidgetState extends State<PanelWidget> {
                             ? BoxDecoration(
                                 color: Color(0xffD7D9D7),
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
+                                    BorderRadius.all(Radius.circular(12)),
                                 image: DecorationImage(
                                     image: FileImage(image1!),
                                     fit: BoxFit.fill))
                             : BoxDecoration(
                                 color: Color(0xffD7D9D7),
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
+                                    BorderRadius.all(Radius.circular(12))),
                         child: image1 != null
                             ? Icon(null)
                             : Icon(Icons.upload_rounded, color: Colors.white)),
@@ -472,14 +474,14 @@ class _PanelWidgetState extends State<PanelWidget> {
                             ? BoxDecoration(
                                 color: Color(0xffD7D9D7),
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
+                                    BorderRadius.all(Radius.circular(12)),
                                 image: DecorationImage(
                                     image: FileImage(image2!),
                                     fit: BoxFit.fill))
                             : BoxDecoration(
                                 color: Color(0xffD7D9D7),
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
+                                    BorderRadius.all(Radius.circular(12))),
                         child: image2 != null
                             ? Icon(null)
                             : Icon(Icons.upload_rounded, color: Colors.white)),
@@ -497,14 +499,14 @@ class _PanelWidgetState extends State<PanelWidget> {
                             ? BoxDecoration(
                                 color: Color(0xffD7D9D7),
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
+                                    BorderRadius.all(Radius.circular(12)),
                                 image: DecorationImage(
                                     image: FileImage(image3!),
                                     fit: BoxFit.fill))
                             : BoxDecoration(
                                 color: Color(0xffD7D9D7),
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
+                                    BorderRadius.all(Radius.circular(12))),
                         child: image3 != null
                             ? Icon(null)
                             : Icon(Icons.upload_rounded, color: Colors.white)),
@@ -521,14 +523,14 @@ class _PanelWidgetState extends State<PanelWidget> {
                             ? BoxDecoration(
                                 color: Color(0xffD7D9D7),
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
+                                    BorderRadius.all(Radius.circular(12)),
                                 image: DecorationImage(
                                     image: FileImage(image4!),
                                     fit: BoxFit.fill))
                             : BoxDecoration(
                                 color: Color(0xffD7D9D7),
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
+                                    BorderRadius.all(Radius.circular(12))),
                         child: image4 != null
                             ? Icon(null)
                             : Icon(Icons.upload_rounded, color: Colors.white)),
@@ -559,7 +561,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                       
                       color: Color(0XFFD7D9D7),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(7.0)),
+                          borderRadius: BorderRadius.circular(12.0)),
                       child: Row(
                         children: [
                           SizedBox(
@@ -651,7 +653,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                     child: Card(
                       color: Color(0XFFD7D9D7),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(7.0)),
+                          borderRadius: BorderRadius.circular(12.0)),
                       child: Row(
                         children: [
                           SizedBox(
@@ -741,10 +743,10 @@ class _PanelWidgetState extends State<PanelWidget> {
                   Expanded(
                     flex: 1,
                     child: Container(
-                      width: 352,
+                      width: 360,
                       height: 55,
                       //color: Color(0xffD7D9D7),
-                      padding: EdgeInsets.all(5),
+                      padding: EdgeInsets.all(1),
                       // decoration: BoxDecoration(
                       //   color: Color(0xffD7D9D7),
                       //   borderRadius: BorderRadius.all(Radius.circular(12))),
@@ -758,7 +760,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                             suffixIcon:
                                 Icon(Icons.search, color: Colors.white),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5),
+                              borderRadius: BorderRadius.circular(12),
                               borderSide:
                                   BorderSide(width: 0, style: BorderStyle.none),
                             ),
@@ -844,7 +846,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                   padding: EdgeInsets.only(left: 10, right: 10),
                   decoration: BoxDecoration(
                     border: Border.all(width: 1, color: Colors.grey),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(12),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -908,7 +910,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                             backgroundColor: Color.fromARGB(255, 255, 0, 0),
                             foregroundColor: Colors.white,
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5.0))),
+                                borderRadius: BorderRadius.circular(12.0))),
                         child: const Text(
                           'Cancel',
                           style: TextStyle(
