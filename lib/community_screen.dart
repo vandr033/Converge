@@ -54,7 +54,6 @@ class CommunityScreenState extends State<CommunityScreen> {
 class PanelWidget extends StatefulWidget {
   final ScrollController controller;
   final PanelController panelController;
-
   const PanelWidget({
     Key? key,
     required this.controller,
@@ -158,7 +157,9 @@ class _PanelWidgetState extends State<PanelWidget> {
             Row(
               //example
               children: [
-                Container(
+                Expanded(
+                  flex: 6,// default
+                  child: Container(// required field                  
                   padding: EdgeInsets.all(15),
                   decoration: BoxDecoration(
                     color: Color(0XFFD7D9D7),
@@ -169,7 +170,6 @@ class _PanelWidgetState extends State<PanelWidget> {
 
                   child: DropdownButton<String>(
                     isExpanded: true,
-                    isDense: false,
                     borderRadius: BorderRadius.circular(12.0),
                     dropdownColor: Color(0XFFD7D9D7),
                     style: const TextStyle(
@@ -186,13 +186,14 @@ class _PanelWidgetState extends State<PanelWidget> {
                       if (newValue != dropdownValue) {
                         switch (newValue) {
                           case 'Create Community':
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => CommunityScreen()));
-                            break;
-                          case 'Create Event':
+                            //Navigator.of(context).push(MaterialPageRoute(
+                                //builder: (context) => CommunityScreen()));
+                            break; 
+                            case 'Create Event':
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => EventScreen()));
                             break;
+                           
                         }
                       }
                       setState(() {
@@ -211,15 +212,21 @@ class _PanelWidgetState extends State<PanelWidget> {
                       );
                     }).toList(),
                   ),
+                )
                 ),
+                
 
-
-                SizedBox(
+                Expanded(
+         flex: 0,// default
+         child: Container(
                   width: 20,
+                ),// required field
                 ),
+                
 
-
-                SizedBox(
+                Expanded(
+         flex: 4,// default
+         child: Container(
                   width: 114,
                   height: 46,
                   child: TextField(
@@ -250,8 +257,10 @@ class _PanelWidgetState extends State<PanelWidget> {
                         ),
                   ),
                 ),
+                ),
               ],
             ),
+            
             SizedBox(height: 10),
 
             Stack(
@@ -259,66 +268,75 @@ class _PanelWidgetState extends State<PanelWidget> {
               //example
               children: [
                 //Image Picker
-                MaterialButton(
-                  padding: EdgeInsets.symmetric(horizontal: 0),
-                  elevation: 8.0,
-                  child: Container(
-                      alignment: Alignment(.90, -.75),
-                      height: 110,
-                      width: 360,
-                      decoration: image1 != null
-                          ? BoxDecoration(
-                              color: Color(0xffD7D9D7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              image: DecorationImage(
-                                  image: FileImage(image1!), fit: BoxFit.fill))
-                          : BoxDecoration(
-                              color: Color(0xffD7D9D7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                      child: image1 != null
-                          ? Icon(null)
-                          : Icon(Icons.upload_rounded, color: Colors.white)),
-                  onPressed: () {
-                    pickImage1();
-                  },
+                Expanded(
+                  flex: 1,
+                  child: MaterialButton(
+                    padding: EdgeInsets.symmetric(horizontal: 0),
+                    elevation: 8.0,
+                    child: Container(
+                        alignment: Alignment(.90, -.75),
+                        height: 110,
+                        width: 360,
+                        decoration: image1 != null
+                            ? BoxDecoration(
+                                color: Color(0xffD7D9D7),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                                image: DecorationImage(
+                                    image: FileImage(image1!), fit: BoxFit.fill))
+                            : BoxDecoration(
+                                color: Color(0xffD7D9D7),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20))),
+                        child: image1 != null
+                            ? Icon(null)
+                            : Icon(Icons.upload_rounded, color: Colors.white)),
+                    onPressed: () {
+                      pickImage1();
+                    },
+                  ),
                 ),
 
                 //white buffer between the circle image and rectangle immage
-                Container(
-                  padding: EdgeInsets.fromLTRB(0, 60, 0, 0),
-                  alignment: Alignment.bottomCenter,
+                Expanded(
+                  flex: 1,
                   child: Container(
-                    height: 85,
-                    width: 85,
-                    decoration: BoxDecoration(
-                        color: Colors.white, shape: BoxShape.circle),
+                    padding: EdgeInsets.fromLTRB(0, 60, 0, 0),
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      height: 85,
+                      width: 85,
+                      decoration: BoxDecoration(
+                          color: Colors.white, shape: BoxShape.circle),
+                    ),
                   ),
                 ),
 
                 //Circle stacked ontop
-                Container(
-                  padding: EdgeInsets.fromLTRB(0, 65, 0, 0),
-                  alignment: Alignment.bottomCenter,
+                Expanded(
+                  flex: 1,
                   child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 0),
-                      height: 75,
-                      width: 75,
-                      decoration: image2 != null
-                          ? BoxDecoration(
-                              color: Color(0xffD7D9D7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(100)),
-                              image: DecorationImage(
-                                  image: FileImage(image2!), fit: BoxFit.fill))
-                          : BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Color(0xffD7D9D7),
-                            ),
-                      child: image2 != null
-                          ? Icon(null)
-                          : Icon(Icons.upload_rounded, color: Colors.white)),
+                    padding: EdgeInsets.fromLTRB(0, 65, 0, 0),
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 0),
+                        height: 75,
+                        width: 75,
+                        decoration: image2 != null
+                            ? BoxDecoration(
+                                color: Color(0xffD7D9D7),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(100)),
+                                image: DecorationImage(
+                                    image: FileImage(image2!), fit: BoxFit.fill))
+                            : BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color(0xffD7D9D7),
+                              ),
+                        child: image2 != null
+                            ? Icon(null)
+                            : Icon(Icons.upload_rounded, color: Colors.white)),
+                  ),
                 ),
               ],
               //),
@@ -328,62 +346,74 @@ class _PanelWidgetState extends State<PanelWidget> {
 
             Stack(
               children: [
-                Container(
-                  width: 360,
-                  height: 46,
-                  decoration: BoxDecoration(
-                    //color: Colors.green,
-                    color: Color(0xffD7D9D7),
-                    borderRadius: BorderRadius.circular(12.0),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    width: 360,
+                    height: 46,
+                    decoration: BoxDecoration(
+                      //color: Colors.green,
+                      color: Color(0xffD7D9D7),
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.fromLTRB(5, 10, 0, 0),
-                  child: Icon(
-                    Icons.shield_outlined,
-                    size: 25,
-                    color: Colors.white,
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.fromLTRB(10, 15, 0, 0),
-                  child: Icon(
-                    Icons.check,
-                    size: 15,
-                    color: Colors.white,
-                  ),
-                ),
-                Container(
-                  width: 360,
-                  height: 46,
-                  child: TextField(
-                    style: TextStyle(
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(5, 10, 0, 0),
+                    child: Icon(
+                      Icons.shield_outlined,
+                      size: 25,
                       color: Colors.white,
                     ),
-                    obscureText: false,
-                    textAlign: TextAlign.center,
-                    decoration: InputDecoration(
-                        icon: Icon(
-                          Icons.shield_outlined,
-                          size: 1,
-                        ),
-                        hintText: 'Community Guidelines:',
-                        filled: false,
-                        fillColor: Color(0XFFD7D9D7),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12.0),
-                          borderSide: BorderSide(
-                            width: 0,
-                            style: BorderStyle.none,
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(10, 15, 0, 0),
+                    child: Icon(
+                      Icons.check,
+                      size: 15,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    width: 360,
+                    height: 46,
+                    child: TextField(
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                      obscureText: false,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                          icon: Icon(
+                            Icons.shield_outlined,
+                            size: 1,
                           ),
-                        ),
-                        alignLabelWithHint: false,
-                        labelText: '  Community Guidelines:',
-                        labelStyle: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        )),
+                          hintText: 'Community Guidelines:',
+                          filled: false,
+                          fillColor: Color(0XFFD7D9D7),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12.0),
+                            borderSide: BorderSide(
+                              width: 0,
+                              style: BorderStyle.none,
+                            ),
+                          ),
+                          alignLabelWithHint: false,
+                          labelText: '  Community Guidelines:',
+                          labelStyle: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          )),
+                    ),
                   ),
                 ),
               ],
@@ -491,33 +521,36 @@ class _PanelWidgetState extends State<PanelWidget> {
             Row(
               //example
               children: [
-                SizedBox(
-                  width: 360,
-                  height: 46,
-                  child: TextField(
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                    obscureText: false,
-                    textAlign: TextAlign.center,
-                    decoration: InputDecoration(
-                        hintText: 'Description:',
-                        filled: true,
-                        fillColor: Color(0XFFD7D9D7),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12.0),
-                          borderSide: BorderSide(
-                            width: 0,
-                            style: BorderStyle.none,
+                Expanded(
+                  flex: 1,
+                  child: SizedBox(
+                    width: 360,
+                    height: 46,
+                    child: TextField(
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                      obscureText: false,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                          hintText: 'Description:',
+                          filled: true,
+                          fillColor: Color(0XFFD7D9D7),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12.0),
+                            borderSide: BorderSide(
+                              width: 0,
+                              style: BorderStyle.none,
+                            ),
                           ),
-                        ),
-                        alignLabelWithHint: false,
-                        labelText: '  Description:',
-                        labelStyle: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        )),
+                          alignLabelWithHint: false,
+                          labelText: '  Description:',
+                          labelStyle: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          )),
+                    ),
                   ),
                 ),
               ],
@@ -527,88 +560,54 @@ class _PanelWidgetState extends State<PanelWidget> {
 
             Padding(
               padding: const EdgeInsets.only(left: 10, right: 10),
-              child: Container(
-                padding: EdgeInsets.only(left: 10, right: 10),
-                decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.grey),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: DropdownButtonHideUnderline(
-                        child: ButtonTheme(
-                          alignedDropdown: true,
-                          child: DropdownButton(
-                            hint: Text('Select Category'),
-                            value: _selected,
-                            onChanged: (newValue) {
-                              setState(() {
-                                _selected = newValue;
-                              });
-                            },
-                            items: _myJson.map(
-                              (categoryItem) {
-                                return DropdownMenuItem(
-                                  value: categoryItem['id'].toString(),
-                                  child: Row(
-                                    children: [
-                                      Image.asset(categoryItem['image'],
-                                          width: 30),
-                                      Container(
-                                          margin: EdgeInsets.only(left: 10),
-                                          child: Text(categoryItem['name']))
-                                    ],
-                                  ),
-                                );
+              child: Expanded(
+                flex: 1,
+                child: Container(
+                  padding: EdgeInsets.only(left: 10, right: 10),
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 1, color: Colors.grey),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: DropdownButtonHideUnderline(
+                          child: ButtonTheme(
+                            alignedDropdown: true,
+                            child: DropdownButton(
+                              hint: Text('Select Category'),
+                              value: _selected,
+                              onChanged: (newValue) {
+                                setState(() {
+                                  _selected = newValue;
+                                });
                               },
-                            ).toList(),
+                              items: _myJson.map(
+                                (categoryItem) {
+                                  return DropdownMenuItem(
+                                    value: categoryItem['id'].toString(),
+                                    child: Row(
+                                      children: [
+                                        Image.asset(categoryItem['image'],
+                                            width: 30),
+                                        Container(
+                                            margin: EdgeInsets.only(left: 10),
+                                            child: Text(categoryItem['name']))
+                                      ],
+                                    ),
+                                  );
+                                },
+                              ).toList(),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
-
-            /*
-            Row(
-              //example
-              children: [
-                SizedBox(
-                  width: 360,
-                  height: 46,
-                  child: TextField(
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                    obscureText: false,
-                    textAlign: TextAlign.center,
-                    decoration: InputDecoration(
-                        hintText: 'Category:',
-                        filled: true,
-                        fillColor: Color(0XFFD7D9D7),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12.0),
-                          borderSide: BorderSide(
-                            width: 0,
-                            style: BorderStyle.none,
-                          ),
-                        ),
-                        alignLabelWithHint: false,
-                        labelText: '  Category:',
-                        labelStyle: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        )),
-                  ),
-                ),
-              ],
-            ),
-            */
 
             SizedBox(height: 20),
 
@@ -617,25 +616,55 @@ class _PanelWidgetState extends State<PanelWidget> {
               //row 9 - "next" button
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+
+                Expanded(
+                  flex: 1,
+                  child: SizedBox(
+                    width: 250.0,
+                    height: 40.0,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => HomePage()));
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Color.fromARGB(255, 255, 0, 0),
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5.0))),
+                        child: const Text(
+                          'Cancel',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        )),
+                  ),
+                ),
+                    
+                    SizedBox(width: 20),
+
                 //The actual formatting of the 'Next' button and everything we do for it
-                SizedBox(
-                  width: 250.0,
-                  height: 40.0,
-                  child: ElevatedButton(
-                      onPressed: () {
-                        //Navigator.of(context).pushNamed(InterestScreen2.tag);
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xff4589FF),
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5.0))),
-                      child: const Text(
-                        'Post',
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      )),
-                )
+                Expanded(
+                  flex: 1,
+                  child: SizedBox(
+                    width: 250.0,
+                    height: 40.0,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => HomePage()));
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Color(0xff4589FF),
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5.0))),
+                        child: const Text(
+                          'Post',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        )),
+                  ),
+                ),
               ],
             ),
           ],
