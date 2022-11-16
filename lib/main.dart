@@ -6,11 +6,17 @@ import 'package:flutter_application/firebase_options.dart';
 import 'package:flutter_application/HomePage.dart';
 import 'package:flutter_application/interest_screen_1.dart';
 import 'package:flutter_application/interest_screen_2.dart';
+import 'package:flutter_application/pages/auth/loginpage2.dart';
+import 'package:flutter_application/pages/auth/registerpage2.dart';
 import 'package:flutter_application/pick_hosts_tester.dart';
 import 'loginPage.dart';
 import 'registerPage.dart';
 import 'package:auth_service/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
+import 'helper/helper_function.dart';
+import 'pages/auth/loginpage2.dart';
+import 'pages/auth/registerpage2.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,8 +24,16 @@ void main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool _isSignedIn = false;
   final routes = <String, WidgetBuilder>{
+    loginPage2.tag: (context) => loginPage2(),
+    RegisterPage2.tag: (context) => RegisterPage2(),
     LoginPage.tag: (context) => LoginPage(),
     // HomePage.tag: (context) => HomePage(),
     RegisterPage.tag: (context) => RegisterPage(),
@@ -28,8 +42,14 @@ class MyApp extends StatelessWidget {
     HomePage.tag: (context) => HomePage(),
     EventScreen.tag: (context) => EventScreen(),
     CommunityScreen.tag: (context) => CommunityScreen(),
-    //LocalTypeAheadPage.tag: (context) => LocalTypeAheadPage()
+    LocalTypeAheadPage.tag: (context) => LocalTypeAheadPage()
   };
+
+  @override
+  void initState() {
+    super.initState();
+    getUserLoggedInStatus();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +58,7 @@ class MyApp extends StatelessWidget {
         FocusScope.of(context).requestFocus(new FocusNode());
       },
       child: MaterialApp(
+          debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: ThemeData(
             primarySwatch: Colors.blue,
@@ -49,10 +70,21 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.lightBlue,
               fontFamily: 'Nunito',
             ),
-            home:
-                EventScreen(), //LoginPage(), - replace this when done testing interest screens!
+            home: _isSignedIn
+                ? HomePage()
+                : loginPage2(), //EventScreen(), //LoginPage(), - replace this when done testing interest screens!
             routes: routes,
           )),
     );
+  }
+
+  getUserLoggedInStatus() async {
+    await HelperFunctions.getUserLoggedInStatus().then((value) {
+      if (value != null) {
+        setState(() {
+          _isSignedIn = value;
+        });
+      }
+    });
   }
 }

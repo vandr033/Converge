@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:auth_service/auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application/HomePage.dart';
 
 class InterestScreen2 extends StatefulWidget {
   static String tag = 'interest-screen-2';
@@ -9,6 +12,7 @@ class InterestScreen2 extends StatefulWidget {
 }
 
 class InterestScreen2State extends State<InterestScreen2> {
+  FirebaseAuth auth = FirebaseAuth.instance;
   List<String> images = [
     'assets/design_buddies.png',
     'assets/Rectangle 155.png',
@@ -173,7 +177,9 @@ class InterestScreen2State extends State<InterestScreen2> {
                     width: 250.0,
                     height: 40.0,
                     child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, HomePage.tag);
+                        },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xff4589FF),
                             foregroundColor: Colors.white,

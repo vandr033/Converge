@@ -84,8 +84,9 @@ class LoginPageState extends State<LoginPage> {
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Please Enter a Password';
+        } else {
+          return null;
         }
-        return null;
       },
       textInputAction: TextInputAction.done,
       onFieldSubmitted: (v) {

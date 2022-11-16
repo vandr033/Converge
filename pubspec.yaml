@@ -35,6 +35,7 @@ dependencies:
 
   flutter:
     sdk: flutter
+  shared_preferences: ^2.0.15 
 
   sliding_up_panel: ^2.0.0+1
 

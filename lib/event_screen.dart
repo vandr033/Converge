@@ -108,6 +108,7 @@ class _PanelWidgetState extends State<PanelWidget> {
   File? image3;
   File? image4;
   bool vis = false;
+  String name = '';
 
   Future pickImage1() async {
     try {
@@ -565,6 +566,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                     /*decoration: BoxDecoration(borderRadius:
                                           BorderRadius.all(Radius.circular(20)),*/
                     child: TypeAheadField<User?>(
+                      autoFlipDirection: true,
                       //Here we use <User> because that is what we are autocompleting for.
                       hideOnEmpty: true,
                       //TypeAheadField - A TextField that displays a list of suggestions as the user types.
@@ -621,14 +623,31 @@ class _PanelWidgetState extends State<PanelWidget> {
                         ),
                       ),
                       onSuggestionSelected: (User? suggestion) {
-                        final user =
-                            suggestion!; //the suggestion that we selected is stored in user variable.
+                        if (vis == false) {
+                          final user =
+                              suggestion!; //the suggestion that we selected is stored in user variable.
+                          setState(() {
+                            name = user.name;
+                            vis = true;
+                          });
+                        }
                       },
                     ),
                   ),
                 ),
               ],
             ),
+            Visibility(
+                visible: vis,
+                child: ElevatedButton(
+                  onPressed: () {
+                    name = "";
+                    setState(() {
+                      vis = false;
+                    });
+                  },
+                  child: Text(name),
+                )),
             SizedBox(height: 10),
             Padding(
               //this is our community drop down.
