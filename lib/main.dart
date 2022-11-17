@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
     InterestScreen2.tag: (context) => InterestScreen2(),
     HomePage.tag: (context) => HomePage(),
     //EventScreen.tag: (context) => EventScreen(),
-    CommunityScreen.tag: (context) => CommunityScreen(),
+    // CommunityScreen.tag: (context) => CommunityScreen(),
     //LocalTypeAheadPage.tag: (context) => LocalTypeAheadPage()
   };
 
