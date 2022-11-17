@@ -1,0 +1,18 @@
+TODO: Create Community Screen: Push Data into the firebase (create a new collection in firestore 
+Fields: 
+Community Name
+background picture 
+main picture
+Hosts
+Description
+Category 
+) 
+
+Pull List of users into host section 
+
+Community Screen: 
+Wrap Community Guidelines and Description
+
+
+Event Screen: Fix Spacings and margins 
+Smaller Image Size and white Screen

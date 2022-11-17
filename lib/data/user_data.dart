@@ -14,6 +14,7 @@ class UserData {
   static final faker = Faker();
   static final List<User> users = List.generate(
     //generates a list of fake users
+    //TODO: Change this and pull data from firebase
     50,
     (index) => User(
       name: faker.person.name(), //fake name
