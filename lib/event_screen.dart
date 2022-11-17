@@ -23,6 +23,8 @@ DateTime endDate = DateTime.now();
 DateTime endTime = DateTime.now();
 bool eventInfoVisible = false;
 bool comInfoVisible = true;
+bool bottomNavVis = true;
+int index = 0;
 
 class EventScreen extends StatefulWidget {
   static String tag = 'event-screen';
@@ -31,33 +33,128 @@ class EventScreen extends StatefulWidget {
 }
 
 class EventScreenState extends State<EventScreen> {
-  final eventPanelController = PanelController();
+  final panelController = PanelController();
 
   @override
   Widget build(BuildContext context) {
-    final eventPanelHeightClosed = MediaQuery.of(context).size.height *
-        0.1; //when we first come onto the page, panel will be 10% of our screen height - can modify if necessary.
-    final eventPanelHeightOpen = MediaQuery.of(context).size.height *
+    final panelHeightClosed = MediaQuery.of(context).size.height *
+        0; //when we first come onto the page, panel will be 10% of our screen height - can modify if necessary.
+    final panelHeightOpen = MediaQuery.of(context).size.height *
         0.8; //if you scroll panel all the way up, it will occupy 80% of the screen - can modify if necessary.
 
     return Scaffold(
       body: SlidingUpPanel(
+        onPanelOpened: (() {
+          setState(() {
+            bottomNavVis = false;
+          });
+        }),
+        onPanelClosed: () {
+          setState(() {
+            bottomNavVis = true;
+          });
+        },
         backdropEnabled: true,
-        controller: eventPanelController,
-        maxHeight: eventPanelHeightOpen, //max height of panel
+        controller: panelController,
+        maxHeight: panelHeightOpen, //max height of panel
         minHeight:
-            eventPanelHeightClosed, //min height of panel - can adjust if need be
+            panelHeightClosed, //min height of panel - can adjust if need be
         body: Center(
           //this is our background. (body within body:SlidingUpPanel is our background, aka what's behind the panel.)
           child: Text(
               "Event Screen"), //this is just here for demonstrative purposes - this is the widget behind the sliding panel - therefore this is wrapped within the sliding up panel - it is our background.
         ),
         panelBuilder: (controller) => PanelWidget(
-          comPanelController: eventPanelController,
+          comPanelController: panelController,
           eventController: controller,
         ),
         borderRadius:
             BorderRadius.vertical(top: Radius.circular(18)), //rounded corners
+      ),
+      bottomNavigationBar: Visibility(
+        visible: bottomNavVis,
+        maintainState: true,
+        child: Container(
+          height: 50,
+          decoration: BoxDecoration(
+              color: Color.fromRGBO(63, 63, 63, 1),
+              borderRadius: BorderRadius.all(Radius.circular(12))),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              IconButton(
+                enableFeedback: false,
+                onPressed: () {
+                  setState(() {
+                    panelController.close();
+                    index = 0;
+                  });
+                },
+                icon: Icon(
+                  Icons.home_outlined,
+                  color: Colors.white,
+                  size: 35,
+                ),
+              ),
+              IconButton(
+                enableFeedback: false,
+                onPressed: () {
+                  setState(() {
+                    panelController.close();
+                    index = 1;
+                  });
+                },
+                icon: Icon(
+                  Icons.search_outlined,
+                  color: Colors.white,
+                  size: 35,
+                ),
+              ),
+              IconButton(
+                enableFeedback: false,
+                onPressed: () {
+                  setState(() {
+                    index = 2;
+                    panelController.open();
+                  });
+                },
+                icon: Icon(
+                  Icons.add_box_outlined,
+                  color: Colors.white,
+                  size: 35,
+                ),
+              ),
+              IconButton(
+                enableFeedback: false,
+                onPressed: () {
+                  setState(() {
+                    panelController.close();
+                    index = 3;
+                  });
+                },
+                icon: Icon(
+                  Icons.chat_outlined,
+                  color: Colors.white,
+                  size: 35,
+                ),
+              ),
+              IconButton(
+                enableFeedback: false,
+                onPressed: () {
+                  setState(() {
+                    panelController.close();
+                    index = 4;
+                  });
+                },
+                icon: Icon(
+                  Icons.person_outline,
+                  color: Colors.white,
+                  size: 35,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
