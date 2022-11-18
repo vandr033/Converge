@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application/blocs/application_bloc.dart';
 import 'package:flutter_application/community_screen.dart';
 import 'package:flutter_application/event_screen.dart';
 import 'package:flutter_application/firebase_options.dart';
@@ -7,6 +8,7 @@ import 'package:flutter_application/HomePage.dart';
 import 'package:flutter_application/interest_screen_1.dart';
 import 'package:flutter_application/interest_screen_2.dart';
 import 'package:flutter_application/pick_hosts_tester.dart';
+import 'package:provider/provider.dart';
 import 'loginPage.dart';
 import 'registerPage.dart';
 import 'package:auth_service/auth.dart';
@@ -33,26 +35,30 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    
+    /*return GestureDetector(
       onTap: () {
-        FocusScope.of(context).requestFocus(new FocusNode());
-      },
-      child: MaterialApp(
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
-          home: MaterialApp(
-            title: 'Login',
-            debugShowCheckedModeBanner: false,
+        FocusScope.of(context).requestFocus(new FocusNode());*/
+      //},
+      return ChangeNotifierProvider(
+        create: (context) =>ApplicationBloc(),
+        child: MaterialApp(
+            title: 'Flutter Demo',
             theme: ThemeData(
-              primarySwatch: Colors.lightBlue,
-              fontFamily: 'Nunito',
+              primarySwatch: Colors.blue,
             ),
-            home:
-                EventScreen(), //LoginPage(), - replace this when done testing interest screens!
-            routes: routes,
-          )),
-    );
+            home: MaterialApp(
+              title: 'Login',
+              debugShowCheckedModeBanner: false,
+              theme: ThemeData(
+                primarySwatch: Colors.lightBlue,
+                fontFamily: 'Nunito',
+              ),
+              home:
+                  EventScreen(), //LoginPage(), - replace this when done testing interest screens!
+              routes: routes,
+            )),
+      );
+    //);
   }
 }
