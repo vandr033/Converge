@@ -4,6 +4,7 @@ import 'package:flutter_application/services/places_service.dart';
 import '../models/place_search.dart';
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_application/HomePage.dart';
 import 'package:flutter_application/community_screen.dart';
 import 'package:flutter_application/models/place_search.dart';
 import 'package:flutter_application/services/places_service.dart';
@@ -29,7 +30,6 @@ class EventScreen extends StatefulWidget {
   @override
   EventScreenState createState() => EventScreenState();
 }
-
 class EventScreenState extends State<EventScreen> {
   final panelController = PanelController();
 
@@ -336,7 +336,7 @@ class _PanelWidgetState extends State<PanelWidget> {
           Row(
             children: [
               Expanded(
-                  flex: 3, // default
+                  flex: 6, // default
                   child: Container(
                     // required field
                     padding: EdgeInsets.all(15),
@@ -347,19 +347,21 @@ class _PanelWidgetState extends State<PanelWidget> {
                     width: 226,
                     height: 46,
 
+                  child: DropdownButtonHideUnderline(
                     child: DropdownButton<String>(
                       isExpanded: true,
                       borderRadius: BorderRadius.circular(12.0),
                       dropdownColor: Color(0XFFD7D9D7),
                       style: const TextStyle(
-                          color: Colors.white, //<-- SEE HERE
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold),
+                      color: Colors.white, //<-- SEE HERE
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
                       value: chosenScreen,
                       icon: Icon(
                         Icons.keyboard_arrow_down,
                         color: Colors.white, // <-- SEE HERE
                       ),
+                      
                       onChanged: (String? newValue) {
                         if (newValue != dropdownValue) {
                           switch (newValue) {
@@ -370,15 +372,17 @@ class _PanelWidgetState extends State<PanelWidget> {
                             case 'Create Community':
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => CommunityScreen()));
-                              break;
+                              break;  
                           }
                         }
                         setState(() {
                           dropdownValue = newValue!;
                         });
                       },
+                      
                       items: <String>['Create Event', 'Create Community']
-                          .map<DropdownMenuItem<String>>((String chosenScreen) {
+                          .map<DropdownMenuItem<String>>(
+                            (String chosenScreen) {
                         return DropdownMenuItem<String>(
                           value: chosenScreen,
                           child: Text(
@@ -387,16 +391,22 @@ class _PanelWidgetState extends State<PanelWidget> {
                         );
                       }).toList(),
                     ),
-                  )),
-              Expanded(
-                flex: 0, // default
-                child: Container(
+                  ),
+                )
+                ),
+                
+
+                Expanded(
+         flex: 0,// default
+         child: Container(
                   width: 20,
-                ), // required field
-              ),
-              Expanded(
-                flex: 1, // default
-                child: Container(
+                ),// required field
+                ),
+                
+
+                Expanded(
+         flex: 4,// default
+         child: Container(
                   width: 114,
                   height: 46,
                   child: TextField(
@@ -432,112 +442,118 @@ class _PanelWidgetState extends State<PanelWidget> {
 
           SizedBox(height: 10),
 
-          SizedBox(
-            //this contains our image picker
-            height: 184,
-            width: double.infinity,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [
-                MaterialButton(
-                  padding: EdgeInsets.symmetric(horizontal: 0),
-                  elevation: 8.0,
-                  child: Container(
-                      height: 184,
-                      width: 108,
-                      decoration: image1 != null
-                          ? BoxDecoration(
-                              color: Color(0xffD7D9D7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              image: DecorationImage(
-                                  image: FileImage(image1!), fit: BoxFit.fill))
-                          : BoxDecoration(
-                              color: Color(0xffD7D9D7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                      child: image1 != null
-                          ? Icon(null)
-                          : Icon(Icons.upload_rounded, color: Colors.white)),
-                  onPressed: () {
-                    pickImage1();
-                  },
-                ),
-                MaterialButton(
-                  elevation: 8.0,
-                  child: Container(
-                      height: 184,
-                      width: 108,
-                      decoration: image2 != null
-                          ? BoxDecoration(
-                              color: Color(0xffD7D9D7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              image: DecorationImage(
-                                  image: FileImage(image2!), fit: BoxFit.fill))
-                          : BoxDecoration(
-                              color: Color(0xffD7D9D7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                      child: image2 != null
-                          ? Icon(null)
-                          : Icon(Icons.upload_rounded, color: Colors.white)),
-                  onPressed: () {
-                    pickImage2();
-                  },
-                ),
-                MaterialButton(
-                  padding: EdgeInsets.symmetric(horizontal: 0),
-                  elevation: 8.0,
-                  child: Container(
-                      height: 184,
-                      width: 108,
-                      decoration: image3 != null
-                          ? BoxDecoration(
-                              color: Color(0xffD7D9D7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              image: DecorationImage(
-                                  image: FileImage(image3!), fit: BoxFit.fill))
-                          : BoxDecoration(
-                              color: Color(0xffD7D9D7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                      child: image3 != null
-                          ? Icon(null)
-                          : Icon(Icons.upload_rounded, color: Colors.white)),
-                  onPressed: () {
-                    pickImage3();
-                  },
-                ),
-                MaterialButton(
-                  elevation: 8.0,
-                  child: Container(
-                      height: 184,
-                      width: 108,
-                      decoration: image4 != null
-                          ? BoxDecoration(
-                              color: Color(0xffD7D9D7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              image: DecorationImage(
-                                  image: FileImage(image4!), fit: BoxFit.fill))
-                          : BoxDecoration(
-                              color: Color(0xffD7D9D7),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                      child: image4 != null
-                          ? Icon(null)
-                          : Icon(Icons.upload_rounded, color: Colors.white)),
-                  onPressed: () {
-                    pickImage4();
-                  },
-                ),
-                SizedBox(height: 20),
-              ],
+            Container(
+              
+              //this contains our image picker
+              height: 184,
+              width: double.infinity,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  
+                  MaterialButton(
+                    padding: EdgeInsets.symmetric(horizontal: 0),
+                    elevation: 8.0,
+                    child: Container(
+                        height: 184,
+                        width: 108,
+                        decoration: image1 != null
+                            ? BoxDecoration(
+                                color: Color(0xffD7D9D7),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12)),
+                                image: DecorationImage(
+                                    image: FileImage(image1!),
+                                    fit: BoxFit.fill))
+                            : BoxDecoration(
+                                color: Color(0xffD7D9D7),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12))),
+                        child: image1 != null
+                            ? Icon(null)
+                            : Icon(Icons.upload_rounded, color: Colors.white)),
+                    onPressed: () {
+                      pickImage1();
+                    },
+                  ),
+                  MaterialButton(
+                    elevation: 8.0,
+                    child: Container(
+                        height: 184,
+                        width: 108,
+                        decoration: image2 != null
+                            ? BoxDecoration(
+                                color: Color(0xffD7D9D7),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12)),
+                                image: DecorationImage(
+                                    image: FileImage(image2!),
+                                    fit: BoxFit.fill))
+                            : BoxDecoration(
+                                color: Color(0xffD7D9D7),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12))),
+                        child: image2 != null
+                            ? Icon(null)
+                            : Icon(Icons.upload_rounded, color: Colors.white)),
+                    onPressed: () {
+                      pickImage2();
+                    },
+                  ),
+                  MaterialButton(
+                    padding: EdgeInsets.symmetric(horizontal: 0),
+                    elevation: 8.0,
+                    child: Container(
+                        height: 184,
+                        width: 108,
+                        decoration: image3 != null
+                            ? BoxDecoration(
+                                color: Color(0xffD7D9D7),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12)),
+                                image: DecorationImage(
+                                    image: FileImage(image3!),
+                                    fit: BoxFit.fill))
+                            : BoxDecoration(
+                                color: Color(0xffD7D9D7),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12))),
+                        child: image3 != null
+                            ? Icon(null)
+                            : Icon(Icons.upload_rounded, color: Colors.white)),
+                    onPressed: () {
+                      pickImage3();
+                    },
+                  ),
+                  MaterialButton(
+                    elevation: 8.0,
+                    child: Container(
+                        height: 184,
+                        width: 108,
+                        decoration: image4 != null
+                            ? BoxDecoration(
+                                color: Color(0xffD7D9D7),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12)),
+                                image: DecorationImage(
+                                    image: FileImage(image4!),
+                                    fit: BoxFit.fill))
+                            : BoxDecoration(
+                                color: Color(0xffD7D9D7),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12))),
+                        child: image4 != null
+                            ? Icon(null)
+                            : Icon(Icons.upload_rounded, color: Colors.white)),
+                    onPressed: () {
+                      pickImage4();
+                    },
+                  ),
+                  SizedBox(height: 20),
+                ],
+              ),
             ),
-          ),
-          SizedBox(height: 10),
+            SizedBox(height: 10),
 
           /*
             This is where our search bar for places goes.  
@@ -795,183 +811,221 @@ class _PanelWidgetState extends State<PanelWidget> {
           ),
           SizedBox(height: 10),
 
-          //this is where host goes
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            //this contains our host drop down.
-            children: [
-              //Expanded(
-              Container(
-                width: 352,
-                height: 55,
-                //color: Color(0xffD7D9D7),
-                padding: EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                    color: Color(0xffD7D9D7),
-                    borderRadius: BorderRadius.all(Radius.circular(12))),
-                child: TypeAheadField<User?>(
-                  //Here we use <User> because that is what we are autocompleting for.
-                  hideOnEmpty: true,
-                  //TypeAheadField - A TextField that displays a list of suggestions as the user types.
-                  //hideSuggestionsOnKeyboardHide: false,
-                  textFieldConfiguration: TextFieldConfiguration(
-                    decoration: InputDecoration(
-                      suffixIcon: Icon(Icons.search, color: Color(0xff828382)),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide:
-                            BorderSide(width: 0, style: BorderStyle.none),
+            //this is where host goes
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              //this contains our host drop down.
+              children: [
+                //Expanded( LEAVE FOR KEEPSAKE!
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      width: 360,
+                      height: 55,
+                      //color: Color(0xffD7D9D7),
+                      padding: EdgeInsets.all(1),
+                      // decoration: BoxDecoration(
+                      //   color: Color(0xffD7D9D7),
+                      //   borderRadius: BorderRadius.all(Radius.circular(12))),
+                      child: TypeAheadField<User?>(
+                        //Here we use <User> because that is what we are autocompleting for.
+                        hideOnEmpty: true,
+                        //TypeAheadField - A TextField that displays a list of suggestions as the user types.
+                        //hideSuggestionsOnKeyboardHide: false,
+                        textFieldConfiguration: TextFieldConfiguration(
+                          decoration: InputDecoration(
+                            suffixIcon:
+                                Icon(Icons.search, color: Colors.white),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide:
+                                  BorderSide(width: 0, style: BorderStyle.none),
+                            ),
+                            hintText: 'Hosts: ',
+                            hintStyle: TextStyle(
+                                fontSize: 16.0,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700),
+                            filled: true,
+                            fillColor: Color(0xffD7D9D7),
+                            contentPadding: EdgeInsets.all(10),
+                          ),
+                        ),
+                        suggestionsBoxDecoration: const SuggestionsBoxDecoration(
+                          color: Color(0xffD7D9D7),
+                        ),
+                        suggestionsCallback: UserData
+                            .getSuggestions, //we get suggestions from UserData
+                        itemBuilder: (context, User? suggestion) {
+                          final user = suggestion!;
+                  
+                          return ListTile(
+                            leading: Container(
+                              width: 60,
+                              height: 60,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                  image: NetworkImage(user.imageUrl),
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
+                            ),
+                            title: Text(user.name),
+                          );
+                        },
+                        noItemsFoundBuilder: (context) => Container(
+                          height: 50,
+                          child: Center(
+                            child: Text(
+                              'No Users Found.',
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ),
+                        ),
+                        onSuggestionSelected: (User? suggestion) {
+                          final user =
+                              suggestion!; //the suggestion that we selected is stored in user variable.
+                  
+                          //Container(height: 20, width: 20, Text(name));
+                  
+                          //this is the part where we say what we want to do in the selection... aka we need to put it in a container.
+                  
+                          // Navigator.of(context).push(MaterialPageRoute(
+                          //   builder: (context) => UserDetailPage(user: user)
+                        }
+                        /*
+                          Container(height:20, width:20,
+                          Text(suggestion.name;)*/
+                  
+                        //this is the part where we say what we want to do in the selection... aka we need to put it in a container.
+                        /*
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => UserDetailPage(user: user)
+                        )
+                        );*/
+                        ,
                       ),
-                      hintText: 'Hosts: ',
-                      hintStyle: TextStyle(
-                          fontSize: 16.0,
-                          color: Color(0xff828382),
-                          fontWeight: FontWeight.w700),
-                      filled: true,
-                      fillColor: Colors.white,
-                      contentPadding: EdgeInsets.all(10),
                     ),
                   ),
-                  suggestionsBoxDecoration: const SuggestionsBoxDecoration(
-                    color: Color(0xffD7D9D7),
-                  ),
-                  suggestionsCallback: UserData
-                      .getSuggestions, //we get suggestions from UserData
-                  itemBuilder: (context, User? suggestion) {
-                    final user = suggestion!;
+                //),
+              ],
+            ),
 
-                    return ListTile(
-                      leading: Container(
-                        width: 60,
-                        height: 60,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            image: NetworkImage(user.imageUrl),
-                            fit: BoxFit.fill,
+          SizedBox(height: 10),
+
+            Padding(
+              //this is our community drop down.
+              padding: const EdgeInsets.only(left: 10, right: 10),
+              child: Expanded(
+                flex: 1,
+                child: Container(
+                  padding: EdgeInsets.only(left: 10, right: 10),
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 1, color: Colors.grey),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: DropdownButtonHideUnderline(
+                          child: ButtonTheme(
+                            alignedDropdown: true,
+                            child: DropdownButton(
+                              hint: Text('Select Community'),
+                              value: _selected,
+                              onChanged: (newValue) {
+                                setState(() {
+                                  _selected = newValue;
+                                });
+                              },
+                              items: _myJson.map(
+                                (categoryItem) {
+                                  return DropdownMenuItem(
+                                    value: categoryItem['id'].toString(),
+                                    child: Row(
+                                      children: [
+                                        Image.asset(categoryItem['image'],
+                                            width: 30),
+                                        Container(
+                                            margin: EdgeInsets.only(left: 10),
+                                            child: Text(categoryItem['name']))
+                                      ],
+                                    ),
+                                  );
+                                },
+                              ).toList(),
+                            ),
                           ),
                         ),
                       ),
-                      title: Text(user.name),
-                    );
-                  },
-                  noItemsFoundBuilder: (context) => Container(
-                    height: 50,
-                    child: Center(
-                      child: Text(
-                        'No Users Found.',
-                        style: TextStyle(fontSize: 15),
-                      ),
-                    ),
+                    ],
                   ),
-                  onSuggestionSelected: (User? suggestion) {
-                    final user =
-                        suggestion!; //the suggestion that we selected is stored in user variable.
-
-                    //Container(height: 20, width: 20, Text(name));
-
-                    //this is the part where we say what we want to do in the selection... aka we need to put it in a container.
-
-                    // Navigator.of(context).push(MaterialPageRoute(
-                    //   builder: (context) => UserDetailPage(user: user)
-                  }
-                  /*
-                        Container(height:20, width:20,
-                        Text(suggestion.name;)*/
-
-                  //this is the part where we say what we want to do in the selection... aka we need to put it in a container.
-                  /*
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => UserDetailPage(user: user)
-                      )
-                      );*/
-                  ,
                 ),
               ),
-              //),
-            ],
-          ),
-
-          SizedBox(height: 10),
-
-          Padding(
-            //this is our community drop down.
-            padding: const EdgeInsets.only(left: 10, right: 10),
-            child: Container(
-              padding: EdgeInsets.only(left: 10, right: 10),
-              decoration: BoxDecoration(
-                border: Border.all(width: 1, color: Colors.grey),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: DropdownButtonHideUnderline(
-                      child: ButtonTheme(
-                        alignedDropdown: true,
-                        child: DropdownButton(
-                          hint: Text('Select Community'),
-                          value: _selected,
-                          onChanged: (newValue) {
-                            setState(() {
-                              _selected = newValue;
-                            });
-                          },
-                          items: _myJson.map(
-                            (categoryItem) {
-                              return DropdownMenuItem(
-                                value: categoryItem['id'].toString(),
-                                child: Row(
-                                  children: [
-                                    Image.asset(categoryItem['image'],
-                                        width: 30),
-                                    Container(
-                                        margin: EdgeInsets.only(left: 10),
-                                        child: Text(categoryItem['name']))
-                                  ],
-                                ),
-                              );
-                            },
-                          ).toList(),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
             ),
-          ),
-          SizedBox(height: 10),
-          Row(
-            //row 9 - "next" button
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              //The actual formatting of the 'Next' button and everything we do for it
-              SizedBox(
-                width: 250.0,
-                height: 40.0,
-                child: ElevatedButton(
-                    onPressed: () {
-                      //Navigator.of(context).pushNamed(InterestScreen2.tag);
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xff4589FF),
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5.0))),
-                    child: const Text(
-                      'Post',
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    )),
-              )
-            ],
-          ),
-        ],
-      ),
-    );
-  }
+            SizedBox(height: 10),
+
+
+            Row(
+              //row 9 - "next" button
+              
+              children: [
+
+                Expanded(
+                  flex: 1,
+                  child: SizedBox(
+                    width: 250.0,
+                    height: 40.0,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => HomePage()));
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Color.fromARGB(255, 255, 0, 0),
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12.0))),
+                        child: const Text(
+                          'Cancel',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        )),
+                  ),
+                ),
+                    
+                    SizedBox(width: 20),
+
+                //The actual formatting of the 'Next' button and everything we do for it
+                Expanded(
+                  flex: 1,
+                  child: SizedBox(
+                    width: 250.0,
+                    height: 40.0,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => HomePage()));
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Color(0xff4589FF),
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5.0))),
+                        child: const Text(
+                          'Post',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        )),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      );
 
   Widget buildDragHandle() => GestureDetector(
         child: Center(

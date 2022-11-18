@@ -2,6 +2,9 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application/community_screen.dart';
+import 'package:flutter_application/event_screen.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class HomePage extends StatefulWidget {
   static String tag = 'HomePage';
@@ -29,11 +32,10 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
       body: pages[index],
       bottomNavigationBar: Container(
-        height: 60,
+        height: 50,
         decoration: BoxDecoration(
             color: Color.fromRGBO(63, 63, 63, 1),
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(0), topRight: Radius.circular(0))),
+            borderRadius: BorderRadius.all(Radius.circular(12))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -66,6 +68,7 @@ class _HomePageState extends State<HomePage> {
             IconButton(
               enableFeedback: false,
               onPressed: () {
+                
                 setState(() {
                   index = 2;
                 });
