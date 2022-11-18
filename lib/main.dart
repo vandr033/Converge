@@ -7,6 +7,8 @@ import 'package:flutter_application/HomePage.dart';
 import 'package:flutter_application/interest_screen_1.dart';
 import 'package:flutter_application/interest_screen_2.dart';
 import 'package:flutter_application/pick_hosts_tester.dart';
+import 'package:provider/provider.dart';
+import 'blocs/application_bloc.dart';
 import 'loginPage.dart';
 import 'registerPage.dart';
 import 'package:auth_service/auth.dart';
@@ -33,10 +35,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    /*return GestureDetector(
       onTap: () {
-        FocusScope.of(context).requestFocus(new FocusNode());
-      },
+        FocusScope.of(context).requestFocus(new FocusNode());*/
+    //},
+    return ChangeNotifierProvider(
+      create: (context) => ApplicationBloc(),
       child: MaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData(
@@ -54,5 +58,6 @@ class MyApp extends StatelessWidget {
             routes: routes,
           )),
     );
+    //);
   }
 }
