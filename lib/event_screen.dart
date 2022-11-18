@@ -23,8 +23,7 @@ DateTime endDate = DateTime.now();
 DateTime endTime = DateTime.now();
 bool eventInfoVisible = false;
 bool comInfoVisible = true;
-bool bottomNavVis = true;
-int index = 0;
+int imageIndex = 0;
 
 class EventScreen extends StatefulWidget {
   static String tag = 'event-screen';
@@ -33,39 +32,43 @@ class EventScreen extends StatefulWidget {
 }
 
 class EventScreenState extends State<EventScreen> {
-  final panelController = PanelController();
+  final eventPanelController = PanelController();
+
+  var bottomNavVis = true;
+
+  int index = 0;
 
   @override
   Widget build(BuildContext context) {
-    final panelHeightClosed = MediaQuery.of(context).size.height *
+    final eventPanelHeightClosed = MediaQuery.of(context).size.height *
         0; //when we first come onto the page, panel will be 10% of our screen height - can modify if necessary.
-    final panelHeightOpen = MediaQuery.of(context).size.height *
+    final eventPanelHeightOpen = MediaQuery.of(context).size.height *
         0.8; //if you scroll panel all the way up, it will occupy 80% of the screen - can modify if necessary.
 
     return Scaffold(
       body: SlidingUpPanel(
-        onPanelOpened: (() {
-          setState(() {
-            bottomNavVis = false;
-          });
-        }),
         onPanelClosed: () {
           setState(() {
             bottomNavVis = true;
           });
         },
+        onPanelOpened: () {
+          setState(() {
+            bottomNavVis = false;
+          });
+        },
         backdropEnabled: true,
-        controller: panelController,
-        maxHeight: panelHeightOpen, //max height of panel
+        controller: eventPanelController,
+        maxHeight: eventPanelHeightOpen, //max height of panel
         minHeight:
-            panelHeightClosed, //min height of panel - can adjust if need be
+            eventPanelHeightClosed, //min height of panel - can adjust if need be
         body: Center(
           //this is our background. (body within body:SlidingUpPanel is our background, aka what's behind the panel.)
           child: Text(
               "Event Screen"), //this is just here for demonstrative purposes - this is the widget behind the sliding panel - therefore this is wrapped within the sliding up panel - it is our background.
         ),
         panelBuilder: (controller) => PanelWidget(
-          comPanelController: panelController,
+          comPanelController: eventPanelController,
           eventController: controller,
         ),
         borderRadius:
@@ -86,7 +89,7 @@ class EventScreenState extends State<EventScreen> {
                 enableFeedback: false,
                 onPressed: () {
                   setState(() {
-                    panelController.close();
+                    eventPanelController.close();
                     index = 0;
                   });
                 },
@@ -100,7 +103,7 @@ class EventScreenState extends State<EventScreen> {
                 enableFeedback: false,
                 onPressed: () {
                   setState(() {
-                    panelController.close();
+                    eventPanelController.close();
                     index = 1;
                   });
                 },
@@ -115,7 +118,7 @@ class EventScreenState extends State<EventScreen> {
                 onPressed: () {
                   setState(() {
                     index = 2;
-                    panelController.open();
+                    eventPanelController.open();
                   });
                 },
                 icon: Icon(
@@ -128,7 +131,7 @@ class EventScreenState extends State<EventScreen> {
                 enableFeedback: false,
                 onPressed: () {
                   setState(() {
-                    panelController.close();
+                    eventPanelController.close();
                     index = 3;
                   });
                 },
@@ -142,7 +145,7 @@ class EventScreenState extends State<EventScreen> {
                 enableFeedback: false,
                 onPressed: () {
                   setState(() {
-                    panelController.close();
+                    eventPanelController.close();
                     index = 4;
                   });
                 },
@@ -236,6 +239,11 @@ class _PanelWidgetState extends State<PanelWidget> {
   File? eventImage4;
 
   var dropdownValue;
+
+  String eventHostName = '';
+  String communityHostName = '';
+  bool eventExistsHost = false;
+  bool communityExistsHost = false;
   Future communityPickImage1() async {
     try {
       final imageGrab =
@@ -275,7 +283,10 @@ class _PanelWidgetState extends State<PanelWidget> {
 
       final imageTemp = File(imageGrab.path);
 
-      setState(() => eventImage1 = imageTemp);
+      setState(() {
+        eventImage1 = imageTemp;
+        imageIndex = 1;
+      });
     } on PlatformException catch (e) {
       print('Failed to get image: $e');
     }
@@ -290,7 +301,12 @@ class _PanelWidgetState extends State<PanelWidget> {
 
       final imageTemp = File(imageGrab.path);
 
-      setState(() => eventImage2 = imageTemp);
+      setState(() {
+        setState(() {
+          eventImage2 = imageTemp;
+          imageIndex = 2;
+        });
+      });
     } on PlatformException catch (e) {
       print('Failed to get image: $e');
     }
@@ -305,7 +321,12 @@ class _PanelWidgetState extends State<PanelWidget> {
 
       final imageTemp = File(imageGrab.path);
 
-      setState(() => eventImage3 = imageTemp);
+      setState(() {
+        setState(() {
+          eventImage3 = imageTemp;
+          imageIndex = 3;
+        });
+      });
     } on PlatformException catch (e) {
       print('Failed to get image: $e');
     }
@@ -474,6 +495,8 @@ class _PanelWidgetState extends State<PanelWidget> {
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 24),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Row(
                 children: [
@@ -609,7 +632,19 @@ class _PanelWidgetState extends State<PanelWidget> {
                               : Icon(Icons.upload_rounded,
                                   color: Colors.white)),
                       onPressed: () {
-                        eventPickImage1();
+                        if (eventImage1 != null) {
+                          setState(() {
+                            eventImage1 = eventImage2;
+                            eventImage2 = eventImage3;
+                            eventImage3 = eventImage4;
+                            eventImage4 = null;
+                            imageIndex = imageIndex - 1;
+                          });
+                        } else {
+                          if (imageIndex == 0) {
+                            eventPickImage1();
+                          }
+                        }
                       },
                     ),
                     MaterialButton(
@@ -625,16 +660,33 @@ class _PanelWidgetState extends State<PanelWidget> {
                                   image: DecorationImage(
                                       image: FileImage(eventImage2!),
                                       fit: BoxFit.fill))
-                              : BoxDecoration(
-                                  color: Color(0xffD7D9D7),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20))),
+                              : imageIndex == 1
+                                  ? BoxDecoration(
+                                      color: Color(0xffD7D9D7),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(20)))
+                                  : BoxDecoration(
+                                      border: Border.all(color: Colors.grey),
+                                      color: Color(0xffffffff),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20))),
                           child: eventImage2 != null
                               ? Icon(null)
                               : Icon(Icons.upload_rounded,
                                   color: Colors.white)),
                       onPressed: () {
-                        eventPickImage2();
+                        if (eventImage2 != null) {
+                          setState(() {
+                            eventImage2 = eventImage3;
+                            eventImage3 = eventImage4;
+                            eventImage4 = null;
+                            imageIndex = imageIndex - 1;
+                          });
+                        } else {
+                          if (imageIndex == 1) {
+                            eventPickImage2();
+                          }
+                        }
                       },
                     ),
                     MaterialButton(
@@ -651,16 +703,32 @@ class _PanelWidgetState extends State<PanelWidget> {
                                   image: DecorationImage(
                                       image: FileImage(eventImage3!),
                                       fit: BoxFit.fill))
-                              : BoxDecoration(
-                                  color: Color(0xffD7D9D7),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20))),
+                              : imageIndex == 2
+                                  ? BoxDecoration(
+                                      color: Color(0xffD7D9D7),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(20)))
+                                  : BoxDecoration(
+                                      border: Border.all(color: Colors.grey),
+                                      color: Color(0xffffffff),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20))),
                           child: eventImage3 != null
                               ? Icon(null)
                               : Icon(Icons.upload_rounded,
                                   color: Colors.white)),
                       onPressed: () {
-                        eventPickImage3();
+                        if (eventImage3 != null) {
+                          setState(() {
+                            eventImage3 = eventImage4;
+                            eventImage4 = null;
+                            imageIndex = imageIndex - 1;
+                          });
+                        } else {
+                          if (imageIndex == 2) {
+                            eventPickImage3();
+                          }
+                        }
                       },
                     ),
                     MaterialButton(
@@ -676,16 +744,31 @@ class _PanelWidgetState extends State<PanelWidget> {
                                   image: DecorationImage(
                                       image: FileImage(eventImage4!),
                                       fit: BoxFit.fill))
-                              : BoxDecoration(
-                                  color: Color(0xffD7D9D7),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20))),
+                              : imageIndex == 3
+                                  ? BoxDecoration(
+                                      color: Color(0xffD7D9D7),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(20)))
+                                  : BoxDecoration(
+                                      border: Border.all(color: Colors.grey),
+                                      color: Color(0xffffffff),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20))),
                           child: eventImage4 != null
                               ? Icon(null)
                               : Icon(Icons.upload_rounded,
                                   color: Colors.white)),
                       onPressed: () {
-                        eventPickImage4();
+                        if (eventImage4 != null) {
+                          setState(() {
+                            eventImage4 = null;
+                            imageIndex = 2;
+                          });
+                        } else {
+                          if (imageIndex == 3) {
+                            eventPickImage4();
+                          }
+                        }
                       },
                     ),
                     SizedBox(height: 20),
@@ -960,8 +1043,13 @@ class _PanelWidgetState extends State<PanelWidget> {
                           ),
                         ),
                         onSuggestionSelected: (User? suggestion) {
-                          final user =
-                              suggestion!; //the suggestion that we selected is stored in user variable.
+                          final user = suggestion!;
+                          setState(() {
+                            eventHostName = user.name;
+                            eventExistsHost = true;
+                          });
+
+                          //the suggestion that we selected is stored in user variable.
 
                           //Container(height: 20, width: 20, Text(name));
 
@@ -986,7 +1074,32 @@ class _PanelWidgetState extends State<PanelWidget> {
                   ),
                 ],
               ),
-
+              Visibility(
+                  visible: eventExistsHost,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(9),
+                            side: BorderSide(color: Color(0xff4589FF)))),
+                    onPressed: () {
+                      setState(() {
+                        eventExistsHost = false;
+                        eventHostName = '';
+                      });
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(eventHostName),
+                        Icon(
+                          Icons.close,
+                          color: Colors.grey,
+                        )
+                      ],
+                    ),
+                  )),
+              SizedBox(height: 10),
               SizedBox(height: 10),
 
               Row(
@@ -1449,8 +1562,13 @@ class _PanelWidgetState extends State<PanelWidget> {
                           ),
                         ),
                         onSuggestionSelected: (User? suggestion) {
-                          final user =
-                              suggestion!; //the suggestion that we selected is stored in user variable.
+                          final user = suggestion!;
+
+                          setState(() {
+                            communityHostName = user.name;
+                            communityExistsHost = true;
+                          });
+                          //the suggestion that we selected is stored in user variable.
 
                           //Container(height: 20, width: 20, Text(name));
 
@@ -1475,7 +1593,32 @@ class _PanelWidgetState extends State<PanelWidget> {
                   ),
                 ],
               ),
-
+              Visibility(
+                  visible: communityExistsHost,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(9),
+                            side: BorderSide(color: Color(0xff4589FF)))),
+                    onPressed: () {
+                      setState(() {
+                        communityExistsHost = false;
+                        communityHostName = '';
+                      });
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(communityHostName),
+                        Icon(
+                          Icons.close,
+                          color: Colors.grey,
+                        )
+                      ],
+                    ),
+                  )),
+              SizedBox(height: 10),
               SizedBox(height: 10),
 
               Row(
