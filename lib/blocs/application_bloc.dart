@@ -5,7 +5,7 @@ import '../models/place_search.dart';
 
 class ApplicationBloc with ChangeNotifier {
   final placesService = PlacesService();
-  late List<PlaceSearch> searchResults;
+  List<PlaceSearch>? searchResults;
 
   searchPlaces(String searchTerm) async {
     searchResults = await placesService.getAutocomplete(searchTerm);
