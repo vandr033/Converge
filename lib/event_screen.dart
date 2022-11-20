@@ -880,7 +880,12 @@ class _PanelWidgetState extends State<PanelWidget> {
                 applicationBloc.searchResults?.length != 0 &&
                 selected == false)
               Container(
-                
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(12.0),
+                  ),
+                  color: Color(0xffD7D9D7),
+                ),
                 height: 300,
                 child: ListView.builder(
                   itemCount: applicationBloc.searchResults!.length,
@@ -896,7 +901,10 @@ class _PanelWidgetState extends State<PanelWidget> {
                         },
                         title: Text(
                             applicationBloc.searchResults![index].description,
-                            style: TextStyle(color: Colors.black)));
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.w700)));
                   },
                 ),
               ),
@@ -1684,9 +1692,9 @@ class _PanelWidgetState extends State<PanelWidget> {
                           ),
                         ),
                         suggestionsBoxDecoration: SuggestionsBoxDecoration(
-                        color: Color(0xffD7D9D7),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
+                          color: Color(0xffD7D9D7),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                         suggestionsCallback: UserData
                             .getSuggestions, //we get suggestions from UserData
                         itemBuilder: (context, User? suggestion) {
