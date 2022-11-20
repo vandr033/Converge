@@ -53,7 +53,7 @@ class InterestScreen2State extends State<InterestScreen2> {
                   "Check out these\ncommunities!",
                   style: TextStyle(
                     fontSize: 30,
-                    color: Colors.black, //text color black
+                    color: Color(0xff828382),//text color black
                     fontWeight: FontWeight.w600,
                   ),
                 ),
