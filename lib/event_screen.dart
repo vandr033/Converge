@@ -786,6 +786,79 @@ class _PanelWidgetState extends State<PanelWidget> {
 /*
               Google Places dropdown here. 
               */
+
+            Row(
+                //example
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: SizedBox(
+                      width: 360,
+                      height: 46,
+                      child: TextField(
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                        obscureText: false,
+                        textAlign: TextAlign.left,
+                        decoration: InputDecoration(
+                            hintText: 'Add Location',
+                            filled: true,
+                            fillColor: Color(0XFFD7D9D7),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                              borderSide: BorderSide(
+                                width: 0,
+                                style: BorderStyle.none,
+                              ),
+                            ),
+                            alignLabelWithHint: false,
+                            //labelText: 'Add Location:',
+                            labelStyle: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            )),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            /*
+            TextField(
+              style: TextStyle(
+                color: Colors.white,
+              ),
+              obscureText: false,
+              textAlign: TextAlign.left,
+              decoration: InputDecoration(
+                hintText: 'Add Location',
+                filled: true,
+                fillColor: Color(0XFFD7D9D7),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                  borderSide: BorderSide(
+                    width: 0,
+                    style: BorderStyle.none,
+                  ),
+                ),
+                alignLabelWithHint: false,
+                //labelText: '  Description:',
+                labelStyle: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onChanged: (value) {
+                setState(() {
+                  selected = false;
+                });
+                applicationBloc.searchPlaces(value);
+              },
+            ),*/
+            
+            /*
             TextField(
               decoration: InputDecoration(hintText: 'Add Location'),
               onChanged: (value) {
@@ -794,7 +867,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                 });
                 applicationBloc.searchPlaces(value);
               },
-            ),
+            ),*/
 
             if (applicationBloc.searchResults != null &&
                 applicationBloc.searchResults?.length != 0 &&
@@ -1053,6 +1126,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                     //   borderRadius: BorderRadius.all(Radius.circular(12))),
                     child: TypeAheadField<User?>(
                       //Here we use <User> because that is what we are autocompleting for.
+                      direction: AxisDirection.up, 
                       hideOnEmpty: true,
                       //TypeAheadField - A TextField that displays a list of suggestions as the user types.
                       //hideSuggestionsOnKeyboardHide: false,
@@ -1084,8 +1158,8 @@ class _PanelWidgetState extends State<PanelWidget> {
 
                         return ListTile(
                           leading: Container(
-                            width: 60,
-                            height: 60,
+                            width: 30,
+                            height: 30,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(
@@ -1094,7 +1168,8 @@ class _PanelWidgetState extends State<PanelWidget> {
                               ),
                             ),
                           ),
-                          title: Text(user.name),
+                          title: Text(user.name, style:TextStyle(color:Colors.white, fontSize: 16,
+                              fontWeight: FontWeight.bold,)),
                         );
                       },
                       noItemsFoundBuilder: (context) => Container(
@@ -1575,6 +1650,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                         hideOnEmpty: true,
                         //TypeAheadField - A TextField that displays a list of suggestions as the user types.
                         //hideSuggestionsOnKeyboardHide: false,
+                        direction: AxisDirection.up, 
                         textFieldConfiguration: TextFieldConfiguration(
                           decoration: InputDecoration(
                             suffixIcon: Icon(Icons.search, color: Colors.white),
@@ -1604,8 +1680,8 @@ class _PanelWidgetState extends State<PanelWidget> {
 
                           return ListTile(
                             leading: Container(
-                              width: 60,
-                              height: 60,
+                              width: 30,
+                              height: 30,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 image: DecorationImage(
@@ -1614,7 +1690,9 @@ class _PanelWidgetState extends State<PanelWidget> {
                                 ),
                               ),
                             ),
-                            title: Text(user.name),
+                            title: Text(user.name, 
+                            style:TextStyle(color:Colors.white, fontSize: 16,
+                              fontWeight: FontWeight.bold,)),
                           );
                         },
                         noItemsFoundBuilder: (context) => Container(
