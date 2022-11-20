@@ -520,51 +520,53 @@ class _PanelWidgetState extends State<PanelWidget> {
                       width: 226,
                       height: 46,
 
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        borderRadius: BorderRadius.circular(12.0),
-                        dropdownColor: Color(0XFFD7D9D7),
-                        style: const TextStyle(
-                            color: Colors.white, //<-- SEE HERE
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold),
-                        value: whenEventchosenScreen,
-                        icon: Icon(
-                          Icons.keyboard_arrow_down,
-                          color: Colors.white, // <-- SEE HERE
-                        ),
-                        onChanged: (String? newValue) {
-                          if (newValue != dropdownValue) {
-                            switch (newValue) {
-                              case 'Create Event':
-                                //Navigator.of(context).push(MaterialPageRoute(
-                                //builder: (context) => EventScreen()));
-                                break;
-                              case 'Create Community':
-                                //Navigator.of(context).push(MaterialPageRoute(
-                                //  builder: (context) => CommunityScreen()));
-                                setState(() {
-                                  eventInfoVisible = false;
-                                  comInfoVisible = true;
-                                });
-                                break;
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton<String>(
+                          isExpanded: true,
+                          borderRadius: BorderRadius.circular(12.0),
+                          dropdownColor: Color(0XFFD7D9D7),
+                          style: const TextStyle(
+                              color: Colors.white, //<-- SEE HERE
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                          value: whenEventchosenScreen,
+                          icon: Icon(
+                            Icons.keyboard_arrow_down,
+                            color: Colors.white, // <-- SEE HERE
+                          ),
+                          onChanged: (String? newValue) {
+                            if (newValue != dropdownValue) {
+                              switch (newValue) {
+                                case 'Create Event':
+                                  //Navigator.of(context).push(MaterialPageRoute(
+                                  //builder: (context) => EventScreen()));
+                                  break;
+                                case 'Create Community':
+                                  //Navigator.of(context).push(MaterialPageRoute(
+                                  //  builder: (context) => CommunityScreen()));
+                                  setState(() {
+                                    eventInfoVisible = false;
+                                    comInfoVisible = true;
+                                  });
+                                  break;
+                              }
                             }
-                          }
-                          setState(() {
-                            dropdownValue = newValue!;
-                          });
-                        },
-                        items: <String>[
-                          'Create Event',
-                          'Create Community'
-                        ].map<DropdownMenuItem<String>>((String chosenScreen) {
-                          return DropdownMenuItem<String>(
-                            value: chosenScreen,
-                            child: Text(
-                              chosenScreen,
-                            ),
-                          );
-                        }).toList(),
+                            setState(() {
+                              dropdownValue = newValue!;
+                            });
+                          },
+                          items: <String>[
+                            'Create Event',
+                            'Create Community'
+                          ].map<DropdownMenuItem<String>>((String chosenScreen) {
+                            return DropdownMenuItem<String>(
+                              value: chosenScreen,
+                              child: Text(
+                                chosenScreen,
+                              ),
+                            );
+                          }).toList(),
+                        ),
                       ),
                     )),
                 Expanded(
@@ -1380,48 +1382,50 @@ class _PanelWidgetState extends State<PanelWidget> {
                         width: 226,
                         height: 46,
 
-                        child: DropdownButton<String>(
-                          isExpanded: true,
-                          borderRadius: BorderRadius.circular(12.0),
-                          dropdownColor: Color(0XFFD7D9D7),
-                          style: const TextStyle(
-                              color: Colors.white, //<-- SEE HERE
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
-                          value: chosenScreen,
-                          icon: Icon(
-                            Icons.keyboard_arrow_down,
-                            color: Colors.white, // <-- SEE HERE
-                          ),
-                          onChanged: (String? newValue) {
-                            if (newValue != dropdownValue) {
-                              switch (newValue) {
-                                case 'Create Community':
-                                  //Navigator.of(context).push(MaterialPageRoute(
-                                  //builder: (context) => CommunityScreen()));
-                                  break;
-                                case 'Create Event':
-                                  setState(() {
-                                    eventInfoVisible = true;
-                                    comInfoVisible = false;
-                                  });
-                                  break;
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            isExpanded: true,
+                            borderRadius: BorderRadius.circular(12.0),
+                            dropdownColor: Color(0XFFD7D9D7),
+                            style: const TextStyle(
+                                color: Colors.white, //<-- SEE HERE
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                            value: chosenScreen,
+                            icon: Icon(
+                              Icons.keyboard_arrow_down,
+                              color: Colors.white, // <-- SEE HERE
+                            ),
+                            onChanged: (String? newValue) {
+                              if (newValue != dropdownValue) {
+                                switch (newValue) {
+                                  case 'Create Community':
+                                    //Navigator.of(context).push(MaterialPageRoute(
+                                    //builder: (context) => CommunityScreen()));
+                                    break;
+                                  case 'Create Event':
+                                    setState(() {
+                                      eventInfoVisible = true;
+                                      comInfoVisible = false;
+                                    });
+                                    break;
+                                }
                               }
-                            }
-                            setState(() {
-                              dropdownValue = newValue!;
-                            });
-                          },
-                          items: <String>['Create Community', 'Create Event']
-                              .map<DropdownMenuItem<String>>(
-                                  (String chosenScreen) {
-                            return DropdownMenuItem<String>(
-                              value: chosenScreen,
-                              child: Text(
-                                chosenScreen,
-                              ),
-                            );
-                          }).toList(),
+                              setState(() {
+                                dropdownValue = newValue!;
+                              });
+                            },
+                            items: <String>['Create Community', 'Create Event']
+                                .map<DropdownMenuItem<String>>(
+                                    (String chosenScreen) {
+                              return DropdownMenuItem<String>(
+                                value: chosenScreen,
+                                child: Text(
+                                  chosenScreen,
+                                ),
+                              );
+                            }).toList(),
+                          ),
                         ),
                       )),
                   Expanded(
