@@ -1968,6 +1968,16 @@ class _PanelWidgetState extends State<PanelWidget> {
                         height: 46,
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton<String>(
+                            hint: Padding(
+                              padding: EdgeInsets.only(left:10.0),
+                              child: Text('Select Category', 
+                              style:TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                )
+                              ),
+                            ),    
                             isExpanded: true,
                             borderRadius: BorderRadius.circular(12.0),
                             dropdownColor: Color(0XFFD7D9D7),
