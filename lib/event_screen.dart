@@ -610,7 +610,7 @@ class _PanelWidgetState extends State<PanelWidget> {
               ],
             ),
 
-            SizedBox(height: 10),
+            SizedBox(height: 15),
 
             Container(
               //this contains our image picker
@@ -781,7 +781,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                 ],
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 15),
 
             //Event start
 /*
@@ -934,6 +934,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                     ],
                   ),
                 )),
+            SizedBox(height:15),
             Row(
               //mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -1029,7 +1030,7 @@ class _PanelWidgetState extends State<PanelWidget> {
               ],
             ),
 
-            //SizedBox(height: 10),
+            SizedBox(height:10),
 
             Row(
               //mainAxisAlignment: MainAxisAlignment.center,
@@ -1122,7 +1123,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                 ),
               ],
             ),
-            SizedBox(height: 7),
+          SizedBox(height: 15),
 
             //this is where host goes
             Row(
@@ -1259,7 +1260,6 @@ class _PanelWidgetState extends State<PanelWidget> {
                   ),
                 )),
             SizedBox(height: 10),
-            SizedBox(height: 10),
 
             /*
             Row(
@@ -1372,9 +1372,9 @@ class _PanelWidgetState extends State<PanelWidget> {
               ],
             ),
 
-            SizedBox(height: 10),
+            SizedBox(height: 20),
 
-//Post Button
+            //Post Button
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
