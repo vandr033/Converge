@@ -1923,11 +1923,12 @@ class _PanelWidgetState extends State<PanelWidget> {
                               Icons.keyboard_arrow_down,
                               color: Colors.white, // <-- SEE HERE
                             ),
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                dropdownValue = newValue!;
-                              });
-                            },
+                            value: _comSelected,
+                                onChanged: (newValue) {
+                                  setState(() {
+                                    _comSelected = newValue;
+                                  });
+                                },
                             items: _comunJson.map(
                                   (categoryItem) {
                                     return DropdownMenuItem(
@@ -1947,8 +1948,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                           ),
                         ),
                       ) // required field
-
-                      ),
+                  ),
                 ],
               ),
 
