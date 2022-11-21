@@ -1828,74 +1828,75 @@ class _PanelWidgetState extends State<PanelWidget> {
               ),
 
               SizedBox(height: 10),
+              /*
+              Padding(
+                padding: const EdgeInsets.only(left: 0, right: 00),
+                child: Expanded(
+                  flex: 1,
+                  child: Container(
+                    padding: EdgeInsets.only(left: 10, right: 10),
+                    decoration: BoxDecoration(
 
-              // Padding(
-              //   padding: const EdgeInsets.only(left: 0, right: 00),
-              //   child: Expanded(
-              //     flex: 1,
-              //     child: Container(
-              //       padding: EdgeInsets.only(left: 10, right: 10),
-              //       decoration: BoxDecoration(
+                      border: Border.all(width: 0, color: Colors.grey),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: DropdownButton(
+                            isExpanded: true,
+                             borderRadius: BorderRadius.circular(12.0),
+                              dropdownColor: Color(0XFFD7D9D7),
+                              style: const TextStyle(
+                              color: Colors.white, //<-- SEE HERE
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                              value: chosenScreen,
+                              icon: Icon(
+                                Icons.keyboard_arrow_down,
+                                color: Colors.white, // <-- SEE HERE
+                              ),
+                            child: ButtonTheme(
 
-              //         border: Border.all(width: 0, color: Colors.grey),
-              //         borderRadius: BorderRadius.circular(12),
-              //       ),
-              //       child: Row(
-              //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //         children: [
-              //           Expanded(
-              //             child: DropdownButton(
-              //               isExpanded: true,
-              //                borderRadius: BorderRadius.circular(12.0),
-              //                 dropdownColor: Color(0XFFD7D9D7),
-              //                 style: const TextStyle(
-              //                 color: Colors.white, //<-- SEE HERE
-              //                 fontSize: 16,
-              //                 fontWeight: FontWeight.bold),
-              //                 value: chosenScreen,
-              //                 icon: Icon(
-              //                   Icons.keyboard_arrow_down,
-              //                   color: Colors.white, // <-- SEE HERE
-              //                 ),
-              //               child: ButtonTheme(
-
-              //                 alignedDropdown: true,
-              //                 child: DropdownButton(
-              //                   hint: Text('Select Category'),
-              //                   value: _selected,
-              //                   onChanged: (newValue) {
-              //                     setState(() {
-              //                       _selected = newValue;
-              //                     });
-              //                   },
-              //                   items: _myJson.map(
-              //                     (categoryItem) {
-              //                       return DropdownMenuItem(
-              //                         value: categoryItem['id'].toString(),
-              //                         child: Row(
-              //                           children: [
-              //                             Image.asset(categoryItem['image'],
-              //                                 width: 30),
-              //                             Container(
-              //                                 margin: EdgeInsets.only(left: 10),
-              //                                 child: Text(categoryItem['name']))
-              //                           ],
-              //                         ),
-              //                       );
-              //                     },
-              //                   ).toList(),
-              //                 ),
-              //               ),
-              //             ),
-              //           ),
-              //         ],
-              //       ),
-              //     ),
-              //   ),
-              // ),
+                              alignedDropdown: true,
+                              child: DropdownButton(
+                                hint: Text('Select Category'),
+                                value: _comSelected,
+                                onChanged: (newValue) {
+                                  setState(() {
+                                    _comSelected = newValue;
+                                  });
+                                },
+                                items: _comunJson.map(
+                                  (categoryItem) {
+                                    return DropdownMenuItem(
+                                      value: categoryItem['id'].toString(),
+                                      child: Row(
+                                        children: [
+                                          Image.asset(categoryItem['image'],
+                                              width: 30),
+                                          Container(
+                                              margin: EdgeInsets.only(left: 10),
+                                              child: Text(categoryItem['name']))
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                ).toList(),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),*/
 
               SizedBox(height: 10),
 
+              
               Row(
                 //example
                 children: [
@@ -1927,15 +1928,22 @@ class _PanelWidgetState extends State<PanelWidget> {
                                 dropdownValue = newValue!;
                               });
                             },
-                            items: <String>['Car', 'Train', 'Bus', 'Flight']
-                                .map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(
-                                  value,
-                                ),
-                              );
-                            }).toList(),
+                            items: _comunJson.map(
+                                  (categoryItem) {
+                                    return DropdownMenuItem(
+                                      value: categoryItem['id'].toString(),
+                                      child: Row(
+                                        children: [
+                                          Image.asset(categoryItem['image'],
+                                              width: 30),
+                                          Container(
+                                              margin: EdgeInsets.only(left: 10),
+                                              child: Text(categoryItem['name']))
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                ).toList(),
                           ),
                         ),
                       ) // required field
