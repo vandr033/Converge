@@ -1261,6 +1261,8 @@ class _PanelWidgetState extends State<PanelWidget> {
             SizedBox(height: 10),
             SizedBox(height: 10),
 
+            
+            /*
             Row(
               //example
               children: [
@@ -1306,7 +1308,62 @@ class _PanelWidgetState extends State<PanelWidget> {
                     ) // required field
                     ),
               ],
-            ),
+            ),*/
+
+            Row(
+                children: [
+                  Expanded(
+                      flex: 1, // default
+                      child: Container(
+                        padding: EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Color(0XFFD7D9D7),
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        width: 360,
+                        height: 46,
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            isExpanded: true,
+                            borderRadius: BorderRadius.circular(12.0),
+                            dropdownColor: Color(0XFFD7D9D7),
+                            style: const TextStyle(
+                                color: Colors.white, //<-- SEE HERE
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                            icon: Icon(
+                              Icons.keyboard_arrow_down,
+                              color: Colors.white, // <-- SEE HERE
+                            ),
+                            value: _eventSelected,
+                                onChanged: (newValue) {
+                                  setState(() {
+                                    _eventSelected = newValue;
+                                  });
+                                },
+                            items: _eventJson.map(
+                                  (categoryItem) {
+                                    return DropdownMenuItem(
+                                      value: categoryItem['id'].toString(),
+                                      child: Row(
+                                        children: [
+                                          Image.asset(categoryItem['image'],
+                                              width: 30),
+                                          Container(
+                                              margin: EdgeInsets.only(left: 10),
+                                              child: Text(categoryItem['name']))
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                ).toList(),
+                          ),
+                        ),
+                      ) // required field
+                  ),
+                ],
+              ),
+
 
             SizedBox(height: 10),
 
@@ -1898,7 +1955,6 @@ class _PanelWidgetState extends State<PanelWidget> {
 
               
               Row(
-                //example
                 children: [
                   Expanded(
                       flex: 1, // default
