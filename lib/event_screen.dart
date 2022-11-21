@@ -1324,6 +1324,16 @@ class _PanelWidgetState extends State<PanelWidget> {
                         height: 46,
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton<String>(
+                            hint: Padding(
+                              padding: EdgeInsets.only(left:10.0),
+                              child: Text('Select Community', 
+                              style:TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                )
+                              ),
+                            ), 
                             isExpanded: true,
                             borderRadius: BorderRadius.circular(12.0),
                             dropdownColor: Color(0XFFD7D9D7),
@@ -1545,7 +1555,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                 ],
               ),
 
-              SizedBox(height: 10),
+              SizedBox(height: 15),
 
               Stack(
                 //Row(
@@ -1630,7 +1640,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                 //),
               ),
 
-              SizedBox(height: 0),
+              SizedBox(height: 10),
 
               Stack(
                 children: [
@@ -1844,7 +1854,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                     ),
                   )),
               SizedBox(height: 10),
-              SizedBox(height: 10),
+              //SizedBox(height: 10),
 
               Row(
                 //example
@@ -1884,75 +1894,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                 ],
               ),
 
-              SizedBox(height: 10),
-              /*
-              Padding(
-                padding: const EdgeInsets.only(left: 0, right: 00),
-                child: Expanded(
-                  flex: 1,
-                  child: Container(
-                    padding: EdgeInsets.only(left: 10, right: 10),
-                    decoration: BoxDecoration(
-
-                      border: Border.all(width: 0, color: Colors.grey),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: DropdownButton(
-                            isExpanded: true,
-                             borderRadius: BorderRadius.circular(12.0),
-                              dropdownColor: Color(0XFFD7D9D7),
-                              style: const TextStyle(
-                              color: Colors.white, //<-- SEE HERE
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
-                              value: chosenScreen,
-                              icon: Icon(
-                                Icons.keyboard_arrow_down,
-                                color: Colors.white, // <-- SEE HERE
-                              ),
-                            child: ButtonTheme(
-
-                              alignedDropdown: true,
-                              child: DropdownButton(
-                                hint: Text('Select Category'),
-                                value: _comSelected,
-                                onChanged: (newValue) {
-                                  setState(() {
-                                    _comSelected = newValue;
-                                  });
-                                },
-                                items: _comunJson.map(
-                                  (categoryItem) {
-                                    return DropdownMenuItem(
-                                      value: categoryItem['id'].toString(),
-                                      child: Row(
-                                        children: [
-                                          Image.asset(categoryItem['image'],
-                                              width: 30),
-                                          Container(
-                                              margin: EdgeInsets.only(left: 10),
-                                              child: Text(categoryItem['name']))
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                ).toList(),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),*/
-
-              SizedBox(height: 10),
-
+              SizedBox(height: 15),             
               
               Row(
                 children: [
