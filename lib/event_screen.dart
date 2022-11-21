@@ -1261,7 +1261,6 @@ class _PanelWidgetState extends State<PanelWidget> {
             SizedBox(height: 10),
             SizedBox(height: 10),
 
-            
             /*
             Row(
               //example
@@ -1311,108 +1310,80 @@ class _PanelWidgetState extends State<PanelWidget> {
             ),*/
 
             Row(
-                children: [
-                  Expanded(
-                      flex: 1, // default
-                      child: Container(
-                        padding: EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Color(0XFFD7D9D7),
-                          borderRadius: BorderRadius.circular(12.0),
-                        ),
-                        width: 360,
-                        height: 46,
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton<String>(
-                            hint: Padding(
-                              padding: EdgeInsets.only(left:10.0),
-                              child: Text('Select Community', 
-                              style:TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                )
-                              ),
-                            ), 
-                            isExpanded: true,
-                            borderRadius: BorderRadius.circular(12.0),
-                            dropdownColor: Color(0XFFD7D9D7),
-                            style: const TextStyle(
-                                color: Colors.white, //<-- SEE HERE
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold),
-                            icon: Icon(
-                              Icons.keyboard_arrow_down,
-                              color: Colors.white, // <-- SEE HERE
-                            ),
-                            value: _eventSelected,
-                                onChanged: (newValue) {
-                                  setState(() {
-                                    _eventSelected = newValue;
-                                  });
-                                },
-                            items: _eventJson.map(
-                                  (categoryItem) {
-                                    return DropdownMenuItem(
-                                      value: categoryItem['id'].toString(),
-                                      child: Row(
-                                        children: [
-                                          Image.asset(categoryItem['image'],
-                                              width: 30),
-                                          Container(
-                                              margin: EdgeInsets.only(left: 10),
-                                              child: Text(categoryItem['name']))
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                ).toList(),
+              children: [
+                Expanded(
+                    flex: 1, // default
+                    child: Container(
+                      padding: EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: Color(0XFFD7D9D7),
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      width: 360,
+                      height: 46,
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton<String>(
+                          hint: Padding(
+                            padding: EdgeInsets.only(left: 10.0),
+                            child: Text('Select Community',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                )),
                           ),
+                          isExpanded: true,
+                          borderRadius: BorderRadius.circular(12.0),
+                          dropdownColor: Color(0XFFD7D9D7),
+                          style: const TextStyle(
+                              color: Colors.white, //<-- SEE HERE
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                          icon: Icon(
+                            Icons.keyboard_arrow_down,
+                            color: Colors.white, // <-- SEE HERE
+                          ),
+                          value: _eventSelected,
+                          onChanged: (newValue) {
+                            setState(() {
+                              _eventSelected = newValue;
+                            });
+                          },
+                          items: _eventJson.map(
+                            (categoryItem) {
+                              return DropdownMenuItem(
+                                value: categoryItem['id'].toString(),
+                                child: Row(
+                                  children: [
+                                    Image.asset(categoryItem['image'],
+                                        width: 30),
+                                    Container(
+                                        margin: EdgeInsets.only(left: 10),
+                                        child: Text(categoryItem['name']))
+                                  ],
+                                ),
+                              );
+                            },
+                          ).toList(),
                         ),
-                      ) // required field
-                  ),
-                ],
-              ),
-
+                      ),
+                    ) // required field
+                    ),
+              ],
+            ),
 
             SizedBox(height: 10),
 
-            Row(
-              //row 9 - "next" button
-
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: SizedBox(
-                    width: 250.0,
-                    height: 40.0,
-                    child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => HomePage()));
-                        },
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Color.fromARGB(255, 255, 0, 0),
-                            foregroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5.0))),
-                        child: const Text(
-                          'Cancel',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
-                        )),
-                  ),
-                ),
-
-                SizedBox(width: 20),
-
-                //The actual formatting of the 'Next' button and everything we do for it
-                Expanded(
-                  flex: 1,
-                  child: SizedBox(
-                    width: 250.0,
-                    height: 40.0,
-                    child: ElevatedButton(
+//Post Button
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Flexible(
+                    flex: 1,
+                    child: SizedBox(
+                      width: 250.0,
+                      height: 50.0,
+                      child: ElevatedButton(
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => HomePage()));
@@ -1421,16 +1392,17 @@ class _PanelWidgetState extends State<PanelWidget> {
                             backgroundColor: Color(0xff4589FF),
                             foregroundColor: Colors.white,
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5.0))),
+                                borderRadius: BorderRadius.circular(12.0))),
                         child: const Text(
                           'Post',
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
-                        )),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
           ],
         ),
       ),
@@ -1894,8 +1866,8 @@ class _PanelWidgetState extends State<PanelWidget> {
                 ],
               ),
 
-              SizedBox(height: 15),             
-              
+              SizedBox(height: 15),
+
               Row(
                 children: [
                   Expanded(
@@ -1911,15 +1883,14 @@ class _PanelWidgetState extends State<PanelWidget> {
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton<String>(
                             hint: Padding(
-                              padding: EdgeInsets.only(left:10.0),
-                              child: Text('Select Category', 
-                              style:TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                )
-                              ),
-                            ),    
+                              padding: EdgeInsets.only(left: 10.0),
+                              child: Text('Select Category',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  )),
+                            ),
                             isExpanded: true,
                             borderRadius: BorderRadius.circular(12.0),
                             dropdownColor: Color(0XFFD7D9D7),
@@ -1932,87 +1903,61 @@ class _PanelWidgetState extends State<PanelWidget> {
                               color: Colors.white, // <-- SEE HERE
                             ),
                             value: _comSelected,
-                                onChanged: (newValue) {
-                                  setState(() {
-                                    _comSelected = newValue;
-                                  });
-                                },
+                            onChanged: (newValue) {
+                              setState(() {
+                                _comSelected = newValue;
+                              });
+                            },
                             items: _comunJson.map(
-                                  (categoryItem) {
-                                    return DropdownMenuItem(
-                                      value: categoryItem['id'].toString(),
-                                      child: Row(
-                                        children: [
-                                          Image.asset(categoryItem['image'],
-                                              width: 30),
-                                          Container(
-                                              margin: EdgeInsets.only(left: 10),
-                                              child: Text(categoryItem['name']))
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                ).toList(),
+                              (categoryItem) {
+                                return DropdownMenuItem(
+                                  value: categoryItem['id'].toString(),
+                                  child: Row(
+                                    children: [
+                                      Image.asset(categoryItem['image'],
+                                          width: 30),
+                                      Container(
+                                          margin: EdgeInsets.only(left: 10),
+                                          child: Text(categoryItem['name']))
+                                    ],
+                                  ),
+                                );
+                              },
+                            ).toList(),
                           ),
                         ),
                       ) // required field
-                  ),
+                      ),
                 ],
               ),
 
               SizedBox(height: 20),
 
-              //enter post button here //used next button as template CHANGE THIS!!!!!!!!!!!!!!!!
+              //Post Button
               Row(
-                //row 9 - "next" button
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Expanded(
+                  Flexible(
                     flex: 1,
                     child: SizedBox(
                       width: 250.0,
-                      height: 40.0,
+                      height: 50.0,
                       child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => HomePage()));
-                          },
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Color.fromARGB(255, 255, 0, 0),
-                              foregroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12.0))),
-                          child: const Text(
-                            'Cancel',
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                          )),
-                    ),
-                  ),
-
-                  SizedBox(width: 20),
-
-                  //The actual formatting of the 'Next' button and everything we do for it
-                  Expanded(
-                    flex: 1,
-                    child: SizedBox(
-                      width: 250.0,
-                      height: 40.0,
-                      child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => HomePage()));
-                          },
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xff4589FF),
-                              foregroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12.0))),
-                          child: const Text(
-                            'Post',
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                          )),
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => HomePage()));
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Color(0xff4589FF),
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12.0))),
+                        child: const Text(
+                          'Post',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                      ),
                     ),
                   ),
                 ],
