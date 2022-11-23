@@ -97,6 +97,7 @@ flutter:
     - assets/
     - assets/community_logos/
     - assets/category_logos/
+    - assets/images/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

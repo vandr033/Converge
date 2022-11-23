@@ -15,6 +15,8 @@ import 'package:provider/provider.dart';
 import 'blocs/application_bloc.dart';
 import 'data/user_data.dart';
 
+
+
 List<String> screens = ['Create Event', 'Create Community'];
 String whenEventchosenScreen = 'Create Event';
 String? chosenScreen = 'Create Community';
@@ -63,11 +65,15 @@ class EventScreenState extends State<EventScreen> {
         maxHeight: eventPanelHeightOpen, //max height of panel
         minHeight:
             eventPanelHeightClosed, //min height of panel - can adjust if need be
-        body: Center(
-          //this is our background. (body within body:SlidingUpPanel is our background, aka what's behind the panel.)
-          child: Text(
-              "Event Screen"), //this is just here for demonstrative purposes - this is the widget behind the sliding panel - therefore this is wrapped within the sliding up panel - it is our background.
-        ),
+        body:  Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/manrun.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
+        
+      ),
         panelBuilder: (controller) => PanelWidget(
           comPanelController: eventPanelController,
           eventController: controller,
@@ -82,7 +88,8 @@ class EventScreenState extends State<EventScreen> {
           height: 50,
           decoration: BoxDecoration(
               color: Color.fromRGBO(63, 63, 63, 1),
-              borderRadius: BorderRadius.all(Radius.circular(12))),
+              borderRadius: BorderRadius.all(Radius.circular(0))),
+              
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
