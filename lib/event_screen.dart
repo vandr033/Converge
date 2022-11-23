@@ -2,9 +2,11 @@
 
 import 'dart:io';
 
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_application/HomePage.dart';
 import 'package:flutter_application/community_screen.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -353,6 +355,7 @@ class _PanelWidgetState extends State<PanelWidget> {
       print('Failed to get image: $e');
     }
   }
+
 
   void eventStartDatePicker(ctx) {
     // showCupertinoModalPopup is a built-in function of the cupertino library
@@ -2027,6 +2030,38 @@ class ProfileScreenState extends State<ProfileScreen> {
   File? image1;
   File? image2;
 
+  void profileDatePicker(ctx) {
+      // showCupertinoModalPopup is a built-in function of the cupertino library
+      showCupertinoModalPopup(
+          context: ctx,
+          builder: (_) => Container(
+                height: 500,
+                color: const Color.fromARGB(255, 255, 255, 255),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 400,
+                      child: CupertinoDatePicker(
+                          initialDateTime: DateTime.now(),
+                          mode: CupertinoDatePickerMode.date,
+                          onDateTimeChanged: (val) {
+                            setState(() {
+                              startDate = val;
+                            });
+                          }),
+                    ),
+                    // Close the modal
+                    CupertinoButton(
+                      child: const Text('OK'),
+                      onPressed: () => {
+                        Navigator.of(ctx, rootNavigator: true).pop(ctx),
+                      },
+                    )
+                  ],
+                ),
+              ));
+    }
+
   var dropdownValue;
 
   Future pickImage1() async {
@@ -2072,6 +2107,7 @@ class ProfileScreenState extends State<ProfileScreen> {
               SizedBox(
                 height: 45,
               ),
+            
               Stack(
                 children: [
                   //Profile Banner Image Picker
@@ -2313,37 +2349,144 @@ class ProfileScreenState extends State<ProfileScreen> {
                   SizedBox(
                     width: 10,
                   ),
-                  
                   Container(
                     width: 350,
-                    height: 5,
+                    height: 2,
                     decoration: BoxDecoration(
                         color: Color(0xffD7D9D7),
                         borderRadius: BorderRadius.circular(20)),
-                  )
+                  ),
                 ],
               ),
 
               SizedBox(
-                height: 10,
+                height: 20,
               ),
 
               Container(
-                height: 200,
+                height: 46,
                 width: 342,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(12),
-                        topLeft: Radius.circular(12),),
-                  color: Colors.green,
+                child: ElevatedButton(
+                  onPressed: () => profileDatePicker(this.context),
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                    backgroundColor: Color.fromARGB(255, 48, 46, 46),
+                    foregroundColor: Colors.white,
+                    padding: EdgeInsets.zero,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(topRight: Radius.circular(12),
+                     topLeft: Radius.circular(12),
+                     ),
+                     ),
+                  ),
+                  child: Text(
+                    startDate != null
+                        ? DateFormat.EEEE().format(startDate) + ', ' + DateFormat.MMM().format(startDate)+ '. ' + DateFormat.d().format(startDate)
+                        : 'No Date!',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    softWrap: false,
+                  ),
+                  
                 ),
-              )
+                
+              ),
+            
+              Stack(
+                children: [
+                  
+                  Positioned(
+                    child: Container(
+                      //alignment: Alignment.center,
+                      height: 154,
+                      width: 342,
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(12),
+                          bottomRight: Radius.circular(12),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(296, 2.5, 0, 0),
+                      child: Container(
+                        height: 30,
+                        width: 30,
+                        decoration: BoxDecoration(
+                          color: Colors.blue,
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                      height: 154,
+                      width: 342,
+                      child: Text(
+                        textAlign: TextAlign.center,
+                        '28          29          30          1          2',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                        softWrap: false,
+                      ),
+                    ),
+                  ),
+                  //line
+                  Positioned(
+                    top: 45,
+                    child: Container(
+                      width: 342,
+                      height: 2,
+                      decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 48, 46, 46),
+                          borderRadius: BorderRadius.circular(20),),
+                    ),
+                  ),
 
-
-
-
-            ],
+                  //blue boxes start
+                  // Positioned(
+                  //   child: Container(
+                  //     //alignment: Alignment.center,
+                  //     padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  //     child: Container(
+                  //       height: 46,
+                  //       width: 300,
+                  //       decoration: BoxDecoration(
+                  //         color: Colors.blue,
+                  //         borderRadius: BorderRadius.circular(12),),
+                  //       ),
+                  //     ),
+                  //   ),
+                  
+                  // Positioned(
+                  //    child: Container(
+                  //     //alignment: Alignment.center,
+                  //     padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  //     child: Container(
+                  //       height: 46,
+                  //       width: 300,
+                  //       decoration: BoxDecoration(
+                  //         color: Colors.blue,
+                  //         borderRadius: BorderRadius.circular(12),),
+                  //       ),
+                  //     ),
+                  //   ),
+                
+                ],
+                  ),
+                ],
           ),
-        ));
+        ),
+    );
+      }
   }
-}

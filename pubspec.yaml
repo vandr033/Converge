@@ -29,6 +29,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+
   auth_service:
     path: packages/auth_service
   equatable: ^2.0.0
@@ -36,6 +37,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+  
   sliding_up_panel: ^2.0.0+1
 
   image_picker: ^0.8.6 
