@@ -15,8 +15,6 @@ import 'package:provider/provider.dart';
 import 'blocs/application_bloc.dart';
 import 'data/user_data.dart';
 
-
-
 List<String> screens = ['Create Event', 'Create Community'];
 String whenEventchosenScreen = 'Create Event';
 String? chosenScreen = 'Create Community';
@@ -27,6 +25,11 @@ DateTime endTime = DateTime.now();
 bool eventInfoVisible = false;
 bool comInfoVisible = true;
 int imageIndex = 0;
+
+final pages = [
+  HomeScreen(),
+  ProfileScreen(),
+];
 
 class EventScreen extends StatefulWidget {
   static String tag = 'event-screen';
@@ -65,15 +68,7 @@ class EventScreenState extends State<EventScreen> {
         maxHeight: eventPanelHeightOpen, //max height of panel
         minHeight:
             eventPanelHeightClosed, //min height of panel - can adjust if need be
-        body:  Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/manrun.png"),
-              fit: BoxFit.cover,
-            ),
-          ),
-        
-      ),
+        body: pages[index],
         panelBuilder: (controller) => PanelWidget(
           comPanelController: eventPanelController,
           eventController: controller,
@@ -89,7 +84,6 @@ class EventScreenState extends State<EventScreen> {
           decoration: BoxDecoration(
               color: Color.fromRGBO(63, 63, 63, 1),
               borderRadius: BorderRadius.all(Radius.circular(0))),
-              
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -112,7 +106,7 @@ class EventScreenState extends State<EventScreen> {
                 onPressed: () {
                   setState(() {
                     eventPanelController.close();
-                    index = 1;
+                    index = 0;
                   });
                 },
                 icon: Icon(
@@ -125,7 +119,7 @@ class EventScreenState extends State<EventScreen> {
                 enableFeedback: false,
                 onPressed: () {
                   setState(() {
-                    index = 2;
+                    index = 0;
                     eventPanelController.open();
                   });
                 },
@@ -140,7 +134,7 @@ class EventScreenState extends State<EventScreen> {
                 onPressed: () {
                   setState(() {
                     eventPanelController.close();
-                    index = 3;
+                    index = 0;
                   });
                 },
                 icon: Icon(
@@ -154,7 +148,7 @@ class EventScreenState extends State<EventScreen> {
                 onPressed: () {
                   setState(() {
                     eventPanelController.close();
-                    index = 4;
+                    index = 1;
                   });
                 },
                 icon: Icon(
@@ -946,7 +940,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                     ],
                   ),
                 )),
-            SizedBox(height:15),
+            SizedBox(height: 15),
             Row(
               //mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -1042,7 +1036,7 @@ class _PanelWidgetState extends State<PanelWidget> {
               ],
             ),
 
-            SizedBox(height:10),
+            SizedBox(height: 10),
 
             Row(
               //mainAxisAlignment: MainAxisAlignment.center,
@@ -1135,7 +1129,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                 ),
               ],
             ),
-          SizedBox(height: 15),
+            SizedBox(height: 15),
 
             //this is where host goes
             Row(
@@ -1387,34 +1381,33 @@ class _PanelWidgetState extends State<PanelWidget> {
             SizedBox(height: 20),
 
             //Post Button
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Flexible(
-                    flex: 1,
-                    child: SizedBox(
-                      width: 250.0,
-                      height: 50.0,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => HomePage()));
-                        },
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xff4589FF),
-                            foregroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12.0))),
-                        child: const Text(
-                          'Post',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Flexible(
+                  flex: 1,
+                  child: SizedBox(
+                    width: 250.0,
+                    height: 50.0,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        widget.comPanelController.close();
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xff4589FF),
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.0))),
+                      child: const Text(
+                        'Post',
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
@@ -1960,8 +1953,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                       height: 50.0,
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => HomePage()));
+                          widget.comPanelController.close();
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xff4589FF),
@@ -2000,4 +1992,337 @@ class _PanelWidgetState extends State<PanelWidget> {
           .isPanelOpen //this is working, but you have to click exactly on the skinny gray line for it to work... i wonder how this would translate to using the app on a real phone, hopefully would not be a problem.
       ? widget.comPanelController.close()
       : widget.comPanelController.open();
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+///Profile
+///////////////////////////////////////////////////////////////////////////////////
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      //color: const Color(0xffC4DFCB),
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/manrun.png"),
+            fit: BoxFit.fill,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ProfileScreen extends StatefulWidget {
+  static String tag = 'profile-screen-1';
+  @override
+  ProfileScreenState createState() => ProfileScreenState();
+}
+
+class ProfileScreenState extends State<ProfileScreen> {
+  File? image1;
+  File? image2;
+
+  var dropdownValue;
+
+  Future pickImage1() async {
+    try {
+      final imageGrab =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
+
+      if (imageGrab == null) return;
+
+      final imageTemp = File(imageGrab.path);
+
+      setState(() => image1 = imageTemp);
+    } on PlatformException catch (e) {
+      print('Failed to get image: $e');
+    }
+  }
+
+  Future pickImage2() async {
+    try {
+      final imageGrab =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
+
+      if (imageGrab == null) return;
+
+      final imageTemp = File(imageGrab.path);
+
+      setState(() => image2 = imageTemp);
+    } on PlatformException catch (e) {
+      print('Failed to get image: $e');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: Colors.white,
+        body: Container(
+          padding: EdgeInsets.symmetric(
+            horizontal: 24,
+          ),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 45,
+              ),
+              Stack(
+                children: [
+                  //Profile Banner Image Picker
+                  Positioned(
+                    //flex: 1,
+                    child: MaterialButton(
+                      padding: EdgeInsets.symmetric(horizontal: 0),
+                      elevation: 8.0,
+                      child: Container(
+                          alignment: Alignment(.90, -.75),
+                          height: 110,
+                          width: 360,
+                          decoration: image1 != null
+                              ? BoxDecoration(
+                                  color: Color(0xffD7D9D7),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(12)),
+                                  image: DecorationImage(
+                                      image: FileImage(image1!),
+                                      fit: BoxFit.fill))
+                              : BoxDecoration(
+                                  color: Color(0xffD7D9D7),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(12))),
+                          child: image1 != null
+                              ? Icon(null)
+                              : Icon(Icons.upload_rounded,
+                                  color: Colors.white)),
+                      onPressed: () {
+                        pickImage1();
+                      },
+                    ),
+                  ),
+
+                  //White Circle around it
+                  Positioned(
+                    //flex: 1,
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(0, 60, 0, 0),
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        height: 85,
+                        width: 85,
+                        decoration: BoxDecoration(
+                            color: Colors.white, shape: BoxShape.circle),
+                      ),
+                    ),
+                  ),
+
+                  //Profile Picture Image Picker
+                  Positioned(
+                    //flex: 1,
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(0, 65, 0, 0),
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                          padding: EdgeInsets.symmetric(horizontal: 0),
+                          height: 75,
+                          width: 75,
+                          decoration: image2 != null
+                              ? BoxDecoration(
+                                  color: Color(0xffD7D9D7),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(100)),
+                                  image: DecorationImage(
+                                      image: FileImage(image2!),
+                                      fit: BoxFit.fill))
+                              : BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Color(0xffD7D9D7),
+                                ),
+                          child: image2 != null
+                              ? Icon(null)
+                              : Icon(Icons.upload_rounded,
+                                  color: Colors.white)),
+                    ),
+                  ),
+                ],
+              ),
+
+              Stack(
+                children: [
+                  Positioned(
+                    child: Container(
+                      //alignment: Alignment.centerLeft,
+                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      child: Text(
+                        "Jane Smith",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Positioned(
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(308, 1, 0, 0),
+                      child: Icon(
+                        Icons.snapchat,
+                        size: 25,
+                        color: Color.fromARGB(255, 255, 0, 0),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(338, 0, 0, 0),
+                      child: Icon(
+                        Icons.facebook,
+                        size: 25,
+                        color: Color.fromARGB(255, 255, 0, 0),
+                      ),
+                    ),
+                  ),
+
+                  Positioned(
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(240, 0, 0, 0),
+                      //alignment: Alignment.bottomCenter,
+                      child: Container(
+                        height: 25,
+                        width: 25,
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/manrun.png"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  //2
+                  Positioned(
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(260, 0, 0, 0),
+                      //alignment: Alignment.bottomCenter,
+                      child: Container(
+                        height: 25,
+                        width: 25,
+                        decoration: BoxDecoration(
+                          color: Colors.green,
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/manrun.png"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  //3
+                  Positioned(
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(280, 0, 0, 0),
+                      //alignment: Alignment.bottomCenter,
+                      child: Container(
+                        height: 25,
+                        width: 25,
+                        decoration: BoxDecoration(
+                          color: Colors.blue,
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/manrun.png"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              //gap here
+              SizedBox(
+                height: 10,
+              ),
+
+              Stack(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 3,
+                        child: Container(
+                          //alignment: Alignment.centerLeft,
+                          padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          child: Text(
+                            "Foodie, gymrat, and\n"
+                            "cinema enthusiast.",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 80),
+                      Expanded(
+                        flex: 2,
+                        child: Container(
+                          width: 100.0,
+                          height: 25.0,
+                          //padding: EdgeInsets.fromLTRB(20, 15, 0, 0),
+                          child: ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Color(0xff4589FF),
+                                  foregroundColor: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(9.0))),
+                              child: const Text(
+                                'Edit Profile',
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                                softWrap: false,
+                              )),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+
+              SizedBox(
+                height: 20,
+              ),
+
+              Row(
+                children: [
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    width: 330,
+                    height: 5,
+                    decoration: BoxDecoration(
+                        color: Color(0xffD7D9D7),
+                        borderRadius: BorderRadius.circular(20)),
+                  )
+                ],
+              )
+            ],
+          ),
+        ));
+  }
 }
