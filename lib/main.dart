@@ -8,6 +8,7 @@ import 'package:flutter_application/HomePage.dart';
 import 'package:flutter_application/interest_screen_1.dart';
 import 'package:flutter_application/interest_screen_2.dart';
 import 'package:flutter_application/pick_hosts_tester.dart';
+import 'package:flutter_application/profile_screen_1.dart';
 import 'package:provider/provider.dart';
 import 'loginPage.dart';
 import 'registerPage.dart';
@@ -30,35 +31,35 @@ class MyApp extends StatelessWidget {
     HomePage.tag: (context) => HomePage(),
     EventScreen.tag: (context) => EventScreen(),
     CommunityScreen.tag: (context) => CommunityScreen(),
+    ProfileScreen1.tag: (context) => ProfileScreen1(),
     //LocalTypeAheadPage.tag: (context) => LocalTypeAheadPage()
   };
 
   @override
   Widget build(BuildContext context) {
-    
     /*return GestureDetector(
       onTap: () {
         FocusScope.of(context).requestFocus(new FocusNode());*/
-      //},
-      return ChangeNotifierProvider(
-        create: (context) =>ApplicationBloc(),
-        child: MaterialApp(
-            title: 'Flutter Demo',
+    //},
+    return ChangeNotifierProvider(
+      create: (context) => ApplicationBloc(),
+      child: MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: MaterialApp(
+            title: 'Login',
+            debugShowCheckedModeBanner: false,
             theme: ThemeData(
-              primarySwatch: Colors.blue,
+              primarySwatch: Colors.lightBlue,
+              fontFamily: 'Nunito',
             ),
-            home: MaterialApp(
-              title: 'Login',
-              debugShowCheckedModeBanner: false,
-              theme: ThemeData(
-                primarySwatch: Colors.lightBlue,
-                fontFamily: 'Nunito',
-              ),
-              home:
-                  EventScreen(), //LoginPage(), - replace this when done testing interest screens!
-              routes: routes,
-            )),
-      );
+            home:
+                ProfileScreen1(), //EventScreen(), //LoginPage(), - replace this when done testing interest screens!
+            routes: routes,
+          )),
+    );
     //);
   }
 }
