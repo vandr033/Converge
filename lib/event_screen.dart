@@ -803,7 +803,12 @@ class _PanelWidgetState extends State<PanelWidget> {
                       obscureText: false,
                       textAlign: TextAlign.left,
                       decoration: InputDecoration(
-                          //hintText: 'Add Location',
+                          hintText: 'Add Location',
+                          hintStyle: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
                           filled: true,
                           fillColor: Color(0XFFD7D9D7),
                           border: OutlineInputBorder(
@@ -1527,15 +1532,19 @@ class _PanelWidgetState extends State<PanelWidget> {
                 ],
               ),
 
-              SizedBox(height: 15),
+              //SizedBox(height: 15),
 
               Stack(
                 //Row(
                 //example
                 children: [
                   //Image Picker
-                  Expanded(
-                    flex: 1,
+                  Positioned.fill(
+                    //top: 0,
+                    right: 0,
+                    left: 0,
+                    //bottom: 0,
+                    //flex: 1,
                     child: MaterialButton(
                       padding: EdgeInsets.symmetric(horizontal: 0),
                       elevation: 8.0,
@@ -1566,8 +1575,8 @@ class _PanelWidgetState extends State<PanelWidget> {
                   ),
 
                   //white buffer between the circle image and rectangle immage
-                  Expanded(
-                    flex: 1,
+                  Positioned(
+                    //flex: 1,
                     child: Container(
                       padding: EdgeInsets.fromLTRB(0, 60, 0, 0),
                       alignment: Alignment.bottomCenter,
@@ -1581,8 +1590,8 @@ class _PanelWidgetState extends State<PanelWidget> {
                   ),
 
                   //Circle stacked ontop
-                  Expanded(
-                    flex: 1,
+                  Positioned(
+                    //flex: 1,
                     child: Container(
                       padding: EdgeInsets.fromLTRB(0, 65, 0, 0),
                       alignment: Alignment.bottomCenter,
@@ -1616,8 +1625,8 @@ class _PanelWidgetState extends State<PanelWidget> {
 
               Stack(
                 children: [
-                  Expanded(
-                    flex: 1,
+                  Positioned(
+                    //flex: 1,
                     child: Container(
                       width: 360,
                       height: 46,
@@ -1628,8 +1637,8 @@ class _PanelWidgetState extends State<PanelWidget> {
                       ),
                     ),
                   ),
-                  Expanded(
-                    flex: 1,
+                  Positioned(
+                    //flex: 1,
                     child: Container(
                       padding: EdgeInsets.fromLTRB(5, 10, 0, 0),
                       child: Icon(
@@ -1639,8 +1648,8 @@ class _PanelWidgetState extends State<PanelWidget> {
                       ),
                     ),
                   ),
-                  Expanded(
-                    flex: 1,
+                  Positioned(
+                    //flex: 1,
                     child: Container(
                       padding: EdgeInsets.fromLTRB(10, 15, 0, 0),
                       child: Icon(
@@ -1650,8 +1659,8 @@ class _PanelWidgetState extends State<PanelWidget> {
                       ),
                     ),
                   ),
-                  Expanded(
-                    flex: 1,
+                  Positioned(
+                    //flex: 1,
                     child: Container(
                       width: 360,
                       height: 46,
