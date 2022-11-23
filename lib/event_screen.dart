@@ -2,7 +2,6 @@
 
 import 'dart:io';
 
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_application/HomePage.dart';
 import 'package:flutter_application/community_screen.dart';
@@ -355,7 +354,6 @@ class _PanelWidgetState extends State<PanelWidget> {
       print('Failed to get image: $e');
     }
   }
-
 
   void eventStartDatePicker(ctx) {
     // showCupertinoModalPopup is a built-in function of the cupertino library
@@ -2031,36 +2029,36 @@ class ProfileScreenState extends State<ProfileScreen> {
   File? image2;
 
   void profileDatePicker(ctx) {
-      // showCupertinoModalPopup is a built-in function of the cupertino library
-      showCupertinoModalPopup(
-          context: ctx,
-          builder: (_) => Container(
-                height: 500,
-                color: const Color.fromARGB(255, 255, 255, 255),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 400,
-                      child: CupertinoDatePicker(
-                          initialDateTime: DateTime.now(),
-                          mode: CupertinoDatePickerMode.date,
-                          onDateTimeChanged: (val) {
-                            setState(() {
-                              startDate = val;
-                            });
-                          }),
-                    ),
-                    // Close the modal
-                    CupertinoButton(
-                      child: const Text('OK'),
-                      onPressed: () => {
-                        Navigator.of(ctx, rootNavigator: true).pop(ctx),
-                      },
-                    )
-                  ],
-                ),
-              ));
-    }
+    // showCupertinoModalPopup is a built-in function of the cupertino library
+    showCupertinoModalPopup(
+        context: ctx,
+        builder: (_) => Container(
+              height: 500,
+              color: const Color.fromARGB(255, 255, 255, 255),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 400,
+                    child: CupertinoDatePicker(
+                        initialDateTime: DateTime.now(),
+                        mode: CupertinoDatePickerMode.date,
+                        onDateTimeChanged: (val) {
+                          setState(() {
+                            startDate = val;
+                          });
+                        }),
+                  ),
+                  // Close the modal
+                  CupertinoButton(
+                    child: const Text('OK'),
+                    onPressed: () => {
+                      Navigator.of(ctx, rootNavigator: true).pop(ctx),
+                    },
+                  )
+                ],
+              ),
+            ));
+  }
 
   var dropdownValue;
 
@@ -2097,396 +2095,392 @@ class ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: Container(
-          padding: EdgeInsets.symmetric(
-            horizontal: 24,
-          ),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 45,
-              ),
-            
-              Stack(
-                children: [
-                  //Profile Banner Image Picker
-                  Positioned(
-                    //flex: 1,
-                    child: MaterialButton(
-                      padding: EdgeInsets.symmetric(horizontal: 0),
-                      elevation: 8.0,
-                      child: Container(
-                          alignment: Alignment(.90, -.75),
-                          height: 110,
-                          width: 360,
-                          decoration: image1 != null
-                              ? BoxDecoration(
-                                  color: Color(0xffD7D9D7),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(12)),
-                                  image: DecorationImage(
-                                      image: FileImage(image1!),
-                                      fit: BoxFit.fill))
-                              : BoxDecoration(
-                                  color: Color(0xffD7D9D7),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(12))),
-                          child: image1 != null
-                              ? Icon(null)
-                              : Icon(Icons.upload_rounded,
-                                  color: Colors.white)),
-                      onPressed: () {
-                        pickImage1();
-                      },
+      backgroundColor: Colors.white,
+      body: Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: 24,
+        ),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 45,
+            ),
+
+            Stack(
+              children: [
+                //Profile Banner Image Picker
+                Positioned(
+                  //flex: 1,
+                  child: MaterialButton(
+                    padding: EdgeInsets.symmetric(horizontal: 0),
+                    elevation: 8.0,
+                    child: Container(
+                        alignment: Alignment(.90, -.75),
+                        height: 110,
+                        width: 360,
+                        decoration: image1 != null
+                            ? BoxDecoration(
+                                color: Color(0xffD7D9D7),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12)),
+                                image: DecorationImage(
+                                    image: FileImage(image1!),
+                                    fit: BoxFit.fill))
+                            : BoxDecoration(
+                                color: Color(0xffD7D9D7),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12))),
+                        child: image1 != null
+                            ? Icon(null)
+                            : Icon(Icons.upload_rounded, color: Colors.white)),
+                    onPressed: () {
+                      pickImage1();
+                    },
+                  ),
+                ),
+
+                //White Circle around it
+                Positioned(
+                  //flex: 1,
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(0, 60, 0, 0),
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      height: 85,
+                      width: 85,
+                      decoration: BoxDecoration(
+                          color: Colors.white, shape: BoxShape.circle),
                     ),
                   ),
+                ),
 
-                  //White Circle around it
-                  Positioned(
-                    //flex: 1,
+                //Profile Picture Image Picker
+                Positioned(
+                  //flex: 1,
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(0, 65, 0, 0),
+                    alignment: Alignment.bottomCenter,
                     child: Container(
-                      padding: EdgeInsets.fromLTRB(0, 60, 0, 0),
-                      alignment: Alignment.bottomCenter,
-                      child: Container(
-                        height: 85,
-                        width: 85,
-                        decoration: BoxDecoration(
-                            color: Colors.white, shape: BoxShape.circle),
+                        padding: EdgeInsets.symmetric(horizontal: 0),
+                        height: 75,
+                        width: 75,
+                        decoration: image2 != null
+                            ? BoxDecoration(
+                                color: Color(0xffD7D9D7),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(100)),
+                                image: DecorationImage(
+                                    image: FileImage(image2!),
+                                    fit: BoxFit.fill))
+                            : BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color(0xffD7D9D7),
+                              ),
+                        child: image2 != null
+                            ? Icon(null)
+                            : Icon(Icons.upload_rounded, color: Colors.white)),
+                  ),
+                ),
+              ],
+            ),
+
+            Stack(
+              children: [
+                Positioned(
+                  child: Container(
+                    //alignment: Alignment.centerLeft,
+                    padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                    child: Text(
+                      "Jane Smith",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 0, 0, 0),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
+                ),
 
-                  //Profile Picture Image Picker
-                  Positioned(
-                    //flex: 1,
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(0, 65, 0, 0),
-                      alignment: Alignment.bottomCenter,
-                      child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 0),
-                          height: 75,
-                          width: 75,
-                          decoration: image2 != null
-                              ? BoxDecoration(
-                                  color: Color(0xffD7D9D7),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(100)),
-                                  image: DecorationImage(
-                                      image: FileImage(image2!),
-                                      fit: BoxFit.fill))
-                              : BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Color(0xffD7D9D7),
-                                ),
-                          child: image2 != null
-                              ? Icon(null)
-                              : Icon(Icons.upload_rounded,
-                                  color: Colors.white)),
+                Positioned(
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(308, 1, 0, 0),
+                    child: Icon(
+                      Icons.snapchat,
+                      size: 25,
+                      color: Color(0XFF828382),
                     ),
                   ),
-                ],
-              ),
+                ),
+                Positioned(
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(338, 0, 0, 0),
+                    child: Icon(
+                      Icons.facebook,
+                      size: 25,
+                      color: Color(0XFFC828382),
+                    ),
+                  ),
+                ),
 
-              Stack(
-                children: [
-                  Positioned(
+                Positioned(
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(240, 0, 0, 0),
+                    //alignment: Alignment.bottomCenter,
                     child: Container(
-                      //alignment: Alignment.centerLeft,
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                      child: Text(
-                        "Jane Smith",
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 0, 0, 0),
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                      height: 25,
+                      width: 25,
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: AssetImage("assets/images/manrun.png"),
+                          fit: BoxFit.cover,
                         ),
                       ),
                     ),
                   ),
-
-                  Positioned(
+                ),
+                //2
+                Positioned(
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(260, 0, 0, 0),
+                    //alignment: Alignment.bottomCenter,
                     child: Container(
-                      padding: EdgeInsets.fromLTRB(308, 1, 0, 0),
-                      child: Icon(
-                        Icons.snapchat,
-                        size: 25,
-                        color: Color.fromARGB(255, 255, 0, 0),
+                      height: 25,
+                      width: 25,
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: AssetImage("assets/images/manrun.png"),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
-                  Positioned(
+                ),
+                //3
+                Positioned(
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(280, 0, 0, 0),
+                    //alignment: Alignment.bottomCenter,
                     child: Container(
-                      padding: EdgeInsets.fromLTRB(338, 0, 0, 0),
-                      child: Icon(
-                        Icons.facebook,
-                        size: 25,
-                        color: Color.fromARGB(255, 255, 0, 0),
+                      height: 25,
+                      width: 25,
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: AssetImage("assets/images/manrun.png"),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
+                ),
+              ],
+            ),
 
-                  Positioned(
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(240, 0, 0, 0),
-                      //alignment: Alignment.bottomCenter,
+            //gap here
+            SizedBox(
+              height: 10,
+            ),
+
+            Stack(
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 3,
                       child: Container(
-                        height: 25,
-                        width: 25,
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            image: AssetImage("assets/images/manrun.png"),
-                            fit: BoxFit.cover,
+                        //alignment: Alignment.centerLeft,
+                        padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                        child: Text(
+                          "Foodie, gymrat, and\n"
+                          "cinema enthusiast.",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 0, 0, 0),
+                            fontSize: 16,
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  //2
-                  Positioned(
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(260, 0, 0, 0),
-                      //alignment: Alignment.bottomCenter,
+                    SizedBox(width: 80),
+                    Expanded(
+                      flex: 2,
                       child: Container(
-                        height: 25,
-                        width: 25,
-                        decoration: BoxDecoration(
-                          color: Colors.green,
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            image: AssetImage("assets/images/manrun.png"),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
+                        width: 100.0,
+                        height: 25.0,
+                        //padding: EdgeInsets.fromLTRB(20, 15, 0, 0),
+                        child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xff4589FF),
+                                foregroundColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(9.0))),
+                            child: const Text(
+                              'Edit Profile',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                              softWrap: false,
+                            )),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 340,
+                  height: 2,
+                  decoration: BoxDecoration(
+                      color: Color(0xffD7D9D7),
+                      borderRadius: BorderRadius.circular(20)),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+
+            Container(
+              height: 46,
+              width: 342,
+              child: ElevatedButton(
+                onPressed: () => profileDatePicker(this.context),
+                style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  backgroundColor: Color.fromARGB(255, 48, 46, 46),
+                  foregroundColor: Colors.white,
+                  padding: EdgeInsets.zero,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(12),
+                      topLeft: Radius.circular(12),
+                    ),
+                  ),
+                ),
+                child: Text(
+                  startDate != null
+                      ? DateFormat.EEEE().format(startDate) +
+                          ', ' +
+                          DateFormat.MMM().format(startDate) +
+                          '. ' +
+                          DateFormat.d().format(startDate)
+                      : 'No Date!',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  softWrap: false,
+                ),
+              ),
+            ),
+
+            Stack(
+              children: [
+                Positioned(
+                  child: Container(
+                    //alignment: Alignment.center,
+                    height: 154,
+                    width: 342,
+                    decoration: BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(12),
+                        bottomRight: Radius.circular(12),
                       ),
                     ),
                   ),
-                  //3
-                  Positioned(
+                ),
+                Positioned(
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(296, 5.5, 0, 0),
                     child: Container(
-                      padding: EdgeInsets.fromLTRB(280, 0, 0, 0),
-                      //alignment: Alignment.bottomCenter,
-                      child: Container(
-                        height: 25,
-                        width: 25,
-                        decoration: BoxDecoration(
-                          color: Colors.blue,
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            image: AssetImage("assets/images/manrun.png"),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
+                      height: 30,
+                      width: 30,
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                        shape: BoxShape.circle,
                       ),
                     ),
                   ),
-                ],
-              ),
-
-              //gap here
-              SizedBox(
-                height: 10,
-              ),
-
-              Stack(
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 3,
-                        child: Container(
-                          //alignment: Alignment.centerLeft,
-                          padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                          child: Text(
-                            "Foodie, gymrat, and\n"
-                            "cinema enthusiast.",
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 0),
-                              fontSize: 16,
-                            ),
-                          ),
-                        ),
+                ),
+                Positioned(
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    height: 154,
+                    width: 342,
+                    child: Text(
+                      textAlign: TextAlign.center,
+                      '28          29          30          1          2',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
-                      SizedBox(width: 80),
-                      Expanded(
-                        flex: 2,
-                        child: Container(
-                          width: 100.0,
-                          height: 25.0,
-                          //padding: EdgeInsets.fromLTRB(20, 15, 0, 0),
-                          child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: Color(0xff4589FF),
-                                  foregroundColor: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(9.0))),
-                              child: const Text(
-                                'Edit Profile',
-                                style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.bold),
-                                softWrap: false,
-                              )),
-                        ),
-                      ),
-                    ],
+                      softWrap: false,
+                    ),
                   ),
-                ],
-              ),
-
-              SizedBox(
-                height: 20,
-              ),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Container(
-                    width: 350,
+                ),
+                //line
+                Positioned(
+                  top: 45,
+                  child: Container(
+                    width: 342,
                     height: 2,
                     decoration: BoxDecoration(
-                        color: Color(0xffD7D9D7),
-                        borderRadius: BorderRadius.circular(20)),
-                  ),
-                ],
-              ),
-
-              SizedBox(
-                height: 20,
-              ),
-
-              Container(
-                height: 46,
-                width: 342,
-                child: ElevatedButton(
-                  onPressed: () => profileDatePicker(this.context),
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    backgroundColor: Color.fromARGB(255, 48, 46, 46),
-                    foregroundColor: Colors.white,
-                    padding: EdgeInsets.zero,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(topRight: Radius.circular(12),
-                     topLeft: Radius.circular(12),
-                     ),
-                     ),
-                  ),
-                  child: Text(
-                    startDate != null
-                        ? DateFormat.EEEE().format(startDate) + ', ' + DateFormat.MMM().format(startDate)+ '. ' + DateFormat.d().format(startDate)
-                        : 'No Date!',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 48, 46, 46),
+                      borderRadius: BorderRadius.circular(20),
                     ),
-                    softWrap: false,
                   ),
-                  
                 ),
-                
-              ),
-            
-              Stack(
-                children: [
-                  
-                  Positioned(
-                    child: Container(
-                      //alignment: Alignment.center,
-                      height: 154,
-                      width: 342,
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(12),
-                          bottomRight: Radius.circular(12),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(296, 2.5, 0, 0),
-                      child: Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                          color: Colors.blue,
-                          shape: BoxShape.circle,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                      height: 154,
-                      width: 342,
-                      child: Text(
-                        textAlign: TextAlign.center,
-                        '28          29          30          1          2',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                        softWrap: false,
-                      ),
-                    ),
-                  ),
-                  //line
-                  Positioned(
-                    top: 45,
-                    child: Container(
-                      width: 342,
-                      height: 2,
-                      decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 48, 46, 46),
-                          borderRadius: BorderRadius.circular(20),),
-                    ),
-                  ),
 
-                  //blue boxes start
-                  // Positioned(
-                  //   child: Container(
-                  //     //alignment: Alignment.center,
-                  //     padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                  //     child: Container(
-                  //       height: 46,
-                  //       width: 300,
-                  //       decoration: BoxDecoration(
-                  //         color: Colors.blue,
-                  //         borderRadius: BorderRadius.circular(12),),
-                  //       ),
-                  //     ),
-                  //   ),
-                  
-                  // Positioned(
-                  //    child: Container(
-                  //     //alignment: Alignment.center,
-                  //     padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                  //     child: Container(
-                  //       height: 46,
-                  //       width: 300,
-                  //       decoration: BoxDecoration(
-                  //         color: Colors.blue,
-                  //         borderRadius: BorderRadius.circular(12),),
-                  //       ),
-                  //     ),
-                  //   ),
-                
-                ],
+                //blue boxes start
+                Positioned(
+                  child: Container(
+                    //alignment: Alignment.center,
+                    padding: EdgeInsets.fromLTRB(12, 50, 0, 0),
+                    child: Container(
+                      height: 46,
+                      width: 320,
+                      decoration: BoxDecoration(
+                        color: Color(0xff4589FF),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
                   ),
-                ],
-          ),
+                ),
+
+                Positioned(
+                  child: Container(
+                    //alignment: Alignment.center,
+                    padding: EdgeInsets.fromLTRB(12, 100, 0, 0),
+                    child: Container(
+                      height: 46,
+                      width: 320,
+                      decoration: BoxDecoration(
+                        color: Color(0xff4589FF),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
+      ),
     );
-      }
   }
+}
