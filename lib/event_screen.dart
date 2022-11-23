@@ -2308,19 +2308,40 @@ class ProfileScreenState extends State<ProfileScreen> {
               ),
 
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
                     width: 10,
                   ),
+                  
                   Container(
-                    width: 330,
+                    width: 350,
                     height: 5,
                     decoration: BoxDecoration(
                         color: Color(0xffD7D9D7),
                         borderRadius: BorderRadius.circular(20)),
                   )
                 ],
+              ),
+
+              SizedBox(
+                height: 10,
+              ),
+
+              Container(
+                height: 200,
+                width: 342,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(12),
+                        topLeft: Radius.circular(12),),
+                  color: Colors.green,
+                ),
               )
+
+
+
+
             ],
           ),
         ));
