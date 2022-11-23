@@ -100,6 +100,7 @@ flutter:
     - assets/community_logos/
     - assets/category_logos/
     - assets/images/
+    - assets/profile_post_images/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
