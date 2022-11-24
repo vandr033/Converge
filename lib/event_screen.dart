@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_application/HomePage.dart';
 import 'package:flutter_application/community_screen.dart';
@@ -355,6 +356,7 @@ class _PanelWidgetState extends State<PanelWidget> {
     }
   }
 
+
   void eventStartDatePicker(ctx) {
     // showCupertinoModalPopup is a built-in function of the cupertino library
     showCupertinoModalPopup(
@@ -516,7 +518,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                       // required field
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
-                        color: Color(0XFFD7D9D7),
+                        color: Color(0xFF838383),
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       width: 226,
@@ -526,7 +528,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                         child: DropdownButton<String>(
                           isExpanded: true,
                           borderRadius: BorderRadius.circular(12.0),
-                          dropdownColor: Color(0XFFD7D9D7),
+                          dropdownColor: Color(0xFF838383),
                           style: const TextStyle(
                               color: Colors.white, //<-- SEE HERE
                               fontSize: 16,
@@ -596,7 +598,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                           fontWeight: FontWeight.bold,
                         ),
                         filled: true,
-                        fillColor: Color(0XFFD7D9D7),
+                        fillColor: Color(0xFF838383),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12.0),
                           borderSide: BorderSide(
@@ -612,7 +614,7 @@ class _PanelWidgetState extends State<PanelWidget> {
               ],
             ),
 
-            SizedBox(height: 15),
+            SizedBox(height: 10),
 
             Container(
               //this contains our image picker
@@ -629,14 +631,14 @@ class _PanelWidgetState extends State<PanelWidget> {
                         width: 108,
                         decoration: eventImage1 != null
                             ? BoxDecoration(
-                                color: Color(0xffD7D9D7),
+                                color: Color(0xFF838383),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20)),
                                 image: DecorationImage(
                                     image: FileImage(eventImage1!),
                                     fit: BoxFit.fill))
                             : BoxDecoration(
-                                color: Color(0xffD7D9D7),
+                                color: Color(0xFF838383),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20))),
                         child: eventImage1 != null
@@ -665,7 +667,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                         width: 108,
                         decoration: eventImage2 != null
                             ? BoxDecoration(
-                                color: Color(0xffD7D9D7),
+                                color: Color(0xFF838383),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20)),
                                 image: DecorationImage(
@@ -673,7 +675,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                                     fit: BoxFit.fill))
                             : imageIndex == 1
                                 ? BoxDecoration(
-                                    color: Color(0xffD7D9D7),
+                                    color: Color(0xFF838383),
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(20)))
                                 : BoxDecoration(
@@ -707,7 +709,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                         width: 108,
                         decoration: eventImage3 != null
                             ? BoxDecoration(
-                                color: Color(0xffD7D9D7),
+                                color: Color(0xFF838383),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20)),
                                 image: DecorationImage(
@@ -715,7 +717,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                                     fit: BoxFit.fill))
                             : imageIndex == 2
                                 ? BoxDecoration(
-                                    color: Color(0xffD7D9D7),
+                                    color: Color(0xFF838383),
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(20)))
                                 : BoxDecoration(
@@ -747,7 +749,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                         width: 108,
                         decoration: eventImage4 != null
                             ? BoxDecoration(
-                                color: Color(0xffD7D9D7),
+                                color: Color(0xFF838383),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20)),
                                 image: DecorationImage(
@@ -755,7 +757,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                                     fit: BoxFit.fill))
                             : imageIndex == 3
                                 ? BoxDecoration(
-                                    color: Color(0xffD7D9D7),
+                                    color: Color(0xFF838383),
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(20)))
                                 : BoxDecoration(
@@ -783,7 +785,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                 ],
               ),
             ),
-            SizedBox(height: 15),
+            SizedBox(height: 10),
 
             //Event start
 /*
@@ -805,28 +807,24 @@ class _PanelWidgetState extends State<PanelWidget> {
                       obscureText: false,
                       textAlign: TextAlign.left,
                       decoration: InputDecoration(
-                          hintText: 'Add Location',
-                          hintStyle: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
+                        contentPadding: EdgeInsets.all(0),
+                        hintText: "\t\t Add Location",
+                        hintStyle: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        filled: true,
+                        fillColor: Color(0xFF838383),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                          borderSide: BorderSide(
+                            width: 0,
+                            style: BorderStyle.none,
                           ),
-                          filled: true,
-                          fillColor: Color(0XFFD7D9D7),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12.0),
-                            borderSide: BorderSide(
-                              width: 0,
-                              style: BorderStyle.none,
-                            ),
-                          ),
-                          alignLabelWithHint: false,
-                          //labelText: 'Add Location:',
-                          labelStyle: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          )),
+                        ),
+                        alignLabelWithHint: false,
+                      ),
                       onChanged: (value) {
                         setState(() {
                           selected = false;
@@ -848,7 +846,7 @@ class _PanelWidgetState extends State<PanelWidget> {
               decoration: InputDecoration(
                 hintText: 'Add Location',
                 filled: true,
-                fillColor: Color(0XFFD7D9D7),
+                fillColor: Color(0xFF838383),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12.0),
                   borderSide: BorderSide(
@@ -891,7 +889,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                   borderRadius: BorderRadius.all(
                     Radius.circular(12.0),
                   ),
-                  color: Color(0xffD7D9D7),
+                  color: Color(0xFF838383),
                 ),
                 height: 300,
                 child: ListView.builder(
@@ -941,95 +939,101 @@ class _PanelWidgetState extends State<PanelWidget> {
                     ],
                   ),
                 )),
-            SizedBox(height: 15),
+            SizedBox(height: 10),
             Row(
-              //mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(
                   flex: 1,
-                  child: SizedBox(
-                    width: 363,
-                    height: 50.0,
-                    child: Card(
-                      color: Color(0XFFD7D9D7),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12.0)),
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            width: 30,
-                          ),
-                          SizedBox(
-                              width: 115,
-                              height: 15,
-                              child: Text(
-                                "Event starts: ",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
+                  child: Container(
+                    // padding: EdgeInsets.symmetric(horizontal: 0),
+                    //transform: Matrix4.translationValues(-3.0, 0, 0.0),
+                    child: SizedBox(
+                      width: 363,
+                      height: 46.0,
+                      child: Container(
+                        width: 115,
+                        height: 15,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF838383),
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        child: Row(
+                          children: [
+                            // SizedBox(
+                            //   width: 30,
+                            // ),
+                            SizedBox(
+                                width: 115,
+                                height: 15,
+                                child: Text(
+                                  "\t\t Event starts: ",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign: TextAlign.left,
+                                )),
+                            //spacing between eve start and white boxes
+                            SizedBox(
+                              width: 50,
+                            ),
+                            SizedBox(
+                              width: 95,
+                              height: 30,
+                              child: ElevatedButton(
+                                onPressed: () =>
+                                    eventStartDatePicker(this.context),
+                                style: ElevatedButton.styleFrom(
+                                  elevation: 0,
+                                  backgroundColor: Colors.white,
+                                  foregroundColor: Colors.grey,
+                                  padding: EdgeInsets.zero,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(4.0)),
                                 ),
-                                textAlign: TextAlign.left,
-                              )),
-                          //spacing between eve start and white boxes
-                          SizedBox(
-                            width: 20,
-                          ),
-                          SizedBox(
-                            width: 95,
-                            height: 30,
-                            child: ElevatedButton(
-                              onPressed: () =>
-                                  eventStartDatePicker(this.context),
-                              style: ElevatedButton.styleFrom(
-                                elevation: 0,
-                                backgroundColor: Colors.white,
-                                foregroundColor: Colors.grey,
-                                padding: EdgeInsets.zero,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(4.0)),
-                              ),
-                              child: Text(
-                                startDate != null
-                                    ? DateFormat.yMMMd().format(startDate)
-                                    : 'No Date!',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
+                                child: Text(
+                                  startDate != null
+                                      ? DateFormat.yMMMd().format(startDate)
+                                      : 'No Date!',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  softWrap: false,
                                 ),
-                                softWrap: false,
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          SizedBox(
-                            width: 70,
-                            height: 30,
-                            child: ElevatedButton(
-                              onPressed: () =>
-                                  eventStartTimePicker(this.context),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.white,
-                                foregroundColor: Colors.grey,
-                                padding: EdgeInsets.zero,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(4.0)),
-                              ),
-                              child: Text(
-                                startDate != null
-                                    ? DateFormat.jm().format(startTime)
-                                    : 'No Time!',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                softWrap: false,
-                              ),
+                            SizedBox(
+                              width: 5,
                             ),
-                          )
-                        ],
+                            SizedBox(
+                              width: 70,
+                              height: 30,
+                              child: ElevatedButton(
+                                onPressed: () =>
+                                    eventStartTimePicker(this.context),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.white,
+                                  foregroundColor: Colors.grey,
+                                  padding: EdgeInsets.zero,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(4.0)),
+                                ),
+                                child: Text(
+                                  startDate != null
+                                      ? DateFormat.jm().format(startTime)
+                                      : 'No Time!',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  softWrap: false,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -1039,98 +1043,104 @@ class _PanelWidgetState extends State<PanelWidget> {
 
             SizedBox(height: 10),
 
-            Row(
-              //mainAxisAlignment: MainAxisAlignment.center,
-
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: SizedBox(
-                    //width: 363,
-                    height: 50.0,
-                    child: Card(
-                      color: Color(0XFFD7D9D7),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12.0)),
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            width: 30,
+           
+              Row(
+                children: [
+                  Expanded(
+                    flex: 0,
+                    child: Container(
+                     // padding: EdgeInsets.symmetric(horizontal: 0),
+                      //transform: Matrix4.translationValues(-3.0, 0, 0.0),
+                      child: SizedBox(
+                        width: 363,
+                        height: 46.0,
+                        child: Container(
+                                  width: 115,
+                                  height: 15,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFF838383),
+                                    borderRadius: BorderRadius.circular(12.0),
                           ),
-                          SizedBox(
-                              width: 115,
-                              height: 15,
-                              child: Text(
-                                "Event ends: ",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
+                          
+                          child: Row(
+                            children: [
+                              
+                              SizedBox(
+                                  width: 115,
+                                  height: 15,
+                                  child: Text(
+                                    "\t\t Event ends: ",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  )),
+                              SizedBox(
+                                width: 50,
+                              ),
+                              SizedBox(
+                                width: 95,
+                                height: 30,
+                                child: ElevatedButton(
+                                  onPressed: () => eventEndDatePicker(this.context),
+                                  style: ElevatedButton.styleFrom(
+                                    padding: EdgeInsets.zero,
+                                    backgroundColor: Colors.white,
+                                    foregroundColor: Colors.grey,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(4.0)),
+                                  ),
+                                  child: Text(
+                                    endDate != null
+                                        ? DateFormat.yMMMd().format(endDate)
+                                        : 'No Date!',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    softWrap: false,
+                                  ),
                                 ),
-                                textAlign: TextAlign.left,
-                              )),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          SizedBox(
-                            width: 95,
-                            height: 30,
-                            child: ElevatedButton(
-                              onPressed: () => eventEndDatePicker(this.context),
-                              style: ElevatedButton.styleFrom(
-                                padding: EdgeInsets.zero,
-                                backgroundColor: Colors.white,
-                                foregroundColor: Colors.grey,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(4.0)),
                               ),
-                              child: Text(
-                                endDate != null
-                                    ? DateFormat.yMMMd().format(endDate)
-                                    : 'No Date!',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
+                              SizedBox(
+                                width: 5,
+                              ),
+                              SizedBox(
+                                width: 70,
+                                height: 30,
+                                child: ElevatedButton(
+                                  onPressed: () => eventEndTimePicker(this.context),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.white,
+                                    foregroundColor: Colors.grey,
+                                    padding: EdgeInsets.zero,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(4.0)),
+                                  ),
+                                  child: Text(
+                                    endTime != null
+                                        ? DateFormat.jm().format(endTime)
+                                        : 'No Time!',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    softWrap: false,
+                                  ),
                                 ),
-                                softWrap: false,
-                              ),
-                            ),
+                              )
+                            ],
                           ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          SizedBox(
-                            width: 70,
-                            height: 30,
-                            child: ElevatedButton(
-                              onPressed: () => eventEndTimePicker(this.context),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.white,
-                                foregroundColor: Colors.grey,
-                                padding: EdgeInsets.zero,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(4.0)),
-                              ),
-                              child: Text(
-                                endTime != null
-                                    ? DateFormat.jm().format(endTime)
-                                    : 'No Time!',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                softWrap: false,
-                              ),
-                            ),
-                          )
-                        ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: 15),
+                ],
+              ),
+            
+            SizedBox(height: 10),
 
             //this is where host goes
             Row(
@@ -1142,10 +1152,10 @@ class _PanelWidgetState extends State<PanelWidget> {
                   child: Container(
                     width: 360,
                     height: 55,
-                    //color: Color(0xffD7D9D7),
+                    //color: Color(0xFF838383),
                     padding: EdgeInsets.all(1),
                     // decoration: BoxDecoration(
-                    //   color: Color(0xffD7D9D7),
+                    //   color: Color(0xFF838383),
                     //   borderRadius: BorderRadius.all(Radius.circular(12))),
                     child: TypeAheadField<User?>(
                       //Here we use <User> because that is what we are autocompleting for.
@@ -1167,12 +1177,12 @@ class _PanelWidgetState extends State<PanelWidget> {
                               color: Colors.white,
                               fontWeight: FontWeight.w700),
                           filled: true,
-                          fillColor: Color(0xffD7D9D7),
+                          fillColor: Color(0xFF838383),
                           contentPadding: EdgeInsets.all(10),
                         ),
                       ),
                       suggestionsBoxDecoration: SuggestionsBoxDecoration(
-                        color: Color(0xffD7D9D7),
+                        color: Color(0xFF838383),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       suggestionsCallback: UserData
@@ -1266,7 +1276,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                     ],
                   ),
                 )),
-            SizedBox(height: 10),
+            SizedBox(height: 5),
 
             /*
             Row(
@@ -1277,7 +1287,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                     child: Container(
                       padding: EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: Color(0XFFD7D9D7),
+                        color: Color(0xFF838383),
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       width: 360,
@@ -1286,7 +1296,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                         child: DropdownButton<String>(
                           isExpanded: true,
                           borderRadius: BorderRadius.circular(12.0),
-                          dropdownColor: Color(0XFFD7D9D7),
+                          dropdownColor: Color(0xFF838383),
                           style: const TextStyle(
                               color: Colors.white, //<-- SEE HERE
                               fontSize: 16,
@@ -1323,7 +1333,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                     child: Container(
                       padding: EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: Color(0XFFD7D9D7),
+                        color: Color(0xFF838383),
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       width: 360,
@@ -1341,7 +1351,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                           ),
                           isExpanded: true,
                           borderRadius: BorderRadius.circular(12.0),
-                          dropdownColor: Color(0XFFD7D9D7),
+                          dropdownColor: Color(0xFF838383),
                           style: const TextStyle(
                               color: Colors.white, //<-- SEE HERE
                               fontSize: 16,
@@ -1379,7 +1389,7 @@ class _PanelWidgetState extends State<PanelWidget> {
               ],
             ),
 
-            SizedBox(height: 20),
+            SizedBox(height: 15),
 
             //Post Button
             Row(
@@ -1439,7 +1449,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                         // required field
                         padding: EdgeInsets.all(15),
                         decoration: BoxDecoration(
-                          color: Color(0XFFD7D9D7),
+                          color: Color(0xFF838383),
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         width: 226,
@@ -1449,7 +1459,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                           child: DropdownButton<String>(
                             isExpanded: true,
                             borderRadius: BorderRadius.circular(12.0),
-                            dropdownColor: Color(0XFFD7D9D7),
+                            dropdownColor: Color(0xFF838383),
                             style: const TextStyle(
                                 color: Colors.white, //<-- SEE HERE
                                 fontSize: 16,
@@ -1517,7 +1527,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                             fontWeight: FontWeight.bold,
                           ),
                           filled: true,
-                          fillColor: Color(0XFFD7D9D7),
+                          fillColor: Color(0xFF838383),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12.0),
                             borderSide: BorderSide(
@@ -1533,7 +1543,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                 ],
               ),
 
-              //SizedBox(height: 15),
+              //SizedBox(height: 10),
 
               Stack(
                 //Row(
@@ -1555,14 +1565,14 @@ class _PanelWidgetState extends State<PanelWidget> {
                           width: 360,
                           decoration: communityImage1 != null
                               ? BoxDecoration(
-                                  color: Color(0xffD7D9D7),
+                                  color: Color(0xFF838383),
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(12)),
                                   image: DecorationImage(
                                       image: FileImage(communityImage1!),
                                       fit: BoxFit.fill))
                               : BoxDecoration(
-                                  color: Color(0xffD7D9D7),
+                                  color: Color(0xFF838383),
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(12))),
                           child: communityImage1 != null
@@ -1602,7 +1612,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                           width: 75,
                           decoration: communityImage2 != null
                               ? BoxDecoration(
-                                  color: Color(0xffD7D9D7),
+                                  color: Color(0xFF838383),
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(100)),
                                   image: DecorationImage(
@@ -1610,7 +1620,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                                       fit: BoxFit.fill))
                               : BoxDecoration(
                                   shape: BoxShape.circle,
-                                  color: Color(0xffD7D9D7),
+                                  color: Color(0xFF838383),
                                 ),
                           child: communityImage2 != null
                               ? Icon(null)
@@ -1633,7 +1643,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                       height: 46,
                       decoration: BoxDecoration(
                         //color: Colors.green,
-                        color: Color(0xffD7D9D7),
+                        color: Color(0xFF838383),
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                     ),
@@ -1678,7 +1688,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                             ),
                             hintText: 'Community Guidelines:',
                             filled: false,
-                            fillColor: Color(0XFFD7D9D7),
+                            fillColor: Color(0xFF838383),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12.0),
                               borderSide: BorderSide(
@@ -1699,7 +1709,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                 ],
               ),
 
-              SizedBox(height: 15),
+              SizedBox(height: 10),
 
               //this is where host goes
               Row(
@@ -1711,10 +1721,10 @@ class _PanelWidgetState extends State<PanelWidget> {
                     child: Container(
                       width: 360,
                       height: 55,
-                      //color: Color(0xffD7D9D7),
+                      //color: Color(0xFF838383),
                       padding: EdgeInsets.all(1),
                       // decoration: BoxDecoration(
-                      //   color: Color(0xffD7D9D7),
+                      //   color: Color(0xFF838383),
                       //   borderRadius: BorderRadius.all(Radius.circular(12))),
                       child: TypeAheadField<User?>(
                         //Here we use <User> because that is what we are autocompleting for.
@@ -1736,12 +1746,12 @@ class _PanelWidgetState extends State<PanelWidget> {
                                 color: Colors.white,
                                 fontWeight: FontWeight.w700),
                             filled: true,
-                            fillColor: Color(0xffD7D9D7),
+                            fillColor: Color(0xFF838383),
                             contentPadding: EdgeInsets.all(10),
                           ),
                         ),
                         suggestionsBoxDecoration: SuggestionsBoxDecoration(
-                          color: Color(0xffD7D9D7),
+                          color: Color(0xFF838383),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         suggestionsCallback: UserData
@@ -1835,7 +1845,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                       ],
                     ),
                   )),
-              SizedBox(height: 10),
+              SizedBox(height: 5),
               //SizedBox(height: 10),
 
               Row(
@@ -1854,8 +1864,9 @@ class _PanelWidgetState extends State<PanelWidget> {
                         textAlign: TextAlign.center,
                         decoration: InputDecoration(
                             hintText: 'Description:',
+                            
                             filled: true,
-                            fillColor: Color(0XFFD7D9D7),
+                            fillColor: Color(0xFF838383),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12.0),
                               borderSide: BorderSide(
@@ -1876,7 +1887,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                 ],
               ),
 
-              SizedBox(height: 15),
+              SizedBox(height: 10),
 
               Row(
                 children: [
@@ -1885,7 +1896,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                       child: Container(
                         padding: EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                          color: Color(0XFFD7D9D7),
+                          color: Color(0xFF838383),
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         width: 360,
@@ -1903,7 +1914,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                             ),
                             isExpanded: true,
                             borderRadius: BorderRadius.circular(12.0),
-                            dropdownColor: Color(0XFFD7D9D7),
+                            dropdownColor: Color(0xFF838383),
                             style: const TextStyle(
                                 color: Colors.white, //<-- SEE HERE
                                 fontSize: 16,
@@ -2029,36 +2040,36 @@ class ProfileScreenState extends State<ProfileScreen> {
   File? image2;
 
   void profileDatePicker(ctx) {
-    // showCupertinoModalPopup is a built-in function of the cupertino library
-    showCupertinoModalPopup(
-        context: ctx,
-        builder: (_) => Container(
-              height: 500,
-              color: const Color.fromARGB(255, 255, 255, 255),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 400,
-                    child: CupertinoDatePicker(
-                        initialDateTime: DateTime.now(),
-                        mode: CupertinoDatePickerMode.date,
-                        onDateTimeChanged: (val) {
-                          setState(() {
-                            startDate = val;
-                          });
-                        }),
-                  ),
-                  // Close the modal
-                  CupertinoButton(
-                    child: const Text('OK'),
-                    onPressed: () => {
-                      Navigator.of(ctx, rootNavigator: true).pop(ctx),
-                    },
-                  )
-                ],
-              ),
-            ));
-  }
+      // showCupertinoModalPopup is a built-in function of the cupertino library
+      showCupertinoModalPopup(
+          context: ctx,
+          builder: (_) => Container(
+                height: 500,
+                color: const Color.fromARGB(255, 255, 255, 255),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 400,
+                      child: CupertinoDatePicker(
+                          initialDateTime: DateTime.now(),
+                          mode: CupertinoDatePickerMode.date,
+                          onDateTimeChanged: (val) {
+                            setState(() {
+                              startDate = val;
+                            });
+                          }),
+                    ),
+                    // Close the modal
+                    CupertinoButton(
+                      child: const Text('OK'),
+                      onPressed: () => {
+                        Navigator.of(ctx, rootNavigator: true).pop(ctx),
+                      },
+                    )
+                  ],
+                ),
+              ));
+    }
 
   var dropdownValue;
 
@@ -2639,5 +2650,5 @@ class ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
     );
+      }
   }
-}
