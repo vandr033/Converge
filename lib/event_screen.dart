@@ -2732,193 +2732,139 @@ class ProfileScreenState extends State<ProfileScreen> {
                     ],
                   ),
                 ),
-
                 SizedBox(
                   height: 20,
                 ),
-
                 Container(
-                    //height:342,
-                    width: 348,
-                    child: Column(
-                      children: [
-                        Row(
-                          children: const [
-                            //Padding(
-                            //padding: EdgeInsets.only(left: 24),
-                            Text(
-                              " Recent Posts",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xff828382),
-                                fontSize: 20,
+                  //height:342,
+                  width: 348,
+                  child: Column(
+                    children: [
+                      Row(
+                        //row with text "Recent Posts"
+                        children: const [
+                          //Padding(
+                          //padding: EdgeInsets.only(left: 24),
+                          Text(
+                            " Recent Posts",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xff828382),
+                              fontSize: 20,
+                            ),
+                          ),
+                          //),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        //first row of images.
+                        children: [
+                          Expanded(
+                            child: Container(
+                              height: 150,
+                              width: 150,
+                              //margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                    20), //rounded corners of container
+                                image: const DecorationImage(
+                                  //fit: BoxFit.cover,
+                                  image: AssetImage(
+                                      "assets/profile_post_images/row_1_col_1.png"),
+                                ),
                               ),
                             ),
-                            //),
-                          ],
-                        ),
-                        SizedBox(height: 10),
-                        Row(
-                          //first row of images.
-                          children: [
-                            Expanded(
-                              child: Container(
-                                height: 150,
-                                width: 150,
-                                //margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                      20), //rounded corners of container
-                                  image: const DecorationImage(
-                                    //fit: BoxFit.cover,
-                                    image: AssetImage(
-                                        "assets/profile_post_images/row_1_col_1.png"),
+                          ),
+                          //SizedBox(width:10),
+                          Expanded(
+                            child: Container(
+                              height: 150,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                    20), //rounded corners of container
+                                image: const DecorationImage(
+                                  //fit:BoxFit.fitWidth,
+                                  image: AssetImage(
+                                    "assets/profile_post_images/row_1_col_2.png",
                                   ),
                                 ),
                               ),
                             ),
-                            //SizedBox(width:10),
-                            Expanded(
-                              child: Container(
-                                //margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                //padding: const EdgeInsets.all(
-                                //0.0),
-                                height: 150,
-                                width: 150,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                      20), //rounded corners of container
-                                  image: const DecorationImage(
-                                    //fit:BoxFit.fitWidth,
-                                    image: AssetImage(
-                                      "assets/profile_post_images/row_1_col_2.png",
-                                    ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              padding: const EdgeInsets.all(0.0),
+                              height: 150,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                    20), //rounded corners of container
+                                image: const DecorationImage(
+                                  image: AssetImage(
+                                    "assets/profile_post_images/row_1_col_3.png",
                                   ),
                                 ),
                               ),
                             ),
-                            Expanded(
-                              child: Container(
-                                padding: const EdgeInsets.all(0.0),
-                                height: 150,
-                                width: 150,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                      20), //rounded corners of container
-                                  image: const DecorationImage(
-                                    image: AssetImage(
-                                      "assets/profile_post_images/row_1_col_3.png",
-                                    ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 5),
+                      Row(
+                        //second row of images.
+                        children: [
+                          Expanded(
+                            child: Container(
+                              height: 150,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                    20), //rounded corners of container
+                                image: const DecorationImage(
+                                  image: AssetImage(
+                                      "assets/profile_post_images/row_2_col_1.png"),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              height: 150,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                    20), //rounded corners of container
+                                image: const DecorationImage(
+                                  image: AssetImage(
+                                    "assets/profile_post_images/row_2_col_2.png",
                                   ),
                                 ),
                               ),
                             ),
-                          ],
-                        ),
-                        SizedBox(height: 10),
-                        /*
-                          Row(
-                            //second row of images.
-                            children: [
-                              Container(
-                                height: 150,
-                                width: 150,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                      20), //rounded corners of container
-                                  image: const DecorationImage(
-                                    image: AssetImage(
-                                        "assets/profile_post_images/row_1_col_1.png"),
+                          ),
+                          Expanded(
+                            child: Container(
+                              height: 150,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                    20), //rounded corners of container
+                                image: const DecorationImage(
+                                  image: AssetImage(
+                                    "assets/profile_post_images/row_2_col_3.png",
                                   ),
                                 ),
                               ),
                             ),
-                            Expanded(
-                              child: Container(
-                                height: 150,
-                                width: 150,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                      20), //rounded corners of container
-                                  image: const DecorationImage(
-                                    image: AssetImage(
-                                      "assets/profile_post_images/row_1_col_2.png",
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                height: 150,
-                                width: 150,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                      20), //rounded corners of container
-                                  image: const DecorationImage(
-                                    image: AssetImage(
-                                      "assets/profile_post_images/row_1_col_3.png",
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        /
-                        SizedBox(height: 5),
-                        Row(
-                          //second row of images.
-                          children: [
-                            Expanded(
-                              child: Container(
-                                height: 150,
-                                width: 150,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                      20), //rounded corners of container
-                                  image: const DecorationImage(
-                                    image: AssetImage(
-                                        "assets/profile_post_images/row_2_col_1.png"),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                height: 150,
-                                width: 150,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                      20), //rounded corners of container
-                                  image: const DecorationImage(
-                                    image: AssetImage(
-                                      "assets/profile_post_images/row_2_col_2.png",
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                height: 150,
-                                width: 150,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                      20), //rounded corners of container
-                                  image: const DecorationImage(
-                                    image: AssetImage(
-                                      "assets/profile_post_images/row_2_col_3.png",
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 55),
-                      ],
-                    )),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 55),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
