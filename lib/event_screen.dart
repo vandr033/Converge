@@ -1846,40 +1846,56 @@ class _PanelWidgetState extends State<PanelWidget> {
               //SizedBox(height: 10),
 
               Row(
-                //example
+                //Description
                 children: [
                   Expanded(
                     flex: 1,
-                    child: SizedBox(
+                    child: Container(
                       width: 360,
                       height: 46,
-                      child: TextField(
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                        obscureText: false,
-                        textAlign: TextAlign.center,
-                        decoration: InputDecoration(
-                            hintText: 'Description:',
-                            filled: true,
-                            fillColor: Color(0xFF838383),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12.0),
-                              borderSide: BorderSide(
-                                width: 0,
-                                style: BorderStyle.none,
+                      decoration: BoxDecoration(
+                        color: Color(0xFF838383),
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      child: Row(
+                        // ignore: prefer_const_literals_to_create_immutables
+                        children: [
+                          SizedBox(
+                            width: 15,
+                          ),
+                          SizedBox(
+                            width: 90,
+                            height: 20,
+                            child: Text(
+                              "Description:",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
-                            alignLabelWithHint: false,
-                            labelText: '  Description:',
-                            labelStyle: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            )),
+                          ),
+                          SizedBox(
+                            width: 200,
+                            height: 20,
+                            child: TextField(
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    width: 0,
+                                    style: BorderStyle.none,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
 
@@ -2122,22 +2138,21 @@ class ProfileScreenState extends State<ProfileScreen> {
                         //flex: 1,
                         child: Container(
                           padding: EdgeInsets.symmetric(horizontal: 0),
-                          
                           child: Container(
-                              alignment: Alignment(.90, -.75),
-                              height: 130,
-                              width: 360,
-                              decoration: BoxDecoration(
-                                //shape: BoxShape.circle,
-                                color: Color(0xffD7D9D7),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(12)),
-                                image: DecorationImage(
-                                  image: AssetImage(
-                                      "assets/images/Rectangle 210.png"),
-                                  fit: BoxFit.cover,
-                                ),
+                            alignment: Alignment(.90, -.75),
+                            height: 130,
+                            width: 360,
+                            decoration: BoxDecoration(
+                              //shape: BoxShape.circle,
+                              color: Color(0xffD7D9D7),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(12)),
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    "assets/images/Rectangle 210.png"),
+                                fit: BoxFit.cover,
                               ),
+                            ),
                           ),
                         ),
                       ),
@@ -2164,20 +2179,21 @@ class ProfileScreenState extends State<ProfileScreen> {
                           padding: EdgeInsets.fromLTRB(0, 65, 0, 0),
                           alignment: Alignment.bottomCenter,
                           child: Container(
-                              padding: EdgeInsets.symmetric(horizontal: 0),
-                              height: 85,
-                              width: 85,
-                              decoration: BoxDecoration(
-                                      //shape: BoxShape.circle,
-                                      color: Color(0xffD7D9D7),
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(100)),
-                                      image: DecorationImage(
-                                image: AssetImage("assets/images/Rectangle 129.png"),
+                            padding: EdgeInsets.symmetric(horizontal: 0),
+                            height: 85,
+                            width: 85,
+                            decoration: BoxDecoration(
+                              //shape: BoxShape.circle,
+                              color: Color(0xffD7D9D7),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(100)),
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    "assets/images/Rectangle 129.png"),
                                 fit: BoxFit.cover,
                               ),
-                              ),
-                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ],
@@ -2236,7 +2252,8 @@ class ProfileScreenState extends State<ProfileScreen> {
                               color: Colors.red,
                               shape: BoxShape.circle,
                               image: DecorationImage(
-                                image: AssetImage("assets/images/Rectangle 51.png"),
+                                image: AssetImage(
+                                    "assets/images/Rectangle 51.png"),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -2255,7 +2272,8 @@ class ProfileScreenState extends State<ProfileScreen> {
                               color: Colors.green,
                               shape: BoxShape.circle,
                               image: DecorationImage(
-                                image: AssetImage("assets/images/Rectangle 52.png"),
+                                image: AssetImage(
+                                    "assets/images/Rectangle 52.png"),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -2274,7 +2292,8 @@ class ProfileScreenState extends State<ProfileScreen> {
                               color: Colors.blue,
                               shape: BoxShape.circle,
                               image: DecorationImage(
-                                image: AssetImage("assets/images/Rectangle 53.png"),
+                                image: AssetImage(
+                                    "assets/images/Rectangle 53.png"),
                                 fit: BoxFit.cover,
                               ),
                             ),
