@@ -1846,40 +1846,56 @@ class _PanelWidgetState extends State<PanelWidget> {
               //SizedBox(height: 10),
 
               Row(
-                //example
+                //Description
                 children: [
                   Expanded(
                     flex: 1,
-                    child: SizedBox(
+                    child: Container(
                       width: 360,
                       height: 46,
-                      child: TextField(
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                        obscureText: false,
-                        textAlign: TextAlign.center,
-                        decoration: InputDecoration(
-                            hintText: 'Description:',
-                            filled: true,
-                            fillColor: Color(0xFF838383),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12.0),
-                              borderSide: BorderSide(
-                                width: 0,
-                                style: BorderStyle.none,
+                      decoration: BoxDecoration(
+                        color: Color(0xFF838383),
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      child: Row(
+                        // ignore: prefer_const_literals_to_create_immutables
+                        children: [
+                          SizedBox(
+                            width: 15,
+                          ),
+                          SizedBox(
+                            width: 90,
+                            height: 20,
+                            child: Text(
+                              "Description:",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
-                            alignLabelWithHint: false,
-                            labelText: '  Description:',
-                            labelStyle: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            )),
+                          ),
+                          SizedBox(
+                            width: 200,
+                            height: 20,
+                            child: TextField(
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    width: 0,
+                                    style: BorderStyle.none,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
 
@@ -2110,7 +2126,7 @@ class ProfileScreenState extends State<ProfileScreen> {
             child: Column(
               children: [
                 SizedBox(
-                  height: 45,
+                  height: 15,
                 ),
 
                 Padding(
@@ -2120,32 +2136,24 @@ class ProfileScreenState extends State<ProfileScreen> {
                       //Profile Banner Image Picker
                       Positioned(
                         //flex: 1,
-                        child: MaterialButton(
+                        child: Container(
                           padding: EdgeInsets.symmetric(horizontal: 0),
-                          elevation: 8.0,
                           child: Container(
-                              alignment: Alignment(.90, -.75),
-                              height: 110,
-                              width: 360,
-                              decoration: image1 != null
-                                  ? BoxDecoration(
-                                      color: Color(0xffD7D9D7),
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(12)),
-                                      image: DecorationImage(
-                                          image: FileImage(image1!),
-                                          fit: BoxFit.fill))
-                                  : BoxDecoration(
-                                      color: Color(0xffD7D9D7),
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(12))),
-                              child: image1 != null
-                                  ? Icon(null)
-                                  : Icon(Icons.upload_rounded,
-                                      color: Colors.white)),
-                          onPressed: () {
-                            pickImage1();
-                          },
+                            alignment: Alignment(.90, -.75),
+                            height: 130,
+                            width: 360,
+                            decoration: BoxDecoration(
+                              //shape: BoxShape.circle,
+                              color: Color(0xffD7D9D7),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(12)),
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    "assets/images/Rectangle 210.png"),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
 
@@ -2156,8 +2164,8 @@ class ProfileScreenState extends State<ProfileScreen> {
                           padding: EdgeInsets.fromLTRB(0, 60, 0, 0),
                           alignment: Alignment.bottomCenter,
                           child: Container(
-                            height: 85,
-                            width: 85,
+                            height: 95,
+                            width: 95,
                             decoration: BoxDecoration(
                                 color: Colors.white, shape: BoxShape.circle),
                           ),
@@ -2171,25 +2179,21 @@ class ProfileScreenState extends State<ProfileScreen> {
                           padding: EdgeInsets.fromLTRB(0, 65, 0, 0),
                           alignment: Alignment.bottomCenter,
                           child: Container(
-                              padding: EdgeInsets.symmetric(horizontal: 0),
-                              height: 75,
-                              width: 75,
-                              decoration: image2 != null
-                                  ? BoxDecoration(
-                                      color: Color(0xffD7D9D7),
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(100)),
-                                      image: DecorationImage(
-                                          image: FileImage(image2!),
-                                          fit: BoxFit.fill))
-                                  : BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Color(0xffD7D9D7),
-                                    ),
-                              child: image2 != null
-                                  ? Icon(null)
-                                  : Icon(Icons.upload_rounded,
-                                      color: Colors.white)),
+                            padding: EdgeInsets.symmetric(horizontal: 0),
+                            height: 85,
+                            width: 85,
+                            decoration: BoxDecoration(
+                              //shape: BoxShape.circle,
+                              color: Color(0xffD7D9D7),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(100)),
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    "assets/images/Rectangle 129.png"),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ],
@@ -2248,7 +2252,8 @@ class ProfileScreenState extends State<ProfileScreen> {
                               color: Colors.red,
                               shape: BoxShape.circle,
                               image: DecorationImage(
-                                image: AssetImage("assets/images/manrun.png"),
+                                image: AssetImage(
+                                    "assets/images/Rectangle 51.png"),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -2267,7 +2272,8 @@ class ProfileScreenState extends State<ProfileScreen> {
                               color: Colors.green,
                               shape: BoxShape.circle,
                               image: DecorationImage(
-                                image: AssetImage("assets/images/manrun.png"),
+                                image: AssetImage(
+                                    "assets/images/Rectangle 52.png"),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -2286,7 +2292,8 @@ class ProfileScreenState extends State<ProfileScreen> {
                               color: Colors.blue,
                               shape: BoxShape.circle,
                               image: DecorationImage(
-                                image: AssetImage("assets/images/manrun.png"),
+                                image: AssetImage(
+                                    "assets/images/Rectangle 53.png"),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -2355,8 +2362,9 @@ class ProfileScreenState extends State<ProfileScreen> {
                 ),
 
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
+
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Row(
@@ -2372,8 +2380,9 @@ class ProfileScreenState extends State<ProfileScreen> {
                     ],
                   ),
                 ),
+
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
 
                 Padding(
@@ -2404,7 +2413,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                                 DateFormat.d().format(startDate)
                             : 'No Date!',
                         style: TextStyle(
-                          fontSize: 24,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                         softWrap: false,
@@ -2433,10 +2442,10 @@ class ProfileScreenState extends State<ProfileScreen> {
                       ),
                       Positioned(
                         child: Container(
-                          padding: EdgeInsets.fromLTRB(296, 5.5, 0, 0),
+                          padding: EdgeInsets.fromLTRB(153.5, 6.25, 0, 0),
                           child: Container(
-                            height: 30,
-                            width: 30,
+                            height: 35,
+                            width: 35,
                             decoration: BoxDecoration(
                               color: Colors.blue,
                               shape: BoxShape.circle,
@@ -2444,23 +2453,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                       ),
-                      Positioned(
-                        child: Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          height: 154,
-                          width: 342,
-                          child: Text(
-                            textAlign: TextAlign.center,
-                            '28          29          30          1          2',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                            softWrap: false,
-                          ),
-                        ),
-                      ),
+
                       //line
                       Positioned(
                         top: 45,
@@ -2474,6 +2467,146 @@ class ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ),
 
+                      ////////////////////////////////////////////////////////////////////
+                      ///date stuff
+                      ///////////////////////////////////////////////////////////////
+
+                      //date-3
+                      Positioned(
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(0, 10, 285, 0),
+                          height: 154,
+                          width: 342,
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            DateFormat.d()
+                                .format(startDate.add(Duration(days: -3))),
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                            softWrap: false,
+                          ),
+                        ),
+                      ),
+                      //date-2
+                      Positioned(
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(0, 10, 190, 0),
+                          height: 154,
+                          width: 342,
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            DateFormat.d()
+                                .format(startDate.add(Duration(days: -2))),
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                            softWrap: false,
+                          ),
+                        ),
+                      ),
+                      //date-1
+                      Positioned(
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(0, 10, 95, 0),
+                          height: 154,
+                          width: 342,
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            DateFormat.d()
+                                .format(startDate.add(Duration(days: -1))),
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                            softWrap: false,
+                          ),
+                        ),
+                      ),
+                      //date
+                      Positioned(
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                          height: 154,
+                          width: 342,
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            DateFormat.d()
+                                .format(startDate.add(Duration(days: 0))),
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                            softWrap: false,
+                          ),
+                        ),
+                      ),
+                      //
+                      //date +1
+                      Positioned(
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(95, 10, 0, 0),
+                          height: 154,
+                          width: 342,
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            DateFormat.d()
+                                .format(startDate.add(Duration(days: 1))),
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                            softWrap: false,
+                          ),
+                        ),
+                      ),
+                      //date + 2
+                      Positioned(
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(190, 10, 0, 0),
+                          height: 154,
+                          width: 342,
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            DateFormat.d()
+                                .format(startDate.add(Duration(days: 2))),
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                            softWrap: false,
+                          ),
+                        ),
+                      ),
+                      //date +3
+                      Positioned(
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(285, 10, 0, 0),
+                          height: 154,
+                          width: 342,
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            DateFormat.d()
+                                .format(startDate.add(Duration(days: 3))),
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                            softWrap: false,
+                          ),
+                        ),
+                      ),
+                      //////////////////////////////////////////////////////////////////////////////////////
+
                       //blue boxes start
                       Positioned(
                         child: Container(
@@ -2485,6 +2618,52 @@ class ProfileScreenState extends State<ProfileScreen> {
                             decoration: BoxDecoration(
                               color: Color(0xff4589FF),
                               borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Row(
+                              // ignore: prefer_const_literals_to_create_immutables
+                              children: [
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Text(
+                                  "Volleyball Game",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 26,
+                                ),
+                                Container(
+                                  width: 2,
+                                  height: 37,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Icon(
+                                  Icons.location_on_outlined,
+                                  size: 20,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "WRC @ MMC",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -2500,6 +2679,52 @@ class ProfileScreenState extends State<ProfileScreen> {
                             decoration: BoxDecoration(
                               color: Color(0xff4589FF),
                               borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Row(
+                              // ignore: prefer_const_literals_to_create_immutables
+                              children: [
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Text(
+                                  "Smash Bros To...",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 21,
+                                ),
+                                Container(
+                                  width: 2,
+                                  height: 37,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Icon(
+                                  Icons.location_on_outlined,
+                                  size: 20,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "PCA 150 @ M..",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -2526,7 +2751,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xff828382),
-                                fontSize: 18,
+                                fontSize: 20,
                               ),
                             ),
                             //),
@@ -2538,6 +2763,64 @@ class ProfileScreenState extends State<ProfileScreen> {
                           children: [
                             Expanded(
                               child: Container(
+                                height: 150,
+                                width: 150,
+                                //margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                      20), //rounded corners of container
+                                  image: const DecorationImage(
+                                    //fit: BoxFit.cover,
+                                    image: AssetImage(
+                                        "assets/profile_post_images/row_1_col_1.png"),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            //SizedBox(width:10),
+                            Expanded(
+                              child: Container(
+                                //margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                //padding: const EdgeInsets.all(
+                                //0.0),
+                                height: 150,
+                                width: 150,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                      20), //rounded corners of container
+                                  image: const DecorationImage(
+                                    //fit:BoxFit.fitWidth,
+                                    image: AssetImage(
+                                      "assets/profile_post_images/row_1_col_2.png",
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
+                                padding: const EdgeInsets.all(0.0),
+                                height: 150,
+                                width: 150,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                      20), //rounded corners of container
+                                  image: const DecorationImage(
+                                    image: AssetImage(
+                                      "assets/profile_post_images/row_1_col_3.png",
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 10),
+                        /*
+                          Row(
+                            //second row of images.
+                            children: [
+                              Container(
                                 height: 150,
                                 width: 150,
                                 decoration: BoxDecoration(
@@ -2582,6 +2865,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ],
                         ),
+                        /
                         SizedBox(height: 5),
                         Row(
                           //second row of images.
