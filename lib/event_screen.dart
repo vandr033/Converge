@@ -2387,7 +2387,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                   ),
                   child: Text(
                     startDate != null
-                        ? DateFormat.EEEE().format(startDate) + ', ' + DateFormat.MMM().format(startDate)+ '. ' + DateFormat.d().format(startDate)
+                        ? DateFormat.EEEE().format(startDate) + ', ' + DateFormat.MMM().format(startDate)+ '. ' + (DateFormat.d().format(startDate))
                         : 'No Date!',
                     style: TextStyle(
                       fontSize: 24,
@@ -2417,36 +2417,146 @@ class ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                   ),
-                  Positioned(
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(296, 5.5, 0, 0),
-                      child: Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                          color: Colors.blue,
-                          shape: BoxShape.circle,
-                        ),
+                  ////////////////////////////////////////////////////////////////////
+                  ///date stuff
+                  ///////////////////////////////////////////////////////////////
+                  ///verygood enjoy
+                  
+                  //date-3
+                Positioned(
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(0, 10, 285, 0),
+                    height: 154,
+                    width: 342,
+                    child: Text(
+                      textAlign: TextAlign.center,
+                      DateFormat.d().format(startDate.add(Duration(days: -3))),
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
+                      softWrap: false,
                     ),
                   ),
-                  Positioned(
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      height: 154,
-                      width: 342,
-                      child: Text(
-                        textAlign: TextAlign.center,
-                        '28          29          30          1          2',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                        softWrap: false,
+                ),
+                  //date-2
+                Positioned(
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(0, 10, 190, 0),
+                    height: 154,
+                    width: 342,
+                    child: Text(
+                      textAlign: TextAlign.center,
+                      DateFormat.d().format(startDate.add(Duration(days: -2))),
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
+                      softWrap: false,
                     ),
                   ),
+                ),
+                  //date-1
+                  Positioned(
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(0, 10, 95, 0),
+                    height: 154,
+                    width: 342,
+                    child: Text(
+                      textAlign: TextAlign.center,
+                      DateFormat.d().format(startDate.add(Duration(days: -1))),
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      softWrap: false,
+                    ),
+                  ),
+                ),
+                  
+                //date
+                Positioned(
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    height: 154,
+                    width: 342,
+                    child: Text(
+                      textAlign: TextAlign.center,
+                      DateFormat.d().format(startDate.add(Duration(days: 0))),
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      softWrap: false,
+                    ),
+                  ),
+                ),
+                //
+                //date +1
+                Positioned(
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(95, 10, 0, 0),
+                    height: 154,
+                    width: 342,
+                                       
+                    child: Text(
+                      textAlign: TextAlign.center,
+                      DateFormat.d().format(startDate.add(Duration(days: 1))),
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      softWrap: false,
+                    ),
+                  ),
+                ),
+                //date + 2
+                Positioned(
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(190, 10, 0, 0),
+                    height: 154,
+                    width: 342,
+                    child: Text(
+                      textAlign: TextAlign.center,
+                      DateFormat.d().format(startDate.add(Duration(days: 2))),
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      softWrap: false,
+                    ),
+                  ),
+                ),
+                //date +3
+                Positioned(
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(285, 10, 0, 0),
+                    height: 154,
+                    width: 342,
+                    child: Text(
+                      textAlign: TextAlign.center,
+                      DateFormat.d().format(startDate.add(Duration(days: 3))),
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      softWrap: false,
+                    ),
+                  ),
+                ),
+                //////////////////////////////////////////////////////////////////////////////////////
+                //////
+                ///
+                //////
+                
+                
                   //line
                   Positioned(
                     top: 45,
