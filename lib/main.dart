@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
               fontFamily: 'Nunito',
             ),
             home:
-                EventScreen(), //LoginPage(), - replace this when done testing interest screens!
+                EventScreen(), //- replace this when done testing interest screens!
             routes: routes,
           )),
     );

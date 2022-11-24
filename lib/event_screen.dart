@@ -2,7 +2,6 @@
 
 import 'dart:io';
 
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_application/HomePage.dart';
 import 'package:flutter_application/community_screen.dart';
@@ -355,7 +354,6 @@ class _PanelWidgetState extends State<PanelWidget> {
       print('Failed to get image: $e');
     }
   }
-
 
   void eventStartDatePicker(ctx) {
     // showCupertinoModalPopup is a built-in function of the cupertino library
@@ -1043,103 +1041,102 @@ class _PanelWidgetState extends State<PanelWidget> {
 
             SizedBox(height: 10),
 
-           
-              Row(
-                children: [
-                  Expanded(
-                    flex: 0,
-                    child: Container(
-                     // padding: EdgeInsets.symmetric(horizontal: 0),
-                      //transform: Matrix4.translationValues(-3.0, 0, 0.0),
-                      child: SizedBox(
-                        width: 363,
-                        height: 46.0,
-                        child: Container(
-                                  width: 115,
-                                  height: 15,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFF838383),
-                                    borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          
-                          child: Row(
-                            children: [
-                              
-                              SizedBox(
-                                  width: 115,
-                                  height: 15,
-                                  child: Text(
-                                    "\t\t Event ends: ",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    textAlign: TextAlign.left,
-                                  )),
-                              SizedBox(
-                                width: 50,
-                              ),
-                              SizedBox(
-                                width: 95,
-                                height: 30,
-                                child: ElevatedButton(
-                                  onPressed: () => eventEndDatePicker(this.context),
-                                  style: ElevatedButton.styleFrom(
-                                    padding: EdgeInsets.zero,
-                                    backgroundColor: Colors.white,
-                                    foregroundColor: Colors.grey,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(4.0)),
+            Row(
+              children: [
+                Expanded(
+                  flex: 0,
+                  child: Container(
+                    // padding: EdgeInsets.symmetric(horizontal: 0),
+                    //transform: Matrix4.translationValues(-3.0, 0, 0.0),
+                    child: SizedBox(
+                      width: 363,
+                      height: 46.0,
+                      child: Container(
+                        width: 115,
+                        height: 15,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF838383),
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        child: Row(
+                          children: [
+                            SizedBox(
+                                width: 115,
+                                height: 15,
+                                child: Text(
+                                  "\t\t Event ends: ",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                  child: Text(
-                                    endDate != null
-                                        ? DateFormat.yMMMd().format(endDate)
-                                        : 'No Date!',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    softWrap: false,
+                                  textAlign: TextAlign.left,
+                                )),
+                            SizedBox(
+                              width: 50,
+                            ),
+                            SizedBox(
+                              width: 95,
+                              height: 30,
+                              child: ElevatedButton(
+                                onPressed: () =>
+                                    eventEndDatePicker(this.context),
+                                style: ElevatedButton.styleFrom(
+                                  padding: EdgeInsets.zero,
+                                  backgroundColor: Colors.white,
+                                  foregroundColor: Colors.grey,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(4.0)),
+                                ),
+                                child: Text(
+                                  endDate != null
+                                      ? DateFormat.yMMMd().format(endDate)
+                                      : 'No Date!',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
                                   ),
+                                  softWrap: false,
                                 ),
                               ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              SizedBox(
-                                width: 70,
-                                height: 30,
-                                child: ElevatedButton(
-                                  onPressed: () => eventEndTimePicker(this.context),
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.white,
-                                    foregroundColor: Colors.grey,
-                                    padding: EdgeInsets.zero,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(4.0)),
-                                  ),
-                                  child: Text(
-                                    endTime != null
-                                        ? DateFormat.jm().format(endTime)
-                                        : 'No Time!',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    softWrap: false,
-                                  ),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            SizedBox(
+                              width: 70,
+                              height: 30,
+                              child: ElevatedButton(
+                                onPressed: () =>
+                                    eventEndTimePicker(this.context),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.white,
+                                  foregroundColor: Colors.grey,
+                                  padding: EdgeInsets.zero,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(4.0)),
                                 ),
-                              )
-                            ],
-                          ),
+                                child: Text(
+                                  endTime != null
+                                      ? DateFormat.jm().format(endTime)
+                                      : 'No Time!',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  softWrap: false,
+                                ),
+                              ),
+                            )
+                          ],
                         ),
                       ),
                     ),
                   ),
-                ],
-              ),
-            
+                ),
+              ],
+            ),
+
             SizedBox(height: 10),
 
             //this is where host goes
@@ -1864,7 +1861,6 @@ class _PanelWidgetState extends State<PanelWidget> {
                         textAlign: TextAlign.center,
                         decoration: InputDecoration(
                             hintText: 'Description:',
-                            
                             filled: true,
                             fillColor: Color(0xFF838383),
                             border: OutlineInputBorder(
@@ -2040,36 +2036,36 @@ class ProfileScreenState extends State<ProfileScreen> {
   File? image2;
 
   void profileDatePicker(ctx) {
-      // showCupertinoModalPopup is a built-in function of the cupertino library
-      showCupertinoModalPopup(
-          context: ctx,
-          builder: (_) => Container(
-                height: 500,
-                color: const Color.fromARGB(255, 255, 255, 255),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 400,
-                      child: CupertinoDatePicker(
-                          initialDateTime: DateTime.now(),
-                          mode: CupertinoDatePickerMode.date,
-                          onDateTimeChanged: (val) {
-                            setState(() {
-                              startDate = val;
-                            });
-                          }),
-                    ),
-                    // Close the modal
-                    CupertinoButton(
-                      child: const Text('OK'),
-                      onPressed: () => {
-                        Navigator.of(ctx, rootNavigator: true).pop(ctx),
-                      },
-                    )
-                  ],
-                ),
-              ));
-    }
+    // showCupertinoModalPopup is a built-in function of the cupertino library
+    showCupertinoModalPopup(
+        context: ctx,
+        builder: (_) => Container(
+              height: 500,
+              color: const Color.fromARGB(255, 255, 255, 255),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 400,
+                    child: CupertinoDatePicker(
+                        initialDateTime: DateTime.now(),
+                        mode: CupertinoDatePickerMode.date,
+                        onDateTimeChanged: (val) {
+                          setState(() {
+                            startDate = val;
+                          });
+                        }),
+                  ),
+                  // Close the modal
+                  CupertinoButton(
+                    child: const Text('OK'),
+                    onPressed: () => {
+                      Navigator.of(ctx, rootNavigator: true).pop(ctx),
+                    },
+                  )
+                ],
+              ),
+            ));
+  }
 
   var dropdownValue;
 
@@ -2109,20 +2105,16 @@ class ProfileScreenState extends State<ProfileScreen> {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: SafeArea(
-          left:true,
+          left: true,
           child: Container(
-            
-            
-            
-            
             child: Column(
               children: [
                 SizedBox(
                   height: 45,
                 ),
-        
+
                 Padding(
-                  padding:EdgeInsets.symmetric(horizontal: 20),
+                  padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Stack(
                     children: [
                       //Profile Banner Image Picker
@@ -2145,8 +2137,8 @@ class ProfileScreenState extends State<ProfileScreen> {
                                           fit: BoxFit.fill))
                                   : BoxDecoration(
                                       color: Color(0xffD7D9D7),
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(12))),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(12))),
                               child: image1 != null
                                   ? Icon(null)
                                   : Icon(Icons.upload_rounded,
@@ -2156,7 +2148,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                           },
                         ),
                       ),
-                        
+
                       //White Circle around it
                       Positioned(
                         //flex: 1,
@@ -2171,7 +2163,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                       ),
-                        
+
                       //Profile Picture Image Picker
                       Positioned(
                         //flex: 1,
@@ -2185,8 +2177,8 @@ class ProfileScreenState extends State<ProfileScreen> {
                               decoration: image2 != null
                                   ? BoxDecoration(
                                       color: Color(0xffD7D9D7),
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(100)),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(100)),
                                       image: DecorationImage(
                                           image: FileImage(image2!),
                                           fit: BoxFit.fill))
@@ -2203,9 +2195,9 @@ class ProfileScreenState extends State<ProfileScreen> {
                     ],
                   ),
                 ),
-        
+
                 Padding(
-                  padding:EdgeInsets.symmetric(horizontal: 20),
+                  padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Stack(
                     children: [
                       Positioned(
@@ -2223,7 +2215,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                       ),
-                        
+
                       Positioned(
                         child: Container(
                           padding: EdgeInsets.fromLTRB(308, 1, 0, 0),
@@ -2244,7 +2236,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                       ),
-                        
+
                       Positioned(
                         child: Container(
                           padding: EdgeInsets.fromLTRB(240, 0, 0, 0),
@@ -2304,14 +2296,14 @@ class ProfileScreenState extends State<ProfileScreen> {
                     ],
                   ),
                 ),
-        
+
                 //gap here
                 SizedBox(
                   height: 10,
                 ),
-        
+
                 Padding(
-                  padding:EdgeInsets.symmetric(horizontal: 20),
+                  padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Stack(
                     children: [
                       Row(
@@ -2350,7 +2342,8 @@ class ProfileScreenState extends State<ProfileScreen> {
                                   child: const Text(
                                     'Edit Profile',
                                     style: TextStyle(
-                                        fontSize: 16, fontWeight: FontWeight.bold),
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
                                     softWrap: false,
                                   )),
                             ),
@@ -2360,12 +2353,13 @@ class ProfileScreenState extends State<ProfileScreen> {
                     ],
                   ),
                 ),
-        
+
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
+
                 Padding(
-                  padding:EdgeInsets.symmetric(horizontal: 20),
+                  padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -2379,12 +2373,13 @@ class ProfileScreenState extends State<ProfileScreen> {
                     ],
                   ),
                 ),
+
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
-        
+
                 Padding(
-                  padding:EdgeInsets.symmetric(horizontal: 20),
+                  padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Container(
                     height: 46,
                     width: 342,
@@ -2419,9 +2414,9 @@ class ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
                 ),
-        
+
                 Padding(
-                  padding:EdgeInsets.symmetric(horizontal: 20),
+                  padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Stack(
                     children: [
                       Positioned(
@@ -2440,10 +2435,10 @@ class ProfileScreenState extends State<ProfileScreen> {
                       ),
                       Positioned(
                         child: Container(
-                          padding: EdgeInsets.fromLTRB(296, 5.5, 0, 0),
+                          padding: EdgeInsets.fromLTRB(153.5, 6.25, 0, 0),
                           child: Container(
-                            height: 30,
-                            width: 30,
+                            height: 35,
+                            width: 35,
                             decoration: BoxDecoration(
                               color: Colors.blue,
                               shape: BoxShape.circle,
@@ -2451,23 +2446,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                       ),
-                      Positioned(
-                        child: Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          height: 154,
-                          width: 342,
-                          child: Text(
-                            textAlign: TextAlign.center,
-                            '28          29          30          1          2',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                            softWrap: false,
-                          ),
-                        ),
-                      ),
+
                       //line
                       Positioned(
                         top: 45,
@@ -2480,7 +2459,147 @@ class ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                       ),
-                        
+
+                      ////////////////////////////////////////////////////////////////////
+                      ///date stuff
+                      ///////////////////////////////////////////////////////////////
+
+                      //date-3
+                      Positioned(
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(0, 10, 285, 0),
+                          height: 154,
+                          width: 342,
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            DateFormat.d()
+                                .format(startDate.add(Duration(days: -3))),
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                            softWrap: false,
+                          ),
+                        ),
+                      ),
+                      //date-2
+                      Positioned(
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(0, 10, 190, 0),
+                          height: 154,
+                          width: 342,
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            DateFormat.d()
+                                .format(startDate.add(Duration(days: -2))),
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                            softWrap: false,
+                          ),
+                        ),
+                      ),
+                      //date-1
+                      Positioned(
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(0, 10, 95, 0),
+                          height: 154,
+                          width: 342,
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            DateFormat.d()
+                                .format(startDate.add(Duration(days: -1))),
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                            softWrap: false,
+                          ),
+                        ),
+                      ),
+                      //date
+                      Positioned(
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                          height: 154,
+                          width: 342,
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            DateFormat.d()
+                                .format(startDate.add(Duration(days: 0))),
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                            softWrap: false,
+                          ),
+                        ),
+                      ),
+                      //
+                      //date +1
+                      Positioned(
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(95, 10, 0, 0),
+                          height: 154,
+                          width: 342,
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            DateFormat.d()
+                                .format(startDate.add(Duration(days: 1))),
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                            softWrap: false,
+                          ),
+                        ),
+                      ),
+                      //date + 2
+                      Positioned(
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(190, 10, 0, 0),
+                          height: 154,
+                          width: 342,
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            DateFormat.d()
+                                .format(startDate.add(Duration(days: 2))),
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                            softWrap: false,
+                          ),
+                        ),
+                      ),
+                      //date +3
+                      Positioned(
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(285, 10, 0, 0),
+                          height: 154,
+                          width: 342,
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            DateFormat.d()
+                                .format(startDate.add(Duration(days: 3))),
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                            softWrap: false,
+                          ),
+                        ),
+                      ),
+                      //////////////////////////////////////////////////////////////////////////////////////
+
                       //blue boxes start
                       Positioned(
                         child: Container(
@@ -2493,10 +2612,56 @@ class ProfileScreenState extends State<ProfileScreen> {
                               color: Color(0xff4589FF),
                               borderRadius: BorderRadius.circular(12),
                             ),
+                            child: Row(
+                              // ignore: prefer_const_literals_to_create_immutables
+                              children: [
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Text(
+                                  "Volleyball Game",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 26,
+                                ),
+                                Container(
+                                  width: 2,
+                                  height: 37,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Icon(
+                                  Icons.location_on_outlined,
+                                  size: 20,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "WRC @ MMC",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                        
+
                       Positioned(
                         child: Container(
                           //alignment: Alignment.center,
@@ -2508,100 +2673,143 @@ class ProfileScreenState extends State<ProfileScreen> {
                               color: Color(0xff4589FF),
                               borderRadius: BorderRadius.circular(12),
                             ),
+                            child: Row(
+                              // ignore: prefer_const_literals_to_create_immutables
+                              children: [
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Text(
+                                  "Smash Bros To...",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 21,
+                                ),
+                                Container(
+                                  width: 2,
+                                  height: 37,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Icon(
+                                  Icons.location_on_outlined,
+                                  size: 20,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "PCA 150 @ M..",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ],
                   ),
                 ),
-        
+
                 SizedBox(
                   height: 20,
                 ),
-        
+
                 Container(
-                      //height:342, 
-                      width:348, 
-                      child: Column(
-                        children: [
-                          Row(
-                            children: const [
-                              //Padding(
-                                //padding: EdgeInsets.only(left: 24),
-                                Text(
-                                  " Recent Posts",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Color(0xff828382),
-                                    fontSize: 18,
+                    //height:342,
+                    width: 348,
+                    child: Column(
+                      children: [
+                        Row(
+                          children: const [
+                            //Padding(
+                            //padding: EdgeInsets.only(left: 24),
+                            Text(
+                              " Recent Posts",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xff828382),
+                                fontSize: 18,
+                              ),
+                            ),
+                            //),
+                          ],
+                        ),
+                        SizedBox(height: 10),
+                        Row(
+                          //first row of images.
+                          children: [
+                            Expanded(
+                              child: Container(
+                                height: 150,
+                                width: 150,
+                                //margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                      20), //rounded corners of container
+                                  image: const DecorationImage(
+                                    //fit: BoxFit.cover,
+                                    image: AssetImage(
+                                        "assets/profile_post_images/row_1_col_1.png"),
                                   ),
                                 ),
-                              //),
-                            ],
-                          ),
-                          SizedBox(height: 10),
-                            Row(
-                              //first row of images.
-                              children: [
-                                Expanded(
-                                  child: Container(
-                                    height: 150,
-                                    width: 150,
-                                    //margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(
-                                          20), //rounded corners of container
-                                      image: const DecorationImage(
-                                        //fit: BoxFit.cover,
-                                        image: AssetImage(
-                                          "assets/profile_post_images/row_1_col_1.png"
-                                        ),
-                                      ),
+                              ),
+                            ),
+                            //SizedBox(width:10),
+                            Expanded(
+                              child: Container(
+                                //margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                //padding: const EdgeInsets.all(
+                                //0.0),
+                                height: 150,
+                                width: 150,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                      20), //rounded corners of container
+                                  image: const DecorationImage(
+                                    //fit:BoxFit.fitWidth,
+                                    image: AssetImage(
+                                      "assets/profile_post_images/row_1_col_2.png",
                                     ),
                                   ),
                                 ),
-                                //SizedBox(width:10), 
-                                Expanded(
-                                  child: Container(
-                                    //margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                    //padding: const EdgeInsets.all(
-                                    //0.0),
-                                    height: 150,
-                                    width: 150,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(
-                                          20), //rounded corners of container
-                                      image: const DecorationImage(
-                                        //fit:BoxFit.fitWidth,
-                                        image: AssetImage(
-                                          "assets/profile_post_images/row_1_col_2.png",
-                                        ),
-                                      ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
+                                padding: const EdgeInsets.all(0.0),
+                                height: 150,
+                                width: 150,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                      20), //rounded corners of container
+                                  image: const DecorationImage(
+                                    image: AssetImage(
+                                      "assets/profile_post_images/row_1_col_3.png",
                                     ),
                                   ),
                                 ),
-                                Expanded(
-                                  child: Container(
-                                    padding: const EdgeInsets.all(
-                                    0.0),
-                                    
-                                    height: 150,
-                                    width: 150,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(
-                                          20), //rounded corners of container
-                                      image: const DecorationImage(
-                                        image: AssetImage(
-                                          "assets/profile_post_images/row_1_col_3.png",
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                          ), 
-                          SizedBox(height:10),
-                          /*
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 10),
+                        /*
                           Row(
                             //second row of images.
                             children: [
@@ -2647,7 +2855,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ],
                           ),*/
-                          /*
+                        /*
                           Row(
                               children:[
                                 Image.asset("assets/profile_post_images/row_2_col_2.png", height: 100, width:100, fit:BoxFit.scaleDown), 
@@ -2655,13 +2863,13 @@ class ProfileScreenState extends State<ProfileScreen> {
                                 Image.asset("assets/profile_post_images/row_2_col_2.png", height: 100, width:100, fit:BoxFit.scaleDown), 
                               ]
                             ),*/
-                        ],
-                      )),
+                      ],
+                    )),
               ],
             ),
           ),
         ),
       ),
     );
-      }
   }
+}
