@@ -2821,13 +2821,63 @@ class ProfileScreenState extends State<ProfileScreen> {
                                       20), //rounded corners of container
                                   image: const DecorationImage(
                                     image: AssetImage(
-                                      "assets/profile_post_images/row_2_col_1.png",
+                                        "assets/profile_post_images/row_1_col_1.png"),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
+                                height: 150,
+                                width: 150,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                      20), //rounded corners of container
+                                  image: const DecorationImage(
+                                    image: AssetImage(
+                                      "assets/profile_post_images/row_1_col_2.png",
                                     ),
                                   ),
                                 ),
                               ),
-                              SizedBox(width:10), 
-                              Container(
+                            ),
+                            Expanded(
+                              child: Container(
+                                height: 150,
+                                width: 150,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                      20), //rounded corners of container
+                                  image: const DecorationImage(
+                                    image: AssetImage(
+                                      "assets/profile_post_images/row_1_col_3.png",
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 5),
+                        Row(
+                          //second row of images.
+                          children: [
+                            Expanded(
+                              child: Container(
+                                height: 150,
+                                width: 150,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                      20), //rounded corners of container
+                                  image: const DecorationImage(
+                                    image: AssetImage(
+                                        "assets/profile_post_images/row_2_col_1.png"),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
                                 height: 150,
                                 width: 150,
                                 decoration: BoxDecoration(
@@ -2840,7 +2890,9 @@ class ProfileScreenState extends State<ProfileScreen> {
                                   ),
                                 ),
                               ),
-                              Container(
+                            ),
+                            Expanded(
+                              child: Container(
                                 height: 150,
                                 width: 150,
                                 decoration: BoxDecoration(
