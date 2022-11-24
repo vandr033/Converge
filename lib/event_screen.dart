@@ -2632,7 +2632,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ],
                         ),
-                        SizedBox(height:55),
+                        SizedBox(height: 55),
                       ],
                     )),
               ],
