@@ -2110,7 +2110,7 @@ class ProfileScreenState extends State<ProfileScreen> {
             child: Column(
               children: [
                 SizedBox(
-                  height: 45,
+                  height: 15,
                 ),
 
                 Padding(
@@ -2120,32 +2120,25 @@ class ProfileScreenState extends State<ProfileScreen> {
                       //Profile Banner Image Picker
                       Positioned(
                         //flex: 1,
-                        child: MaterialButton(
+                        child: Container(
                           padding: EdgeInsets.symmetric(horizontal: 0),
-                          elevation: 8.0,
+                          
                           child: Container(
                               alignment: Alignment(.90, -.75),
-                              height: 110,
+                              height: 130,
                               width: 360,
-                              decoration: image1 != null
-                                  ? BoxDecoration(
-                                      color: Color(0xffD7D9D7),
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(12)),
-                                      image: DecorationImage(
-                                          image: FileImage(image1!),
-                                          fit: BoxFit.fill))
-                                  : BoxDecoration(
-                                      color: Color(0xffD7D9D7),
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(12))),
-                              child: image1 != null
-                                  ? Icon(null)
-                                  : Icon(Icons.upload_rounded,
-                                      color: Colors.white)),
-                          onPressed: () {
-                            pickImage1();
-                          },
+                              decoration: BoxDecoration(
+                                //shape: BoxShape.circle,
+                                color: Color(0xffD7D9D7),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12)),
+                                image: DecorationImage(
+                                  image: AssetImage(
+                                      "assets/images/Rectangle 210.png"),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                          ),
                         ),
                       ),
 
@@ -2156,8 +2149,8 @@ class ProfileScreenState extends State<ProfileScreen> {
                           padding: EdgeInsets.fromLTRB(0, 60, 0, 0),
                           alignment: Alignment.bottomCenter,
                           child: Container(
-                            height: 85,
-                            width: 85,
+                            height: 95,
+                            width: 95,
                             decoration: BoxDecoration(
                                 color: Colors.white, shape: BoxShape.circle),
                           ),
@@ -2172,24 +2165,19 @@ class ProfileScreenState extends State<ProfileScreen> {
                           alignment: Alignment.bottomCenter,
                           child: Container(
                               padding: EdgeInsets.symmetric(horizontal: 0),
-                              height: 75,
-                              width: 75,
-                              decoration: image2 != null
-                                  ? BoxDecoration(
+                              height: 85,
+                              width: 85,
+                              decoration: BoxDecoration(
+                                      //shape: BoxShape.circle,
                                       color: Color(0xffD7D9D7),
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(100)),
                                       image: DecorationImage(
-                                          image: FileImage(image2!),
-                                          fit: BoxFit.fill))
-                                  : BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Color(0xffD7D9D7),
-                                    ),
-                              child: image2 != null
-                                  ? Icon(null)
-                                  : Icon(Icons.upload_rounded,
-                                      color: Colors.white)),
+                                image: AssetImage("assets/images/Rectangle 129.png"),
+                                fit: BoxFit.cover,
+                              ),
+                              ),
+                              ),
                         ),
                       ),
                     ],
@@ -2248,7 +2236,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                               color: Colors.red,
                               shape: BoxShape.circle,
                               image: DecorationImage(
-                                image: AssetImage("assets/images/manrun.png"),
+                                image: AssetImage("assets/images/Rectangle 51.png"),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -2267,7 +2255,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                               color: Colors.green,
                               shape: BoxShape.circle,
                               image: DecorationImage(
-                                image: AssetImage("assets/images/manrun.png"),
+                                image: AssetImage("assets/images/Rectangle 52.png"),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -2286,7 +2274,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                               color: Colors.blue,
                               shape: BoxShape.circle,
                               image: DecorationImage(
-                                image: AssetImage("assets/images/manrun.png"),
+                                image: AssetImage("assets/images/Rectangle 53.png"),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -2406,7 +2394,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                                 DateFormat.d().format(startDate)
                             : 'No Date!',
                         style: TextStyle(
-                          fontSize: 24,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                         softWrap: false,
@@ -2475,7 +2463,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                             DateFormat.d()
                                 .format(startDate.add(Duration(days: -3))),
                             style: TextStyle(
-                              fontSize: 24,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
@@ -2494,7 +2482,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                             DateFormat.d()
                                 .format(startDate.add(Duration(days: -2))),
                             style: TextStyle(
-                              fontSize: 24,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
@@ -2513,7 +2501,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                             DateFormat.d()
                                 .format(startDate.add(Duration(days: -1))),
                             style: TextStyle(
-                              fontSize: 24,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
@@ -2532,7 +2520,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                             DateFormat.d()
                                 .format(startDate.add(Duration(days: 0))),
                             style: TextStyle(
-                              fontSize: 24,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
@@ -2552,7 +2540,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                             DateFormat.d()
                                 .format(startDate.add(Duration(days: 1))),
                             style: TextStyle(
-                              fontSize: 24,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
@@ -2571,7 +2559,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                             DateFormat.d()
                                 .format(startDate.add(Duration(days: 2))),
                             style: TextStyle(
-                              fontSize: 24,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
@@ -2590,7 +2578,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                             DateFormat.d()
                                 .format(startDate.add(Duration(days: 3))),
                             style: TextStyle(
-                              fontSize: 24,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
@@ -2744,7 +2732,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xff828382),
-                                fontSize: 18,
+                                fontSize: 20,
                               ),
                             ),
                             //),
@@ -2858,6 +2846,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ],
                         ),
+                        /
                         SizedBox(height: 5),
                         Row(
                           //second row of images.
