@@ -1163,6 +1163,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                       //TypeAheadField - A TextField that displays a list of suggestions as the user types.
                       //hideSuggestionsOnKeyboardHide: false,
                       textFieldConfiguration: TextFieldConfiguration(
+                        //expands: true,
                         decoration: InputDecoration(
                           //contentPadding: EdgeInsets.only(left:100),
                           suffixIcon: Icon(Icons.search, color: Colors.white),
