@@ -2226,7 +2226,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                             "Jane Smith",
                             textAlign: TextAlign.left,
                             style: TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 0),
+                              color: Color(0xff3F3F3F),
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
@@ -2339,7 +2339,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                                 "cinema enthusiast.",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
-                                  color: Color.fromARGB(255, 0, 0, 0),
+                                  color: Color(0xff3F3F3F),
                                   fontSize: 16,
                                 ),
                               ),
