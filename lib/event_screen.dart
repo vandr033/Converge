@@ -30,6 +30,7 @@ int imageIndex = 0;
 final pages = [
   HomeScreen(),
   ProfileScreen(),
+  ProfileScreen2(),
 ];
 
 class EventScreen extends StatefulWidget {
@@ -135,7 +136,7 @@ class EventScreenState extends State<EventScreen> {
                 onPressed: () {
                   setState(() {
                     eventPanelController.close();
-                    index = 0;
+                    index = 2;
                   });
                 },
                 icon: Icon(
@@ -2729,6 +2730,547 @@ class ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                       ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  //height:342,
+                  width: 348,
+                  child: Column(
+                    children: [
+                      Row(
+                        //row with text "Recent Posts"
+                        children: const [
+                          //Padding(
+                          //padding: EdgeInsets.only(left: 24),
+                          Text(
+                            " Recent Posts",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xff828382),
+                              fontSize: 20,
+                            ),
+                          ),
+                          //),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        //first row of images.
+                        children: [
+                          Expanded(
+                            child: Container(
+                              height: 150,
+                              width: 150,
+                              //margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                    20), //rounded corners of container
+                                image: const DecorationImage(
+                                  //fit: BoxFit.cover,
+                                  image: AssetImage(
+                                      "assets/profile_post_images/row_1_col_1.png"),
+                                ),
+                              ),
+                            ),
+                          ),
+                          //SizedBox(width:10),
+                          Expanded(
+                            child: Container(
+                              height: 150,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                    20), //rounded corners of container
+                                image: const DecorationImage(
+                                  //fit:BoxFit.fitWidth,
+                                  image: AssetImage(
+                                    "assets/profile_post_images/row_1_col_2.png",
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              padding: const EdgeInsets.all(0.0),
+                              height: 150,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                    20), //rounded corners of container
+                                image: const DecorationImage(
+                                  image: AssetImage(
+                                    "assets/profile_post_images/row_1_col_3.png",
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 5),
+                      Row(
+                        //second row of images.
+                        children: [
+                          Expanded(
+                            child: Container(
+                              height: 150,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                    20), //rounded corners of container
+                                image: const DecorationImage(
+                                  image: AssetImage(
+                                      "assets/profile_post_images/row_2_col_1.png"),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              height: 150,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                    20), //rounded corners of container
+                                image: const DecorationImage(
+                                  image: AssetImage(
+                                    "assets/profile_post_images/row_2_col_2.png",
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              height: 150,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                    20), //rounded corners of container
+                                image: const DecorationImage(
+                                  image: AssetImage(
+                                    "assets/profile_post_images/row_2_col_3.png",
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 55),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+///Profil2
+////?/////////////////////////////////////////////////////////////////////////////////////
+class ProfileScreen2 extends StatefulWidget {
+  static String tag = 'profile-screen-2';
+  @override
+  ProfileScreenState2 createState() => ProfileScreenState2();
+}
+
+class ProfileScreenState2 extends State<ProfileScreen2> {
+  
+
+  void profileDatePicker(ctx) {
+    // showCupertinoModalPopup is a built-in function of the cupertino library
+    showCupertinoModalPopup(
+        context: ctx,
+        builder: (_) => Container(
+              height: 500,
+              color: const Color.fromARGB(255, 255, 255, 255),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 400,
+                    child: CupertinoDatePicker(
+                        initialDateTime: DateTime.now(),
+                        mode: CupertinoDatePickerMode.date,
+                        onDateTimeChanged: (val) {
+                          setState(() {
+                            startDate = val;
+                          });
+                        }),
+                  ),
+                  // Close the modal
+                  CupertinoButton(
+                    child: const Text('OK'),
+                    onPressed: () => {
+                      Navigator.of(ctx, rootNavigator: true).pop(ctx),
+                    },
+                  )
+                ],
+              ),
+            ));
+  }
+
+  var dropdownValue;
+
+  
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        child: SafeArea(
+          left: true,
+          child: Container(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 15,
+                ),
+
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Stack(
+                    children: [
+                      //Profile Banner Image Picker
+                      Positioned(
+                        //flex: 1,
+                        child: Container(
+                          padding: EdgeInsets.symmetric(horizontal: 0),
+                          child: Container(
+                            alignment: Alignment(.90, -.75),
+                            height: 130,
+                            width: 360,
+                            decoration: BoxDecoration(
+                              //shape: BoxShape.circle,
+                              color: Color(0xffD7D9D7),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(12)),
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    "assets/images/Rectangle 210.png"),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      //White Circle around it
+                      Positioned(
+                        //flex: 1,
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(0, 60, 0, 0),
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            height: 95,
+                            width: 95,
+                            decoration: BoxDecoration(
+                                color: Colors.white, shape: BoxShape.circle),
+                          ),
+                        ),
+                      ),
+
+                      //Profile Picture Image Picker
+                      Positioned(
+                        //flex: 1,
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(0, 65, 0, 0),
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            padding: EdgeInsets.symmetric(horizontal: 0),
+                            height: 85,
+                            width: 85,
+                            decoration: BoxDecoration(
+                              //shape: BoxShape.circle,
+                              color: Color(0xffD7D9D7),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(100)),
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    "assets/images/Rectangle 129.png"),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        child: Container(
+                          //alignment: Alignment.centerLeft,
+                          padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          child: Text(
+                            "Jane Smith",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      Positioned(
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(308, 1, 0, 0),
+                          child: Icon(
+                            Icons.snapchat,
+                            size: 25,
+                            color: Color(0XFF828382),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(338, 0, 0, 0),
+                          child: Icon(
+                            Icons.facebook,
+                            size: 25,
+                            color: Color(0XFFC828382),
+                          ),
+                        ),
+                      ),
+
+                      Positioned(
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(240, 0, 0, 0),
+                          //alignment: Alignment.bottomCenter,
+                          child: Container(
+                            height: 25,
+                            width: 25,
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    "assets/images/Rectangle 51.png"),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      //2
+                      Positioned(
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(260, 0, 0, 0),
+                          //alignment: Alignment.bottomCenter,
+                          child: Container(
+                            height: 25,
+                            width: 25,
+                            decoration: BoxDecoration(
+                              color: Colors.green,
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    "assets/images/Rectangle 52.png"),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      //3
+                      Positioned(
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(280, 0, 0, 0),
+                          //alignment: Alignment.bottomCenter,
+                          child: Container(
+                            height: 25,
+                            width: 25,
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    "assets/images/Rectangle 53.png"),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                //gap here
+                SizedBox(
+                  height: 10,
+                ),
+
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Stack(
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            flex: 3,
+                            child: Container(
+                              //alignment: Alignment.centerLeft,
+                              padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                              child: Text(
+                                "Foodie, gymrat, and\n"
+                                "cinema enthusiast.",
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 80),
+                          Expanded(
+                            flex: 2,
+                            child: Container(
+                              width: 100.0,
+                              height: 25.0,
+                              //padding: EdgeInsets.fromLTRB(20, 15, 0, 0),
+                              child: ElevatedButton(
+                                  onPressed: () {},
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: Color(0xff4589FF),
+                                      foregroundColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(9.0))),
+                                  child: const Text(
+                                    'Follow',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
+                                    softWrap: false,
+                                  )),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+
+                SizedBox(
+                  height: 10,
+                ),
+
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 340,
+                        height: 2,
+                        decoration: BoxDecoration(
+                            color: Color(0xffD7D9D7),
+                            borderRadius: BorderRadius.circular(20)),
+                      ),
+                    ],
+                  ),
+                ),
+
+                SizedBox(
+                  height: 10,
+                ),
+
+                Container(
+                  //height:342,
+                  width: 348,
+                  child: Column(
+                    children: [
+                      Row(
+                        //row with text "Recent Posts"
+                        children: const [
+                          //Padding(
+                          //padding: EdgeInsets.only(left: 24),
+                          Text(
+                            " Recent Posts",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xff828382),
+                              fontSize: 20,
+                            ),
+                          ),
+                          //),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        //first row of images.
+                        children: [
+                          Expanded(
+                            child: Container(
+                              height: 150,
+                              width: 150,
+                              //margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                    20), //rounded corners of container
+                                image: const DecorationImage(
+                                  //fit: BoxFit.cover,
+                                  image: AssetImage(
+                                      "assets/profile_post_images/row_1_col_1.png"),
+                                ),
+                              ),
+                            ),
+                          ),
+                          //SizedBox(width:10),
+                          Expanded(
+                            child: Container(
+                              height: 150,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                    20), //rounded corners of container
+                                image: const DecorationImage(
+                                  //fit:BoxFit.fitWidth,
+                                  image: AssetImage(
+                                    "assets/profile_post_images/row_1_col_2.png",
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              padding: const EdgeInsets.all(0.0),
+                              height: 150,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                    20), //rounded corners of container
+                                image: const DecorationImage(
+                                  image: AssetImage(
+                                    "assets/profile_post_images/row_1_col_3.png",
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 5),
                     ],
                   ),
                 ),
