@@ -799,6 +799,8 @@ class _PanelWidgetState extends State<PanelWidget> {
                     width: 360,
                     height: 46,
                     child: TextField(
+                      keyboardType: TextInputType.multiline,
+                      maxLines: null,
                       style: TextStyle(
                         color: Colors.white,
                       ),
@@ -1339,7 +1341,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                         child: DropdownButton<String>(
                           hint: Padding(
                             padding: EdgeInsets.only(left: 10.0),
-                            child: Text('Select Community',
+                            child: Text('Select Community:',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
@@ -1673,33 +1675,43 @@ class _PanelWidgetState extends State<PanelWidget> {
                       width: 360,
                       height: 46,
                       child: TextField(
+                        keyboardType: TextInputType.multiline,
+                        maxLines: null,
+                        expands: true,
                         style: TextStyle(
                           color: Colors.white,
                         ),
                         obscureText: false,
-                        textAlign: TextAlign.center,
+                        textAlign: TextAlign.left,
                         decoration: InputDecoration(
-                            icon: Icon(
-                              Icons.shield_outlined,
-                              size: 1,
+                          contentPadding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                          icon: Icon(
+                            Icons.shield_outlined,
+                            size: 1,
+                          ),
+                          hintText: 'Community Guidelines:',
+                          hintStyle: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          filled: false,
+                          fillColor: Color(0xFF838383),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12.0),
+                            borderSide: BorderSide(
+                              width: 0,
+                              style: BorderStyle.none,
                             ),
-                            hintText: 'Community Guidelines:',
-                            filled: false,
-                            fillColor: Color(0xFF838383),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12.0),
-                              borderSide: BorderSide(
-                                width: 0,
-                                style: BorderStyle.none,
-                              ),
-                            ),
-                            alignLabelWithHint: false,
-                            labelText: '  Community Guidelines:',
-                            labelStyle: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            )),
+                          ),
+                          /*alignLabelWithHint: false,
+                          labelText: '  Community Guidelines:',
+                          labelStyle: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),*/
+                        ),
                       ),
                     ),
                   ),
@@ -1879,6 +1891,8 @@ class _PanelWidgetState extends State<PanelWidget> {
                             width: 200,
                             height: 20,
                             child: TextField(
+                              keyboardType: TextInputType.multiline,
+                              maxLines: null,
                               style: TextStyle(
                                 color: Colors.white,
                               ),
@@ -1917,7 +1931,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                           child: DropdownButton<String>(
                             hint: Padding(
                               padding: EdgeInsets.only(left: 10.0),
-                              child: Text('Select Category',
+                              child: Text('Select Category:',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 16,
