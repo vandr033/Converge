@@ -1153,7 +1153,6 @@ class _PanelWidgetState extends State<PanelWidget> {
                     width: 360,
                     height: 55,
                     //color: Color(0xFF838383),
-                    padding: EdgeInsets.all(1),
                     // decoration: BoxDecoration(
                     //   color: Color(0xFF838383),
                     //   borderRadius: BorderRadius.all(Radius.circular(12))),
@@ -1165,6 +1164,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                       //hideSuggestionsOnKeyboardHide: false,
                       textFieldConfiguration: TextFieldConfiguration(
                         decoration: InputDecoration(
+                          //contentPadding: EdgeInsets.only(left:100),
                           suffixIcon: Icon(Icons.search, color: Colors.white),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
@@ -1178,7 +1178,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                               fontWeight: FontWeight.w700),
                           filled: true,
                           fillColor: Color(0xFF838383),
-                          contentPadding: EdgeInsets.all(10),
+                          //contentPadding: EdgeInsets.only(left:100),
                         ),
                       ),
                       suggestionsBoxDecoration: SuggestionsBoxDecoration(
@@ -1513,6 +1513,9 @@ class _PanelWidgetState extends State<PanelWidget> {
                       width: 114,
                       height: 46,
                       child: TextField(
+                        keyboardType: TextInputType.multiline,
+                        maxLines: null,
+                        expands: true,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.white,
@@ -1705,13 +1708,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                               style: BorderStyle.none,
                             ),
                           ),
-                          /*alignLabelWithHint: false,
-                          labelText: '  Community Guidelines:',
-                          labelStyle: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),*/
+
                         ),
                       ),
                     ),
@@ -1870,52 +1867,39 @@ class _PanelWidgetState extends State<PanelWidget> {
                         color: Color(0xFF838383),
                         borderRadius: BorderRadius.circular(12.0),
                       ),
-                      child: Row(
-                        // ignore: prefer_const_literals_to_create_immutables
-                        children: [
-                          SizedBox(
-                            width: 15,
+                      child: TextField(
+                        keyboardType: TextInputType.multiline,
+                        maxLines: null,
+                        expands: true,
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                        obscureText: false,
+                        textAlign: TextAlign.left,
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          hintText: 'Description:',
+                          hintStyle: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
                           ),
-                          SizedBox(
-                            width: 90,
-                            height: 20,
-                            child: Text(
-                              "Description:",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
+                          filled: false,
+                          fillColor: Color(0xFF838383),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12.0),
+                            borderSide: BorderSide(
+                              width: 0,
+                              style: BorderStyle.none,
                             ),
                           ),
-                          SizedBox(
-                            width: 200,
-                            height: 20,
-                            child: TextField(
-                              keyboardType: TextInputType.multiline,
-                              maxLines: null,
-                              style: TextStyle(
-                                color: Colors.white,
-                              ),
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    width: 0,
-                                    style: BorderStyle.none,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
+                        ),
                       ),
                     ),
                   )
                 ],
               ),
-
               SizedBox(height: 10),
-
               Row(
                 children: [
                   Expanded(
@@ -1931,7 +1915,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton<String>(
                             hint: Padding(
-                              padding: EdgeInsets.only(left: 10.0),
+                              padding: EdgeInsets.only(left: 1.0),
                               child: Text('Select Category:',
                                   style: TextStyle(
                                     color: Colors.white,
