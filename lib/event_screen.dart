@@ -2227,7 +2227,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                             "Jane Smith",
                             textAlign: TextAlign.left,
                             style: TextStyle(
-                              color: Color(0xff3F3F3F),
+                              color: Color(0xFF3F3F3F),
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
@@ -2241,7 +2241,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                           child: Icon(
                             Icons.snapchat,
                             size: 25,
-                            color: Color(0XFF828382),
+                            color: Color(0xFF3F3F3F),
                           ),
                         ),
                       ),
@@ -2251,7 +2251,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                           child: Icon(
                             Icons.facebook,
                             size: 25,
-                            color: Color(0XFFC828382),
+                            color: Color(0xFF3F3F3F),
                           ),
                         ),
                       ),
@@ -2340,7 +2340,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                                 "cinema enthusiast.",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
-                                  color: Color(0xff3F3F3F),
+                                  color: Color(0xFF3F3F3F),
                                   fontSize: 16,
                                 ),
                               ),
@@ -2389,7 +2389,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                         width: 340,
                         height: 2,
                         decoration: BoxDecoration(
-                            color: Color(0xffD7D9D7),
+                            color: Color(0xFF3F3F3F),
                             borderRadius: BorderRadius.circular(20)),
                       ),
                     ],
@@ -2409,7 +2409,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                       onPressed: () => profileDatePicker(this.context),
                       style: ElevatedButton.styleFrom(
                         elevation: 0,
-                        backgroundColor: Color.fromARGB(255, 48, 46, 46),
+                        backgroundColor: Color.fromARGB(255, 70, 68, 68),
                         foregroundColor: Colors.white,
                         padding: EdgeInsets.zero,
                         shape: RoundedRectangleBorder(
@@ -2447,7 +2447,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                           height: 154,
                           width: 342,
                           decoration: BoxDecoration(
-                            color: Colors.grey,
+                            color: Color(0xFF838383),
                             borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(12),
                               bottomRight: Radius.circular(12),
@@ -2764,7 +2764,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                             " Recent Posts",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color: Color(0xff828382),
+                              color: Color.fromARGB(255, 63, 63, 63),
                               fontSize: 20,
                             ),
                           ),
@@ -3035,7 +3035,7 @@ class ProfileScreenState2 extends State<ProfileScreen2> {
                             "Jane Smith",
                             textAlign: TextAlign.left,
                             style: TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 0),
+                              color: Color(0xFF3F3F3F),
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
@@ -3049,7 +3049,7 @@ class ProfileScreenState2 extends State<ProfileScreen2> {
                           child: Icon(
                             Icons.snapchat,
                             size: 25,
-                            color: Color(0XFF828382),
+                            color: Color(0xFF3F3F3F),
                           ),
                         ),
                       ),
@@ -3059,7 +3059,7 @@ class ProfileScreenState2 extends State<ProfileScreen2> {
                           child: Icon(
                             Icons.facebook,
                             size: 25,
-                            color: Color(0XFFC828382),
+                            color: Color(0xFF3F3F3F),
                           ),
                         ),
                       ),
@@ -3148,7 +3148,7 @@ class ProfileScreenState2 extends State<ProfileScreen2> {
                                 "cinema enthusiast.",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
-                                  color: Color.fromARGB(255, 0, 0, 0),
+                                  color: Color(0xFF3F3F3F),
                                   fontSize: 16,
                                 ),
                               ),
@@ -3197,7 +3197,7 @@ class ProfileScreenState2 extends State<ProfileScreen2> {
                         width: 340,
                         height: 2,
                         decoration: BoxDecoration(
-                            color: Color(0xffD7D9D7),
+                            color: Color(0xFF838383),
                             borderRadius: BorderRadius.circular(20)),
                       ),
                     ],
@@ -3219,10 +3219,10 @@ class ProfileScreenState2 extends State<ProfileScreen2> {
                           //Padding(
                           //padding: EdgeInsets.only(left: 24),
                           Text(
-                            " Recent Posts",
+                            " Pinned",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color: Color(0xff828382),
+                              color: Color.fromARGB(255, 63, 63, 63),
                               fontSize: 20,
                             ),
                           ),
@@ -3244,7 +3244,7 @@ class ProfileScreenState2 extends State<ProfileScreen2> {
                                 image: const DecorationImage(
                                   //fit: BoxFit.cover,
                                   image: AssetImage(
-                                      "assets/profile_post_images/row_1_col_1.png"),
+                                      "assets/profile_post_images/row_0_col_0.png"),
                                 ),
                               ),
                             ),
@@ -3260,7 +3260,7 @@ class ProfileScreenState2 extends State<ProfileScreen2> {
                                 image: const DecorationImage(
                                   //fit:BoxFit.fitWidth,
                                   image: AssetImage(
-                                    "assets/profile_post_images/row_1_col_2.png",
+                                    "assets/profile_post_images/row_0_col_1.png",
                                   ),
                                 ),
                               ),
@@ -3276,7 +3276,7 @@ class ProfileScreenState2 extends State<ProfileScreen2> {
                                     20), //rounded corners of container
                                 image: const DecorationImage(
                                   image: AssetImage(
-                                    "assets/profile_post_images/row_1_col_3.png",
+                                    "assets/profile_post_images/row_0_col_2.png",
                                   ),
                                 ),
                               ),
@@ -3305,7 +3305,7 @@ class ProfileScreenState2 extends State<ProfileScreen2> {
                             " Recent Posts",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color: Color(0xff828382),
+                              color: Color.fromARGB(255, 63, 63, 63),
                               fontSize: 20,
                             ),
                           ),
