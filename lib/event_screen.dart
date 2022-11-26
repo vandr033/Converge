@@ -1983,6 +1983,7 @@ class HomeScreen extends StatelessWidget {
                   size: 24.0,
                 ),
                 SizedBox(width: 15),
+                Icon(Icons.bookmark_rounded, color: Colors.yellow, size: 24.0)
               ],
             ),
           ),
