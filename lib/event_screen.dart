@@ -1709,7 +1709,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                   Positioned(
                     //flex: 1,
                     child: Container(
-                      padding: EdgeInsets.fromLTRB(5, 10, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
                       child: Icon(
                         Icons.shield_outlined,
                         size: 25,
@@ -1720,7 +1720,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                   Positioned(
                     //flex: 1,
                     child: Container(
-                      padding: EdgeInsets.fromLTRB(10, 15, 0, 0),
+                      padding: EdgeInsets.fromLTRB(15, 15, 0, 0),
                       child: Icon(
                         Icons.check,
                         size: 15,
@@ -1743,7 +1743,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                         obscureText: false,
                         textAlign: TextAlign.left,
                         decoration: InputDecoration(
-                          contentPadding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                          contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
                           icon: Icon(
                             Icons.shield_outlined,
                             size: 1,
