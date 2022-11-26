@@ -521,7 +521,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       width: 226,
-                      height: 46,
+                      height: 48,
 
                       child: DropdownButtonHideUnderline(
                         child: DropdownButton<String>(
@@ -581,7 +581,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                   flex: 4, // default
                   child: Container(
                     width: 114,
-                    height: 46,
+                    height: 48,
                     child: TextField(
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
@@ -615,7 +615,7 @@ class _PanelWidgetState extends State<PanelWidget> {
               ],
             ),
 
-            SizedBox(height: 10),
+            SizedBox(height: 18),
 
             Container(
               //this contains our image picker
@@ -788,49 +788,9 @@ class _PanelWidgetState extends State<PanelWidget> {
             ),
             SizedBox(height: 10),
 
-            //Event start
-/*
+              /*
               Google Places dropdown here. 
               */
-
-            /*
-              child: Container(
-                      width: 360,
-                      height: 46,
-                      child: TextField(
-                        keyboardType: TextInputType.multiline,
-                        maxLines: null,
-                        expands: true,
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                        obscureText: false,
-                        textAlign: TextAlign.left,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                          icon: Icon(
-                            Icons.shield_outlined,
-                            size: 1,
-                          ),
-                          hintText: 'Community Guidelines:',
-                          hintStyle: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          filled: false,
-                          fillColor: Color(0xFF838383),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12.0),
-                            borderSide: BorderSide(
-                              width: 0,
-                              style: BorderStyle.none,
-                            ),
-                          ),
-
-                        ),
-                      ),
-                    ),*/
 
             Row(
               //example
@@ -880,55 +840,6 @@ class _PanelWidgetState extends State<PanelWidget> {
                 ),
               ],
             ),
-
-            /*
-            TextField(
-              style: TextStyle(
-                color: Colors.white,
-              ),
-              obscureText: false,
-              textAlign: TextAlign.left,
-              decoration: InputDecoration(
-                icon: Icon(
-                            Icons.shield_outlined,
-                            size: 1,
-                          ),
-                hintText: 'Add Location',
-                filled: true,
-                fillColor: Color(0xFF838383),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                  borderSide: BorderSide(
-                    width: 0,
-                    style: BorderStyle.none,
-                  ),
-                ),
-                alignLabelWithHint: false,
-                //labelText: '  Description:',
-                labelStyle: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              onChanged: (value) {
-                setState(() {
-                  selected = false;
-                });
-                applicationBloc.searchPlaces(value);
-              },
-            ),*/
-
-            /*
-            TextField(
-              decoration: InputDecoration(hintText: 'Add Location'),
-              onChanged: (value) {
-                setState(() {
-                  selected = false;
-                });
-                applicationBloc.searchPlaces(value);
-              },
-            ),*/
 
             if (applicationBloc.searchResults != null &&
                 applicationBloc.searchResults?.length != 0 &&
@@ -994,8 +905,6 @@ class _PanelWidgetState extends State<PanelWidget> {
                 Expanded(
                   flex: 1,
                   child: Container(
-                    // padding: EdgeInsets.symmetric(horizontal: 0),
-                    //transform: Matrix4.translationValues(-3.0, 0, 0.0),
                     child: SizedBox(
                       width: 363,
                       height: 46.0,
@@ -1097,8 +1006,6 @@ class _PanelWidgetState extends State<PanelWidget> {
                 Expanded(
                   flex: 0,
                   child: Container(
-                    // padding: EdgeInsets.symmetric(horizontal: 0),
-                    //transform: Matrix4.translationValues(-3.0, 0, 0.0),
                     child: SizedBox(
                       width: 363,
                       height: 46.0,
@@ -1200,10 +1107,6 @@ class _PanelWidgetState extends State<PanelWidget> {
                   child: Container(
                     width: 360,
                     height: 55,
-                    //color: Color(0xFF838383),
-                    // decoration: BoxDecoration(
-                    //   color: Color(0xFF838383),
-                    //   borderRadius: BorderRadius.all(Radius.circular(12))),
                     child: TypeAheadField<User?>(
                       //Here we use <User> because that is what we are autocompleting for.
                       direction: AxisDirection.up,
@@ -1214,9 +1117,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                         style: TextStyle(
                           color: Colors.white,
                         ),
-                        //expands: true,
                         decoration: InputDecoration(
-                          //contentPadding: EdgeInsets.only(left:100),
                           suffixIcon: Icon(Icons.search, color: Colors.white),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
@@ -1311,54 +1212,6 @@ class _PanelWidgetState extends State<PanelWidget> {
                   ),
                 )),
             SizedBox(height: 5),
-
-            /*
-            Row(
-              //example
-              children: [
-                Expanded(
-                    flex: 1, // default
-                    child: Container(
-                      padding: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Color(0xFF838383),
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      width: 360,
-                      height: 46,
-                      child: DropdownButtonHideUnderline(
-                        child: DropdownButton<String>(
-                          isExpanded: true,
-                          borderRadius: BorderRadius.circular(12.0),
-                          dropdownColor: Color(0xFF838383),
-                          style: const TextStyle(
-                              color: Colors.white, //<-- SEE HERE
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
-                          icon: Icon(
-                            Icons.keyboard_arrow_down,
-                            color: Colors.white, // <-- SEE HERE
-                          ),
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              dropdownValue = newValue!;
-                            });
-                          },
-                          items: <String>['Car', 'Train', 'Bus', 'Flight']
-                              .map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(
-                                value,
-                              ),
-                            );
-                          }).toList(),
-                        ),
-                      ),
-                    ) // required field
-                    ),
-              ],
-            ),*/
 
             Row(
               children: [
@@ -1466,8 +1319,6 @@ class _PanelWidgetState extends State<PanelWidget> {
   Widget buildCommunityInfo() => Visibility(
         visible: comInfoVisible,
         child: Container(
-          //here i have created a container with a child column - you can fill the column will all of the rows and its children, or anything else, that you need.
-          //this is all the stuff in our panel.
 
           padding: EdgeInsets.symmetric(horizontal: 24),
 
@@ -1487,7 +1338,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         width: 226,
-                        height: 46,
+                        height: 48,
 
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton<String>(
@@ -1545,7 +1396,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                     flex: 4, // default
                     child: Container(
                       width: 114,
-                      height: 46,
+                      height: 48,
                       child: TextField(
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
