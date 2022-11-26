@@ -2024,7 +2024,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width:40),
+                SizedBox(width: 40),
                 Stack(children: [
                   Positioned(
                     child: Container(
@@ -2037,7 +2037,8 @@ class HomeScreen extends StatelessWidget {
                           color: Colors.red,
                           shape: BoxShape.circle,
                           image: DecorationImage(
-                            image: AssetImage("assets/images/home_screen_user_1.png"),
+                            image: AssetImage(
+                                "assets/images/home_screen_user_1.png"),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -2055,7 +2056,8 @@ class HomeScreen extends StatelessWidget {
                           color: Colors.green,
                           shape: BoxShape.circle,
                           image: DecorationImage(
-                            image: AssetImage("assets/images/home_screen_user_2.png"),
+                            image: AssetImage(
+                                "assets/images/home_screen_user_2.png"),
                             fit: BoxFit.cover,
                           ),
                         ),
