@@ -1948,7 +1948,6 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Text(
                   "Jane Smith",
-                  //textAlign: TextAlign.left,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 23,
@@ -1958,7 +1957,32 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(
                   width: 50,
                 ),
-                Container(width:20, height:20, color:Colors.blue)
+                //Container(width:20, height:20, color:Colors.blue)
+                Container(
+                  width: 73.0,
+                  height: 25.0,
+                  //padding: EdgeInsets.fromLTRB(20, 15, 0, 0),
+                  child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xff4589FF),
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(9.0))),
+                      child: const Text(
+                        'RSVP',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                        softWrap: false,
+                      )),
+                ),
+                SizedBox(width: 15),
+                Icon(
+                  CupertinoIcons.heart_fill,
+                  color: Colors.red,
+                  size: 24.0,
+                ),
+                SizedBox(width: 15),
               ],
             ),
           ),
