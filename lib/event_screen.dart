@@ -791,12 +791,51 @@ class _PanelWidgetState extends State<PanelWidget> {
               Google Places dropdown here. 
               */
 
+            /*
+              child: Container(
+                      width: 360,
+                      height: 46,
+                      child: TextField(
+                        keyboardType: TextInputType.multiline,
+                        maxLines: null,
+                        expands: true,
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                        obscureText: false,
+                        textAlign: TextAlign.left,
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                          icon: Icon(
+                            Icons.shield_outlined,
+                            size: 1,
+                          ),
+                          hintText: 'Community Guidelines:',
+                          hintStyle: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          filled: false,
+                          fillColor: Color(0xFF838383),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12.0),
+                            borderSide: BorderSide(
+                              width: 0,
+                              style: BorderStyle.none,
+                            ),
+                          ),
+
+                        ),
+                      ),
+                    ),*/
+
             Row(
               //example
               children: [
                 Expanded(
                   flex: 1,
-                  child: SizedBox(
+                  child: Container(
                     width: 360,
                     height: 46,
                     child: TextField(
@@ -808,8 +847,13 @@ class _PanelWidgetState extends State<PanelWidget> {
                       obscureText: false,
                       textAlign: TextAlign.left,
                       decoration: InputDecoration(
+                        prefixIcon: Icon(
+                            Icons.add_location_alt_outlined,
+                            size: 25,
+                            color: Colors.white
+                          ),
                         contentPadding: EdgeInsets.all(0),
-                        hintText: "\t\t Add Location",
+                        hintText: "Add Location",
                         hintStyle: TextStyle(
                           color: Colors.white,
                           fontSize: 16,
@@ -837,6 +881,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                 ),
               ],
             ),
+
             /*
             TextField(
               style: TextStyle(
@@ -845,6 +890,10 @@ class _PanelWidgetState extends State<PanelWidget> {
               obscureText: false,
               textAlign: TextAlign.left,
               decoration: InputDecoration(
+                icon: Icon(
+                            Icons.shield_outlined,
+                            size: 1,
+                          ),
                 hintText: 'Add Location',
                 filled: true,
                 fillColor: Color(0xFF838383),
@@ -1164,7 +1213,8 @@ class _PanelWidgetState extends State<PanelWidget> {
                       //hideSuggestionsOnKeyboardHide: false,
                       textFieldConfiguration: TextFieldConfiguration(
                         style: TextStyle(
-                          color: Colors.white,),
+                          color: Colors.white,
+                        ),
                         //expands: true,
                         decoration: InputDecoration(
                           //contentPadding: EdgeInsets.only(left:100),
@@ -1344,7 +1394,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                       child: DropdownButtonHideUnderline(
                         child: DropdownButton<String>(
                           hint: Padding(
-                            padding: EdgeInsets.only(left: 10.0),
+                            padding: EdgeInsets.only(left: 1.0),
                             child: Text('Select Community:',
                                 style: TextStyle(
                                   color: Colors.white,
@@ -1711,7 +1761,6 @@ class _PanelWidgetState extends State<PanelWidget> {
                               style: BorderStyle.none,
                             ),
                           ),
-
                         ),
                       ),
                     ),
@@ -1744,7 +1793,8 @@ class _PanelWidgetState extends State<PanelWidget> {
                         direction: AxisDirection.up,
                         textFieldConfiguration: TextFieldConfiguration(
                           style: TextStyle(
-                          color: Colors.white,),
+                            color: Colors.white,
+                          ),
                           decoration: InputDecoration(
                             suffixIcon: Icon(Icons.search, color: Colors.white),
                             border: OutlineInputBorder(
@@ -2878,7 +2928,6 @@ class ProfileScreenState extends State<ProfileScreen> {
   }
 }
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////
 ///Profil2
 ////?/////////////////////////////////////////////////////////////////////////////////////
@@ -2889,8 +2938,6 @@ class ProfileScreen2 extends StatefulWidget {
 }
 
 class ProfileScreenState2 extends State<ProfileScreen2> {
-  
-
   void profileDatePicker(ctx) {
     // showCupertinoModalPopup is a built-in function of the cupertino library
     showCupertinoModalPopup(
@@ -2924,8 +2971,6 @@ class ProfileScreenState2 extends State<ProfileScreen2> {
   }
 
   var dropdownValue;
-
-  
 
   @override
   Widget build(BuildContext context) {
