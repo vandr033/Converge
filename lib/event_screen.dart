@@ -786,7 +786,7 @@ class _PanelWidgetState extends State<PanelWidget> {
             ),
             SizedBox(height: 10),
 
-              /*
+            /*
               Google Places dropdown here. 
               */
 
@@ -1317,9 +1317,7 @@ class _PanelWidgetState extends State<PanelWidget> {
   Widget buildCommunityInfo() => Visibility(
         visible: comInfoVisible,
         child: Container(
-
           padding: EdgeInsets.symmetric(horizontal: 24),
-
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -1903,7 +1901,7 @@ class _PanelWidgetState extends State<PanelWidget> {
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
-///Profile
+///Home Screen
 ///////////////////////////////////////////////////////////////////////////////////
 
 class HomeScreen extends StatelessWidget {
@@ -1913,17 +1911,77 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       //color: const Color(0xffC4DFCB),
-      child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/manrun.png"),
-            fit: BoxFit.fill,
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/manrun.png"),
+                fit: BoxFit.fill,
+              ),
+            ),
           ),
-        ),
+          Positioned(
+            bottom: 120,
+            left: 20,
+            //flex: 1,
+            child: Row(
+              children: [
+                Container(
+                  //padding: EdgeInsets.fromLTRB(0, 65, 0, 0),
+                  //alignment: Alignment.bottomCenter,
+                  padding: EdgeInsets.symmetric(horizontal: 0),
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    //shape: BoxShape.circle,
+                    color: Color(0xffD7D9D7),
+                    borderRadius: BorderRadius.all(Radius.circular(100)),
+                    image: DecorationImage(
+                      image: AssetImage("assets/images/Rectangle 129.png"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 15,
+                ),
+                Text(
+                  "Jane Smith",
+                  //textAlign: TextAlign.left,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 23,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  width: 50,
+                ),
+                Container(width:20, height:20, color:Colors.blue)
+              ],
+            ),
+          ),
+
+          /*Positioned(
+            bottom: 120,
+            child: Row(
+              children: [
+                Center(
+                  child: Text("Hello"),
+                ),
+              ],
+            ),
+          ),*/
+        ],
       ),
     );
   }
 }
+
+///////////////////////////////////////////////////////////////////////////////////
+///Profile
+///////////////////////////////////////////////////////////////////////////////////
 
 class ProfileScreen extends StatefulWidget {
   static String tag = 'profile-screen-1';
