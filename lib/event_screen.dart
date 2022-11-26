@@ -2024,47 +2024,45 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Stack(children:[
-                                  Positioned(
-                        child: Container(
-                          padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                          //alignment: Alignment.bottomCenter,
-                          child: Container(
-                            height: 25,
-                            width: 25,
-                            decoration: BoxDecoration(
-                              color: Colors.red,
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                image: AssetImage(
-                                    "assets/images/Rectangle 51.png"),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
+                SizedBox(width:40),
+                Stack(children: [
+                  Positioned(
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                      //alignment: Alignment.bottomCenter,
+                      child: Container(
+                        height: 30,
+                        width: 30,
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/home_screen_user_1.png"),
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
-                      //2
-                      Positioned(
-                        child: Container(
-                          padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                          //alignment: Alignment.bottomCenter,
-                          child: Container(
-                            height: 25,
-                            width: 25,
-                            decoration: BoxDecoration(
-                              color: Colors.green,
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                image: AssetImage(
-                                    "assets/images/Rectangle 52.png"),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
+                    ),
+                  ),
+                  Positioned(
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                      //alignment: Alignment.bottomCenter,
+                      child: Container(
+                        height: 30,
+                        width: 30,
+                        decoration: BoxDecoration(
+                          color: Colors.green,
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/home_screen_user_2.png"),
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
-              ])
+                    ),
+                  ),
+                ])
                 /*
 
                 */
