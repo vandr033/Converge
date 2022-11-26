@@ -583,6 +583,8 @@ class _PanelWidgetState extends State<PanelWidget> {
                     width: 114,
                     height: 46,
                     child: TextField(
+                      keyboardType: TextInputType.multiline,
+                      maxLines: null,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white,
