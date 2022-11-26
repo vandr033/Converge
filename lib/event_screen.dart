@@ -614,9 +614,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                 ),
               ],
             ),
-
             SizedBox(height: 18),
-
             Container(
               //this contains our image picker
               height: 184,
