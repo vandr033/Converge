@@ -2001,7 +2001,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  width: 15,
+                  width: 155,
                 ),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 0),
@@ -2011,6 +2011,12 @@ class HomeScreen extends StatelessWidget {
                     //shape: BoxShape.circle,
                     color: Color(0xffD7D9D7),
                     borderRadius: BorderRadius.all(Radius.circular(100)),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.blue,
+                        blurRadius: 3,
+                      ),
+                    ],
                     image: DecorationImage(
                       image:
                           AssetImage("assets/category_logos/sports_logo.png"),
@@ -2018,6 +2024,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                //this is where the stacked images go. 
               ],
             ),
           ),
