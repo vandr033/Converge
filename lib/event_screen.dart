@@ -849,11 +849,8 @@ class _PanelWidgetState extends State<PanelWidget> {
                       obscureText: false,
                       textAlign: TextAlign.left,
                       decoration: InputDecoration(
-                        prefixIcon: Icon(
-                            Icons.add_location_alt_outlined,
-                            size: 23,
-                            color: Colors.white
-                          ),
+                        prefixIcon: Icon(Icons.add_location_alt_outlined,
+                            size: 23, color: Colors.white),
                         contentPadding: EdgeInsets.zero,
                         hintText: "Add Location",
                         hintStyle: TextStyle(
@@ -1233,7 +1230,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                               fontWeight: FontWeight.w700),
                           filled: true,
                           fillColor: Color(0xFF838383),
-                          //contentPadding: EdgeInsets.only(left:100),
+                          contentPadding: EdgeInsets.all(10),
                         ),
                       ),
                       suggestionsBoxDecoration: SuggestionsBoxDecoration(
@@ -1276,31 +1273,13 @@ class _PanelWidgetState extends State<PanelWidget> {
                       ),
                       onSuggestionSelected: (User? suggestion) {
                         final user = suggestion!;
-                        setState(() {
-                          eventHostName = user.name;
-                          eventExistsHost = true;
-                        });
-
-                        //the suggestion that we selected is stored in user variable.
-
-                        //Container(height: 20, width: 20, Text(name));
-
-                        //this is the part where we say what we want to do in the selection... aka we need to put it in a container.
-
-                        // Navigator.of(context).push(MaterialPageRoute(
-                        //   builder: (context) => UserDetailPage(user: user)
-                      }
-                      /*
-                          Container(height:20, width:20,
-                          Text(suggestion.name;)*/
-
-                      //this is the part where we say what we want to do in the selection... aka we need to put it in a container.
-                      /*
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => UserDetailPage(user: user)
-                        )
-                        );*/
-                      ,
+                        setState(
+                          () {
+                            eventHostName = user.name;
+                            eventExistsHost = true;
+                          },
+                        );
+                      },
                     ),
                   ),
                 ),
