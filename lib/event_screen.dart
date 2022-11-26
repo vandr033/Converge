@@ -854,7 +854,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                             size: 25,
                             color: Colors.white
                           ),
-                        contentPadding: EdgeInsets.all(0),
+                        contentPadding: EdgeInsets.zero,
                         hintText: "Add Location",
                         hintStyle: TextStyle(
                           color: Colors.white,
@@ -1743,7 +1743,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                         obscureText: false,
                         textAlign: TextAlign.left,
                         decoration: InputDecoration(
-                          contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                          contentPadding: EdgeInsets.fromLTRB(25, 0, 0, 0),
                           icon: Icon(
                             Icons.shield_outlined,
                             size: 1,
