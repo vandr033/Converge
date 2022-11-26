@@ -1987,67 +1987,37 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: 50,
+            bottom: 110,
             left: 20,
             //flex: 1,
             child: Row(
               children: [
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 0),
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(
-                    //shape: BoxShape.circle,
-                    color: Color(0xffD7D9D7),
-                    borderRadius: BorderRadius.all(Radius.circular(100)),
-                    image: DecorationImage(
-                      image: AssetImage("assets/images/Rectangle 129.png"),
-                      fit: BoxFit.cover,
-                    ),
+                Text(
+                  "Morning run",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(
                   width: 15,
                 ),
-                Text(
-                  "Jane Smith",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 23,
-                    fontWeight: FontWeight.bold,
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 0),
+                  height: 30,
+                  width: 30,
+                  decoration: BoxDecoration(
+                    //shape: BoxShape.circle,
+                    color: Color(0xffD7D9D7),
+                    borderRadius: BorderRadius.all(Radius.circular(100)),
+                    image: DecorationImage(
+                      image:
+                          AssetImage("assets/category_logos/sports_logo.png"),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-                SizedBox(
-                  width: 50,
-                ),
-                //Container(width:20, height:20, color:Colors.blue)
-                Container(
-                  width: 73.0,
-                  height: 25.0,
-                  //padding: EdgeInsets.fromLTRB(20, 15, 0, 0),
-                  child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xff4589FF),
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(9.0))),
-                      child: const Text(
-                        'RSVP',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                        softWrap: false,
-                      )),
-                ),
-                SizedBox(width: 15),
-                Icon(
-                  CupertinoIcons.heart_fill,
-                  color: Colors.red,
-                  size: 24.0,
-                ),
-                SizedBox(width: 15),
-                Icon(Icons.bookmark_rounded, color: Colors.yellow, size: 24.0),
-                SizedBox(height: 100),
               ],
             ),
           ),
