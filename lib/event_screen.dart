@@ -851,7 +851,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                       decoration: InputDecoration(
                         prefixIcon: Icon(
                             Icons.add_location_alt_outlined,
-                            size: 25,
+                            size: 23,
                             color: Colors.white
                           ),
                         contentPadding: EdgeInsets.zero,
