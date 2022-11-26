@@ -2024,7 +2024,50 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                //this is where the stacked images go. 
+                Stack(children:[
+                                  Positioned(
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                          //alignment: Alignment.bottomCenter,
+                          child: Container(
+                            height: 25,
+                            width: 25,
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    "assets/images/Rectangle 51.png"),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      //2
+                      Positioned(
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          //alignment: Alignment.bottomCenter,
+                          child: Container(
+                            height: 25,
+                            width: 25,
+                            decoration: BoxDecoration(
+                              color: Colors.green,
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    "assets/images/Rectangle 52.png"),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+              ])
+                /*
+
+                */
               ],
             ),
           ),
