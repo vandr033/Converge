@@ -2025,52 +2025,62 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: 40),
-                Stack(children: [
-                  Positioned(
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                      //alignment: Alignment.bottomCenter,
+                Stack(
+                  children: [
+                    Positioned(
                       child: Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            image: AssetImage(
-                                "assets/images/home_screen_user_1.png"),
-                            fit: BoxFit.cover,
+                        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                        //alignment: Alignment.bottomCenter,
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: AssetImage(
+                                  "assets/images/home_screen_user_1.png"),
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                      //alignment: Alignment.bottomCenter,
+                    Positioned(
                       child: Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                          color: Colors.green,
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            image: AssetImage(
-                                "assets/images/home_screen_user_2.png"),
-                            fit: BoxFit.cover,
+                        padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        //alignment: Alignment.bottomCenter,
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                            color: Colors.green,
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: AssetImage(
+                                  "assets/images/home_screen_user_2.png"),
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ])
-                /*
-
-                */
+                  ],
+                )
               ],
             ),
           ),
+          Positioned(
+            bottom: 95,
+            left: 20,
+            child: Text(
+              "Running and breakfast tomorrow!",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 13,
+              ),
+            ),
+          )
         ],
       ),
     );
