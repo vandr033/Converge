@@ -807,7 +807,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                       obscureText: false,
                       textAlign: TextAlign.left,
                       decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.add_location_alt_outlined,
+                        prefixIcon: Icon(Icons.place_outlined,
                             size: 23, color: Colors.white),
                         contentPadding: EdgeInsets.zero,
                         hintText: "Add Location",
@@ -2083,27 +2083,34 @@ class HomeScreen extends StatelessWidget {
           ),
           Positioned(
             bottom: 10,
-            child: Container(height: 60, width: MediaQuery.of(context).size.width, //color: Colors.red, 
-            decoration:BoxDecoration(
-              gradient:LinearGradient(
-                begin:Alignment.centerLeft, 
-                end: Alignment.centerRight, 
-                colors:[Color(0xff4589FF), Colors.white.withOpacity(0.0)]
-              )
-            )
-            ),
+            child: Container(
+                height: 60,
+                width: MediaQuery.of(context).size.width, //color: Colors.red,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                      Color(0xff4589FF),
+                      Colors.white.withOpacity(0.0)
+                    ]))),
           ),
           Positioned(
-            bottom: 10,
-            //left: 20,
-            child: Container(height: 60, width: MediaQuery.of(context).size.width, //color: Colors.red, 
-            decoration:BoxDecoration(
-              gradient:LinearGradient(
-                begin:Alignment.centerLeft, 
-                end: Alignment.centerRight, 
-                colors:[Color(0xff4589FF), Colors.white.withOpacity(0.0)]
-              )
-            )
+            bottom: 50,
+            left: 20,
+            // ignore: prefer_const_literals_to_create_immutables
+            child: Row(
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
+                Icon(Icons.place_outlined, size: 20, color: Colors.white),
+                Text(
+                  "Tamiami Park, 7 AM",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+              ],
             ),
           ),
         ],
