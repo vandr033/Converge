@@ -2080,7 +2080,20 @@ class HomeScreen extends StatelessWidget {
                 fontSize: 13,
               ),
             ),
-          )
+          ),
+          Positioned(
+            bottom: 10,
+            //left: 20,
+            child: Container(height: 60, width: 500, //color: Colors.red, 
+            decoration:BoxDecoration(
+              gradient:LinearGradient(
+                begin:Alignment.centerLeft, 
+                end: Alignment.centerRight, 
+                colors:[Color(0xff4589FF), Colors.white.withOpacity(0.0)]
+              )
+            )
+            ),
+          ),
         ],
       ),
     );
