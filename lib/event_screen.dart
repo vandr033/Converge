@@ -1924,58 +1924,62 @@ class HomeScreen extends StatelessWidget {
           Positioned(
             top: 10,
             left: 20,
-            child: Row(
+            child: 
+            Row(
               children: [
-                Container(height: 20, width: 100, color: Colors.white),
-                Container(
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: AssetImage(
-                          "assets/home_screen_stories/upe_story.png"),
-                      fit: BoxFit.cover,
-                    ),
+              //Container(height: 20, width: 100, color: Colors.white),
+              Container(
+                height: 50,
+                width: 50,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image:
+                        AssetImage("assets/home_screen_stories/upe_story.png"),
+                    fit: BoxFit.cover,
                   ),
                 ),
-                Container(
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: AssetImage(
-                          "assets/home_screen_stories/girl_story.png"),
-                      fit: BoxFit.cover,
-                    ),
+              ),
+              Container(
+                height: 50,
+                width: 50,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image:
+                        AssetImage("assets/home_screen_stories/girl_story.png"),
+                    fit: BoxFit.cover,
                   ),
                 ),
-                Container(
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: AssetImage(
-                          "assets/home_screen_stories/sobe_story.png"),
-                      fit: BoxFit.cover,
-                    ),
+              ),
+              Container(
+                height: 50,
+                width: 50,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image:
+                        AssetImage("assets/home_screen_stories/sobe_story.png"),
+                    fit: BoxFit.cover,
                   ),
                 ),
-                Container(
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: AssetImage("assets/images/Rectangle 53.png"),
-                      fit: BoxFit.cover,
-                    ),
+              ),
+              Container(
+                height: 50,
+                width: 50,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/Rectangle 53.png"),
+                    fit: BoxFit.cover,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ]),
+            //)
+
+            //],
+            //),
           ),
           Positioned(
             bottom: 120,
