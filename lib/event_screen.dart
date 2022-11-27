@@ -1924,9 +1924,7 @@ class HomeScreen extends StatelessWidget {
           Positioned(
             top: 10,
             left: 20,
-            child: 
-            Row(
-              children: [
+            child: Row(children: [
               //Container(height: 20, width: 100, color: Colors.white),
               Container(
                 height: 50,
