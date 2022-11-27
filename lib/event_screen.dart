@@ -2083,8 +2083,20 @@ class HomeScreen extends StatelessWidget {
           ),
           Positioned(
             bottom: 10,
+            child: Container(height: 60, width: MediaQuery.of(context).size.width, //color: Colors.red, 
+            decoration:BoxDecoration(
+              gradient:LinearGradient(
+                begin:Alignment.centerLeft, 
+                end: Alignment.centerRight, 
+                colors:[Color(0xff4589FF), Colors.white.withOpacity(0.0)]
+              )
+            )
+            ),
+          ),
+          Positioned(
+            bottom: 10,
             //left: 20,
-            child: Container(height: 60, width: 500, //color: Colors.red, 
+            child: Container(height: 60, width: MediaQuery.of(context).size.width, //color: Colors.red, 
             decoration:BoxDecoration(
               gradient:LinearGradient(
                 begin:Alignment.centerLeft, 
