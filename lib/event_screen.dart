@@ -1922,151 +1922,96 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Positioned(
-            top:10, left:20,
-            child:Container(height:29, width:20, color:Colors.white),
+            top: 10,
+            left: 20,
+            child: Container(height: 29, width: 20, color: Colors.white),
           ),
           Positioned(
             top: 10,
             left: 200,
-            child:
-                Container(
-                  height:50, 
-                  width:200,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image:
-                              AssetImage("assets/home_screen_stories/upe_story.png"),
-                          fit: BoxFit.cover,
-                        ),
+            child: Container(
+              height: 50,
+              width: 200,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        image: AssetImage(
+                            "assets/home_screen_stories/upe_story.png"),
+                        fit: BoxFit.cover,
                       ),
                     ),
-                      SizedBox(width:10),
-                      //Container(height: 20, width: 20, color: Colors.white),
-                      Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image:
-                              AssetImage("assets/home_screen_stories/girl_story.png"),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                      SizedBox(width:10),
-                      //Container(height: 20, width: 20, color: Colors.white),
-                      Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image:
-                              AssetImage("assets/home_screen_stories/sobe_story.png"),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                      SizedBox(width:10),
-                      //Container(height: 20, width: 20, color: Colors.white),
-                      Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: AssetImage("assets/Rectangle 158.png"),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    SizedBox(width:10),
-                      //Container(height: 20, width: 20, color: Colors.white),
-                      Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: AssetImage("assets/images/Rectangle 52.png"),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    SizedBox(width:10),
-                      //Container(height: 20, width: 20, color: Colors.white),
-                      Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: AssetImage("assets/images/Rectangle 51.png"),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-
-
-
-                      /*Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image:
-                              AssetImage("assets/home_screen_stories/upe_story.png"),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image:
-                              AssetImage("assets/home_screen_stories/girl_story.png"),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image:
-                              AssetImage("assets/home_screen_stories/sobe_story.png"),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: AssetImage("assets/images/Rectangle 53.png"),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),*/
-                    ],
                   ),
-                ),
+                  SizedBox(width: 10),
+                  Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        image: AssetImage(
+                            "assets/home_screen_stories/girl_story.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        image: AssetImage(
+                            "assets/home_screen_stories/sobe_story.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        image: AssetImage("assets/Rectangle 158.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/Rectangle 52.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/Rectangle 51.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
           Positioned(
             bottom: 120,
