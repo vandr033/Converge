@@ -1934,7 +1934,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Positioned(
-            top: 10,
+            top: 40,
             left: 20,
             child: Container(
               padding: EdgeInsets.all(8),
@@ -1994,7 +1994,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Positioned(
-            top: 10,
+            top: 40,
             left: 200,
             child: Container(
               height: 50,
@@ -2019,11 +2019,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     SizedBox(width: 15),
                     GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => UPEStory()),
+                          MaterialPageRoute(builder: (context) => UPEStory()),
                         );
                       },
                       child: Container(
@@ -2132,8 +2131,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => ProfileScreen2()),
+                      MaterialPageRoute(builder: (context) => ProfileScreen2()),
                     );
                   },
                   child: Container(
@@ -2145,7 +2143,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Color(0xffD7D9D7),
                       borderRadius: BorderRadius.all(Radius.circular(100)),
                       image: DecorationImage(
-                        image: AssetImage("assets/images/Rectangle 129.png"),
+                        image: AssetImage("assets/images/Rectangle1.png"),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -3284,7 +3282,7 @@ class ProfileScreenState2 extends State<ProfileScreen2> {
                                   BorderRadius.all(Radius.circular(100)),
                               image: DecorationImage(
                                 image: AssetImage(
-                                    "assets/images/Rectangle 129.png"),
+                                    "assets/images/Rectangle1.png"),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -3712,7 +3710,6 @@ class UPEStory extends StatefulWidget {
 }
 
 class UPEStoryState extends State<UPEStory> {
-  
   var dropdownValue;
 
   @override
@@ -3723,8 +3720,8 @@ class UPEStoryState extends State<UPEStory> {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/concert_story.png"),
-                fit: BoxFit.fill,
+                image: AssetImage("assets/roary.gif"),
+                fit: BoxFit.cover,
               ),
             ),
           ),
@@ -3734,26 +3731,24 @@ class UPEStoryState extends State<UPEStory> {
             //flex: 1,
             child: Row(
               children: [
-                
-                  GestureDetector(
-                    
-                    
-                    child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 0),
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        //shape: BoxShape.circle,
-                        color: Color(0xffD7D9D7),
-                        borderRadius: BorderRadius.all(Radius.circular(100)),
-                        image: DecorationImage(
-                          image: AssetImage("assets/home_screen_stories/theupe_story.png"),
-                          fit: BoxFit.cover,
-                        ),
+                GestureDetector(
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 0),
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      //shape: BoxShape.circle,
+                      color: Color(0xffD7D9D7),
+                      borderRadius: BorderRadius.all(Radius.circular(100)),
+                      image: DecorationImage(
+                        image: AssetImage(
+                            "assets/home_screen_stories/theupe_story.png"),
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
-                
+                ),
+
                 SizedBox(
                   width: 15,
                 ),
@@ -3770,15 +3765,24 @@ class UPEStoryState extends State<UPEStory> {
                   width: 170,
                 ),
                 //Container(width:20, height:20, color:Colors.blue)
-                
+
                 SizedBox(width: 15),
                 Icon(
                   CupertinoIcons.heart_fill,
-                  color: Colors.red,
+                  color: Colors.transparent,
                   size: 24.0,
                 ),
                 SizedBox(width: 15),
-               Icon(Icons.close, color: Color.fromARGB(255, 255, 255, 255), size: 34.0),
+                // GestureDetector(
+                //   onTap: () {
+                //     Navigator.push(
+                //       context,
+                //       MaterialPageRoute(builder: (context) => HomeScreen()),
+                //     );
+                //   },
+                //   child: Icon(Icons.close,
+                //       color: Color.fromARGB(255, 255, 255, 255), size: 34.0),
+                // ),
                 SizedBox(height: 100),
               ],
             ),
@@ -3809,7 +3813,6 @@ class UPEStoryState extends State<UPEStory> {
                   "Tamiami Park, 7 AM",
                   style: TextStyle(
                     fontSize: 15,
-                    
                     decoration: TextDecoration.none,
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -3844,8 +3847,8 @@ class GirlStoryState extends State<GirlStory> {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/home_screen_stories/tua.jpg"),
-                fit: BoxFit.fill,
+                image: AssetImage("assets/dolphin.gif"),
+                fit: BoxFit.cover,
               ),
             ),
           ),
@@ -3871,7 +3874,8 @@ class GirlStoryState extends State<GirlStory> {
                       color: Color(0xffD7D9D7),
                       borderRadius: BorderRadius.all(Radius.circular(100)),
                       image: DecorationImage(
-                        image: AssetImage("assets/home_screen_stories/girl_story.png"),
+                        image: AssetImage(
+                            "assets/home_screen_stories/girl_story.png"),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -3891,14 +3895,14 @@ class GirlStoryState extends State<GirlStory> {
                   ),
                 ),
                 SizedBox(
-                  width: 100,
+                  width: 60,
                 ),
                 //Container(width:20, height:20, color:Colors.blue)
 
                 SizedBox(width: 15),
                 Icon(
                   CupertinoIcons.heart_fill,
-                  color: Colors.red,
+                  color: Colors.transparent,
                   size: 24.0,
                 ),
                 SizedBox(width: 15),
@@ -3968,8 +3972,8 @@ class SobeStoryState extends State<SobeStory> {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/home_screen_stories/sobe.jpg"),
-                fit: BoxFit.fill,
+                image: AssetImage("assets/giphy.gif"),
+                fit: BoxFit.cover,
               ),
             ),
           ),
@@ -4010,7 +4014,7 @@ class SobeStoryState extends State<SobeStory> {
                   "SOBE WFF",
                   style: TextStyle(
                     decoration: TextDecoration.none,
-                    color: Color.fromARGB(255, 119, 117, 117),
+                    color: Color.fromARGB(255, 255, 255, 255),
                     fontSize: 23,
                     fontWeight: FontWeight.bold,
                   ),
@@ -4023,7 +4027,7 @@ class SobeStoryState extends State<SobeStory> {
                 SizedBox(width: 15),
                 Icon(
                   CupertinoIcons.heart_fill,
-                  color: Colors.red,
+                  color: Colors.transparent,
                   size: 24.0,
                 ),
                 SizedBox(width: 15),
@@ -4072,3 +4076,7 @@ class SobeStoryState extends State<SobeStory> {
     );
   }
 }
+
+////////////////////////////////////////////////////////////////////////////////
+///Video Test
+////////////////////////////////////////////////////////////////////////////////
