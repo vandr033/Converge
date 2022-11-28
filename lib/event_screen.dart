@@ -1214,63 +1214,62 @@ class _PanelWidgetState extends State<PanelWidget> {
             Row(
               children: [
                 Expanded(
-                    flex: 1, // default
-                    child: Container(
-                      padding: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Color(0xFF838383),
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      width: 360,
-                      height: 46,
-                      child: DropdownButtonHideUnderline(
-                        child: DropdownButton<String>(
-                          hint: Padding(
-                            padding: EdgeInsets.only(left: 1.0),
-                            child: Text('Select Community:',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                )),
-                          ),
-                          isExpanded: true,
-                          borderRadius: BorderRadius.circular(12.0),
-                          dropdownColor: Color(0xFF838383),
-                          style: const TextStyle(
-                              color: Colors.white, //<-- SEE HERE
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
-                          icon: Icon(
-                            Icons.keyboard_arrow_down,
-                            color: Colors.white, // <-- SEE HERE
-                          ),
-                          value: _eventSelected,
-                          onChanged: (newValue) {
-                            setState(() {
-                              _eventSelected = newValue;
-                            });
-                          },
-                          items: _eventJson.map(
-                            (categoryItem) {
-                              return DropdownMenuItem(
-                                value: categoryItem['id'].toString(),
-                                child: Row(
-                                  children: [
-                                    Image.asset(categoryItem['image'],
-                                        width: 30),
-                                    Container(
-                                        margin: EdgeInsets.only(left: 10),
-                                        child: Text(categoryItem['name']))
-                                  ],
-                                ),
-                              );
-                            },
-                          ).toList(),
-                        ),
-                      ),
-                    ) // required field
+                  flex: 1, // default
+                  child: Container(
+                    padding: EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: Color(0xFF838383),
+                      borderRadius: BorderRadius.circular(12.0),
                     ),
+                    width: 360,
+                    height: 46,
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                        hint: Padding(
+                          padding: EdgeInsets.only(left: 1.0),
+                          child: Text('Select Community:',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              )),
+                        ),
+                        isExpanded: true,
+                        borderRadius: BorderRadius.circular(12.0),
+                        dropdownColor: Color(0xFF838383),
+                        style: const TextStyle(
+                            color: Colors.white, //<-- SEE HERE
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
+                        icon: Icon(
+                          Icons.keyboard_arrow_down,
+                          color: Colors.white, // <-- SEE HERE
+                        ),
+                        value: _eventSelected,
+                        onChanged: (newValue) {
+                          setState(() {
+                            _eventSelected = newValue;
+                          });
+                        },
+                        items: _eventJson.map(
+                          (categoryItem) {
+                            return DropdownMenuItem(
+                              value: categoryItem['id'].toString(),
+                              child: Row(
+                                children: [
+                                  Image.asset(categoryItem['image'], width: 30),
+                                  Container(
+                                      margin: EdgeInsets.only(left: 10),
+                                      child: Text(categoryItem['name']))
+                                ],
+                              ),
+                            );
+                          },
+                        ).toList(),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
 
@@ -1904,8 +1903,27 @@ class _PanelWidgetState extends State<PanelWidget> {
 ///Home Screen
 ///////////////////////////////////////////////////////////////////////////////////
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  String? _eventSelected;
+  List<Map> _eventJson = [
+    {
+      'id': '1',
+      //'image': 'assets/community_logos/hamburger_logo.png',
+      'name': 'Friends'
+    },
+    {
+      'id': '2',
+      //'image': 'assets/community_logos/globe_trotters_logo.png',
+      'name': 'Communities'
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -1924,7 +1942,59 @@ class HomeScreen extends StatelessWidget {
           Positioned(
             top: 10,
             left: 20,
-            child: Container(height: 29, width: 20, color: Colors.white),
+            child: Container(
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Color(0xFF838383),
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              width: 130,
+              height: 50,
+              child: DropdownButtonHideUnderline(
+                child: DropdownButton<String>(
+                  hint: Padding(
+                    padding: EdgeInsets.only(left: 1.0),
+                    child: Text('All',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        )),
+                  ),
+                  isExpanded: true,
+                  borderRadius: BorderRadius.circular(12.0),
+                  dropdownColor: Color(0xFF838383),
+                  style: const TextStyle(
+                      color: Colors.white, //<-- SEE HERE
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down,
+                    color: Colors.white, // <-- SEE HERE
+                  ),
+                  value: _eventSelected,
+                  onChanged: (newValue) {
+                    setState(() {
+                      _eventSelected = newValue;
+                    });
+                  },
+                  items: _eventJson.map(
+                    (categoryItem) {
+                      return DropdownMenuItem(
+                        value: categoryItem['id'].toString(),
+                        child: Row(
+                          children: [
+                            Container(
+                                margin: EdgeInsets.only(left: 10),
+                                child: Text(categoryItem['name']))
+                          ],
+                        ),
+                      );
+                    },
+                  ).toList(),
+                ),
+              ),
+            ),
           ),
           Positioned(
             top: 10,
@@ -1992,7 +2062,7 @@ class HomeScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
-                        image: AssetImage("assets/images/Rectangle 52.png"),
+                        image: AssetImage("assets/Rectangle 156.png"),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -2004,7 +2074,7 @@ class HomeScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
-                        image: AssetImage("assets/images/Rectangle 51.png"),
+                        image: AssetImage("assets/Rectangle 157.png"),
                         fit: BoxFit.cover,
                       ),
                     ),
