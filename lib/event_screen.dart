@@ -1913,19 +1913,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   String? _eventSelected;
   List<Map> _eventJson = [
-    {
-      'id': '1',
-      'name': 'All'
-    },
-
-    {
-      'id': '2',
-      'name': 'Friends'
-    },
-    {
-      'id': '3',
-      'name': 'Communities'
-    },
+    {'id': '1', 'name': 'All'},
+    {'id': '2', 'name': 'Friends'},
+    {'id': '3', 'name': 'Communities'},
   ];
 
   @override
@@ -2009,19 +1999,24 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 50,
               width: 200,
               child: ShaderMask(
-                shaderCallback: (Rect bounds) { 
+                shaderCallback: (Rect bounds) {
                   return LinearGradient(
-                    begin:Alignment.centerLeft, 
-                    end:Alignment.centerRight,
-                    colors:[Colors.purple, Colors.transparent, Colors.transparent, Colors.purple], 
-                    stops:[0.0, 0.1, 0.9, 1.0],
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      Colors.purple,
+                      Colors.transparent,
+                      Colors.transparent,
+                      Colors.purple
+                    ],
+                    stops: [0.0, 0.1, 0.9, 1.0],
                   ).createShader(bounds);
-                 },
-                 blendMode: BlendMode.dstOut,
+                },
+                blendMode: BlendMode.dstOut,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    SizedBox(width:15),
+                    SizedBox(width: 15),
                     Container(
                       height: 50,
                       width: 50,
