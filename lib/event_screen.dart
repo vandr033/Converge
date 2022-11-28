@@ -31,6 +31,7 @@ final pages = [
   HomeScreen(),
   ProfileScreen(),
   ProfileScreen2(),
+  UPEStory(),
 ];
 
 class EventScreen extends StatefulWidget {
@@ -136,7 +137,7 @@ class EventScreenState extends State<EventScreen> {
                 onPressed: () {
                   setState(() {
                     eventPanelController.close();
-                    index = 2;
+                    index = 0;
                   });
                 },
                 icon: Icon(
@@ -1913,19 +1914,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   String? _eventSelected;
   List<Map> _eventJson = [
-    {
-      'id': '1',
-      'name': 'All'
-    },
-
-    {
-      'id': '2',
-      'name': 'Friends'
-    },
-    {
-      'id': '3',
-      'name': 'Communities'
-    },
+    {'id': '1', 'name': 'All'},
+    {'id': '2', 'name': 'Friends'},
+    {'id': '3', 'name': 'Communities'},
   ];
 
   @override
@@ -2009,54 +2000,84 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 50,
               width: 200,
               child: ShaderMask(
-                shaderCallback: (Rect bounds) { 
+                shaderCallback: (Rect bounds) {
                   return LinearGradient(
-                    begin:Alignment.centerLeft, 
-                    end:Alignment.centerRight,
-                    colors:[Colors.purple, Colors.transparent, Colors.transparent, Colors.purple], 
-                    stops:[0.0, 0.1, 0.9, 1.0],
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      Colors.purple,
+                      Colors.transparent,
+                      Colors.transparent,
+                      Colors.purple
+                    ],
+                    stops: [0.0, 0.1, 0.9, 1.0],
                   ).createShader(bounds);
-                 },
-                 blendMode: BlendMode.dstOut,
+                },
+                blendMode: BlendMode.dstOut,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    SizedBox(width:15),
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: AssetImage(
-                              "assets/home_screen_stories/upe_story.png"),
-                          fit: BoxFit.cover,
+                    SizedBox(width: 15),
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => UPEStory()),
+                        );
+                      },
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage(
+                                "assets/home_screen_stories/theupe_story.png"),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
                     SizedBox(width: 10),
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: AssetImage(
-                              "assets/home_screen_stories/girl_story.png"),
-                          fit: BoxFit.cover,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => GirlStory()),
+                        );
+                      },
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage(
+                                "assets/home_screen_stories/girl_story.png"),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
                     SizedBox(width: 10),
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: AssetImage(
-                              "assets/home_screen_stories/sobe_story.png"),
-                          fit: BoxFit.cover,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SobeStory()),
+                        );
+                      },
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage(
+                                "assets/home_screen_stories/sobe_story.png"),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
@@ -2107,17 +2128,26 @@ class _HomeScreenState extends State<HomeScreen> {
             //flex: 1,
             child: Row(
               children: [
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 0),
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(
-                    //shape: BoxShape.circle,
-                    color: Color(0xffD7D9D7),
-                    borderRadius: BorderRadius.all(Radius.circular(100)),
-                    image: DecorationImage(
-                      image: AssetImage("assets/images/Rectangle 129.png"),
-                      fit: BoxFit.cover,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ProfileScreen2()),
+                    );
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 0),
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      //shape: BoxShape.circle,
+                      color: Color(0xffD7D9D7),
+                      borderRadius: BorderRadius.all(Radius.circular(100)),
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/Rectangle 129.png"),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
@@ -2125,7 +2155,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: 15,
                 ),
                 Text(
-                  "Jane Smith",
+                  "Sam Scott",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 23,
@@ -3274,7 +3304,7 @@ class ProfileScreenState2 extends State<ProfileScreen2> {
                           //alignment: Alignment.centerLeft,
                           padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                           child: Text(
-                            "Jane Smith",
+                            "Sam Scott",
                             textAlign: TextAlign.left,
                             style: TextStyle(
                               color: Color(0xFF3F3F3F),
@@ -3386,8 +3416,8 @@ class ProfileScreenState2 extends State<ProfileScreen2> {
                               //alignment: Alignment.centerLeft,
                               padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                               child: Text(
-                                "Foodie, gymrat, and\n"
-                                "cinema enthusiast.",
+                                "Hi, I am Sam!\n"
+                                "I love outdoor runs!",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   color: Color(0xFF3F3F3F),
@@ -3667,6 +3697,377 @@ class ProfileScreenState2 extends State<ProfileScreen2> {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////
+///StoryScreenUPE LOGO
+////?/////////////////////////////////////////////////////////////////////////////////////
+class UPEStory extends StatefulWidget {
+  static String tag = 'upe-story';
+  @override
+  UPEStoryState createState() => UPEStoryState();
+}
+
+class UPEStoryState extends State<UPEStory> {
+  
+  var dropdownValue;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/concert_story.png"),
+                fit: BoxFit.fill,
+              ),
+            ),
+          ),
+          Positioned(
+            top: 20,
+            left: 20,
+            //flex: 1,
+            child: Row(
+              children: [
+                
+                  GestureDetector(
+                    
+                    
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 0),
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        //shape: BoxShape.circle,
+                        color: Color(0xffD7D9D7),
+                        borderRadius: BorderRadius.all(Radius.circular(100)),
+                        image: DecorationImage(
+                          image: AssetImage("assets/home_screen_stories/theupe_story.png"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                
+                SizedBox(
+                  width: 15,
+                ),
+                Text(
+                  "UPE",
+                  style: TextStyle(
+                    decoration: TextDecoration.none,
+                    color: Colors.white,
+                    fontSize: 23,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  width: 170,
+                ),
+                //Container(width:20, height:20, color:Colors.blue)
+                
+                SizedBox(width: 15),
+                Icon(
+                  CupertinoIcons.heart_fill,
+                  color: Colors.red,
+                  size: 24.0,
+                ),
+                SizedBox(width: 15),
+               Icon(Icons.close, color: Color.fromARGB(255, 255, 255, 255), size: 34.0),
+                SizedBox(height: 100),
+              ],
+            ),
+          ),
+          Positioned(
+            top: 100,
+            child: Container(
+                height: 20,
+                width: MediaQuery.of(context).size.width, //color: Colors.red,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                      Color(0xff4589FF),
+                      Colors.white.withOpacity(0.0)
+                    ]))),
+          ),
+          Positioned(
+            top: 100,
+            left: 20,
+            // ignore: prefer_const_literals_to_create_immutables
+            child: Row(
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
+                Icon(Icons.place_outlined, size: 20, color: Colors.white),
+                Text(
+                  "Tamiami Park, 7 AM",
+                  style: TextStyle(
+                    fontSize: 15,
+                    
+                    decoration: TextDecoration.none,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////
+///StoryScreenGirlStor
+////?/////////////////////////////////////////////////////////////////////////////////////
+class GirlStory extends StatefulWidget {
+  static String tag = 'girl-story';
+  @override
+  GirlStoryState createState() => GirlStoryState();
+}
+
+class GirlStoryState extends State<GirlStory> {
+  var dropdownValue;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/home_screen_stories/tua.jpg"),
+                fit: BoxFit.fill,
+              ),
+            ),
+          ),
+          Positioned(
+            top: 20,
+            left: 20,
+            //flex: 1,
+            child: Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProfileScreen2()),
+                    );
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 0),
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      //shape: BoxShape.circle,
+                      color: Color(0xffD7D9D7),
+                      borderRadius: BorderRadius.all(Radius.circular(100)),
+                      image: DecorationImage(
+                        image: AssetImage("assets/home_screen_stories/girl_story.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ),
+
+                SizedBox(
+                  width: 15,
+                ),
+                Text(
+                  "Sandy James",
+                  style: TextStyle(
+                    decoration: TextDecoration.none,
+                    color: Colors.white,
+                    fontSize: 23,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  width: 100,
+                ),
+                //Container(width:20, height:20, color:Colors.blue)
+
+                SizedBox(width: 15),
+                Icon(
+                  CupertinoIcons.heart_fill,
+                  color: Colors.red,
+                  size: 24.0,
+                ),
+                SizedBox(width: 15),
+                Icon(Icons.close,
+                    color: Color.fromARGB(255, 255, 255, 255), size: 34.0),
+                SizedBox(height: 100),
+              ],
+            ),
+          ),
+          Positioned(
+            top: 100,
+            child: Container(
+                height: 20,
+                width: MediaQuery.of(context).size.width, //color: Colors.red,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                      Color(0xff4589FF),
+                      Colors.white.withOpacity(0.0)
+                    ]))),
+          ),
+          Positioned(
+            top: 100,
+            left: 20,
+            // ignore: prefer_const_literals_to_create_immutables
+            child: Row(
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
+                Icon(Icons.place_outlined, size: 20, color: Colors.white),
+                Text(
+                  "Hard Rock Stadium, 8 PM",
+                  style: TextStyle(
+                    fontSize: 15,
+                    decoration: TextDecoration.none,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////
+///StoryScreenSobeStory
+////?/////////////////////////////////////////////////////////////////////////////////////
+class SobeStory extends StatefulWidget {
+  static String tag = 'sobe-story';
+  @override
+  SobeStoryState createState() => SobeStoryState();
+}
+
+class SobeStoryState extends State<SobeStory> {
+  var dropdownValue;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/home_screen_stories/sobe.jpg"),
+                fit: BoxFit.fill,
+              ),
+            ),
+          ),
+          Positioned(
+            top: 20,
+            left: 20,
+            //flex: 1,
+            child: Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProfileScreen2()),
+                    );
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 0),
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      //shape: BoxShape.circle,
+                      color: Color(0xffD7D9D7),
+                      borderRadius: BorderRadius.all(Radius.circular(100)),
+                      image: DecorationImage(
+                        image: AssetImage(
+                            "assets/home_screen_stories/sobe_story.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ),
+
+                SizedBox(
+                  width: 15,
+                ),
+                Text(
+                  "SOBE WFF",
+                  style: TextStyle(
+                    decoration: TextDecoration.none,
+                    color: Color.fromARGB(255, 119, 117, 117),
+                    fontSize: 23,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  width: 100,
+                ),
+                //Container(width:20, height:20, color:Colors.blue)
+
+                SizedBox(width: 15),
+                Icon(
+                  CupertinoIcons.heart_fill,
+                  color: Colors.red,
+                  size: 24.0,
+                ),
+                SizedBox(width: 15),
+                Icon(Icons.close,
+                    color: Color.fromARGB(255, 255, 255, 255), size: 34.0),
+                SizedBox(height: 100),
+              ],
+            ),
+          ),
+          Positioned(
+            top: 100,
+            child: Container(
+                height: 20,
+                width: MediaQuery.of(context).size.width, //color: Colors.red,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                      Color(0xff4589FF),
+                      Colors.white.withOpacity(0.0)
+                    ]))),
+          ),
+          Positioned(
+            top: 100,
+            left: 20,
+            // ignore: prefer_const_literals_to_create_immutables
+            child: Row(
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
+                Icon(Icons.place_outlined, size: 20, color: Colors.white),
+                Text(
+                  "Miami Beach, 12 PM",
+                  style: TextStyle(
+                    fontSize: 15,
+                    decoration: TextDecoration.none,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
