@@ -65,7 +65,14 @@ dependencies:
   provider: ^6.0.4
 
 
-dev_dependencies:
+dev_dependencies: 
+  flutter_launcher_icons: "^0.11.0"
+  
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/Rectangle 155.png"
+
   flutter_test:
     sdk: flutter
 

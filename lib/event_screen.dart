@@ -2946,7 +2946,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                                   width: 5,
                                 ),
                                 Text(
-                                  "WRC @ MMC",
+                                  "WRC @ MM",
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
@@ -3007,7 +3007,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                                   width: 5,
                                 ),
                                 Text(
-                                  "PCA 150 @ M..",
+                                  "PCA 150 @",
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
@@ -3769,20 +3769,19 @@ class UPEStoryState extends State<UPEStory> {
                 SizedBox(width: 15),
                 Icon(
                   CupertinoIcons.heart_fill,
-                  color: Colors.transparent,
+                  color: Colors.red,
                   size: 24.0,
                 ),
                 SizedBox(width: 15),
-                // GestureDetector(
-                //   onTap: () {
-                //     Navigator.push(
-                //       context,
-                //       MaterialPageRoute(builder: (context) => HomeScreen()),
-                //     );
-                //   },
-                //   child: Icon(Icons.close,
-                //       color: Color.fromARGB(255, 255, 255, 255), size: 34.0),
-                // ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(
+                      context,
+                    );
+                  },
+                  child: Icon(Icons.close,
+                      color: Color.fromARGB(255, 255, 255, 255), size: 34.0),
+                ),
                 SizedBox(height: 100),
               ],
             ),
@@ -3902,12 +3901,18 @@ class GirlStoryState extends State<GirlStory> {
                 SizedBox(width: 15),
                 Icon(
                   CupertinoIcons.heart_fill,
-                  color: Colors.transparent,
+                  color: Colors.red,
                   size: 24.0,
                 ),
                 SizedBox(width: 15),
-                Icon(Icons.close,
-                    color: Color.fromARGB(255, 255, 255, 255), size: 34.0),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(
+                      context,
+                    );
+                  },
+                child: Icon(Icons.close,
+                    color: Color.fromARGB(255, 255, 255, 255), size: 34.0),),
                 SizedBox(height: 100),
               ],
             ),
@@ -4027,12 +4032,19 @@ class SobeStoryState extends State<SobeStory> {
                 SizedBox(width: 15),
                 Icon(
                   CupertinoIcons.heart_fill,
-                  color: Colors.transparent,
+                  color: Colors.red,
                   size: 24.0,
                 ),
                 SizedBox(width: 15),
-                Icon(Icons.close,
-                    color: Color.fromARGB(255, 255, 255, 255), size: 34.0),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(
+                      context,
+                    );
+                  },
+                  child: Icon(Icons.close,
+                      color: Color.fromARGB(255, 255, 255, 255), size: 34.0),
+                ),
                 SizedBox(height: 100),
               ],
             ),
