@@ -1935,7 +1935,6 @@ class HomeScreen extends StatelessWidget {
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
-                      //Container(height: 20, width: 20, color: Colors.white),
                       Container(
                       height: 50,
                       width: 50,
@@ -1948,7 +1947,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                      SizedBox(width:20),
+                      SizedBox(width:10),
                       //Container(height: 20, width: 20, color: Colors.white),
                       Container(
                       height: 50,
@@ -1962,7 +1961,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                      SizedBox(width:20),
+                      SizedBox(width:10),
                       //Container(height: 20, width: 20, color: Colors.white),
                       Container(
                       height: 50,
@@ -1976,7 +1975,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                      SizedBox(width:20),
+                      SizedBox(width:10),
                       //Container(height: 20, width: 20, color: Colors.white),
                       Container(
                       height: 50,
@@ -1984,7 +1983,33 @@ class HomeScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                          image: AssetImage("assets/images/Rectangle 53.png"),
+                          image: AssetImage("assets/Rectangle 158.png"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width:10),
+                      //Container(height: 20, width: 20, color: Colors.white),
+                      Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: AssetImage("assets/images/Rectangle 52.png"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width:10),
+                      //Container(height: 20, width: 20, color: Colors.white),
+                      Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: AssetImage("assets/images/Rectangle 51.png"),
                           fit: BoxFit.cover,
                         ),
                       ),
