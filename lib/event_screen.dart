@@ -2021,7 +2021,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    SizedBox(width:10),
+                    SizedBox(width:15),
                     Container(
                       height: 50,
                       width: 50,
