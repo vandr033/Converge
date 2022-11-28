@@ -13,6 +13,7 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'blocs/application_bloc.dart';
 import 'data/user_data.dart';
 
@@ -2311,13 +2312,22 @@ class _HomeScreenState extends State<HomeScreen> {
               // ignore: prefer_const_literals_to_create_immutables
               children: [
                 Icon(Icons.place_outlined, size: 20, color: Colors.white),
-                Text(
-                  "Tamiami Park, 7 AM",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                )
+                TextButton(
+                    onPressed: () async {
+                      const url = 'https://goo.gl/maps/tHSU6q1trba2KPWL8';
+                      if (await canLaunch(url)) {
+                        await launch(url);
+                      } else {
+                        throw 'could not launch url';
+                      }
+                    },
+                    child: Text(
+                      "Tamiami Park, 7 AM",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ))
               ],
             ),
           ),
@@ -3281,8 +3291,8 @@ class ProfileScreenState2 extends State<ProfileScreen2> {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(100)),
                               image: DecorationImage(
-                                image: AssetImage(
-                                    "assets/images/Rectangle1.png"),
+                                image:
+                                    AssetImage("assets/images/Rectangle1.png"),
                                 fit: BoxFit.cover,
                               ),
                             ),

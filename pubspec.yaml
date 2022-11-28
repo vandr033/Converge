@@ -63,6 +63,7 @@ dependencies:
   firebase_auth: ^4.0.2
   cloud_firestore: ^4.0.2
   provider: ^6.0.4
+  url_launcher: ^6.1.7
 
 
 dev_dependencies:
