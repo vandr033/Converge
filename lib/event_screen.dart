@@ -1916,10 +1916,16 @@ class _HomeScreenState extends State<HomeScreen> {
     {
       'id': '1',
       //'image': 'assets/community_logos/hamburger_logo.png',
+      'name': 'All'
+    },
+
+    {
+      'id': '2',
+      //'image': 'assets/community_logos/hamburger_logo.png',
       'name': 'Friends'
     },
     {
-      'id': '2',
+      'id': '3',
       //'image': 'assets/community_logos/globe_trotters_logo.png',
       'name': 'Communities'
     },
@@ -1945,25 +1951,28 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Container(
               padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: Color(0xFF838383),
+                color: Color(0xFF3F3F3F),
                 borderRadius: BorderRadius.circular(12.0),
               ),
-              width: 130,
+              width: 150,
               height: 50,
               child: DropdownButtonHideUnderline(
                 child: DropdownButton<String>(
                   hint: Padding(
-                    padding: EdgeInsets.only(left: 1.0),
-                    child: Text('All',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        )),
+                    padding: EdgeInsets.only(left: 50.0),
+                    child: Text(
+                      'All',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                   isExpanded: true,
                   borderRadius: BorderRadius.circular(12.0),
-                  dropdownColor: Color(0xFF838383),
+                  dropdownColor: Color(0xFF3F3F3F),
                   style: const TextStyle(
                       color: Colors.white, //<-- SEE HERE
                       fontSize: 16,
