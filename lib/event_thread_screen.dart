@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
@@ -69,21 +70,244 @@ class _PanelWidgetState extends State<PanelWidget> {
       );
 
   Widget buildCommunityInfo() => Container(
-        padding: EdgeInsets.symmetric(horizontal: 24),
-        child: Column(children:[
-            /*
-            Put all your stuff, ie., rows, containers, etc, here.
-            */
-            Row(
-              children:[ //example
-                Container(height:20, width:20, color:Colors.red)]),
-            
-            
-            
-            ]
-
+      padding: EdgeInsets.symmetric(horizontal: 0),
+      child: Column(children: [
+        Row(children: [
+          SizedBox(
+            width: 15,
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 0),
+            height: 42,
+            width: 42,
+            decoration: BoxDecoration(
+              //shape: BoxShape.circle,
+              color: Color(0xffD7D9D7),
+              borderRadius: BorderRadius.all(Radius.circular(100)),
+              image: DecorationImage(
+                image: AssetImage("assets/images/Rectangle 129.png"),
+                fit: BoxFit.cover,
+              ),
             ),
-      );
+          ),
+          SizedBox(
+            width: 15,
+          ),
+          Text(
+            "Jane Smith",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(
+            width: 50,
+          ),
+          //Container(width:20, height:20, color:Colors.blue)
+          Container(
+            width: 73.0,
+            height: 27.0,
+            //padding: EdgeInsets.fromLTRB(20, 15, 0, 0),
+            child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xff4589FF),
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(9.0))),
+                child: const Text(
+                  'RSVP',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  softWrap: false,
+                )),
+          ),
+          SizedBox(width: 15),
+          Icon(
+            CupertinoIcons.heart_fill,
+            color: Colors.red,
+            size: 24.0,
+          ),
+          SizedBox(width: 15),
+          Icon(Icons.bookmark_rounded, color: Colors.yellow, size: 24.0),
+          SizedBox(height: 100),
+        ]),
+        Padding(
+          padding: EdgeInsets.fromLTRB(0, 0, 270, 0),
+          child: Text(
+            'Morning Run',
+            textAlign: TextAlign.left,
+            style: TextStyle(
+                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Padding(
+          padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+          child: Text(
+            'Running & breakfast tomorrow! Come on out and enjoy some early' +
+                ' morning excercise around Tamiami Park by FIU. We will also be getting' +
+                ' some smoothie bowls at Tropical Smoothie Cafe. See you there!',
+            textAlign: TextAlign.left,
+            style: TextStyle(color: Colors.black, fontSize: 12),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.fromLTRB(0, 20, 270, 0),
+          child: Text(
+            'Whos going?',
+            style: TextStyle(
+                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
+          ),
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Row(
+          //The other people
+          children: [
+            SizedBox(
+              width: 45,
+            ),
+            Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 0),
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    //shape: BoxShape.circle,
+                    color: Color(0xffD7D9D7),
+                    borderRadius: BorderRadius.all(Radius.circular(100)),
+                    image: DecorationImage(
+                      image: AssetImage("assets/images/Rectangle 61.png"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Text(
+                  'Ninaali',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 13,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              width: 85,
+            ),
+            Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 0),
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    //shape: BoxShape.circle,
+                    color: Color(0xffD7D9D7),
+                    borderRadius: BorderRadius.all(Radius.circular(100)),
+                    image: DecorationImage(
+                      image: AssetImage("assets/images/Rectangle 62.png"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Text(
+                  'itscorey',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 13,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              width: 70,
+            ),
+            Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 0),
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    //shape: BoxShape.circle,
+                    color: Color(0xffD7D9D7),
+                    borderRadius: BorderRadius.all(Radius.circular(100)),
+                    image: DecorationImage(
+                      image: AssetImage("assets/images/Rectangle 63.png"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Text(
+                  'Raul_Iglesias',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 13,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Container(
+          height: 25,
+          width: MediaQuery.of(context).size.width, //color: Colors.red,
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.bottomLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Color(0xff4589FF), Colors.white.withOpacity(0.0)])),
+          child: Row(
+            children: [
+              Icon(
+                Icons.place_outlined,
+                size: 20,
+                color: Colors.white,
+              ),
+              Text(
+                "Tamiami Park, 7 AM - 8:30 AM",
+                style: TextStyle(
+                  fontSize: 15,
+                  decoration: TextDecoration.none,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              )
+            ],
+          ),
+        ),
+        Container(
+          height: 300,
+          width: 430,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/Group 139.png'),
+            ),
+            gradient: LinearGradient(
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
+              colors: [Color(0xff4589FF), Colors.white.withOpacity(0.0)],
+            ),
+          ),
+        ),
+      ]));
 
   Widget buildDragHandle() => GestureDetector(
         child: Center(

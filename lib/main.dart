@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
     InterestScreen1.tag: (context) => InterestScreen1(),
     InterestScreen2.tag: (context) => InterestScreen2(),
     HomePage.tag: (context) => HomePage(),
-    EventThreadScreen.tag:(context)=>EventThreadScreen(),
+    EventThreadScreen.tag: (context) => EventThreadScreen(),
     //EventScreen.tag: (context) => EventScreen(),
     // CommunityScreen.tag: (context) => CommunityScreen(),
     //LocalTypeAheadPage.tag: (context) => LocalTypeAheadPage()
@@ -55,10 +55,7 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.lightBlue,
               fontFamily: 'Nunito',
             ),
-            home:
-
-                EventScreen(),
-                //EventThreadScreen(), //for Jose 
+            home: EventThreadScreen(), //EventScreen(), //for Jose
             routes: routes,
           )),
     );
