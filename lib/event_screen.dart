@@ -29,7 +29,8 @@ bool comInfoVisible = true;
 int imageIndex = 0;
 
 final pages = [
-  HomeScreen(),
+  //HomeScreen(),
+  EventViewer(),
   ProfileScreen(),
   ProfileScreen2(),
   UPEStory(),
@@ -1905,6 +1906,39 @@ class _PanelWidgetState extends State<PanelWidget> {
 ///Home Screen
 ///////////////////////////////////////////////////////////////////////////////////
 
+/*
+Here we will have one default home screen and then two other alternative home screens. 
+*/
+class EventViewer extends StatefulWidget {
+  @override
+  _EventViewerState createState() => _EventViewerState();
+}
+
+class _EventViewerState extends State<EventViewer> {
+  PageController _controller = PageController(
+    initialPage: 0,
+  );
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return PageView(
+      controller: _controller,
+      scrollDirection: Axis.vertical,
+      children: [
+        HomeScreen(),
+        HomeScreen2(),
+        HomeScreen3(),
+      ],
+    );
+  }
+}
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -2291,9 +2325,9 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Positioned(
-            bottom: 10,
+            bottom: 50,
             child: Container(
-                height: 60,
+                height: 20,
                 width: MediaQuery.of(context).size.width, //color: Colors.red,
                 decoration: BoxDecoration(
                     gradient: LinearGradient(
@@ -2336,6 +2370,901 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+class HomeScreen2 extends StatefulWidget {
+  const HomeScreen2({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen2> createState() => _HomeScreen2State();
+}
+
+class _HomeScreen2State extends State<HomeScreen2> {
+  String? _eventSelected;
+  List<Map> _eventJson = [
+    {'id': '1', 'name': 'All'},
+    {'id': '2', 'name': 'Friends'},
+    {'id': '3', 'name': 'Communities'},
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      //color: const Color(0xffC4DFCB),
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/concert_story.png"),
+                fit: BoxFit.fill,
+              ),
+            ),
+          ),
+          Positioned(
+            top: 40,
+            left: 20,
+            child: Container(
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Color(0xFF3F3F3F),
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              width: 150,
+              height: 50,
+              child: DropdownButtonHideUnderline(
+                child: DropdownButton<String>(
+                  hint: Padding(
+                    padding: EdgeInsets.only(left: 50.0),
+                    child: Text(
+                      'All',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  isExpanded: true,
+                  borderRadius: BorderRadius.circular(12.0),
+                  dropdownColor: Color(0xFF3F3F3F),
+                  style: const TextStyle(
+                      color: Colors.white, //<-- SEE HERE
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down,
+                    color: Colors.white, // <-- SEE HERE
+                  ),
+                  value: _eventSelected,
+                  onChanged: (newValue) {
+                    setState(() {
+                      _eventSelected = newValue;
+                    });
+                  },
+                  items: _eventJson.map(
+                    (categoryItem) {
+                      return DropdownMenuItem(
+                        value: categoryItem['id'].toString(),
+                        child: Row(
+                          children: [
+                            Container(
+                                margin: EdgeInsets.only(left: 10),
+                                child: Text(categoryItem['name']))
+                          ],
+                        ),
+                      );
+                    },
+                  ).toList(),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            top: 40,
+            left: 200,
+            child: Container(
+              height: 50,
+              width: 200,
+              child: ShaderMask(
+                shaderCallback: (Rect bounds) {
+                  return LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      Colors.purple,
+                      Colors.transparent,
+                      Colors.transparent,
+                      Colors.purple
+                    ],
+                    stops: [0.0, 0.1, 0.9, 1.0],
+                  ).createShader(bounds);
+                },
+                blendMode: BlendMode.dstOut,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    SizedBox(width: 15),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => UPEStory()),
+                        );
+                      },
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage(
+                                "assets/home_screen_stories/theupe_story.png"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => GirlStory()),
+                        );
+                      },
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage(
+                                "assets/home_screen_stories/girl_story.png"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SobeStory()),
+                        );
+                      },
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage(
+                                "assets/home_screen_stories/sobe_story.png"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: AssetImage("assets/Rectangle 158.png"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: AssetImage("assets/Rectangle 156.png"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: AssetImage("assets/Rectangle 157.png"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 120,
+            left: 20,
+            //flex: 1,
+            child: Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProfileScreen2()),
+                    );
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 0),
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      //shape: BoxShape.circle,
+                      color: Color(0xffD7D9D7),
+                      borderRadius: BorderRadius.all(Radius.circular(100)),
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/Rectangle1.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 15,
+                ),
+                Text(
+                  "Jon Wright",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 23,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  width: 50,
+                ),
+                //Container(width:20, height:20, color:Colors.blue)
+                Container(
+                  width: 73.0,
+                  height: 25.0,
+                  //padding: EdgeInsets.fromLTRB(20, 15, 0, 0),
+                  child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xff4589FF),
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(9.0))),
+                      child: const Text(
+                        'RSVP',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                        softWrap: false,
+                      )),
+                ),
+                SizedBox(width: 15),
+                Icon(
+                  CupertinoIcons.heart_fill,
+                  color: Colors.red,
+                  size: 24.0,
+                ),
+                SizedBox(width: 15),
+                Icon(Icons.bookmark_rounded, color: Colors.yellow, size: 24.0),
+                SizedBox(height: 100),
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 110,
+            left: 20,
+            //flex: 1,
+            child: Row(
+              children: [
+                Text(
+                  "Morning run",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  width: 155,
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 0),
+                  height: 30,
+                  width: 30,
+                  decoration: BoxDecoration(
+                    //shape: BoxShape.circle,
+                    color: Color(0xffD7D9D7),
+                    borderRadius: BorderRadius.all(Radius.circular(100)),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.blue,
+                        blurRadius: 3,
+                      ),
+                    ],
+                    image: DecorationImage(
+                      image:
+                          AssetImage("assets/category_logos/sports_logo.png"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                SizedBox(width: 40),
+                Stack(
+                  children: [
+                    Positioned(
+                      child: Container(
+                        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                        //alignment: Alignment.bottomCenter,
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: AssetImage(
+                                  "assets/images/home_screen_user_1.png"),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      child: Container(
+                        padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        //alignment: Alignment.bottomCenter,
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                            color: Colors.green,
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: AssetImage(
+                                  "assets/images/home_screen_user_2.png"),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 95,
+            left: 20,
+            child: Text(
+              "Running and breakfast tomorrow!",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 13,
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 50,
+            child: Container(
+                height: 20,
+                width: MediaQuery.of(context).size.width, //color: Colors.red,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                      Color(0xff4589FF),
+                      Colors.white.withOpacity(0.0)
+                    ]))),
+          ),
+          Positioned(
+            bottom: 50,
+            left: 20,
+            // ignore: prefer_const_literals_to_create_immutables
+            child: Row(
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
+                Icon(Icons.place_outlined, size: 20, color: Colors.white),
+                TextButton(
+                    onPressed: () async {
+                      const url = 'https://goo.gl/maps/tHSU6q1trba2KPWL8';
+                      if (await canLaunch(url)) {
+                        await launch(url);
+                      } else {
+                        throw 'could not launch url';
+                      }
+                    },
+                    child: Text(
+                      "Tamiami Park, 7 AM",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ))
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class HomeScreen3 extends StatefulWidget {
+  const HomeScreen3({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen3> createState() => _HomeScreen3State();
+}
+
+class _HomeScreen3State extends State<HomeScreen3> {
+  String? _eventSelected;
+  List<Map> _eventJson = [
+    {'id': '1', 'name': 'All'},
+    {'id': '2', 'name': 'Friends'},
+    {'id': '3', 'name': 'Communities'},
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      //color: const Color(0xffC4DFCB),
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/pool.png"),
+                fit: BoxFit.fill,
+              ),
+            ),
+          ),
+          Positioned(
+            top: 40,
+            left: 20,
+            child: Container(
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Color(0xFF3F3F3F),
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              width: 150,
+              height: 50,
+              child: DropdownButtonHideUnderline(
+                child: DropdownButton<String>(
+                  hint: Padding(
+                    padding: EdgeInsets.only(left: 50.0),
+                    child: Text(
+                      'All',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  isExpanded: true,
+                  borderRadius: BorderRadius.circular(12.0),
+                  dropdownColor: Color(0xFF3F3F3F),
+                  style: const TextStyle(
+                      color: Colors.white, //<-- SEE HERE
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down,
+                    color: Colors.white, // <-- SEE HERE
+                  ),
+                  value: _eventSelected,
+                  onChanged: (newValue) {
+                    setState(() {
+                      _eventSelected = newValue;
+                    });
+                  },
+                  items: _eventJson.map(
+                    (categoryItem) {
+                      return DropdownMenuItem(
+                        value: categoryItem['id'].toString(),
+                        child: Row(
+                          children: [
+                            Container(
+                                margin: EdgeInsets.only(left: 10),
+                                child: Text(categoryItem['name']))
+                          ],
+                        ),
+                      );
+                    },
+                  ).toList(),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            top: 40,
+            left: 200,
+            child: Container(
+              height: 50,
+              width: 200,
+              child: ShaderMask(
+                shaderCallback: (Rect bounds) {
+                  return LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      Colors.purple,
+                      Colors.transparent,
+                      Colors.transparent,
+                      Colors.purple
+                    ],
+                    stops: [0.0, 0.1, 0.9, 1.0],
+                  ).createShader(bounds);
+                },
+                blendMode: BlendMode.dstOut,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    SizedBox(width: 15),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => UPEStory()),
+                        );
+                      },
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage(
+                                "assets/home_screen_stories/theupe_story.png"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => GirlStory()),
+                        );
+                      },
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage(
+                                "assets/home_screen_stories/girl_story.png"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SobeStory()),
+                        );
+                      },
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage(
+                                "assets/home_screen_stories/sobe_story.png"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: AssetImage("assets/Rectangle 158.png"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: AssetImage("assets/Rectangle 156.png"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: AssetImage("assets/Rectangle 157.png"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 120,
+            left: 20,
+            //flex: 1,
+            child: Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProfileScreen2()),
+                    );
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 0),
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      //shape: BoxShape.circle,
+                      color: Color(0xffD7D9D7),
+                      borderRadius: BorderRadius.all(Radius.circular(100)),
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/Rectangle1.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 15,
+                ),
+                Text(
+                  "Sarah Jackson",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 23,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  width: 50,
+                ),
+                //Container(width:20, height:20, color:Colors.blue)
+                Container(
+                  width: 73.0,
+                  height: 25.0,
+                  //padding: EdgeInsets.fromLTRB(20, 15, 0, 0),
+                  child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xff4589FF),
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(9.0))),
+                      child: const Text(
+                        'RSVP',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                        softWrap: false,
+                      )),
+                ),
+                SizedBox(width: 15),
+                Icon(
+                  CupertinoIcons.heart_fill,
+                  color: Colors.red,
+                  size: 24.0,
+                ),
+                SizedBox(width: 15),
+                Icon(Icons.bookmark_rounded, color: Colors.yellow, size: 24.0),
+                SizedBox(height: 100),
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 110,
+            left: 20,
+            //flex: 1,
+            child: Row(
+              children: [
+                Text(
+                  "Morning run",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  width: 155,
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 0),
+                  height: 30,
+                  width: 30,
+                  decoration: BoxDecoration(
+                    //shape: BoxShape.circle,
+                    color: Color(0xffD7D9D7),
+                    borderRadius: BorderRadius.all(Radius.circular(100)),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.blue,
+                        blurRadius: 3,
+                      ),
+                    ],
+                    image: DecorationImage(
+                      image:
+                          AssetImage("assets/category_logos/sports_logo.png"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                SizedBox(width: 40),
+                Stack(
+                  children: [
+                    Positioned(
+                      child: Container(
+                        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                        //alignment: Alignment.bottomCenter,
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: AssetImage(
+                                  "assets/images/home_screen_user_1.png"),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      child: Container(
+                        padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        //alignment: Alignment.bottomCenter,
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                            color: Colors.green,
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: AssetImage(
+                                  "assets/images/home_screen_user_2.png"),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 95,
+            left: 20,
+            child: Text(
+              "Running and breakfast tomorrow!",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 13,
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 50,
+            child: Container(
+                height: 20,
+                width: MediaQuery.of(context).size.width, //color: Colors.red,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                      Color(0xff4589FF),
+                      Colors.white.withOpacity(0.0)
+                    ]))),
+          ),
+          Positioned(
+            bottom: 50,
+            left: 20,
+            // ignore: prefer_const_literals_to_create_immutables
+            child: Row(
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
+                Icon(Icons.place_outlined, size: 20, color: Colors.white),
+                TextButton(
+                    onPressed: () async {
+                      const url = 'https://goo.gl/maps/tHSU6q1trba2KPWL8';
+                      if (await canLaunch(url)) {
+                        await launch(url);
+                      } else {
+                        throw 'could not launch url';
+                      }
+                    },
+                    child: Text(
+                      "Tamiami Park, 7 AM",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ))
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/*
+class HomeScreen2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Row(
+          children: [
+            Container(width: 20, height: 50, color: Colors.blue),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class HomeScreen3 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Row(
+          children: [
+            Container(width: 20, height: 50, color: Colors.blue),
+          ],
+        ),
+      ],
+    );
+  }
+}*/
 
 ///////////////////////////////////////////////////////////////////////////////////
 ///Profile
@@ -3921,8 +4850,9 @@ class GirlStoryState extends State<GirlStory> {
                       context,
                     );
                   },
-                child: Icon(Icons.close,
-                    color: Color.fromARGB(255, 255, 255, 255), size: 34.0),),
+                  child: Icon(Icons.close,
+                      color: Color.fromARGB(255, 255, 255, 255), size: 34.0),
+                ),
                 SizedBox(height: 100),
               ],
             ),
