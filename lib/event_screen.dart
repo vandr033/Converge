@@ -2205,13 +2205,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   //padding: EdgeInsets.fromLTRB(20, 15, 0, 0),
                   child: ElevatedButton(
                       onPressed: () {},
+                      
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xff4589FF),
                           foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(9.0))),
                       child: const Text(
-                        'RSVP',
+                        'View',//RSVP for finder purposes
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                         softWrap: false,
@@ -2339,7 +2340,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ]))),
           ),
           Positioned(
-            bottom: 50,
+            bottom: 37,
             left: 20,
             // ignore: prefer_const_literals_to_create_immutables
             child: Row(
@@ -2610,7 +2611,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                       color: Color(0xffD7D9D7),
                       borderRadius: BorderRadius.all(Radius.circular(100)),
                       image: DecorationImage(
-                        image: AssetImage("assets/images/Rectangle1.png"),
+                        image: AssetImage("assets/images/Rectangle 63.png"),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -2620,7 +2621,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                   width: 15,
                 ),
                 Text(
-                  "Jon Wright",
+                  "Jon Right",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 23,
@@ -2643,7 +2644,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(9.0))),
                       child: const Text(
-                        'RSVP',
+                        'View',
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                         softWrap: false,
@@ -2668,7 +2669,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
             child: Row(
               children: [
                 Text(
-                  "Morning run",
+                  "Concert Time! ",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
@@ -2676,7 +2677,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                   ),
                 ),
                 SizedBox(
-                  width: 155,
+                  width: 125,
                 ),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 0),
@@ -2694,7 +2695,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                     ],
                     image: DecorationImage(
                       image:
-                          AssetImage("assets/category_logos/sports_logo.png"),
+                          AssetImage("assets/category_logos/music_logo.png"),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -2749,7 +2750,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
             bottom: 95,
             left: 20,
             child: Text(
-              "Running and breakfast tomorrow!",
+              "Amazing Singer + Front Row! = <3",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 13,
@@ -2771,7 +2772,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                     ]))),
           ),
           Positioned(
-            bottom: 50,
+            bottom: 37,
             left: 20,
             // ignore: prefer_const_literals_to_create_immutables
             child: Row(
@@ -2788,7 +2789,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                       }
                     },
                     child: Text(
-                      "Tamiami Park, 7 AM",
+                      "Winter Garden, 8 PM",
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -2828,7 +2829,7 @@ class _HomeScreen3State extends State<HomeScreen3> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage("assets/images/pool.png"),
-                fit: BoxFit.fill,
+                fit: BoxFit.cover,
               ),
             ),
           ),
@@ -3042,8 +3043,8 @@ class _HomeScreen3State extends State<HomeScreen3> {
                       color: Color(0xffD7D9D7),
                       borderRadius: BorderRadius.all(Radius.circular(100)),
                       image: DecorationImage(
-                        image: AssetImage("assets/images/Rectangle1.png"),
-                        fit: BoxFit.cover,
+                        image: AssetImage("assets/home_screen_stories/girl_story.png"),
+                        fit: BoxFit.fill,
                       ),
                     ),
                   ),
@@ -3052,7 +3053,7 @@ class _HomeScreen3State extends State<HomeScreen3> {
                   width: 15,
                 ),
                 Text(
-                  "Sarah Jackson",
+                  "Sarah Kim",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 23,
@@ -3075,7 +3076,7 @@ class _HomeScreen3State extends State<HomeScreen3> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(9.0))),
                       child: const Text(
-                        'RSVP',
+                        'View',
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                         softWrap: false,
@@ -3100,7 +3101,7 @@ class _HomeScreen3State extends State<HomeScreen3> {
             child: Row(
               children: [
                 Text(
-                  "Morning run",
+                  "8-Ball Tournament",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
@@ -3108,7 +3109,7 @@ class _HomeScreen3State extends State<HomeScreen3> {
                   ),
                 ),
                 SizedBox(
-                  width: 155,
+                  width: 105,
                 ),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 0),
@@ -3181,7 +3182,7 @@ class _HomeScreen3State extends State<HomeScreen3> {
             bottom: 95,
             left: 20,
             child: Text(
-              "Running and breakfast tomorrow!",
+              "Pool and Drinks!",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 13,
@@ -3203,7 +3204,7 @@ class _HomeScreen3State extends State<HomeScreen3> {
                     ]))),
           ),
           Positioned(
-            bottom: 50,
+            bottom: 37,
             left: 20,
             // ignore: prefer_const_literals_to_create_immutables
             child: Row(
@@ -3220,7 +3221,7 @@ class _HomeScreen3State extends State<HomeScreen3> {
                       }
                     },
                     child: Text(
-                      "Tamiami Park, 7 AM",
+                      "Route 45, 5 PM",
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -4824,7 +4825,7 @@ class GirlStoryState extends State<GirlStory> {
                   width: 15,
                 ),
                 Text(
-                  "Sandy James",
+                  "Sarah Kim",
                   style: TextStyle(
                     decoration: TextDecoration.none,
                     color: Colors.white,
@@ -4833,7 +4834,7 @@ class GirlStoryState extends State<GirlStory> {
                   ),
                 ),
                 SizedBox(
-                  width: 60,
+                  width: 90,
                 ),
                 //Container(width:20, height:20, color:Colors.blue)
 
@@ -5030,5 +5031,6 @@ class SobeStoryState extends State<SobeStory> {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-///Video Test
+///Panel Test
 ////////////////////////////////////////////////////////////////////////////////
+
