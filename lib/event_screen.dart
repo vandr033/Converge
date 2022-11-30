@@ -2213,8 +2213,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           MaterialPageRoute(builder: (context) => RSVPSam()),
                         );
                       },
-                      
-                      >>>>>>> frontEnd
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xff4589FF),
                           foregroundColor: Colors.white,
