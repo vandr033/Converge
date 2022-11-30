@@ -2734,7 +2734,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                             shape: BoxShape.circle,
                             image: DecorationImage(
                               image: AssetImage(
-                                  "assets/images/home_screen_user_2.png"),
+                                  "assets/images/Rectangle 51.png"),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -3147,7 +3147,7 @@ class _HomeScreen3State extends State<HomeScreen3> {
                             shape: BoxShape.circle,
                             image: DecorationImage(
                               image: AssetImage(
-                                  "assets/images/home_screen_user_1.png"),
+                                  "assets/images/Rectangle 51.png"),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -3166,7 +3166,7 @@ class _HomeScreen3State extends State<HomeScreen3> {
                             shape: BoxShape.circle,
                             image: DecorationImage(
                               image: AssetImage(
-                                  "assets/images/home_screen_user_2.png"),
+                                  "assets/images/Rectangle 63.png"),
                               fit: BoxFit.cover,
                             ),
                           ),
