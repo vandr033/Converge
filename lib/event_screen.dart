@@ -3648,7 +3648,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                               height: 25.0,
                               //padding: EdgeInsets.fromLTRB(20, 15, 0, 0),
                               child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: (){},
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Color(0xff4589FF),
                                       foregroundColor: Colors.white,
@@ -3656,7 +3656,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                                           borderRadius:
                                               BorderRadius.circular(9.0))),
                                   child: const Text(
-                                    'Edit Profile',
+                                    'Log Out',
                                     style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold),
@@ -5782,7 +5782,7 @@ class RSVPSamState extends State<RSVPSam> {
             ),
           ),
           Container(
-            height: 360,
+          height: 336.561,
             width: 430,
             decoration: BoxDecoration(
               image: DecorationImage(

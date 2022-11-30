@@ -7,6 +7,7 @@ import 'package:flutter_application/firebase_options.dart';
 import 'package:flutter_application/HomePage.dart';
 import 'package:flutter_application/interest_screen_1.dart';
 import 'package:flutter_application/interest_screen_2.dart';
+import 'package:flutter_application/pages/auth/registerPage2.dart';
 import 'package:flutter_application/pick_hosts_tester.dart';
 import 'package:provider/provider.dart';
 import 'blocs/application_bloc.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
   final routes = <String, WidgetBuilder>{
     loginPage2.tag: (context) => loginPage2(),
     // HomePage.tag: (context) => HomePage(),
-    RegisterPage.tag: (context) => RegisterPage(),
+    RegisterPage2.tag: (context) => RegisterPage2(),
     InterestScreen1.tag: (context) => InterestScreen1(),
     InterestScreen2.tag: (context) => InterestScreen2(),
     HomePage.tag: (context) => HomePage(),

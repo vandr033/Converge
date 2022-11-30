@@ -2,7 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/HomePage.dart';
+import 'package:flutter_application/event_screen.dart';
 import 'package:flutter_application/helper/helper_function.dart';
+import 'package:flutter_application/interest_screen_1.dart';
 import 'package:flutter_application/pages/auth/registerpage2.dart';
 import 'package:flutter_application/services/auth_services.dart';
 import 'package:flutter_application/services/firestore_services.dart';
@@ -56,6 +58,7 @@ class _loginPage2State extends State<loginPage2> {
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(9)),
                               hintText: 'Email',
+                              fillColor: Color(0xFF838383),
                               hintStyle: TextStyle(
                                 color: Colors.white,
                               )),
@@ -85,6 +88,7 @@ class _loginPage2State extends State<loginPage2> {
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(32)),
                               hintText: 'Password',
+                              fillColor: Color(0xFF838383),
                               hintStyle: TextStyle(
                                 color: Colors.white,
                               )),
@@ -95,7 +99,7 @@ class _loginPage2State extends State<loginPage2> {
                             if (value == null || value.isEmpty) {
                               return 'Please Enter a Password';
                             } else if (value.length < 8) {
-                              return 'Password Must Have at least 6 characters';
+                              return 'Password Must Have at least 8 characters';
                             } else {
                               return null;
                             }
@@ -118,32 +122,34 @@ class _loginPage2State extends State<loginPage2> {
                           },
                         ),
                         SizedBox(
-                          height: 300,
+                          height: 150,
                         ),
 
                         Row(
+                          //row 9 - "next" button
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Expanded(
-                              child: Container(
-                                  margin: EdgeInsets.symmetric(horizontal: 30),
-                                  width: MediaQuery.of(context).size.width,
-                                  child: ElevatedButton(
-                                      onPressed: () {
-                                        login();
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                          backgroundColor: Color(0xff4589FF),
-                                          foregroundColor: Colors.white,
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(5.0))),
-                                      child: const Text(
-                                        'Next',
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold),
-                                      ))),
-                            ),
+                            //The actual formatting of the 'Next' button and everything we do for it
+                            SizedBox(
+                              width: 250.0,
+                              height: 55.0,
+                              child: ElevatedButton(
+                                  onPressed: () {
+                                    login();
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: Color(0xff4589FF),
+                                      foregroundColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(5.0))),
+                                  child: const Text(
+                                    'Next',
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold),
+                                  )),
+                            )
                           ],
                         ),
                       ],
@@ -171,7 +177,7 @@ class _loginPage2State extends State<loginPage2> {
           await HelperFunctions.saveUserLoggedInStatus(true);
           await HelperFunctions.saveUserNameInStatus(
               snapshot.docs[0]['username']);
-          nextScreenReplace(context, HomePage());
+          nextScreenReplace(context, EventScreen());
         } else {
           showsnackbar(context, Colors.black, value);
           setState(() {

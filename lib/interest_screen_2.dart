@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application/event_screen.dart';
 
 class InterestScreen2 extends StatefulWidget {
   static String tag = 'interest-screen-2';
@@ -44,7 +45,7 @@ class InterestScreen2State extends State<InterestScreen2> {
           //column containing all of our rows.
           children: [
             const SizedBox(
-              height: 20,
+              height: 30,
             ),
             Row(
               //row 1 - text
@@ -53,7 +54,7 @@ class InterestScreen2State extends State<InterestScreen2> {
                   "Check out these\ncommunities!",
                   style: TextStyle(
                     fontSize: 30,
-                    color: Color(0xff828382),//text color black
+                    color: Color(0xFF3F3F3F), //text color black
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -101,8 +102,10 @@ class InterestScreen2State extends State<InterestScreen2> {
                                   community_descriptions[index],
                                   style: TextStyle(
                                       fontFamily: 'IBM-Plex',
+                                      fontWeight: FontWeight.bold,
                                       fontSize: 12,
-                                      color: Color(0xff828382)),
+                                      color: Color(0xFF3F3F3F),
+                                  ),
                                 ),
                               ],
                             ),
@@ -141,19 +144,19 @@ class InterestScreen2State extends State<InterestScreen2> {
               //row 8 - navigation circles
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
+                Icon(Icons.circle, size: 20, color: Color(0xffD9D9D9)),
+                SizedBox(
+                  width: 7,
+                ),
                 Icon(
                   Icons.circle,
-                  size: 10,
-                  color: Color(0xffD9D9D9), //this is the color i want - F06449
+                  size: 20,
+                  color: Color(0xffF06449), //this is the color i want - F06449
                 ),
                 SizedBox(
                   width: 7,
                 ),
-                Icon(Icons.circle, size: 10, color: Color(0xffF06449)),
-                SizedBox(
-                  width: 7,
-                ),
-                Icon(Icons.circle, size: 10, color: Color(0xffD9D9D9)),
+                Icon(Icons.circle, size: 20, color: Color(0xffD9D9D9)),
               ],
             ),
             Row(
@@ -173,7 +176,9 @@ class InterestScreen2State extends State<InterestScreen2> {
                     width: 250.0,
                     height: 40.0,
                     child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pushNamed(EventScreen.tag);
+                        },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xff4589FF),
                             foregroundColor: Colors.white,

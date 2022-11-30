@@ -31,15 +31,19 @@ class InterestScreen1State extends State<InterestScreen1> {
         child: Column(
           //column containing all of our rows.
           children: [
+            SizedBox(
+              height: 50,
+            ),
             //I believe we need 9 rows total...
             Row(
               //row 1 - text
               children: const [
+                
                 Text(
                   "See anything\nyou like?",
                   style: TextStyle(
                     fontSize: 30,
-                    color: Color(0xff828382), //text color black
+                    color: Color(0xFF3F3F3F), //text color black
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -47,7 +51,7 @@ class InterestScreen1State extends State<InterestScreen1> {
             ),
             const SizedBox(
               //want space between ours rows within our column.
-              height: 75,
+              height: 70,
             ),
             Row(
               //row 2 - buttons
@@ -62,14 +66,14 @@ class InterestScreen1State extends State<InterestScreen1> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(9.0),
                           ),
-                          minimumSize: Size(75, 40))
+                          minimumSize: Size(95, 40))
                       : OutlinedButton.styleFrom(
                           side: BorderSide(color: Color(0xff4589FF), width: 2),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(9.0),
                           ),
                           foregroundColor: Color(0xff4589FF),
-                          minimumSize: Size(75, 40)),
+                          minimumSize: Size(95, 40)),
                   onPressed: () => {
                     setState(() {
                       _musicHasBeenPressed = !_musicHasBeenPressed;
@@ -97,14 +101,14 @@ class InterestScreen1State extends State<InterestScreen1> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(9.0),
                           ),
-                          minimumSize: Size(200, 40))
+                          minimumSize: Size(180, 40))
                       : OutlinedButton.styleFrom(
                           side: BorderSide(color: Color(0xff4589FF), width: 2),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(9.0),
                           ),
                           foregroundColor: Color(0xff4589FF),
-                          minimumSize: Size(200, 40)),
+                          minimumSize: Size(180, 40)),
                   onPressed: () => {
                     setState(() {
                       _academicsHasBeenPressed = !_academicsHasBeenPressed;
@@ -498,7 +502,7 @@ class InterestScreen1State extends State<InterestScreen1> {
               ],
             ),
             const SizedBox(
-              height: 60,
+              height: 100,
             ),
             Row(
               //row 8 - navigation circles
