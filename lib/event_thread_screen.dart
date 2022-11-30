@@ -191,7 +191,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                   height: 15,
                 ),
                 Text(
-                  'Ninaali',
+                  'Sam Scott',
                   style: TextStyle(
                     color: Color(0xff3F3F3F),
                     fontSize: 13,
