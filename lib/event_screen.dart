@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_application/HomePage.dart';
 import 'package:flutter_application/community_screen.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -87,7 +88,7 @@ class EventScreenState extends State<EventScreen> {
         child: Container(
           height: 50,
           decoration: BoxDecoration(
-              color: Color.fromRGBO(63, 63, 63, 1),
+              color: Color(0xFF3F3F3F),
               borderRadius: BorderRadius.all(Radius.circular(0))),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -1239,7 +1240,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                         ),
                         isExpanded: true,
                         borderRadius: BorderRadius.circular(12.0),
-                        dropdownColor: Color(0xFF838383),
+                        dropdownColor: Color(0xFF3F3F3F),
                         style: const TextStyle(
                             color: Colors.white, //<-- SEE HERE
                             fontSize: 16,
@@ -2204,7 +2205,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 25.0,
                   //padding: EdgeInsets.fromLTRB(20, 15, 0, 0),
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                       Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => RSVPSam()),
+                        );
+                      },
                       
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xff4589FF),
@@ -2644,7 +2650,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(9.0))),
                       child: const Text(
-                        'View',
+                        'Now!',
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                         softWrap: false,
@@ -2789,7 +2795,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                       }
                     },
                     child: Text(
-                      "Winter Garden, 8 PM",
+                      "Winter Garden, Happening Now!",
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -3076,7 +3082,7 @@ class _HomeScreen3State extends State<HomeScreen3> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(9.0))),
                       child: const Text(
-                        'View',
+                        'Past',
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                         softWrap: false,
@@ -5031,6 +5037,292 @@ class SobeStoryState extends State<SobeStory> {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-///Panel Test
+///RSVP Test
 ////////////////////////////////////////////////////////////////////////////////
 
+class RSVPSam extends StatefulWidget {
+  static String tag = 'rsvp-sam';
+  @override
+  RSVPSamState createState() => RSVPSamState();
+}
+
+class RSVPSamState extends State<RSVPSam> {
+  var dropdownValue;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      
+      decoration: BoxDecoration(
+        color: Colors.white,
+      ),
+        padding: EdgeInsets.symmetric(horizontal: 0),
+        child: Column(children: [
+          SizedBox(
+            height: 125,
+          ),
+          Row(children: [
+            
+            SizedBox(
+              width: 15,
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 0),
+              height: 42,
+              width: 42,
+              decoration: BoxDecoration(
+                //shape: BoxShape.circle,
+                color: Color(0xffD7D9D7),
+                borderRadius: BorderRadius.all(Radius.circular(100)),
+                image: DecorationImage(
+                  image: AssetImage("assets/images/Rectangle 61.png"),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 15,
+            ),
+            Text(
+              "Sam Scott",
+              style: TextStyle(
+                decoration: TextDecoration.none,
+                color: Color(0xff3F3F3F),
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(
+              width: 23,
+            ),
+            //Container(width:20, height:20, color:Colors.blue)
+            Container(
+              width: 73.0,
+              height: 25.0,
+              //padding: EdgeInsets.fromLTRB(20, 15, 0, 0),
+              child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xff4589FF),
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(9.0))),
+                  child: const Text(
+                    'RSVP',
+                    style: TextStyle(
+                        decoration: TextDecoration.none,
+                        fontSize: 16, fontWeight: FontWeight.bold),
+                    softWrap: false,
+                  )),
+            ),
+            SizedBox(width: 15),
+            Icon(
+              CupertinoIcons.heart_fill,
+              color: Colors.red,
+              size: 24.0,
+            ),
+            SizedBox(width: 15),
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(
+                  context,
+                );
+              },
+              child: Icon(Icons.close,
+                  color: Color.fromARGB(255, 0, 0, 0), size: 34.0),
+            ),
+            SizedBox(height: 100),
+          ]),
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 0, 280, 0),
+            child: Text(
+              'Morning Run',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                  decoration: TextDecoration.none,
+                  color: Color(0xff3F3F3F),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          
+          Padding(
+            padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+            child: Text(
+              'Running & breakfast tomorrow! Come on out and enjoy some early' +
+                  ' morning excercise around Tamiami Park by FIU. We will also be getting' +
+                  ' some smoothie bowls at Tropical Smoothie Cafe. See you there!',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                  decoration: TextDecoration.none,
+                  color: Color(0xff3F3F3F), fontSize: 12),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 20, 270, 0),
+            child: Text(
+              'Whos going?',
+              style: TextStyle(
+                  decoration: TextDecoration.none,
+                  color: Color(0xff3F3F3F),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16),
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            //The other people
+            children: [
+              Column(
+                children: [
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 0),
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      //shape: BoxShape.circle,
+                      color: Color(0xffD7D9D7),
+                      borderRadius: BorderRadius.all(Radius.circular(100)),
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/Rectangle 129.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    'Jane Smith',
+                    style: TextStyle(
+                      decoration: TextDecoration.none,
+                      color: Color(0xff3F3F3F),
+                      fontSize: 13,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                width: 70,
+              ),
+              Column(
+                children: [
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 0),
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      //shape: BoxShape.circle,
+                      color: Color(0xffD7D9D7),
+                      borderRadius: BorderRadius.all(Radius.circular(100)),
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/Rectangle 62.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    'Corey Lee',
+                    style: TextStyle(
+                      decoration: TextDecoration.none,
+                      color: Color(0xff3F3F3F),
+                      fontSize: 13,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                width: 70,
+              ),
+              Column(
+                children: [
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 0),
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      //shape: BoxShape.circle,
+                      color: Color(0xffD7D9D7),
+                      borderRadius: BorderRadius.all(Radius.circular(100)),
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/Rectangle 63.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    'Jon Right',
+                    style: TextStyle(
+                      decoration: TextDecoration.none,
+                      color: Color(0xff3F3F3F),
+                      fontSize: 13,
+                    ),
+                  ),
+                  
+                ],
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Container(
+            height: 25,
+            width: MediaQuery.of(context).size.width, //color: Colors.red,
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.bottomLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                  Color(0xff4589FF),
+                  Colors.white.withOpacity(0.0)
+                ])),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.place_outlined,
+                  size: 20,
+                  color: Colors.white,
+                ),
+                Text(
+                  "Tamiami Park, 7 AM - 8:30 AM",
+                  style: TextStyle(
+                    fontSize: 15,
+                    decoration: TextDecoration.none,
+                    color: Color(0xFF001AFF),
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+              ],
+            ),
+          ),
+          
+          Container(
+            height: 336.561,
+            width: 430,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/Group 139.png'),
+              ),
+              gradient: LinearGradient(
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+                colors: [Color(0xff4589FF), Colors.white.withOpacity(0.0)],
+              ),
+            ),
+          ),
+        ]));
+  }
+}
