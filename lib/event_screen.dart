@@ -17,6 +17,7 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'blocs/application_bloc.dart';
 import 'data/user_data.dart';
+import 'event_thread_screen.dart';
 
 List<String> screens = ['Create Event', 'Create Community'];
 String whenEventchosenScreen = 'Create Event';
@@ -2206,19 +2207,21 @@ class _HomeScreenState extends State<HomeScreen> {
                   //padding: EdgeInsets.fromLTRB(20, 15, 0, 0),
                   child: ElevatedButton(
                       onPressed: () {
+                     
                        Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => RSVPSam()),
                         );
                       },
                       
+                      >>>>>>> frontEnd
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xff4589FF),
                           foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(9.0))),
                       child: const Text(
-                        'View',//RSVP for finder purposes
+                        'View', //RSVP for finder purposes
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                         softWrap: false,
@@ -2700,8 +2703,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                       ),
                     ],
                     image: DecorationImage(
-                      image:
-                          AssetImage("assets/category_logos/music_logo.png"),
+                      image: AssetImage("assets/category_logos/music_logo.png"),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -2739,8 +2741,8 @@ class _HomeScreen2State extends State<HomeScreen2> {
                             color: Colors.green,
                             shape: BoxShape.circle,
                             image: DecorationImage(
-                              image: AssetImage(
-                                  "assets/images/Rectangle 51.png"),
+                              image:
+                                  AssetImage("assets/images/Rectangle 51.png"),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -3049,7 +3051,8 @@ class _HomeScreen3State extends State<HomeScreen3> {
                       color: Color(0xffD7D9D7),
                       borderRadius: BorderRadius.all(Radius.circular(100)),
                       image: DecorationImage(
-                        image: AssetImage("assets/home_screen_stories/girl_story.png"),
+                        image: AssetImage(
+                            "assets/home_screen_stories/girl_story.png"),
                         fit: BoxFit.fill,
                       ),
                     ),
@@ -3152,8 +3155,8 @@ class _HomeScreen3State extends State<HomeScreen3> {
                             color: Colors.red,
                             shape: BoxShape.circle,
                             image: DecorationImage(
-                              image: AssetImage(
-                                  "assets/images/Rectangle 51.png"),
+                              image:
+                                  AssetImage("assets/images/Rectangle 51.png"),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -3171,8 +3174,8 @@ class _HomeScreen3State extends State<HomeScreen3> {
                             color: Colors.green,
                             shape: BoxShape.circle,
                             image: DecorationImage(
-                              image: AssetImage(
-                                  "assets/images/Rectangle 63.png"),
+                              image:
+                                  AssetImage("assets/images/Rectangle 63.png"),
                               fit: BoxFit.cover,
                             ),
                           ),
