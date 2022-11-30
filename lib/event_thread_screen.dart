@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application/event_screen.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class EventThreadScreen extends StatefulWidget {
@@ -25,11 +26,7 @@ class EventThreadScreenState extends State<EventThreadScreen> {
         backdropEnabled: true,
         minHeight:
             panelHeightClosed, //min height of panel - can adjust if need be
-        body: Center(
-          //this is our background. (body within body:SlidingUpPanel is our background, aka what's behind the panel.)
-          child: Text(
-              "Event Thread Screen"), //this is just here for demonstrative purposes - this is the widget behind the sliding panel - therefore this is wrapped within the sliding up panel - it is our background.
-        ),
+        body: HomeScreen(),
         panelBuilder: (controller) => PanelWidget(
           panelController: panelController,
           controller: controller,
