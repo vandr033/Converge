@@ -10,7 +10,7 @@ import 'package:flutter_application/interest_screen_2.dart';
 import 'package:flutter_application/pick_hosts_tester.dart';
 import 'package:provider/provider.dart';
 import 'blocs/application_bloc.dart';
-import 'loginPage.dart';
+import 'pages/auth/loginPage2.dart';
 import 'registerPage.dart';
 import 'package:auth_service/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -23,7 +23,7 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   final routes = <String, WidgetBuilder>{
-    LoginPage.tag: (context) => LoginPage(),
+    loginPage2.tag: (context) => loginPage2(),
     // HomePage.tag: (context) => HomePage(),
     RegisterPage.tag: (context) => RegisterPage(),
     InterestScreen1.tag: (context) => InterestScreen1(),
@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.lightBlue,
               fontFamily: 'Nunito',
             ),
-            home: EventScreen(), //for Jose
+            home: loginPage2(), //for Jose
             routes: routes,
           )),
     );
