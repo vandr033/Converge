@@ -133,7 +133,7 @@ class _PanelWidgetState extends State<PanelWidget> {
           SizedBox(height: 100),
         ]),
         Padding(
-          padding: EdgeInsets.fromLTRB(0, 0, 270, 0),
+          padding: EdgeInsets.fromLTRB(0, 0, 280, 0),
           child: Text(
             'Morning Run',
             textAlign: TextAlign.left,
