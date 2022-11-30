@@ -5151,7 +5151,7 @@ class RSVPSamState extends State<RSVPSam> {
           ),
           
           Padding(
-            padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+            padding: EdgeInsets.fromLTRB(12, 0, 0, 0),
             child: Text(
               'Running & breakfast tomorrow! Come on out and enjoy some early' +
                   ' morning excercise around Tamiami Park by FIU. We will also be getting' +
@@ -5163,9 +5163,10 @@ class RSVPSamState extends State<RSVPSam> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 20, 270, 0),
+            padding: EdgeInsets.fromLTRB(0, 20, 280, 0),
             child: Text(
               'Whos going?',
+              textAlign: TextAlign.left,
               style: TextStyle(
                   decoration: TextDecoration.none,
                   color: Color(0xff3F3F3F),
