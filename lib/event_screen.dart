@@ -2118,38 +2118,63 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     SizedBox(width: 10),
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: AssetImage("assets/Rectangle 158.png"),
-                          fit: BoxFit.cover,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => StartupStory()),
+                        );
+                      },
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage("assets/Rectangle 158.png"),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
                     SizedBox(width: 10),
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: AssetImage("assets/Rectangle 156.png"),
-                          fit: BoxFit.cover,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => VolleyballStory()),
+                        );
+                      },
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage("assets/Rectangle 156.png"),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
                     SizedBox(width: 10),
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: AssetImage("assets/Rectangle 157.png"),
-                          fit: BoxFit.cover,
+                    
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => F1Story()),
+                        );
+                      },
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage("assets/Rectangle 157.png"),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
@@ -2207,8 +2232,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   //padding: EdgeInsets.fromLTRB(20, 15, 0, 0),
                   child: ElevatedButton(
                       onPressed: () {
-                     
-                       Navigator.push(
+                        Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => RSVPSam()),
                         );
@@ -2556,38 +2580,62 @@ class _HomeScreen2State extends State<HomeScreen2> {
                       ),
                     ),
                     SizedBox(width: 10),
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: AssetImage("assets/Rectangle 158.png"),
-                          fit: BoxFit.cover,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => StartupStory()),
+                        );
+                      },
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage("assets/Rectangle 158.png"),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
                     SizedBox(width: 10),
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: AssetImage("assets/Rectangle 156.png"),
-                          fit: BoxFit.cover,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => VolleyballStory()),
+                        );
+                      },
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage("assets/Rectangle 156.png"),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
                     SizedBox(width: 10),
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: AssetImage("assets/Rectangle 157.png"),
-                          fit: BoxFit.cover,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => F1Story()),
+                        );
+                      },
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage("assets/Rectangle 157.png"),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
@@ -2987,38 +3035,62 @@ class _HomeScreen3State extends State<HomeScreen3> {
                       ),
                     ),
                     SizedBox(width: 10),
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: AssetImage("assets/Rectangle 158.png"),
-                          fit: BoxFit.cover,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => StartupStory()),
+                        );
+                      },
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage("assets/Rectangle 158.png"),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
                     SizedBox(width: 10),
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: AssetImage("assets/Rectangle 156.png"),
-                          fit: BoxFit.cover,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => VolleyballStory()),
+                        );
+                      },
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage("assets/Rectangle 156.png"),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
                     SizedBox(width: 10),
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: AssetImage("assets/Rectangle 157.png"),
-                          fit: BoxFit.cover,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => F1Story()),
+                        );
+                      },
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage("assets/Rectangle 157.png"),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
@@ -4773,6 +4845,407 @@ class UPEStoryState extends State<UPEStory> {
   }
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////////////
+///Volleyball Story
+////?/////////////////////////////////////////////////////////////////////////////////////
+
+class VolleyballStory extends StatefulWidget {
+  static String tag = 'upe-story';
+  @override
+  VolleyballStoryState createState() => VolleyballStoryState();
+}
+
+class VolleyballStoryState extends State<VolleyballStory> {
+  var dropdownValue;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/volleyball.gif"),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Positioned(
+            top: 20,
+            left: 20,
+            //flex: 1,
+            child: Row(
+              children: [
+                GestureDetector(
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 0),
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      //shape: BoxShape.circle,
+                      //color: Color(0xffD7D9D7),
+                      borderRadius: BorderRadius.all(Radius.circular(100)),
+                      image: DecorationImage(
+                        image: AssetImage(
+                            "assets/Rectangle 156.png",),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ),
+
+                SizedBox(
+                  width: 15,
+                ),
+                Text(
+                  "Volleyball",
+                  style: TextStyle(
+                    decoration: TextDecoration.none,
+                    color: Colors.white,
+                    fontSize: 23,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  width: 90,
+                ),
+                //Container(width:20, height:20, color:Colors.blue)
+
+                SizedBox(width: 15),
+                Icon(
+                  CupertinoIcons.heart_fill,
+                  color: Colors.red,
+                  size: 24.0,
+                ),
+                SizedBox(width: 15),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(
+                      context,
+                    );
+                  },
+                  child: Icon(Icons.close,
+                      color: Color.fromARGB(255, 255, 255, 255), size: 34.0),
+                ),
+                SizedBox(height: 100),
+              ],
+            ),
+          ),
+          Positioned(
+            top: 100,
+            child: Container(
+                height: 20,
+                width: MediaQuery.of(context).size.width, //color: Colors.red,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                      Color(0xff4589FF),
+                      Colors.white.withOpacity(0.0)
+                    ]))),
+          ),
+          Positioned(
+            top: 100,
+            left: 20,
+            // ignore: prefer_const_literals_to_create_immutables
+            child: Row(
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
+                Icon(Icons.place_outlined, size: 20, color: Colors.white),
+                Text(
+                  "Lummus Park, 10 AM",
+                  style: TextStyle(
+                    fontSize: 15,
+                    decoration: TextDecoration.none,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+///Volleyball Story
+////?/////////////////////////////////////////////////////////////////////////////////////
+
+class StartupStory extends StatefulWidget {
+  static String tag = 'startup-story';
+  @override
+  StartupStoryState createState() => StartupStoryState();
+}
+
+class StartupStoryState extends State<StartupStory> {
+  var dropdownValue;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/cat.gif"),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Positioned(
+            top: 20,
+            left: 20,
+            //flex: 1,
+            child: Row(
+              children: [
+                GestureDetector(
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 0),
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      //shape: BoxShape.circle,
+                      //color: Color(0xffD7D9D7),
+                      borderRadius: BorderRadius.all(Radius.circular(100)),
+                      image: DecorationImage(
+                        image: AssetImage(
+                            "assets/Rectangle 158.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ),
+
+                SizedBox(
+                  width: 15,
+                ),
+                Text(
+                  "StartUP FIU",
+                  style: TextStyle(
+                    decoration: TextDecoration.none,
+                    color: Colors.white,
+                    fontSize: 23,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  width: 80,
+                ),
+                //Container(width:20, height:20, color:Colors.blue)
+
+                SizedBox(width: 15),
+                Icon(
+                  CupertinoIcons.heart_fill,
+                  color: Colors.red,
+                  size: 24.0,
+                ),
+                SizedBox(width: 15),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(
+                      context,
+                    );
+                  },
+                  child: Icon(Icons.close,
+                      color: Color.fromARGB(255, 255, 255, 255), size: 34.0),
+                ),
+                SizedBox(height: 100),
+              ],
+            ),
+          ),
+          Positioned(
+            top: 100,
+            child: Container(
+                height: 20,
+                width: MediaQuery.of(context).size.width, //color: Colors.red,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                      Color(0xff4589FF),
+                      Colors.white.withOpacity(0.0)
+                    ]))),
+          ),
+          Positioned(
+            top: 100,
+            left: 20,
+            // ignore: prefer_const_literals_to_create_immutables
+            child: Row(
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
+                Icon(Icons.place_outlined, size: 20, color: Colors.white),
+                Text(
+                  "Green Library, 12 PM",
+                  style: TextStyle(
+                    fontSize: 15,
+                    decoration: TextDecoration.none,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+///Volleyball Story
+////?/////////////////////////////////////////////////////////////////////////////////////
+
+class F1Story extends StatefulWidget {
+  static String tag = 'startup-story';
+  @override
+  F1StoryState createState() => F1StoryState();
+}
+
+class F1StoryState extends State<F1Story> {
+  var dropdownValue;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/dog.gif"),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Positioned(
+            top: 20,
+            left: 20,
+            //flex: 1,
+            child: Row(
+              children: [
+                GestureDetector(
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 0),
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      //shape: BoxShape.circle,
+                      //color: Color(0xffD7D9D7),
+                      borderRadius: BorderRadius.all(Radius.circular(100)),
+                      image: DecorationImage(
+                        image: AssetImage(
+                            "assets/Rectangle 157.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ),
+
+                SizedBox(
+                  width: 15,
+                ),
+                Text(
+                  "F1 FIU",
+                  style: TextStyle(
+                    decoration: TextDecoration.none,
+                    color: Colors.white,
+                    fontSize: 23,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  width: 150,
+                ),
+                //Container(width:20, height:20, color:Colors.blue)
+
+                SizedBox(width: 15),
+                Icon(
+                  CupertinoIcons.heart_fill,
+                  color: Colors.red,
+                  size: 24.0,
+                ),
+                SizedBox(width: 15),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(
+                      context,
+                    );
+                  },
+                  child: Icon(Icons.close,
+                      color: Color.fromARGB(255, 255, 255, 255), size: 34.0),
+                ),
+                SizedBox(height: 100),
+              ],
+            ),
+          ),
+          Positioned(
+            top: 100,
+            child: Container(
+                height: 20,
+                width: MediaQuery.of(context).size.width, //color: Colors.red,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                      Color(0xff4589FF),
+                      Colors.white.withOpacity(0.0)
+                    ]))),
+          ),
+          Positioned(
+            top: 100,
+            left: 20,
+            // ignore: prefer_const_literals_to_create_immutables
+            child: Row(
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
+                Icon(Icons.place_outlined, size: 20, color: Colors.white),
+                Text(
+                  "Graham Center, 9 PM",
+                  style: TextStyle(
+                    fontSize: 15,
+                    decoration: TextDecoration.none,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////
 ///StoryScreenGirlStor
 ////?/////////////////////////////////////////////////////////////////////////////////////
@@ -5053,17 +5526,15 @@ class RSVPSamState extends State<RSVPSam> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
-      decoration: BoxDecoration(
-        color: Colors.white,
-      ),
+        decoration: BoxDecoration(
+          color: Colors.white,
+        ),
         padding: EdgeInsets.symmetric(horizontal: 0),
         child: Column(children: [
           SizedBox(
             height: 125,
           ),
           Row(children: [
-            
             SizedBox(
               width: 15,
             ),
@@ -5112,7 +5583,8 @@ class RSVPSamState extends State<RSVPSam> {
                     'RSVP',
                     style: TextStyle(
                         decoration: TextDecoration.none,
-                        fontSize: 16, fontWeight: FontWeight.bold),
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
                     softWrap: false,
                   )),
             ),
@@ -5149,7 +5621,6 @@ class RSVPSamState extends State<RSVPSam> {
           SizedBox(
             height: 10,
           ),
-          
           Padding(
             padding: EdgeInsets.fromLTRB(12, 0, 0, 0),
             child: Text(
@@ -5159,7 +5630,8 @@ class RSVPSamState extends State<RSVPSam> {
               textAlign: TextAlign.left,
               style: TextStyle(
                   decoration: TextDecoration.none,
-                  color: Color(0xff3F3F3F), fontSize: 12),
+                  color: Color(0xff3F3F3F),
+                  fontSize: 12),
             ),
           ),
           Padding(
@@ -5272,7 +5744,6 @@ class RSVPSamState extends State<RSVPSam> {
                       fontSize: 13,
                     ),
                   ),
-                  
                 ],
               ),
             ],
@@ -5310,7 +5781,6 @@ class RSVPSamState extends State<RSVPSam> {
               ],
             ),
           ),
-          
           Container(
             height: 360,
             width: 430,
