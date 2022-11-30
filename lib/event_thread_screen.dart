@@ -96,7 +96,7 @@ class _PanelWidgetState extends State<PanelWidget> {
           Text(
             "Jane Smith",
             style: TextStyle(
-              color: Colors.black,
+              color: Color(0xff3F3F3F),
               fontSize: 24,
               fontWeight: FontWeight.bold,
             ),
@@ -138,7 +138,7 @@ class _PanelWidgetState extends State<PanelWidget> {
             'Morning Run',
             textAlign: TextAlign.left,
             style: TextStyle(
-                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
+                color: Color(0xff3F3F3F), fontWeight: FontWeight.bold, fontSize: 16),
           ),
         ),
         SizedBox(
@@ -151,7 +151,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                 ' morning excercise around Tamiami Park by FIU. We will also be getting' +
                 ' some smoothie bowls at Tropical Smoothie Cafe. See you there!',
             textAlign: TextAlign.left,
-            style: TextStyle(color: Colors.black, fontSize: 12),
+            style: TextStyle(color: Color(0xff3F3F3F), fontSize: 12),
           ),
         ),
         Padding(
@@ -159,7 +159,7 @@ class _PanelWidgetState extends State<PanelWidget> {
           child: Text(
             'Whos going?',
             style: TextStyle(
-                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
+                color: Color(0xff3F3F3F), fontWeight: FontWeight.bold, fontSize: 16),
           ),
         ),
         SizedBox(
@@ -193,7 +193,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                 Text(
                   'Ninaali',
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Color(0xff3F3F3F),
                     fontSize: 13,
                   ),
                 ),
@@ -224,7 +224,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                 Text(
                   'itscorey',
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Color(0xff3F3F3F),
                     fontSize: 13,
                   ),
                 ),
@@ -255,7 +255,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                 Text(
                   'Raul_Iglesias',
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Color(0xff3F3F3F),
                     fontSize: 13,
                   ),
                 ),

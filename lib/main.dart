@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.lightBlue,
               fontFamily: 'Nunito',
             ),
-            home: EventScreen(), //for Jose
+            home: EventThreadScreen(), //for Jose
             routes: routes,
           )),
     );
