@@ -9,6 +9,7 @@ import 'package:flutter_application/interest_screen_1.dart';
 import 'package:flutter_application/interest_screen_2.dart';
 import 'package:flutter_application/pages/auth/registerPage2.dart';
 import 'package:flutter_application/pick_hosts_tester.dart';
+import 'package:flutter_application/verify.dart';
 import 'package:provider/provider.dart';
 import 'blocs/application_bloc.dart';
 import 'pages/auth/loginPage2.dart';
@@ -56,7 +57,7 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.lightBlue,
               fontFamily: 'Nunito',
             ),
-            home: loginPage2(), //for Jose
+            home: VerifyScreen(), //for Jose
             routes: routes,
           )),
     );
