@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/helper/helper_function.dart';
+import 'package:flutter_application/interest_screen_1.dart';
 
 import 'package:flutter_application/pages/auth/loginpage2.dart';
 import 'package:flutter_application/services/auth_services.dart';
@@ -41,26 +42,49 @@ class _RegisterPage2State extends State<RegisterPage2> {
                         SizedBox(
                           height: 20,
                         ),
+                        Container(
+                            height: 142.5,
+                            decoration: BoxDecoration(
+                              //color: Colors.blue,
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                image: AssetImage("assets/Converge.png"),
+                                //fit: BoxFit.cover,
+                              ),
+                            )),
+                        SizedBox(
+                          height: 20,
+                        ),
                         // ignore: prefer_const_constructors
                         Text(
-                          'Welcome Back',
+                          'Get Started!',
                           style: TextStyle(
-                              fontSize: 40, fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.left,
+                              fontSize: 40,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xff3F3F3F)),
+                          textAlign: TextAlign.center,
                         ),
                         SizedBox(
-                          height: 7.5,
+                          height: 25,
                         ),
-                        TextFormField(
-                          decoration: textinputDecoration.copyWith(
-                              contentPadding:
-                                  EdgeInsets.fromLTRB(20, 10, 20, 10),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(9)),
-                              hintText: 'Email',
-                              hintStyle: TextStyle(
-                                color: Colors.white,
-                              )),
+                        Container(
+                        padding: EdgeInsets.symmetric(horizontal: 12),
+                          child: TextFormField(
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                            decoration: InputDecoration(
+                                contentPadding:
+                                    EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                hintText: 'Email',
+                                fillColor: Color(0xff838383),
+                                filled: true,
+                                hintStyle: TextStyle(
+                                  color: Colors.white,
+                                )),
                           onChanged: (val) {
                             setState(() {
                               email = val;
@@ -68,29 +92,37 @@ class _RegisterPage2State extends State<RegisterPage2> {
                           },
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please Enter an email';
+                              return 'Please Enter A Valid Email';
                             } else if (!value.contains('@')) {
-                              return 'Please Enter An email in correct format';
+                              return 'Please Enter An Email In The Correct Format';
                               // } else if (!value.contains('fiu.edu')) {
                               //   return 'Please use your FIU email adress';
                             } else {
                               return null;
                             }
                           },
-                        ),
+                        )),
                         SizedBox(
                           height: 15,
                         ),
-                        TextFormField(
-                          decoration: textinputDecoration.copyWith(
-                              contentPadding:
-                                  EdgeInsets.fromLTRB(20, 10, 20, 10),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(9)),
-                              hintText: 'Username',
-                              hintStyle: TextStyle(
-                                color: Colors.white,
-                              )),
+                        Container(
+                        padding: EdgeInsets.symmetric(horizontal: 12),
+                          child: TextFormField(
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                            decoration: InputDecoration(
+                                contentPadding:
+                                    EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                hintText: 'Username',
+                                fillColor: Color(0xff838383),
+                                filled: true,
+                                hintStyle: TextStyle(
+                                  color: Colors.white,
+                                )),
                           onChanged: (val) {
                             setState(() {
                               username = val;
@@ -98,28 +130,44 @@ class _RegisterPage2State extends State<RegisterPage2> {
                           },
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please Enter a username';
+                              return 'Please Enter A Username';
                             } else {
                               return null;
                             }
                           },
+                        )),
+                        SizedBox(
+                          height: 15,
                         ),
-                        Divider(
-                          height: 4,
-                          thickness: 1.5,
+                        
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 12),
+                          child: Divider(
+                            height: 4,
+                            thickness: 1.5,
+                          ),
                         ),
                         SizedBox(
-                          height: 30,
+                          height: 15,
                         ),
-                        TextFormField(
-                          obscureText: true,
-                          decoration: textinputDecoration.copyWith(
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(32)),
-                              hintText: 'Password',
-                              hintStyle: TextStyle(
-                                color: Colors.white,
-                              )),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 12),
+                          child: TextFormField(
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                            decoration: InputDecoration(
+                                contentPadding:
+                                    EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                hintText: 'Password',
+                                fillColor: Color(0xff838383),
+                                filled: true,
+                                hintStyle: TextStyle(
+                                  color: Colors.white,
+                                )),
                           onChanged: (value) {
                             setState(() {
                               password = value;
@@ -127,26 +175,35 @@ class _RegisterPage2State extends State<RegisterPage2> {
                           },
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please Enter a Password';
+                              return 'Please Enter A Valid Password';
                             } else if (value.length < 8) {
-                              return 'Password Must Have at least 6 characters';
+                              return 'Password Must Have At Least 8 Characters';
                             } else {
                               return null;
                             }
                           },
-                        ),
+                        )),
                         SizedBox(
                           height: 15,
                         ),
-                        TextFormField(
-                          obscureText: true,
-                          decoration: textinputDecoration.copyWith(
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(32)),
-                              hintText: 'Password',
-                              hintStyle: TextStyle(
-                                color: Colors.white,
-                              )),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 12),
+                          child: TextFormField(
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                            decoration: InputDecoration(
+                                contentPadding:
+                                    EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                hintText: 'Confirm Password',
+                                fillColor: Color(0xff838383),
+                                filled: true,
+                                hintStyle: TextStyle(
+                                  color: Colors.white,
+                                )),
                           onChanged: (value) {
                             setState(() {
                               confPassword = value;
@@ -154,24 +211,12 @@ class _RegisterPage2State extends State<RegisterPage2> {
                           },
                           validator: (value) {
                             if (confPassword != password) {
-                              return 'passwords must match';
+                              return 'Passwords Must Match';
                             }
                           },
-                        ),
+                        )),
                         SizedBox(
-                          height: 5,
-                        ),
-                        TextButton(
-                          child: Text(
-                            'Already Have An Account?',
-                            style: TextStyle(color: Colors.black54),
-                          ),
-                          onPressed: () {
-                            Navigator.of(context).pushNamed(loginPage2.tag);
-                          },
-                        ),
-                        SizedBox(
-                          height: 150,
+                          height: 125,
                         ),
                         Row(
                           //row 8 - navigation circles
@@ -179,50 +224,66 @@ class _RegisterPage2State extends State<RegisterPage2> {
                           children: const [
                             Icon(
                               Icons.circle,
-                              size: 20,
+                              size: 15,
                               color: Color(
-                                  0xffF06449), //this is the color i want - F06449
+                                  0xff4589FF), //this is the color i want - F06449
                             ),
                             SizedBox(
                               width: 7,
                             ),
                             Icon(Icons.circle,
-                                size: 20, color: Color(0xffD9D9D9)),
+                                size: 15, color: Color(0xffD9D9D9)),
                             SizedBox(
                               width: 7,
                             ),
                             Icon(Icons.circle,
-                                size: 20, color: Color(0xffD9D9D9)),
+                                size: 15, color: Color(0xffD9D9D9)),
                           ],
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Row(
+                          //row 9 - "next" button
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Expanded(
-                              child: Container(
-                                  margin: EdgeInsets.symmetric(horizontal: 30),
-                                  width: MediaQuery.of(context).size.width,
-                                  child: ElevatedButton(
-                                      onPressed: () {
-                                        register();
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                          backgroundColor: Color(0xff4589FF),
-                                          foregroundColor: Colors.white,
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(5.0))),
-                                      child: const Text(
-                                        'Next',
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold),
-                                      ))),
-                            ),
+                            //The actual formatting of the 'Next' button and everything we do for it
+                            SizedBox(
+                              width: 250.0,
+                              height: 55.0,
+                              child: ElevatedButton(
+                                  onPressed: () {
+                                    register();
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: Color(0xff4589FF),
+                                      foregroundColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(5.0))),
+                                  child: const Text(
+                                    'Next',
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold),
+                                  )),
+                            )
                           ],
                         ),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              TextButton(
+                          child: Text(
+                            'Already Have An Account?',
+                            style: TextStyle(color: Colors.black54, fontSize:17),
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pushNamed(loginPage2.tag);
+                          },
+                        ),
+                            ]),
+
                       ],
                     ),
                   ),

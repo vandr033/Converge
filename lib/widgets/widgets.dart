@@ -1,8 +1,22 @@
 import 'package:flutter/material.dart';
 
-const textinputDecoration = InputDecoration(
+InputDecoration textinputDecoration = InputDecoration(
   filled: true,
   fillColor: Color(0xFFD7D9D7),
+  //border: 
+  border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(50),
+            
+            
+            /* borderSide: BorderSide(
+                width: 0, 
+                style: BorderStyle.none,
+            ),*/
+
+
+
+        ),
+
   labelStyle: TextStyle(color: Colors.white),
   focusedBorder: OutlineInputBorder(
       borderSide: BorderSide(color: Color(0xFFD7D9D7), width: 2.0)),

@@ -39,88 +39,120 @@ class _loginPage2State extends State<loginPage2> {
                     child: ListView(
                       children: <Widget>[
                         SizedBox(
-                          height: 20,
+                          height: 35,
+                        ),
+                        Container(
+                            height: 200,
+                            decoration: BoxDecoration(
+                              //color: Colors.blue,
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                image: AssetImage("assets/Converge.png"),
+                                //fit: BoxFit.cover,
+                              ),
+                            )),
+                        SizedBox(
+                          height: 35,
                         ),
                         // ignore: prefer_const_constructors
                         Text(
-                          'Get Started!',
+                          'Welcome Back!',
                           style: TextStyle(
-                              fontSize: 40, fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.left,
+                              fontSize: 40,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xff3F3F3F)),
+                          textAlign: TextAlign.center,
                         ),
                         SizedBox(
-                          height: 7.5,
+                          height: 25,
                         ),
-                        TextFormField(
-                          decoration: textinputDecoration.copyWith(
-                              contentPadding:
-                                  EdgeInsets.fromLTRB(20, 10, 20, 10),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(9)),
-                              hintText: 'Email',
-                              fillColor: Color(0xFF838383),
-                              hintStyle: TextStyle(
-                                color: Colors.white,
-                              )),
-                          onChanged: (val) {
-                            setState(() {
-                              email = val;
-                            });
-                          },
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please Enter an email';
-                            } else if (!value.contains('@')) {
-                              return 'Please Enter An email in correct format';
-                              // } else if (!value.contains('fiu.edu')) {
-                              //   return 'Please use your FIU email adress';
-                            } else {
-                              return null;
-                            }
-                          },
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 12),
+                          child: TextFormField(
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                            decoration: InputDecoration(
+                                contentPadding:
+                                    EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                hintText: 'Email',
+                                fillColor: Color(0xff838383),
+                                filled: true,
+                                hintStyle: TextStyle(
+                                  color: Colors.white,
+                                )),
+                            onChanged: (val) {
+                              setState(() {
+                                email = val;
+                              });
+                            },
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please Enter A Valid Email';
+                              } else if (!value.contains('@')) {
+                                return 'Please Enter An Email In The Correct Format';
+                                // } else if (!value.contains('fiu.edu')) {
+                                //   return 'Please use your FIU email adress';
+                              } else {
+                                return null;
+                              }
+                            },
+                          ),
                         ),
+
                         SizedBox(
-                          height: 15,
+                          height: 25,
                         ),
-                        TextFormField(
-                          obscureText: true,
-                          decoration: textinputDecoration.copyWith(
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(32)),
-                              hintText: 'Password',
-                              fillColor: Color(0xFF838383),
-                              hintStyle: TextStyle(
-                                color: Colors.white,
-                              )),
-                          onChanged: (value) {
-                            password = value;
-                          },
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please Enter a Password';
-                            } else if (value.length < 8) {
-                              return 'Password Must Have at least 8 characters';
-                            } else {
-                              return null;
-                            }
-                          },
-                        ),
-                        TextButton(
-                          child: Text(
-                            'Forgot Password?',
-                            style: TextStyle(color: Colors.black54),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 12),
+                          child: TextFormField(
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                            decoration: InputDecoration(
+                                contentPadding:
+                                    EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                hintText: 'Password',
+                                fillColor: Color(0xff838383),
+                                filled: true,
+                                hintStyle: TextStyle(
+                                  color: Colors.white,
+                                )),
+                            onChanged: (value) {
+                              password = value;
+                            },
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please Enter A Valid Password';
+                              } else if (value.length < 8) {
+                                return 'Password Must Have At Least 8 Characters';
+                              } else {
+                                return null;
+                              }
+                            },
                           ),
-                          onPressed: () {},
                         ),
-                        TextButton(
-                          child: Text(
-                            'Create An Account',
-                            style: TextStyle(color: Colors.black54),
-                          ),
-                          onPressed: () {
-                            Navigator.of(context).pushNamed(RegisterPage2.tag);
-                          },
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 12),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                TextButton(
+                                  child: Text(
+                                    'Forgot Password?',
+                                    style: TextStyle(color: Colors.black54),
+                                  ),
+                                  onPressed: () {},
+                                ),
+                              ]),
                         ),
+
                         SizedBox(
                           height: 150,
                         ),
@@ -152,6 +184,21 @@ class _loginPage2State extends State<loginPage2> {
                             )
                           ],
                         ),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              TextButton(
+                                child: Text(
+                                  'No account? Sign Up.',
+                                  style: TextStyle(
+                                      color: Colors.black54, fontSize: 17),
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context)
+                                      .pushNamed(RegisterPage2.tag);
+                                },
+                              ),
+                            ]),
                       ],
                     ),
                   ),

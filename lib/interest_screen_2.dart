@@ -151,12 +151,12 @@ class InterestScreen2State extends State<InterestScreen2> {
                 Icon(
                   Icons.circle,
                   size: 20,
-                  color: Color(0xffF06449), //this is the color i want - F06449
+                  color: Color(0xffD9D9D9), //this is the color i want - F06449
                 ),
                 SizedBox(
                   width: 7,
                 ),
-                Icon(Icons.circle, size: 20, color: Color(0xffD9D9D9)),
+                Icon(Icons.circle, size: 20, color: Color(0xff4589FF)),
               ],
             ),
             Row(
