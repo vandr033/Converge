@@ -2247,23 +2247,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(9.0))),
-                      child: GestureDetector(
-                        onTap: () async {
-                          String url = 'https://goo.gl/maps/tHSU6q1trba2KPWL8';
-                          Uri uri2 = Uri.parse(url);
-                          if (await canLaunchUrl(uri2)) {
-                            await launchUrl(uri2);
-                          } else {
-                            throw 'Could not launch';
-                          }
-                        },
+                      
                         child: Text(
                           'View', //RSVP for finder purposes
                           style: TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold),
                           softWrap: false,
                         ),
-                      )),
+                      
+                      ),
                 ),
                 SizedBox(width: 15),
                 Icon(
