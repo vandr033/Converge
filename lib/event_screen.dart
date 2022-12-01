@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_application/HomePage.dart';
 import 'package:flutter_application/community_screen.dart';
+import 'package:flutter_application/pages/auth/loginPage2.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:http/http.dart';
 import 'package:intl/intl.dart';
@@ -18,6 +19,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'blocs/application_bloc.dart';
 import 'data/user_data.dart';
 import 'event_thread_screen.dart';
+import 'services/auth_services.dart';
 
 List<String> screens = ['Create Event', 'Create Community'];
 String whenEventchosenScreen = 'Create Event';
@@ -2122,7 +2124,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => StartupStory()),
+                          MaterialPageRoute(
+                              builder: (context) => StartupStory()),
                         );
                       },
                       child: Container(
@@ -2142,7 +2145,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => VolleyballStory()),
+                          MaterialPageRoute(
+                              builder: (context) => VolleyballStory()),
                         );
                       },
                       child: Container(
@@ -2158,7 +2162,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     SizedBox(width: 10),
-                    
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -2584,7 +2587,8 @@ class _HomeScreen2State extends State<HomeScreen2> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => StartupStory()),
+                          MaterialPageRoute(
+                              builder: (context) => StartupStory()),
                         );
                       },
                       child: Container(
@@ -2604,7 +2608,8 @@ class _HomeScreen2State extends State<HomeScreen2> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => VolleyballStory()),
+                          MaterialPageRoute(
+                              builder: (context) => VolleyballStory()),
                         );
                       },
                       child: Container(
@@ -3039,7 +3044,8 @@ class _HomeScreen3State extends State<HomeScreen3> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => StartupStory()),
+                          MaterialPageRoute(
+                              builder: (context) => StartupStory()),
                         );
                       },
                       child: Container(
@@ -3059,7 +3065,8 @@ class _HomeScreen3State extends State<HomeScreen3> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => VolleyballStory()),
+                          MaterialPageRoute(
+                              builder: (context) => VolleyballStory()),
                         );
                       },
                       child: Container(
@@ -3359,6 +3366,7 @@ class ProfileScreen extends StatefulWidget {
 class ProfileScreenState extends State<ProfileScreen> {
   File? image1;
   File? image2;
+  AuthService authService = AuthService();
 
   void profileDatePicker(ctx) {
     // showCupertinoModalPopup is a built-in function of the cupertino library
@@ -3648,7 +3656,13 @@ class ProfileScreenState extends State<ProfileScreen> {
                               height: 25.0,
                               //padding: EdgeInsets.fromLTRB(20, 15, 0, 0),
                               child: ElevatedButton(
-                                  onPressed: (){},
+                                  onPressed: () async {
+                                    await authService.signout();
+                                    Navigator.of(context).pushAndRemoveUntil(
+                                        MaterialPageRoute(
+                                            builder: (context) => loginPage2()),
+                                        (route) => false);
+                                  },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Color(0xff4589FF),
                                       foregroundColor: Colors.white,
@@ -4845,7 +4859,6 @@ class UPEStoryState extends State<UPEStory> {
   }
 }
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////
 ///Volleyball Story
 ////?/////////////////////////////////////////////////////////////////////////////////////
@@ -4889,7 +4902,8 @@ class VolleyballStoryState extends State<VolleyballStory> {
                       borderRadius: BorderRadius.all(Radius.circular(100)),
                       image: DecorationImage(
                         image: AssetImage(
-                            "assets/Rectangle 156.png",),
+                          "assets/Rectangle 156.png",
+                        ),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -4973,7 +4987,6 @@ class VolleyballStoryState extends State<VolleyballStory> {
   }
 }
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////
 ///Volleyball Story
 ////?/////////////////////////////////////////////////////////////////////////////////////
@@ -5016,8 +5029,7 @@ class StartupStoryState extends State<StartupStory> {
                       //color: Color(0xffD7D9D7),
                       borderRadius: BorderRadius.all(Radius.circular(100)),
                       image: DecorationImage(
-                        image: AssetImage(
-                            "assets/Rectangle 158.png"),
+                        image: AssetImage("assets/Rectangle 158.png"),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -5101,7 +5113,6 @@ class StartupStoryState extends State<StartupStory> {
   }
 }
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////
 ///Volleyball Story
 ////?/////////////////////////////////////////////////////////////////////////////////////
@@ -5144,8 +5155,7 @@ class F1StoryState extends State<F1Story> {
                       //color: Color(0xffD7D9D7),
                       borderRadius: BorderRadius.all(Radius.circular(100)),
                       image: DecorationImage(
-                        image: AssetImage(
-                            "assets/Rectangle 157.png"),
+                        image: AssetImage("assets/Rectangle 157.png"),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -5228,23 +5238,6 @@ class F1StoryState extends State<F1Story> {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 ///StoryScreenGirlStor
@@ -5782,7 +5775,7 @@ class RSVPSamState extends State<RSVPSam> {
             ),
           ),
           Container(
-          height: 336.561,
+            height: 336.561,
             width: 430,
             decoration: BoxDecoration(
               image: DecorationImage(
