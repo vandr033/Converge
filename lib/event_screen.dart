@@ -2388,10 +2388,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 Icon(Icons.place_outlined, size: 20, color: Colors.white),
                 TextButton(
                     onPressed: () async {
-                      const url1 = 'https://goo.gl/maps/tHSU6q1trba2KPWL8';
-                      Uri uri = Uri.parse(url1);
-                      if (await canLaunchUrl(uri)) {
-                        await launchUrl(uri);
+                      const url = 'https://goo.gl/maps/tHSU6q1trba2KPWL8';
+                      if (await canLaunch(url)) {
+                        await launch(url);
                       } else {
                         throw 'could not launch url';
                       }
@@ -3305,7 +3304,7 @@ class _HomeScreen3State extends State<HomeScreen3> {
                 Icon(Icons.place_outlined, size: 20, color: Colors.white),
                 TextButton(
                     onPressed: () async {
-                      const url = 'https://goo.gl/maps/tHSU6q1trba2KPWL8';
+                      const url = 'https://goo.gl/maps/v81yFXTEES758icQ7';
                       if (await canLaunch(url)) {
                         await launch(url);
                       } else {
@@ -3313,7 +3312,7 @@ class _HomeScreen3State extends State<HomeScreen3> {
                       }
                     },
                     child: Text(
-                      "Route 45, 5 PM",
+                      "La Playa Grill, 5 PM",
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
