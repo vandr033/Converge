@@ -10,6 +10,7 @@ import 'package:flutter_application/interest_screen_2.dart';
 import 'package:flutter_application/pages/auth/registerPage2.dart';
 import 'package:flutter_application/pages/auth/search_page.dart';
 import 'package:flutter_application/pick_hosts_tester.dart';
+import 'package:flutter_application/verify.dart';
 import 'package:provider/provider.dart';
 import 'blocs/application_bloc.dart';
 import 'pages/auth/loginPage2.dart';

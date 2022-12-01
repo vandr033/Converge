@@ -46,51 +46,83 @@ class _VerifyScreenState extends State<VerifyScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(
-          child: Form(
-        key: _formkey,
-        child: ListView(
-            shrinkWrap: true,
-            padding: const EdgeInsets.only(top: 36, left: 24, right: 24),
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(top: 40),
-                child: Text(
-                    'An email was send to ${user.email.toString()}, please verify by checking the link.',
-                    style: const TextStyle(color: Colors.black)),
+      body: Column(children: [
+        SizedBox(
+          height: 50,
+        ),
+        Container(
+            height: 300,
+            decoration: BoxDecoration(
+              //color: Colors.blue,
+              shape: BoxShape.circle,
+              image: DecorationImage(
+                image: AssetImage("assets/Converge.png"),
+                //fit: BoxFit.cover,
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.lightGreen,
-                    padding: const EdgeInsets.all(12),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24)),
-                  ),
-                  onPressed: () {
-                    user.sendEmailVerification();
-                  },
-                  child: const Text('Resend Verification',
-                      style: TextStyle(color: Colors.white)),
+            )),
+        SizedBox(
+          height: 15,
+        ),
+        // ignore: prefer_const_constructors
+        Text(
+          'Verification',
+          style: TextStyle(
+              fontSize: 40,
+              fontWeight: FontWeight.bold,
+              color: Color(0xff3F3F3F)),
+          textAlign: TextAlign.center,
+        ),
+        /*
+                        SizedBox(
+                          height: 25,
+                        ),*/
+        Center(
+            child: Form(
+          key: _formkey,
+          child: ListView(
+              shrinkWrap: true,
+              padding: const EdgeInsets.only(top: 36, left: 24, right: 24),
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 40),
+                  child: Text(
+                      'An email was sent to ${user.email.toString()}, please verify by checking the link.',
+                      style: TextStyle(
+                        color: Color(0xff3F3F3F),
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      )),
                 ),
-              ),
-              Padding(
-                  padding: EdgeInsets.zero,
-                  child: TextButton(
-                    child: const Text(
-                      'Cancel',
-                      style: TextStyle(color: Colors.black54),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xff838383),
+                      padding: const EdgeInsets.all(12),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24)),
                     ),
                     onPressed: () {
-                      Navigator.pop(context);
+                      user.sendEmailVerification();
                     },
-                  ))
-            ]),
-      )),
-      appBar: AppBar(
-        title: const Text('Verification Page'),
-      ),
+                    child: const Text('Resend Verification',
+                        style: TextStyle(color: Colors.white)),
+                  ),
+                ),
+                Padding(
+                    padding: EdgeInsets.zero,
+                    child: TextButton(
+                      child: const Text(
+                        'Cancel',
+                        style: TextStyle(color: Colors.black54),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ))
+              ]),
+        )),
+      ]),
     );
   }
 
