@@ -2248,23 +2248,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(9.0))),
-                      child: GestureDetector(
-                        onTap: () async {
-                          String url = 'https://goo.gl/maps/tHSU6q1trba2KPWL8';
-                          Uri uri2 = Uri.parse(url);
-                          if (await canLaunchUrl(uri2)) {
-                            await launchUrl(uri2);
-                          } else {
-                            throw 'Could not launch';
-                          }
-                        },
+                      
                         child: Text(
                           'View', //RSVP for finder purposes
                           style: TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold),
                           softWrap: false,
                         ),
-                      )),
+                      
+                      ),
                 ),
                 SizedBox(width: 15),
                 Icon(
@@ -2402,10 +2394,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 Icon(Icons.place_outlined, size: 20, color: Colors.white),
                 TextButton(
                     onPressed: () async {
-                      const url1 = 'https://goo.gl/maps/tHSU6q1trba2KPWL8';
-                      Uri uri = Uri.parse(url1);
-                      if (await canLaunchUrl(uri)) {
-                        await launchUrl(uri);
+                      const url = 'https://goo.gl/maps/tHSU6q1trba2KPWL8';
+                      if (await canLaunch(url)) {
+                        await launch(url);
                       } else {
                         throw 'could not launch url';
                       }
@@ -3319,7 +3310,7 @@ class _HomeScreen3State extends State<HomeScreen3> {
                 Icon(Icons.place_outlined, size: 20, color: Colors.white),
                 TextButton(
                     onPressed: () async {
-                      const url = 'https://goo.gl/maps/tHSU6q1trba2KPWL8';
+                      const url = 'https://goo.gl/maps/v81yFXTEES758icQ7';
                       if (await canLaunch(url)) {
                         await launch(url);
                       } else {
@@ -3327,7 +3318,7 @@ class _HomeScreen3State extends State<HomeScreen3> {
                       }
                     },
                     child: Text(
-                      "Route 45, 5 PM",
+                      "La Playa Grill, 5 PM",
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
