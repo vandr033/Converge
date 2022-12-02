@@ -66,6 +66,8 @@ dependencies:
   url_launcher: ^6.1.7
   shared_preferences: ^2.0.15
 
+  flutter_chat_ui: ^1.6.6
+
 
 dev_dependencies: 
   flutter_launcher_icons: "^0.11.0"
@@ -112,6 +114,7 @@ flutter:
     - assets/images/
     - assets/profile_post_images/
     - assets/home_screen_stories/
+    - assets/chatpage/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

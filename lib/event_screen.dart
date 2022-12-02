@@ -7,6 +7,7 @@ import 'package:flutter_application/HomePage.dart';
 import 'package:flutter_application/community_screen.dart';
 import 'package:flutter_application/pages/auth/loginPage2.dart';
 import 'package:flutter_application/pages/auth/search_page.dart';
+import 'package:flutter_application/widgets/widgets.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:http/http.dart';
 import 'package:intl/intl.dart';
@@ -2364,11 +2365,16 @@ class _HomeScreenState extends State<HomeScreen> {
           Positioned(
             bottom: 95,
             left: 20,
-            child: Text(
-              "Running and breakfast tomorrow!",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 13,
+            child: GestureDetector(
+              onTap: () {
+                nextScreen(context, EventThreadScreen());
+              },
+              child: Text(
+                "Running and breakfast tomorrow!",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 13,
+                ),
               ),
             ),
           ),
