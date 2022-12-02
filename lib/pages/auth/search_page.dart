@@ -61,7 +61,6 @@ class _SearchPageState extends State<SearchPage> {
               ),
             ],
           ),
-          
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -76,7 +75,7 @@ class _SearchPageState extends State<SearchPage> {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(24, 0,24, 0),
+            padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
             child: Column(
               children: [
                 Container(
@@ -101,7 +100,6 @@ class _SearchPageState extends State<SearchPage> {
                         ),
                       ),
                       SizedBox(width: 10),
-                      
                       GestureDetector(
                         onTap: () {},
                         child: Container(
@@ -179,7 +177,6 @@ class _SearchPageState extends State<SearchPage> {
                         ),
                       ),
                       SizedBox(width: 10),
-                      
                       GestureDetector(
                         onTap: () {},
                         child: Container(
@@ -254,7 +251,6 @@ class _SearchPageState extends State<SearchPage> {
             child: Divider(
               color: Color(0xFFD7D9D7),
               thickness: 5,
-              
             ),
           ),
           SizedBox(
@@ -283,7 +279,10 @@ class _SearchPageState extends State<SearchPage> {
                 padding: const EdgeInsets.only(left: 24),
                 child: Text(
                   "Pablo Hernandez",
-                  style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,),
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                   textAlign: TextAlign.left,
                 ),
               ),
@@ -291,10 +290,10 @@ class _SearchPageState extends State<SearchPage> {
                 width: 134,
               ),
               Text(
-                  "Figma Grind",
-                  style: TextStyle(fontSize: 18),
-                  textAlign: TextAlign.right,
-                ),
+                "Figma Grind",
+                style: TextStyle(fontSize: 18),
+                textAlign: TextAlign.right,
+              ),
             ],
           ),
           SizedBox(
@@ -314,7 +313,7 @@ class _SearchPageState extends State<SearchPage> {
                   textAlign: TextAlign.left,
                 ),
               ),
-               SizedBox(
+              SizedBox(
                 width: 113,
               ),
               Text(
@@ -341,7 +340,7 @@ class _SearchPageState extends State<SearchPage> {
                   textAlign: TextAlign.left,
                 ),
               ),
-               SizedBox(
+              SizedBox(
                 width: 119,
               ),
               Text(
@@ -368,7 +367,7 @@ class _SearchPageState extends State<SearchPage> {
                   textAlign: TextAlign.left,
                 ),
               ),
-               SizedBox(
+              SizedBox(
                 width: 209,
               ),
               Text(
@@ -395,7 +394,7 @@ class _SearchPageState extends State<SearchPage> {
                   textAlign: TextAlign.left,
                 ),
               ),
-               SizedBox(
+              SizedBox(
                 width: 202,
               ),
               Text(
@@ -405,7 +404,6 @@ class _SearchPageState extends State<SearchPage> {
               ),
             ],
           ),
-
           SizedBox(
             height: 10,
           ),

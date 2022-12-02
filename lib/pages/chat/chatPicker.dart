@@ -20,7 +20,7 @@ class _ChatHomeState extends State<ChatHome> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(12.0),
               child: Container(
                 width: 200,
                 height: 50,
@@ -53,7 +53,7 @@ class _ChatHomeState extends State<ChatHome> {
             GestureDetector(
               onTap: () => nextScreen(context, ChatPage()),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(12.0),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
@@ -107,7 +107,7 @@ class _ChatHomeState extends State<ChatHome> {
             GestureDetector(
               onTap: () => nextScreen(context, ChatPage()),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(12.0),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
@@ -161,7 +161,7 @@ class _ChatHomeState extends State<ChatHome> {
             GestureDetector(
               onTap: () => nextScreen(context, ChatPage()),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(12.0),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
@@ -215,7 +215,7 @@ class _ChatHomeState extends State<ChatHome> {
             GestureDetector(
               onTap: () => nextScreen(context, ChatPage()),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(12.0),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
@@ -269,7 +269,7 @@ class _ChatHomeState extends State<ChatHome> {
             GestureDetector(
               onTap: () => nextScreen(context, ChatPage()),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(12.0),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
@@ -323,7 +323,7 @@ class _ChatHomeState extends State<ChatHome> {
             GestureDetector(
               onTap: () => nextScreen(context, ChatPage()),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(12.0),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
@@ -377,7 +377,7 @@ class _ChatHomeState extends State<ChatHome> {
             GestureDetector(
               onTap: () => nextScreen(context, ChatPage()),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(12.0),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
@@ -428,113 +428,7 @@ class _ChatHomeState extends State<ChatHome> {
                 ),
               ),
             ),
-            GestureDetector(
-              onTap: () => nextScreen(context, ChatPage()),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: Color(0xFF838383),
-                  ),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: Container(
-                          height: 60,
-                          child:
-                              Image.asset('assets/chatpage/Rectangle 129.png'),
-                        ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'UPE Board • 2h',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  decoration: TextDecoration.none),
-                              textAlign: TextAlign.left,
-                            ),
-                            Text(
-                              'Yall want to go eat?',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.normal,
-                                  decoration: TextDecoration.none),
-                              textAlign: TextAlign.left,
-                            ),
-                          ],
-                        ),
-                        flex: 4,
-                      ),
-                      Icon(
-                        Icons.keyboard_arrow_right_sharp,
-                        color: Colors.white,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            GestureDetector(
-              onTap: () => nextScreen(context, ChatPage()),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: Color(0xFF838383),
-                  ),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: Container(
-                          height: 60,
-                          child: Image.asset('assets/chatpage/Group 41.png'),
-                        ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'SOBE • 2h',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  decoration: TextDecoration.none),
-                              textAlign: TextAlign.left,
-                            ),
-                            Text(
-                              'I cant wait for next year!',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.normal,
-                                  decoration: TextDecoration.none),
-                              textAlign: TextAlign.left,
-                            ),
-                          ],
-                        ),
-                        flex: 4,
-                      ),
-                      Icon(
-                        Icons.keyboard_arrow_right_sharp,
-                        color: Colors.white,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            
           ],
         ),
       ),

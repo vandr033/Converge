@@ -29,19 +29,19 @@ final m3 = types.TextMessage(
   author: user2,
   createdAt: DateTime.now().microsecondsSinceEpoch,
   id: randomString(),
-  text: 'Doing Okay, Are you going to Sahils Party tommorow?',
+  text: 'Doing Okay, Are you going to the game tommorow?',
 );
 final m4 = types.TextMessage(
   author: _user,
   createdAt: DateTime.now().microsecondsSinceEpoch,
   id: randomString(),
-  text: 'Nah Its going to be lame',
+  text: 'Yeah its gonna be great',
 );
 final m5 = types.TextMessage(
   author: user2,
   createdAt: DateTime.now().microsecondsSinceEpoch,
   id: randomString(),
-  text: 'Yeah I agree, he stinks!',
+  text: 'Go Panthers!',
 );
 final m6 = types.TextMessage(
   author: user2,

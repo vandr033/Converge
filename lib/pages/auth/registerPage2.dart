@@ -95,8 +95,8 @@ class _RegisterPage2State extends State<RegisterPage2> {
                               return 'Please Enter A Valid Email';
                             } else if (!value.contains('@')) {
                               return 'Please Enter An Email In The Correct Format';
-                              // } else if (!value.contains('fiu.edu')) {
-                              //   return 'Please use your FIU email adress';
+                              } else if (!value.contains('fiu.edu')) {
+                                return 'Please use your FIU Email Address';
                             } else {
                               return null;
                             }

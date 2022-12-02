@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.lightBlue,
               fontFamily: 'Nunito',
             ),
-            home: ChatHome(), //for Jose
+            home: EventScreen(), //for Jose
             routes: routes,
           )),
     );

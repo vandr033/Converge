@@ -7,6 +7,8 @@ import 'package:flutter_application/HomePage.dart';
 import 'package:flutter_application/community_screen.dart';
 import 'package:flutter_application/pages/auth/loginPage2.dart';
 import 'package:flutter_application/pages/auth/search_page.dart';
+import 'package:flutter_application/pages/chat/chatPicker.dart';
+import 'package:flutter_application/pages/chat/chat_Page.dart';
 import 'package:flutter_application/widgets/widgets.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:http/http.dart';
@@ -35,12 +37,12 @@ bool comInfoVisible = true;
 int imageIndex = 0;
 
 final pages = [
-  //HomeScreen(),
   EventViewer(),
   ProfileScreen(),
   ProfileScreen2(),
   UPEStory(),
   SearchPage(),
+  ChatHome(),
 ];
 
 class EventScreen extends StatefulWidget {
@@ -146,7 +148,7 @@ class EventScreenState extends State<EventScreen> {
                 onPressed: () {
                   setState(() {
                     eventPanelController.close();
-                    index = 0;
+                    index = 5;
                   });
                 },
                 icon: Icon(

@@ -94,8 +94,8 @@ class _loginPage2State extends State<loginPage2> {
                                 return 'Please Enter A Valid Email';
                               } else if (!value.contains('@')) {
                                 return 'Please Enter An Email In The Correct Format';
-                                // } else if (!value.contains('fiu.edu')) {
-                                //   return 'Please use your FIU email adress';
+                                } else if (!value.contains('fiu.edu')) {
+                                  return 'Please use your FIU Email Address';
                               } else {
                                 return null;
                               }
